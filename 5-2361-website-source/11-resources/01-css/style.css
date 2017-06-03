@@ -3,7 +3,7 @@
 /* PRACTICALSERIES (c) 2017
 
 *******************************************************************************
-Title :          UNDERSTANDING GIT & GITHUB WITH BRACKETS             STYLE.CSS
+Title :          BRACKETS-GIT & GITHUB VCS                            STYLE.CSS
 *******************************************************************************
 
 PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
@@ -74,6 +74,9 @@ COLOURS IN USE
  Button hover         | Button dark orange (hover)             | #de7519
  Text (red)           | Red text highlight                     | #c0504d
  Untested link        | Highlights untested links              | #ff0000
+
+ git-red              | Red colour used for Git commands       | #f05133
+ git-background       | Git command table background colour    | #404030
 -------------------------------------------------------------------------------
 MODIFICATION HISTORY:
 
@@ -81,10 +84,12 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+03 Jun 2017   D01          M. Gledhill    Git styles added
+
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 D00"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 D01"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -887,7 +892,7 @@ body {
       .san-serif           | Applies a sans serif font
                            | (all other properties remain the same)
      ----------------------+------------------------------------------------
-      .index               | Applies athe Concours index font
+      .index               | Applies the Concourse Index font font
                            | (all other properties remain the same)
      ----------------------+------------------------------------------------
       .mono                | Applies a monospaced font
@@ -910,6 +915,12 @@ body {
      ----------------------+------------------------------------------------
       .menu                | indicates a menu selection in Windows or an
                            | application (small caps blue)
+     ----------------------+------------------------------------------------
+      .git-cmd             | Applies a san-serif font with a red colour
+                           |
+     ----------------------+------------------------------------------------
+      .git-incid           | Applies a serif font with a red colour
+                           | The lkine hight is 180% and font size 1rem
      ----------------------+------------------------------------------------
       .list-num            | numbered list using the index font to give a
                            | circle with a number as the ordinal.
@@ -1113,6 +1124,20 @@ body {
     -webkit-font-feature-settings: "ss10";
     font-feature-settings: "ss10";
  }
+
+
+/* --- GIT VCS INLINE STYLES ----------------------------------------------- */
+.git-cmd {                                     /* TEXT STYLE - git commmand */
+    font-family: "conc-t3-b";
+    color: #f05133;
+}
+
+.git-incid {                                     /* TEXT STYLE - git commmand */
+    font-family: "eqty-ta-r";
+    color: #f05133;
+    font-size: 1rem;
+    line-height: 180%;
+}
 
 
 /* ----------------------------------------------------------------------------
@@ -1695,12 +1720,114 @@ tr.in-no-border th {                        /* incidental table no-bottom border
     font-style:normal;
 }
 
+.table-incid p {                            /* where formal paragraphs are used in a table, manipulate the margins */
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+.table-incid p:last-child {
+    margin-bottom: 0.3rem;
+}
+
+
 .c-box {
     font-family: "trip-t4-r";
     padding: 0 2px;
     border: 1px solid #DEDEDE;
     border-radius: 10%;
     background-color: #fff;
+}
+
+
+
+/* ****************************************************************************
+   TABLES - GIT COMMAND LINE
+   ****************************************************************************
+   Git tables use the .table-git class to produce a simple table that is 90%
+   of the section text area.
+
+   The first column of the table is an empty column of zero width that is used
+   to allow a minimum height to be specified for the row (html inline style),
+   this first row has class .leading
+
+   This first column (or leading column) is defined as the first-child of the
+   <th> and <td> elements (i.e. the first cell in each row and in the header
+   row).
+   ************************************************************************* */
+.table-git {
+    background-color: #404030;
+    font-family: "trip-t4-r";
+    color: #fff;
+    font-size: 0.7rem;
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+.table-git td {
+    vertical-align: top;
+    padding: 0.25rem 0.2rem;
+    line-height: 120%;
+    border-bottom: 1px solid #fff;
+}
+
+.table-git td:first-child {              /* first-child is leading (min-height row) */
+    padding: 0;                             /* this has no margins, padding or border */
+    margin: 0;
+    border-bottom: 1px solid #fff;
+}
+
+.table-git p {                            /* where formal paragraphs are used in a table, manipulate the margins */
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+.table-git p:last-child {
+    margin-bottom: 0.3rem;
+}
+
+/* ****************************************************************************
+   TABLES - GIT SIDEBAR COMMAND LINE
+   ****************************************************************************
+   Git tables use the .table-git-s9 class to produce a simple table that is
+   100% of the sidebar text area.
+
+   The first column of the table is an empty column of zero width that is used
+   to allow a minimum height to be specified for the row (html inline style),
+   this first row has class .leading
+
+   This first column (or leading column) is defined as the first-child of the
+   <th> and <td> elements (i.e. the first cell in each row and in the header
+   row).
+   ************************************************************************* */
+.table-git-sb {
+    display: block;                               /* ensures max-width works */
+    background-color: #404030;
+    font-family: "trip-t4-r";
+    color: #fff;
+    font-size: 0.6rem;
+    width: 100%;
+    max-width: 100;
+    margin: -0.9rem auto 1rem auto;
+    border-collapse: collapse;
+}
+.table-git-sb td {
+    vertical-align: top;
+    padding: 0.25rem 0.2rem;
+    line-height: 120%;
+    border-bottom: 1px solid #fff;
+}
+
+.table-git-sb td:first-child {              /* first-child is leading (min-height row) */
+    padding: 0;                             /* this has no margins, padding or border */
+    margin: 0;
+    border-bottom: 1px solid #fff;
+}
+
+.table-git-sb p {                            /* where formal paragraphs are used in a table, manipulate the margins */
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+.table-git-sb p:last-child {
+    margin-bottom: 0.3rem;
 }
 
 
@@ -1712,6 +1839,8 @@ tr.in-no-border th {                        /* incidental table no-bottom border
    ------------------------------------------------------------------------- */
 
 @media all and (max-width:760px){ .table-clean { width: 100%; margin: 0; } }
+@media all and (max-width:760px){ .table-dense { width: 100%; margin: 0; } }
+@media all and (max-width:760px){ .table-git   { width: 100%; margin: 0; } }
 
 
 

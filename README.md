@@ -2,7 +2,7 @@
 
 ###### A series of technical documents for engineers (and others)
 
-# Git, GitHub and Brackets VCS Website <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/build-d00-bk-min.svg">
+# Git, GitHub and Brackets VCS Website <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/build-badge.svg">
 
 <p align="center">
     <img width="300px" src="0-0201-repository-information/01-images/logo-lrg-min.png">
