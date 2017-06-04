@@ -51,6 +51,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+04 Jun 2017   P01          M. Gledhill    First published
+
 27 May 2017   D00.00.01    M. Gledhill    Development - based on PS P06.02
 
 ---------------------------------------------------------------------------- */

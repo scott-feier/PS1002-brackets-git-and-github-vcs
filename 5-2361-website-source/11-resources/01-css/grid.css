@@ -2,7 +2,7 @@
 /* PRACTICALSERIES (c) 2016
 
 *******************************************************************************
-Title :          RESPONSIVE GRID ARRANGEMENT
+Title :          RESPONSIVE GRID ARRANGEMENT                           GRID.CSS
 *******************************************************************************
 
 PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
@@ -93,17 +93,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue    Author         Reason for Modification
 -------------------------------------------------------------------------------
-17 Feb 2017   P04.02   M. Gledhill    max-width and background-color removed
-                                      from rg-row (these were duplicates of
-                                      the body style and not needed)
+04 Jun 2017   P01          M. Gledhill    First published
 
-11 Nov 2016   P01.00   M. Gledhill    Published in line with PS1001-5-211-011
-
-23 Oct 2016   D01.00   M. Gledhill    First development release
-
-23 Sep 2016   D00.20   M. Gledhill    Code comments complete and checked
-
-06 Sep 2016   D00.01   M. Gledhill    Development
+27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
 

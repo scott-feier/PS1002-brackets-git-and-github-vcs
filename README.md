@@ -73,7 +73,7 @@ The following table contains the development branch abbreviations and associated
 
 The following shows the project status as a workflow diagram:
 
-<img src="http://practicalseries.com/1002-vcs/11-resources/02-images/03-workflow/wf-d00-min.svg">
+<img src="http://practicalseries.com/1002-vcs/11-resources/02-images/03-workflow/workflow.svg">
 
 ## Additional information
 
