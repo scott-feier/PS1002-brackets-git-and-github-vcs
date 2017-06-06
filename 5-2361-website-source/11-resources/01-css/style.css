@@ -84,6 +84,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+05 Jun 2017   d-P01.01.01  M. Gledhill    .payment class added
+
 04 Jun 2017   P01          M. Gledhill    First published
 
 03 Jun 2017   D01          M. Gledhill    Git styles added
@@ -91,7 +93,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 P01"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P01.01.01"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -375,6 +377,9 @@ body {
 
        btn-li       carries margins for a button appearing in a list
 
+   A .payment class is used to hold the paypal button (this will be centered
+   in the column).
+
    ************************************************************************* */
 
 .btn-li {                                       /* container for button in a list */
@@ -419,6 +424,12 @@ body {
     background-color: #de7519;
     border: 2px solid #de7519;
 }
+
+.payment {                                       /* container for button in a list */
+    display:table;
+    margin: -0.5rem auto 1rem auto;
+}
+
 
 .utx:before {                                    /* untested link */
     content: "\25cf";
