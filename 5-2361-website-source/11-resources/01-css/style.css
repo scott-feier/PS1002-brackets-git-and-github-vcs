@@ -84,6 +84,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+07 Jun 2017   d-P01.01.03  M. Gledhill    .pay link class added for PayPal link
+
 05 Jun 2017   d-P01.01.01  M. Gledhill    .payment class added
 
 04 Jun 2017   P01          M. Gledhill    First published
@@ -93,7 +95,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P01.01.01"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P01.01.03"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -1078,6 +1080,17 @@ body {
 }
 .xref:hover,
 .xref:active { background-color: #f8f8f8; border-bottom: 1px solid #404030; }
+
+.pay {font-family: "eqty-ca-r"; }         /* TEXT STYLE - hyperlink */
+.pay:link,
+.pay:visited{
+    background-color: #fff;
+    border-bottom: 1px solid transparent;
+    -webkit-transition: background-color 0.2s, border-bottom 0.2s;
+    transition: background-color 0.2s, border-bottom 0.2s;
+}
+.pay:hover,
+.pay:active { background-color: #fff; border-bottom: 1px solid #fff; }
 
 .flourish {                             /* last section bottom border */
     min-height: 2rem;
