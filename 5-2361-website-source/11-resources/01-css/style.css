@@ -84,6 +84,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+10 Jun 2017   P02          M. Gledhill    Published
+
 07 Jun 2017   d-P01.01.03  M. Gledhill    .pay link class added for PayPal link
 
 05 Jun 2017   d-P01.01.01  M. Gledhill    .payment class added
@@ -95,7 +97,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P01.01.03"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 P02"; }      /* CSS REVISION NUMBER */
 
 
 
