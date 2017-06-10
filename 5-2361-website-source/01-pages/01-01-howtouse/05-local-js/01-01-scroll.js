@@ -1,9 +1,7 @@
-
-
-/* PRACTICALSERIES (c) 2017
+/* PRACTICALSERIES (c) 2016
 
 *******************************************************************************
-Title :          LOCAL SCROLL - JQUERY                          00-00-SCROLL.JS
+Title :          LOCAL SCROLL - JQUERY                          01-01-SCROLL.JS
 *******************************************************************************
 
 PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
@@ -42,18 +40,16 @@ number of the section that is to be scrolled to.
 The scrolltop function has an offset of -60px to ensure the title is visible
 below the fixed navigation bar.
 
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 MODIFICATION HISTORY:
 
 This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
-10 Jun 2017   P02          M. Gledhill    Published (Section 01 added)
+10 Jun 2017   P02          M. Gledhill    Published
 
-04 Jun 2017   P01          M. Gledhill    First published
-
-27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
+05 Jun 2017   d-P01.01.02  M. Gledhill    Page created
 ---------------------------------------------------------------------------- */
 
 
@@ -76,11 +72,12 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
     );
 
 
+
 /* ****************************************************************************
    SCROLL TO SECTION
    ****************************************************************************
    This holds several scrollTop functions that scroll from the TOC to the
-   specified section. There is one click function per <a> within the TOC
+   specified section. There is one click function per <a> within the TOC.
    ************************************************************************* */
 
 
@@ -91,13 +88,13 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
           $('.js--sc-000000').click(function () {
            $('html, body').animate({scrollTop: $('#js--000000').offset().top -80}, 1000);
           });
-   ------------------------------------------------------------------------- */
+    ------------------------------------------------------------------------- */
     $('.js--sc-000000').click(function () {     /* START of scroll function */
        $('html, body').animate({scrollTop: $('#js--000000').offset().top -80}, 1000);
     });                                         /* END of scroll function */
 
 
- /* ---------------------------------------------------------------------------
+/* ---------------------------------------------------------------------------
    SCROLL TO CHAPTER (Non heading level after TOC)
    The offset is set to .to -10 - e.g.
 
@@ -115,13 +112,12 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
            $('html, body').animate({scrollTop: $('#js--nn0100').offset().top -20}, 1000);
           });
    ------------------------------------------------------------------------- */
-    $('.js--sc-000100').click(function () {     /* START of scroll function */
-       $('html, body').animate({scrollTop: $('#js--000100').offset().top }, 1000);
+    $('.js--sc-010100').click(function () {     /* START of scroll function */
+       $('html, body').animate({scrollTop: $('#js--010100').offset().top -20}, 1000);
     });                                         /* END of scroll function */
 
 
-
- /* ---------------------------------------------------------------------------
+/* ---------------------------------------------------------------------------
    SCROLL TO -  NON-STANDARD (INLINE) SECTIONS
    The offset is set to .to -120 - e.g.
 

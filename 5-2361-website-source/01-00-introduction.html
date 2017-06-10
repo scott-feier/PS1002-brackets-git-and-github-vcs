@@ -1,6 +1,6 @@
 <!DOCTYPE html>                                                                 <!-- HTML 5 file -->
 
-<!-- PRACTICALSERIES (c) 2017
+<!-- PRACTICALSERIES (c) 2016
 
 *******************************************************************************
 
@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="The Practical Series website explaining how the Git & GitHub version control system can be made to work from within the development environment of the Brackets text editor using the Brackets-Git extension">
+        <meta name="description" content="Introduction to version control using Git, GitHub and Brackets.">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                           INDEX.HTML
+Title :          WEBSITE TEMPLATE                       01-00-INTRODUCTION.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,18 +41,13 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-10 Jun 2017   P02          M. Gledhill    Published (Section 01 added)
+10 Jun 2017   P02          M. Gledhill    Published
 
-10 Jun 2017   t-P01.01.04  M. Gledhill    TOC updated for section 01
+08 Jun 2017   t-P01.01.04  M. Gledhill    Top navigation link corrected
+                                          Aside changed to a title
 
-04 Jun 2017   P01          M. Gledhill    First published
-
-03 Jun 2017   D01          M. Gledhill    Next link added to last section
-                                          before footer
-                                          Nav 99.10 added
-
-27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
-*************************************************************************** -->
+05 Jun 2017   d-P01.01.01  M. Gledhill    Page created
+******************************************************************************* -->
 
 
 <!-- **************************************************************************
@@ -77,7 +72,9 @@ Date          Issue        Author         Reason for Modification
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
 
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/00-00-index/05-local-js/00-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/01-00-introduction/05-local-js/01-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
 
 
 <!-- **************************************************************************
@@ -90,10 +87,9 @@ Date          Issue        Author         Reason for Modification
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
 
-
-<!--  **************************************************************************
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       GOOGLE ANALYTICS
-      ***********************************************************************-->
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                                         <script>
                                           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                                           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -108,21 +104,23 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Introduction | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
+    <body>                               <!-- Start google-code-prettify plugin -->
 
-    <body>
+
 <!-- ************************************************************************** [WP 000000]
      HEADER (COVER & TABLE OF CONTENTS)
      ***********************************************************************-->
 
         <header id="js--000000">
+
 <!-- ************************************************************************** [WP 000001]
      TOP NAVIGATION (ABOVE CONTENTS LIST)
      ***********************************************************************-->
 
-            <nav class="nav-cover">                             <!-- Start of top navigation bar (set transparent on cover page) -->
+            <nav>                                               <!-- Start of top navigation bar -->
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
@@ -130,57 +128,41 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 02 - Previous Chapter -->
                         <div class="nav-wide-blank" ></div>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
-                        <a class="nav-wide nav-home js--sc-000000" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
                         <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
                         <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
-                        <a class="nav-narrow js--sc-000000" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 05 - Next Chapter -->
-                        <a class="nav-wide" href="01-00-introduction.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <a class="nav-wide" href="02-00-concept.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="01-00-introduction.html#js--010000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="01-01-howtouse.html#js--010100"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
 <!-- ========================================================================== [WP END] -->
 
 
-<!-- ************************************************************************** [WP 000002]
-     COVER IMAGE
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
      ***********************************************************************-->
 
-            <div class="rg-row">                                <!-- Start of cover row -->
-                <div class="rg-col rg-span1-5">
-                    <aside class="aside-left aside-left-rev" style="margin-top: 1.6rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg">                 <!-- Build status -->
-                    </aside>                                    <!-- End of right side bar   -->
-
-                </div>           <!-- End of Left column -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of Cover area (centre column) -->
-                    <div class="cover-overline"></div>          <!-- Overline bar -->
-                    <div class="cover-title">                   <!-- Start of cover title area -->
-                        <h1>Practical Series</h1>               <!-- Main title -->
-                        <h2>Understanding Git and GitHub<br>and using Brackets to manage them</h2>             <!-- Subtitle -->
-                        <h3>by Michael Gledhill</h3>            <!-- Author -->
-                    </div>                                      <!-- End of cover title area -->
-                    <figure class="cover-fig">                  <!-- Start of cover figure -->
-                        <img src="01-pages/00-00-index/02-images/fig-00.svg" alt="cover logo">
-                    </figure>                                   <!-- End of cover figure -->
-                </div>                                          <!-- End of cover area (centre column -->
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                  <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">       <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg"> <!-- Build status -->
+                    </aside>                                    <!-- End of left side bar   -->
+                </div>                                          <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>1</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">1</span>Introduction</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column  -->
-                    <aside class="aside-right-rev" style="margin-top: 1.6rem">             <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 1002:&nbsp;&mdash;&nbsp;P02</p>
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 01-00&nbsp;&mdash;&nbsp;P02</p>   <!-- Revision information    -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column  -->
-            </div>                                              <!-- End of cover row -->
-
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP fixed-nav]
-     FIXED NAVIGATION BAR CHANGEOVER POINT
-     ***********************************************************************-->
-        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+            </div>                                              <!-- End of title row (section number & heading) -->
 <!-- ========================================================================== [WP END] -->
 
 
@@ -191,24 +173,6 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of TOC section -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
-
-               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    TOC - PRACTICAL SERIES
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a href="http://practicalseries.com/">  <!-- TOC link start -->
-                               <div class="toc-lev"><span class="toc-lev1-num"></span><span class="toc-lev1-text">Practical Series Publications &mdash; Home Page</span></div></a>
-                        </li>                                   <!-- TOC link end   -->
-                    </ul>                                       <!-- End of full width TOC (level 1) -->
-
-               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    TOC - A NOTE BY THE AUTHOR
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-000100" href="index.html#js--000100">  <!-- TOC link start -->
-                               <div class="toc-lev"><span class="toc-lev1lt-num"></span><span class="toc-lev1lt-text">A note by the author</span></div></a>
-                        </li>                                   <!-- TOC link end   -->
-                    </ul>                                       <!-- End of full width TOC (level 1) -->
 
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                     TOC - 1. introduction
@@ -230,35 +194,6 @@ Date          Issue        Author         Reason for Modification
                     </ul>                                       <!-- End of TOC in columns -->
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-
-               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    TOC - 80 And finally
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li>
-                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
-                            <a href="80-00-finally.html">       <!-- TOC link start -->
-                               <div class="toc-lev"><span class="toc-lev1-num"></span><span class="toc-lev1-text">And finally &hellip;</span></div>
-                            </a>
-                        </li>                                   <!-- TOC link end   -->
-                    </ul>                                       <!-- End of full width TOC (level 1) -->
-                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
-                        <li><a class="js--sc-800100" href="80-00-finally.html#js--800100">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num"></span><span class="toc-lev3-text">Contact MG</span></div></a>
-                        </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-800200" href="80-00-finally.html#js--800200">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num"></span><span class="toc-lev3-text">Acknowledgements</span></div></a>
-                            <br class="top-pad">                <!-- Apply padding to give symmetry to toc (must be before </li> -->
-                        </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-800300" href="80-00-finally.html#js--800300">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num"></span><span class="toc-lev3-text">Colophon</span></div></a>
-                        </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-800400" href="80-00-finally.html#js--800400">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num"></span><span class="toc-lev3-text">Legal</span></div></a>
-                        </li>                                   <!-- TOC link end   -->
-                    </ul>                                       <!-- End of TOC in columns -->
-               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
                 </div>                                          <!-- End of TOC column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
             </div>                                              <!-- End of TOC section -->
@@ -270,12 +205,20 @@ Date          Issue        Author         Reason for Modification
 
 
 
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
 
-<!-- ************************************************************************** [WP 000100]
-     SECTION START - AUTHOR'S NOTE
+
+
+<!-- ************************************************************************** [WP 010000]
+     SECTION 1
      ***********************************************************************-->
 
-        <section class="section-std" id="js--000100">                     <!-- Start of section -->
+        <section class="section-std" id="js--010000">  <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heaing) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
@@ -286,83 +229,52 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
 
-
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <h2>a note by the author</h2>           <!-- Side bar content         -->
+                    <aside class="aside-head">                  <!-- <!-- Start of left side bar   -->
+                        <h2 >The why, what and how of this website</h2>
+                        <p>Why I did it, what it&rsquo;s for and how to use it.</p>                                 <!-- Side bar content         -->
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">This is my second</span> Practical Series publication&mdash;this one happened by accident too. The first publication is all about building a website, you can see it <a class="hlink nohyp" href="http://practicalseries.com/0011-webdevelopment/index.html">here</a>. This publication came about because I wanted some sort of version control mechanism for the first publication.</p>
+                    <p class="hyp"><span class="all-caps">THIS PUBLICATION (WEBSITE)</span> is, in effect an online book. The purpose of this book is to explain how the Git version control system (VCS) and its online partner in crime GitHub work; specifically how these two applications can be made to work from within the development environment of the Brackets text editor.</p>
 
-                    <p class="hyp">There are lots of different <span class="first-use">version control systems</span> (VCS) out there; some are free and some are commercial applications&mdash;just <a class="hlink nohyp" href="https://www.google.co.uk/search?q=version+control+system">google</a> it. If you do, you will find that Git and GitHub show up again and again.</p>
+                    <p class="hyp">I explain everything from scratch:</p>
 
-                    <p class="hyp">I also noticed something as I wrote and developed my first publication and used various third party open source software and applications:</p>
+                    <p class="hyp"></p>
 
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      UNNUMBERED LIST
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      Unnumbered lists are an unordered list of class .list-no-num. The text of
-      each point must be contained in its own <p> element
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
-                        <li><p class="hyp">Normalise.css</p></li>
 
-                        <li><p class="hyp">Lightbox</p></li>
-
-                        <li><p class="hyp">MathJax</p></li>
-
-                        <li><p class="hyp">Prettify</p></li>
-                    </ul>                                       <!-- End of unnumbered list   -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">I noticed that all the people developing these applications did so by using GitHub&mdash;so, thought I, there must be something in it&mdash;<span class="first-use">best have a look and see what it&rsquo;s all about</span>.</p>
-
-                    <p class="hyp">So I did, and while GitHub and its poor provincial, command line cousin, Git are powerful version control applications, it&rsquo;s fair to say that they&rsquo;re also right bastards to understand.</p>
-
-                    <p class="hyp">I had a couple of goes at it and gave up each time&mdash;Git and GitHub have a pretty steep learning curve, especially Git (the application that runs on a local machine rather than GitHub that is web based). Git is driven through a command line terminal emulator and it&rsquo;s a bugger to use.</p>
-
-                    <p class="hyp">So I did a bit more digging and I found that the Brackets text editor, the one I use to develop the Practical Series websites, has an extension that provides a Git and GitHub interface directly within the Brackets development environment.</p>
-
-                    <p class="hyp">This extension (it&rsquo;s called <span class="first-use">Brackets-Git</span>) has the distinct advantage that it is easy to use and doesn&rsquo;t require command line inputs that are counter intuitive and hard to remember.</p>
-
-                    <p class="hyp">Git and GitHub, apart from having peculiar (and slightly rude sounding names), also have a wide range of in-house terminology and phrases, things like this:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      UNNUMBERED LIST
+      NUMBERED LIST
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      Unnumbered lists are an unordered list of class .list-no-num. The text of
-      each point must be contained in its own <p> element
+      Numbered lists are an ordered list of class .list-num. The text of each
+      point must be contained in its own <p> element
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
-                        <li><p class="hyp">Gist</p></li>
+                    <ol class="list-num">                       <!-- Start of numbered list -->
+                        <li><p class="hyp">The concepts used by Git and GitHub for version control</p></li>
 
-                        <li><p class="hyp">Push</p></li>
+                        <li><p class="hyp">Installing Git</p></li>
 
-                        <li><p class="hyp">Repo</p></li>
+                        <li><p class="hyp">Using Git Bash (Git&rsquo;s command line terminal) to set up the default configuration for Git on your machine</p></li>
 
-                        <li><p class="hyp">Fork</p></li>
+                        <li><p class="hyp">Setting up a GitHub account</p></li>
 
-                        <li><p class="hyp">Pull request</p></li>
+                        <li><p class="hyp">Installing Brackets and the tools needed to incorporate Git and GitHub</p></li>
 
-                        <li><p class="hyp">Flirt</p></li>
+                        <li><p class="hyp">An example web project to demonstrate the proper way to use Brackets and the Git and GitHub version control system</p></li>
 
-                        <li><p class="hyp">Flagellate</p></li>
-                    </ul>                                       <!-- End of unnumbered list   -->
+                        <li><p class="hyp">Instructions for working with GitHub directly</p></li>
+
+                        <li><p class="hyp">Using GitHub in collaboration with others</p></li>
+                    </ol>                                       <!-- End of numbered list -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+                    <p class="hyp">I also provide additional material explaining the command line interface and some useful information for developing with GitHub.</p>
 
-                    <p class="hyp">Ok, I made the last two up, but you wouldn&rsquo;t necessarily know. It is all very confusing and it&rsquo;s not that well explained.</p>
-
-                    <p class="hyp">It takes a long time to get to grips with Git&mdash;to such an extent that I had to make lots of notes, do a lot of reading around the subject, try a lot of different thing and experiment with it until I had an understanding of what it all meant and how it worked.</p>
-
-                    <p class="no-hyp">And since I had written it all down, I thought it might be useful to other people&mdash;so I decided to publish it, and here it is.</p>
-
-                    <p class="hyp">Michael Gledhill<br>April 2017</p>
-
+                    <p> <br class="toc-pad"></p>
                     <p> <br class="toc-pad"></p>
                     <p> <br class="toc-pad"></p>
 
@@ -378,6 +290,7 @@ Date          Issue        Author         Reason for Modification
 <!-- ========================================================================== [WP END] -->
 
 
+
 <!-- ************************************************************************** [WP 999901]
      SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
      ***********************************************************************-->
@@ -386,7 +299,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-
+                        <a class="xref" href="index.html#js--000000">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -396,7 +309,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="01-00-introduction.html#js--000000">Next</a>
+                        <a class="xref" href="01-01-howtouse.html#js--010100">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -409,8 +322,6 @@ Date          Issue        Author         Reason for Modification
      ***********************************************************************-->
         <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
 <!-- ========================================================================== [WP END] -->
-
-
 
 
 <!-- ************************************************************************** [WP 999999]

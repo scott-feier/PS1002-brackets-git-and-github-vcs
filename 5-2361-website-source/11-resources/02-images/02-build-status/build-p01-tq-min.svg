@@ -12,7 +12,7 @@
    height="20"
    version="1.1"
    id="svg72"
-   sodipodi:docname="build-p02-tq-min.svg"
+   sodipodi:docname="build-badge.svg"
    inkscape:version="0.92.1 r15371">
   <metadata
      id="metadata76">
@@ -38,9 +38,9 @@
      inkscape:window-height="1378"
      id="namedview74"
      showgrid="false"
-     inkscape:zoom="8.7384615"
-     inkscape:cx="28.867145"
-     inkscape:cy="3.8435692"
+     inkscape:zoom="2.1846154"
+     inkscape:cx="8.0105634"
+     inkscape:cy="10"
      inkscape:window-x="2552"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -251,7 +251,7 @@
              transform="translate(-179.176 -64.199)"
              id="text58">
             <tspan
-               id="tspan56">P02</tspan>
+               id="tspan56">P01</tspan>
           </text>
           <text
              x="609.006"
@@ -261,7 +261,7 @@
              transform="translate(-179.176 -64.199)"
              id="text62">
             <tspan
-               id="tspan60">P02</tspan>
+               id="tspan60">P01</tspan>
           </text>
         </g>
       </g>
