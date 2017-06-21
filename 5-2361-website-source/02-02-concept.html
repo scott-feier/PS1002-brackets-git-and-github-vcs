@@ -1,0 +1,1410 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="An explanation of the basic concept of version control, what version control does">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   02-02-CONCEPT.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+17 Jun 2017   d-P02.02.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)  -->       <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language)  -->   <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/02-02-concept/05-local-js/02-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles  -->       <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+       <!-- Code frag highlights  -->   <link rel="stylesheet" type="text/css" href="01-pages/02-02-concept/01-local-css/02-02-prettifylines.css">
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Version control with Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="02-01-concept.html#js--020100"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="01-00-introduction.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="03-00-install.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="02-03-concept.html#js--020300"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>2</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">2</span>Git, the concept</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 02-00&nbsp;&mdash;&nbsp;d-P02.02.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 2 Git, the concept
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-020000" href="02-00-concept.html#js--020000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">2</span><span class="toc-lev1-text">Git, the concept</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-020100" href="02-01-concept.html#js--020100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.1</span><span class="toc-lev2-text">What is version control?</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020101" href="02-01-concept.html#js--020101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.1.1</span><span class="toc-lev3-text">Why use version control</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020200" href="02-02-concept.html#js--020200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.2</span><span class="toc-lev2-text">Version control with Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020201" href="02-02-concept.html#js--020201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.1</span><span class="toc-lev3-text">The local repository&mdash;how it works</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020202" href="02-02-concept.html#js--020202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.2</span><span class="toc-lev3-text">Commit version numbers</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020203" href="02-02-concept.html#js--020203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.3</span><span class="toc-lev3-text">How to view commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020204" href="02-02-concept.html#js--020204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.4</span><span class="toc-lev3-text">Committing changes&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020300" href="02-03-concept.html#js--020300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.3</span><span class="toc-lev2-text">Branching</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020301" href="02-03-concept.html#js--020301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.3.1</span><span class="toc-lev3-text"> Switch branches&mdash;what happens</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020302" href="02-03-concept.html#js--020302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.3.2</span><span class="toc-lev3-text">Branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020400" href="02-04-concept.html#js--020400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.4</span><span class="toc-lev2-text">More branches and merging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020401" href="02-04-concept.html#js--020401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.4.1</span><span class="toc-lev3-text">Conflict when merging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020402" href="02-04-concept.html#js--020402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.4.2</span><span class="toc-lev3-text">Branches and work flow&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020500" href="02-05-concept.html#js--020500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.5</span><span class="toc-lev2-text">Resetting to an older commit point</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020501" href="02-05-concept.html#js--020501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.1</span><span class="toc-lev3-text">A project to explain the reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020502" href="02-05-concept.html#js--020502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.2</span><span class="toc-lev3-text">A hard reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020503" href="02-05-concept.html#js--020503">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.3</span><span class="toc-lev3-text">Making changes after a reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020504" href="02-05-concept.html#js--020504">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.4</span><span class="toc-lev3-text">Using resets&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020505" href="02-05-concept.html#js--020505">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.5</span><span class="toc-lev3-text">A mixed reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020506" href="02-05-concept.html#js--020506">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.6</span><span class="toc-lev3-text">A soft reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020507" href="02-05-concept.html#js--020507">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.7</span><span class="toc-lev3-text">Reset, a summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020600" href="02-06-concept.html#js--020600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.6</span><span class="toc-lev2-text">Tagging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020601" href="02-06-concept.html#js--020601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.1</span><span class="toc-lev3-text">Lightweight tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020602" href="02-06-concept.html#js--020602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.2</span><span class="toc-lev3-text">Annotated tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020603" href="02-06-concept.html#js--020603">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.3</span><span class="toc-lev3-text">Using tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020604" href="02-06-concept.html#js--020604">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.4</span><span class="toc-lev3-text">Tag naming restrictions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020700" href="02-07-concept.html#js--020700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.7</span><span class="toc-lev2-text">Ignoring files with <span class="code">.gitignore</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020800" href="02-08-concept.html#js--020800">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.8</span><span class="toc-lev2-text">The remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020801" href="02-08-concept.html#js--020801">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.8.1</span><span class="toc-lev3-text">Local and remote repositories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020802" href="02-08-concept.html#js--020802">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.8.2</span><span class="toc-lev3-text">Where does a remote repository live?</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020900" href="02-09-concept.html#js--020900">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.9</span><span class="toc-lev2-text">Moving data between repositories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020901" href="02-09-concept.html#js--020901">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.1</span><span class="toc-lev3-text">Sending data to a remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020902" href="02-09-concept.html#js--020902">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.2</span><span class="toc-lev3-text">Getting data from a remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020903" href="02-09-concept.html#js--020903">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.3</span><span class="toc-lev3-text">What happens if there is a conflict </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020904" href="02-09-concept.html#js--020904">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.4</span><span class="toc-lev3-text">Creating a local repository from an existing remote</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020905" href="02-09-concept.html#js--020905">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.5</span><span class="toc-lev3-text">A note on remote connection names</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020906" href="02-09-concept.html#js--020906">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.6</span><span class="toc-lev3-text">Working with remotes&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 020100]
+     SECTION - 2.2 VERSION CONTROL WITH GIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020200">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>2.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Version control with Git</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Git is a version control system. It tracks changes in all the files contained within a project. The Git terminology for a project is a repository, but this terminology itself is a bit confusing, it looks like this (<a class="xref js--sc-f02-01" href="#">Figure&nbsp;2.1</a>).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-01">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-01.svg" data-lightbox="fig-set" data-title="Figure 2.1 - Git repository structure">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-01.svg" alt="Figure 2.1 - Git repository structure">
+                            </a>
+                            <p>Figure 2.1 &emsp; Git repository structure</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="first-use">working copy</span>, <span class="first-use">staging area</span> and the <span class="first-use">local repository</span> are generally collectively referred to as a <span class="first-use">repository</span> (sometimes just <span class="first-use">repo</span>) or sometimes a <span class="first-use">project</span> (<span class="first-use">I tend to use project in this document</span>). All three of these are stored locally on the machine you are using.</p>
+
+                    <p class="hyp">The remote repository is a copy of the local repository that is stored elsewhere either on a server or, in the case of this publication, on the GitHub website.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th colspan="2" class="table-cent">A note on terminology </th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td colspan="2" class="table-left">
+                                <p>The terminology is a bit confusing with Git, there is a <span class="first-use">repository</span> and this generally refers to the whole structure (the working copy, the staging area and the local repository). Using repository in this sense is referring to the whole <span class="first-use">project</span> (a project is always held in a folder on your machine and it contains everything, all the files and folders that make up the project and the local repository and all the other bits that go with it).</p>
+
+                                <p>Then there is the <span class="first-use">local repository</span>, this is a database (<span class="first-use">sort of</span>) of all the versions of every tracked file, all the metadata (such as change logs, change statements &amp;c.) and everything else the VCS needs. The local repository lives in its own folder within the main project folder (with Git it lives in a <span class="code">.git</span> folder, note the leading full stop).</p>
+
+                                <p>Then there is the <span class="first-use">remote repository</span>, this is a copy (<span class="first-use">sort of</span>) of the local repository on some remote server, in our case it is on the GitHub website, but it could be a server in your office. I say sort of when calling it a copy, this is because it might hold more things than just what is within your local repository if other people are working on the same project&mdash;the remote repository is generally considered to be the master repository.</p>
+                                <p>To avoid confusion I always refer to: </p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left" style="width: 33%">
+                                <p>the <span class="first-use">repository</span> or <span class="first-use">project</span> </p>
+                            </td>
+                            <td class="table-left" style="width: 67%">
+                                <p>When referring to the whole project</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="in-no-border" valign="top">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">
+                                <p>the <span class="first-use">local repository</span> </p>
+                            </td>
+                            <td class="table-left">
+                                <p>When referring to just the tracked files that have been committed to the local repository itself (not working copies or staged area files)</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr valign="top">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">
+                                <p>the <span class="first-use">remote repository </span> </p>
+                            </td>
+                            <td class="table-left">
+                                <p>When referring to just the remote repository stored on GitHub (or at least a repository not on the local machine)</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s forget the remote repository for the time being and concentrate on just the local machine; we&rsquo;re left with <a class="xref js--sc-f02-02" href="#">Figure&nbsp;2.2</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-02">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-02.svg" data-lightbox="fig-set" data-title="Figure 2.2 - Git repository structure on a local machine">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-02.svg" alt="Figure 2.2 - Git repository structure on a local machine">
+                            </a>
+                            <p>Figure 2.2 &emsp; Git repository structure on a local machine</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">So how does this all work, well that&rsquo;s next.</p>
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020201]
+     SUBSECTION - 2.2.1
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020201">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.2.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Working, staging and the local repository&mdash;how it works</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Let&rsquo;s start with a very simple example, a single page website with a picture; I&rsquo;m going to call it <span class="code">lab-01-website</span>.</p>
+
+                    <p class="hyp">On my machine I keep all my Git repositories under a single directory, that directory is on my <span class="code">D:</span> drive and is called <span class="code">2500 Git Projects</span>. Like this:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects</span></p>
+
+                    <p class="hyp"><span class="first-use">Yes I number my directories, yes it&rsquo;s embarrassing, but I am an engineer&mdash;we like to number things&mdash;I discuss this peccadillo further</span> <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-02-starting.html#js--040200">here</a>.</p>
+
+                    <p class="hyp">Next we need a directory to keep the repository we&rsquo;re creating in; this will be called <span class="code">lab-01-website</span> and will live under the <span class="code">2500 Git Projects</span> directory, thus:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects\lab-01-website</span></p>
+
+                    <p class="hyp">So far so good, we&rsquo;ve created a new directory and it&rsquo;s completely empty.</p>
+
+                    <p class="hyp">Now we have to tell Git that it is a new repository.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>I&rsquo;m not going to explain exactly how to do this yet, this is a high level discussion of how Git works and I want to explain it from the point of view of doing it through Brackets and we haven&rsquo;t covered this yet. The terms I use like initialise are valid though and you will see them in Brackets when we come to look at it there. I show some of the more common Git commands in the sidebar.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020201a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">We do this by <span class="git-cmd">initialising</span> the repository. Once initialised, the repository will contain a new hidden folder called <span class="code">.git</span>. It is this folder (created by Git itself) that holds the local repository. On my system it looks like this, <a class="xref js--sc-f02-03" href="#">Figure&nbsp;2.3</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-03">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-03.svg" data-lightbox="fig-set" data-title="Figure 2.3 - Git repository directory structure">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-03.svg" alt="Figure 2.3 - Git repository directory structure">
+                            </a>
+                            <p>Figure 2.3 &emsp; Git repository directory structure</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is now a Git repository, it hasn&rsquo;t got much in it, but it is ready to go.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-cent">The .git folder&mdash;a golden rule</th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left"><p>The <span class="code">.git</span> folder is a hidden folder in the root directory of the repository. It contains all that is important: the local repository, any staged files, all the metadata associated with the repository (change records, logs &amp;c.) and all the important bits for a tracked project.</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p><span class="git-cmd">There is one golden rule concerning the .git folder</span><br>
+                                    <span class="git-incid">DON&rsquo;T FUCK WITH IT</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p>Best thing is, don&rsquo;t even look inside it. If you delete it, you delete everything, <br>
+                                if you change it, everything gets screwed up</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If we ignore the <span class="code">.git</span> folder (<span class="first-use">and this is always the best thing to do, see above</span>), everything else in the <span class="code">lab-01-website</span> folder is our working copy, we can do what we like here: create files and directories, delete them modify them, rename and move them. Anything we like and at the minute Git will ignore everything we do.</p>
+
+                    <p class="hyp">So let&rsquo;s start, let&rsquo;s create a folder structure for our project and add some files to it. I want it to look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-04">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-04.svg" data-lightbox="fig-set" data-title="Figure 2.4 - lab-01-website repository structure">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-04.svg" alt="Figure 2.4 - lab-01-website repository structure">
+                            </a>
+                            <p>Figure 2.4 &emsp; lab-01-website repository structure</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Create the files and folders in whatever manner you like (Notepad and Windows Explorer will do), or download the finished article here <a class="code-nav" href="01-pages/02-02-concept/04-data/code-02-00.zip" download><sub><span class="nav-icon notice" style="font-size: 1.1rem">a</span></sub></a>.</p>
+
+                    <p class="hyp">Having done all this, we are free to modify these files as much as we like. Git is ignoring the lot of them. It knows they&rsquo;re there, but it isn&rsquo;t tracking them in any way. In Git parlance, these are <span class="git-cmd">untracked files</span>; it also knows that there are three of them:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Unnumbered lists are an unordered list of class .list-no-num. The text of
+      each point must be contained in its own <p> element
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp"><span class="code">index.html</span></p></li>
+
+                        <li><p class="hyp"><span class="code">11-resources\01-css\style.css</span></p></li>
+
+                        <li><p class="hyp"><span class="code">11-resources\02-image\logo.png</span></p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s modify one of these files, <span class="code">index.html</span>. I&rsquo;ve added some very basic code (<a class="xref js--sc-c02-01" href="#">Code&nbsp;2.1</a> ).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">index.html</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c02-01">&lt;html lang="en"&gt;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &lt;!-- Declare language --&gt;
+&nbsp; &nbsp; &lt;head&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &lt;!-- Start of head section --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
+
+&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&lt;/title&gt;&nbsp; &nbsp;
+&nbsp; &nbsp; &lt;/head&gt;
+
+&nbsp; &nbsp; &lt;body&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;figure class="cover-fig"&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src="11-resources/02-images/logo.png" alt="cover logo"&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/figure&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;A note by the author&lt;/h3&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&lt;p&gt;This is my second Practical Series publication&mdash;this one happened by accident too. The first publication is all about building a website, you can see it here. This publication came about because I wanted some sort of version control mechanism for the first publication.&lt;/p&gt;
+
+&lt;p&gt;There are lots of different version control systems (VCS) out there; some are free, some are commercial applications just google it. If you do, you will find that Git and GitHub show up again and again.&lt;/p&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 2.1 &emsp; index.html</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/02-02-concept/04-data/code-02-01.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">init</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb" id="js--t02-00a">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">cd &lt;path-to-folder&gt;</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git init</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020201b">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Now let&rsquo;s say that we&rsquo;ve finished <span class="code">index.html</span> and we want to start tracking it, well the first thing to do is move it to the staging area. We do this with the Git command <span class="git-cmd">add</span>.</p>
+
+                    <p class="hyp">Nothing has actually happened to the file, it&rsquo;s still there in the working area, however, a copy of the file exactly as it was at the time of the <span class="git-cmd">add</span> has been placed in the staging area (we can&rsquo;t see this, it&rsquo;s inside the <span class="code">.git</span> folder and we don&rsquo;t go there). </p>
+
+                    <p class="hyp">Once we add a file to the staging area, Git begins to track it, in Git parlance; it is now a <span class="first-use">file to be commited</span>.</p>
+
+                    <p class="hyp">If we continued to modify the file in the working area, nothing would happen to the <span class="first-use">staged</span> (files in the staging area are said to be <span class="first-use">staged</span>) version of the file. If we wanted to overwrite the file in the staging area with a modified working copy, we would need to <span class="git-cmd">add</span> it again.</p>
+
+                    <p class="hyp">Git still isn&rsquo;t properly tracking the <span class="code">index.html</span> file; it knows we&rsquo;ve done something to it, but we still haven&rsquo;t told it to put the file in its repository under full version control.</p>
+
+                    <p class="hyp">Now let&rsquo;s modify the <span class="code">style.css</span> file, add the following to it:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (CSS)
+                             FORCED LINE NUMBERING
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">style.css</div>                  <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums lang-css" id="js--c02-02">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+html {
+    background-color: #fbfaf6;       /* Set cream page bkgrd */
+    color: #404030;
+    font-family: serif;
+    font-size: 26px;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    max-width: 1276px;
+    margin: 0 auto;
+    background-color: #fff;         /* make content area bkgrd white */
+    border-left: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+}
+
+h1, h2, h3, h4, h5, h6 {            /* set standard headings */
+    font-family: sans-serif;
+    font-weight:normal;
+    font-size: 3rem;
+    padding: 2rem 5rem 2rem 5rem;
+}
+h3 { font-size: 2.5rem; }
+
+.cover-fig {                         /* holder for cover image */
+    width: 50%;
+    margin: 2rem auto;
+    padding: 0;
+}
+.cover-fig img {width: 100%;}       /* format cover image */
+
+p {                                 /* TEXT STYLE - paragraph */
+    margin-bottom: 1.2rem;          /* THIS SETS PARAGRAPH SPACING */
+    padding: 0 5rem;
+    line-height: 135%;
+}
+</pre>                                          <!-- ^^^^ End of code extract ^^^^ -->
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 2.2 &emsp; style.css</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/02-02-concept/04-data/code-02-02.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                                  <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The website actually looks like this, <a class="xref js--sc-f02-05" href="#">Figure&nbsp;2.5</a> (not bad for two minutes work).</p>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-05">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-05.png" data-lightbox="fig-set" data-title="Figure 2.5 - lab-01-website">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-05.png" alt="Figure 2.5 - lab-01-website">
+                            </a>
+                            <p>Figure 2.5 &emsp; lab-01-website</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">add</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb" id="js--t02-00b">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git add index.html</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020201c">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Now, the <span class="code">index.html</span> file is already in the staging area, the next thing to do is add the <span class="code">style.css</span> and the <span class="code">logo.png</span>. This is done with another <span class="git-cmd">add</span></p>
+
+                    <p class="hyp">Out repository now looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-06">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-06.svg" data-lightbox="fig-set" data-title="Figure 2.6 - Repository with staged files">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-06.svg" alt="Figure 2.6 - Repository with staged files">
+                            </a>
+                            <p>Figure 2.6 &emsp; Repository with staged files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">All the files are now in the staging area, the staging area acts as a collection area for files that we want to put into the local repository. It allows multiple files to be collected together and added to the local repository in one go. It means we can just have one message for the whole thing (we don&rsquo;t have to enter separate messages for each file).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">add all</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git add</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020201d">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Files are sent from the staging area to the local repository with a <span class="git-cmd">commit</span> instruction. When a commit is executed, a specific message must be entered, in this case, the message is <span class="first-use">initial commit</span> (with Git command line, the message can be entered as part of the command line syntax as shown in the sidebar).</p>
+
+                    <p class="hyp">Now we have this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-07">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-07.svg" data-lightbox="fig-set" data-title="Figure 2.7 - Repository with committed files">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-07.svg" alt="Figure 2.7 - Repository with committed files">
+                            </a>
+                            <p>Figure 2.7 &emsp; Repository with committed files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The staging area is empty (all its files have been <span class="first-use">committed</span> to the local repository).</p>
+
+                    <p class="hyp">The working copy and the local repository now contain exactly the same versions of the file, in Git parlance, it would say <span class="first-use">nothing to commit, working directory is clean</span>.</p>
+
+                    <p class="hyp">Let&rsquo;s make another modification to <span class="code">index.html</span>. We&rsquo;ll delete the second paragraph:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">index.html</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums lang-html wrap" id="js--c02-03">&lt;html lang="en"&gt;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  &lt;!-- Declare language --&gt;
+&nbsp; &nbsp; &lt;head&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  &lt;!-- Start of head section --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
+
+&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&lt;/title&gt;&nbsp; &nbsp;
+&nbsp; &nbsp; &lt;/head&gt;
+
+&nbsp; &nbsp; &lt;body&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;figure class="cover-fig"&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src="11-resources/02-images/logo.png" alt="cover logo"&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/figure&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;A note by the author&lt;/h3&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&lt;p&gt;This is my second Practical Series publication&mdash;this one happened by accident too. The first publication is all about building a website, you can see it here. This publication came about because I wanted some sort of version control mechanism for the first publication.&lt;/p&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 2.3 &emsp; Second modification to index.html</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/02-02-concept/04-data/code-02-03.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;ve deleted lines 20 and 21 from the original file.</p>
+
+                    <p class="hyp">The website now looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-08">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-08.png" data-lightbox="fig-set" data-title="Figure 2.8 - Modified website">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-08.png" alt="Figure 2.8 - Modified website">
+                            </a>
+                            <p>Figure 2.8 &emsp; Modified website</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s also say that this is the only change we want to make. The next thing is to <span class="git-cmd">add</span> <span class="code">index.html</span> to the staging area:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-09">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-09.svg" data-lightbox="fig-set" data-title="Figure 2.9 - Modified files staged">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-09.svg" alt="Figure 2.9 - Modified files staged">
+                            </a>
+                            <p>Figure 2.9 &emsp; Modified files staged</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Git would now report the status of <span class="code">index.html</span> as <span class="first-use">modified and staged</span>.</p>
+
+                    <p class="hyp">And then we commit it with the message <span class="first-use">index.html proof reading correction</span>.</p>
+
+                    <p class="hyp">And this time we have <a class="xref js--sc-f02-10" href="#">Figure&nbsp;2.10</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-10">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-10.svg" data-lightbox="fig-set" data-title="Figure 2.10 - Second modification committed">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-10.svg" alt="Figure 2.10 - Second modification committed">
+                            </a>
+                            <p>Figure 2.10 &emsp; Second modification committed</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">commit</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git commit –m "initial commit"</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020202]
+     SUBSECTION 2.2.2 - COMMIT VERSION NUMBERS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020202">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.2.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Commit version numbers</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">You can see from this that we can keep changing things and we just get more entries in the local repository. Git knows what the whole project looks like at any point in time, in the above example. Git knows that there are three files in the project and it knows that the latest version of <span class="code">style.css</span> and <span class="code">logo.png</span> are from the first entry in the repository and that the latest version of <span class="code">index.html</span> is in the second revision.</p>
+
+                    <p class="hyp">Calling these revision first revision and second revision is ok if there is one person working on the project in a linear fashion. But Git is designed to cater for much more complicated arrangements&mdash;and it does it by numbering the changes in a very different way.</p>
+
+                    <p class="hyp">Look again at the local repository shown in <a class="xref js--sc-f02-10" href="#">Figure&nbsp;2.10</a>, I&rsquo;ve reproduced it below:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-11">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-11.svg" data-lightbox="fig-set" data-title="Figure 2.11 - Local repository with two commits">         <!-- LIGHTBOX LINK -->
+                                <img style="width: 50%;" src="01-pages/02-02-concept/02-images/fig-02-11.svg" alt="Figure 2.11 - Local repository with two commits">
+                            </a>
+                            <p>Figure 2.11 &emsp; Local repository with two commits</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It shows two entries, and each entry has a funny seven digit number (shown in green). The first commit has <span class="code">[37bb05a]</span> and the second has <span class="code">[88934e8]</span>. These are effectively the version numbers. They are unique, but they are essentially just random numbers.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-cent">A note on commit numbers </th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">
+                                <p class="hyp">These commit numbers are of course not random numbers. They are a checksum carried out of all the files in a commit, plus a header that contains other information (the commit numbers that immediately preceded this commit, plus some information about directory structures &amp;c.).</p>
+
+                                <p class="hyp">A checksum is basically a function applied to the binary value of every byte in a file that gives a reproducible figure that can be used to check to see if two files are the same or to identify data corruption within a file. </p>
+
+                                <p class="hyp">The commit number used by Git is a checksum encode by using the SHA-1 algorithm (Secure Hash Algorithm 1). This produces a 20-byte (40 digit) hexadecimal number that uniquely identifies a commit. The commit number shown is just the first seven digits of the full commit number. This is usually enough to uniquely identify a commit (even on very large projects). </p>
+
+                                <p class="hyp">The first seven digits of a commit number gives 268 million unique values (the full 20 byte number has 1.5×10<sup>48</sup> unique values; these values also only apply within a repository (two different repositories can have the same commit number, they don&rsquo;t interfere with each other).</p>
+
+                                <p class="hyp">The chance of a duplicate 20 byte commit number is vanishingly small, even with just the first seven digits it won&rsquo;t happen on any project you are likely to be working on.</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">These commit numbers are referred to as either <span class="first-use">hash</span> numbers or <span class="first-use">SHA</span> (pronounced shar to rhyme with bar) numbers.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020203]
+     SUBSECTION - 2.2.3 HOW TO VIEW COMMITS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020203">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.2.3</h3></div>
+                    <div class="sub-title-text-box"><h3>How to view commits</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">When a commit is made, there is effectively a snapshot of the complete project at that point. All the files in the project are available exactly as they were when the commit was made. </p>
+
+                    <p class="hyp">Any file in the project can be examined or reloaded from any commit (if it existed at the time of the commit). A series of commits form a regression path back through time, anything from the entire project to just a single file (or even part of a file) can be restored to an earlier commit; similarly, once restored, it can be moved forward in time to a later commit.</p>
+
+                    <p class="hyp">To explain further, when I say that each commit is a snapshot of the entire project&mdash;I don&rsquo;t mean that each commit stores every file in the project, it doesn&rsquo;t. The information stored in a particular commit is the files that were added or modified by the commit, the commit also contains a link to any preceding commits and information about the directory structure at the time of the commit. This allows Git to determine exactly what the state of the entire project was at the time of the commit.</p>
+
+                    <p class="hyp">We don&rsquo;t need to know the exact ins and outs of how Git manages its commits&mdash;as far as we are concerned <em>each commit is a snapshot of the entire project</em>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020204]
+     SUBSECTION - 2.2.3 Committing changes - best practice
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020204">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.2.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Committing changes<br>best practice</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The best practice is to commit often.</p>
+
+                    <p class="hyp">Some guidelines suggest you should only commit work that has reached some defined state (i.e. don&rsquo;t commit half done work). <span class="first-use">I don&rsquo;t agree with this view</span>.</p>
+
+                    <p class="hyp">There is no harm in committing unfinished work (in fact there are benefits, <span class="first-use">it keeps it safe</span>). Committing work because it&rsquo;s home time is as good a reason as any for making a commit.</p>
+
+                    <p class="hyp">Where work is in progress and you make a commit, it often best to start your commit message with something that indicates this; I use <span class="first-use">incremental build</span> this tells me that I made a commit, but that the particular commit was a work in progress.</p>
+
+                    <p class="hyp">Don&rsquo;t be afraid to make commits (<span class="first-use">don&rsquo;t be afraid of commitment my son&mdash;well, just a little bit&mdash;like my old Dad used to say &ldquo;don&rsquo;t get married until you&rsquo;re over thirty&rdquo;. He also said &ldquo;stay away from leggy blonds&rdquo;&mdash;I screwed up on both counts</span>). The GitHub mantra is <span class="first-use">commit early commit often&mdash;not sure what they have to say about leggy blonds, it doesn&rsquo;t seem to feature in their documentation</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="02-01-concept.html#js--020100">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+
+               <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="02-03-concept.html#js--020300">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

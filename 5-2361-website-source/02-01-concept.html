@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How Git and GitHub work, the fundamentals of version control and the best practices for using Git and GitHub">
+        <meta name="description" content="An explanation of the basic concept of version control, what version control does">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                   02-00-CONCEPT.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                   02-01-CONCEPT.HTML
 *******************************************************************************
 DETAILS
 
@@ -67,7 +67,7 @@ Date          Issue        Author         Reason for Modification
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
 
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/02-00-concept/05-local-js/02-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/02-01-concept/05-local-js/02-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -81,7 +81,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/02-00-concept/01-local-css/02-00-prettifylines.css"> -->
+       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/02-01-concept/01-local-css/02-01-prettifylines.css"> -->
 
 
 
@@ -102,7 +102,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Git, the concept | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>What is version control? | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -121,7 +121,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="01-02-paying.html#js--010200"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <a class="nav-wide" href="02-00-concept.html#js--020000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="01-00-introduction.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
@@ -133,7 +133,7 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="03-00-install.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="02-01-concept.html#js--020100"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="02-02-concept.html#js--020200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -322,61 +322,87 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 020000]
-     CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
+<!-- ************************************************************************** [WP 020100]
+     SECTION - 2.1 WHAT IS VERSION CONTROL?
      ***********************************************************************-->
 
-        <section class="section-std" id="js--020000">           <!-- Start of section -->
+        <section class="section-std" id="js--020100">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-thinline"></div>      <!-- Thin overline (after TOC) -->
-                    <div class="sub-title-num-box"><h6>Placeholder</h6></div>   <!-- Heading 6 is a placehoder heading needed in sections without a heading to satisfy html validation -->
-                <!--     <div class="sub-title-num-box"><h2>X</h2></div>        Optional numbered heading
-                         <div class="sub-title-text-box"><h2>Text</h2></div> -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>2.1</h2></div>
+                 <div class="sub-title-text-box"><h2>What is version control?</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
 
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                <!--     <aside class="aside-head">                  Start of left side bar   -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
                 <!--         <p></p>                                 Side bar content         -->
                 <!--     </aside>                                    End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">I AM BY PROFESSION</span> an engineer, I build and programme control systems for a living (industrial machinery, pharmaceutical manufacturing, even tritium handling systems for nuclear reactors). The software that goes in these systems is (usually) rigorously tested and anything that goes into a regulated environment (pharmaceutical, nuclear, safety systems &amp;c.) has quite stringent version control and traceability requirements.</p>
+                    <p class="hyp">Let&rsquo;s start with the basics&mdash;<span class="first-use">&ldquo;what is version control?&rdquo;</span></p>
 
-                    <p class="hyp">Version control is important, particularly when the reactor melts down and you want to know who&rsquo;s to blame<sup>1</sup>. It&rsquo;s also important when you&rsquo;ve completely screwed things up and you need to back to an earlier, less screwed up version.</p>
+                    <p class="hyp">Version control is a mechanism for recording changes made to any files within a software project. It records all the changes, what files were affected by each change and a reason explaining why those changes were made. It also records who made the change and the time and date of the change.</p>
 
-                    <p class="hyp">Now I write industrial software and these applications usually have their own development environments and version tracking mechanisms that are particular to the product being used (Siemens, ABB &amp;c). Other things such as documents and drawings are controlled by the in-house version control system that we operate in the office.</p>
+                    <p class="hyp">It keeps a record of every change made within the project and allows any file that has been modified to be reverted back to a previous state. It means that if you change an image on a website, you can always go back and find the original version.</p>
 
-                    <p class="hyp">When I started the Practical Series website, I wanted some form of version control&mdash;it was just me working on it, so I didn&rsquo;t need anything too ambitious and in the early days I just kept increasing the revision number and backing up everything each time I did so. </p>
+                    <p class="hyp">Version control systems do other things too, they can show the differences between two different versions (even down to lines within a file), they allow multiple people to work on the project at the same time&mdash;even to work on the same file at the same time, they provide mechanisms for resolving conflicts (where two different people have modified the same section of a file for example).</p>
 
-                    <p class="hyp">And this was fine, up to a point. Websites are not particularly massive things, a few megabytes; and having multiple copies doesn&rsquo;t tax a modern hard drive particularly. <span class="first-use">So what was the problem?</span></p>
+                    <p class="hyp">Version control systems can be applied to any kind of project; it can be a website, a documentation project, a software application, engineering control system&mdash;anything at all, as long as it&rsquo;s a collection of files that can be stored on computer.</p>
 
-                    <p class="hyp">Well the main problem was that I wasn&rsquo;t documenting the revisions properly; the website has a lot of files (way over a thousand) and while I had a copy of every file at every revision I didn&rsquo;t necessarily know which files had changed from one revision to another.</p>
+                    <p class="hyp">The version control system does not itself edit or modify any of the files within the project; it just records changes and, where it recognises a file type, is able to display the changes that have occurred to it.</p>
 
-                    <p class="hyp">It was also a very inefficient mechanism; there were probably some files in there (images for example) that were in at the first revision and were backed up without change in every subsequent revision up to the latest (there were over 150 when I stopped).</p>
+                    <p class="hyp">The version control system does not care what software application is used to modify files within the project, it can be anything: text editor, word processor, file manager graphics editor, specialist programming application &c. All it cares about is knowing a change has taken place and why.</p>
 
-                    <p class="hyp">It also became complicated when I wanted to work on two different things at once; I might for example be correcting typos in one section that had just been proofread, while developing a new section from scratch. It was difficult to keep track of each.</p>
+                    <p class="hyp"><em>Version control systems simply record any change made within a collection of files (the project), who made it, when it was made and the reason why. That&rsquo;s all.</em></p>
 
-                    <p class="hyp">So while what I had worked, <span class="first-use">sort of</span>&mdash;I could always go back to an earlier version. It was laborious; I would have to guess which revision I wanted, unzip it and then look at the file I wanted to see if it was the right version, if it wasn&rsquo;t I had to guess another revision and do the same until I found the one I was  looking for. This was ok in the early days; but at the point where I switched over to proper version control I had 78,000 files in 35,000 folders; and 150 zipped revisions. The whole thing was taking up 7&nbsp;GB most of which was identical copies of files that hadn&rsquo;t changed between revisions.</p>
+                </div>                                          <!-- End of section text area   -->
 
-                    <p class="hyp">It was at this point that I decided I needed some proper version control and while I could have used the office system, that didn&rsquo;t feel right; the website was nothing to do with my work <span class="first-use">(more an expensive hobby really)</span> and I didn&rsquo;t want to take advantage. Neither did I want to buy the office version for home use, it was just two expensive and over the top for what I needed.</p>
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
 
-                    <p class="hyp">So I had a look around, there are lots of different version control systems out there; some are free, some are commercial applications. The question is: <span class="first-use">which one to use?</span></p>
 
-                    <p class="hyp">One thing that gave me a clue was the software I had used in developing the website; I had used various open source software (some CSS files, some Java Script code) that improved or added functionality to the website (things like lightbox images and formulae on web pages). I noticed as I researched these things, that virtually all of the people developing these applications used GitHub as their version control system.</p>
+<!-- ************************************************************************** [WP 020101]
+     SUBSECTION - 2.1.1
+     ***********************************************************************-->
 
-                    <p class="hyp">So I decided to have a look at GitHub and I realised that this was the online version of Git, Git being a version control system that runs on a PC or Mac.</p>
+        <section class="section-std" id="js--020101">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.1.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Why use version control?</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
 
-                    <p class="hyp">My conclusion is that both Git and GitHub are complicated bastards that are difficult to understand, especially Git. Git in its native form uses a command line interface. Just like MS-DOS and those text adventures from the eighties. Both applications also use some fairly peculiar and non-intuitive terminology that gives the whole thing a pretty steep learning curve. It all takes a fair bit of hard work to understand properly.</p>
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
 
-                    <p class="hyp">There are three parts to it really: </p>
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Well, mainly for the reasons I illustrated at the start of this chapter, if you don&rsquo;t have a VCS, things get out of hand very quickly.</p>
+
+                    <p class="hyp">The proper reasons are:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       NUMBERED LIST
@@ -385,19 +411,61 @@ Date          Issue        Author         Reason for Modification
       point must be contained in its own <p> element
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ol class="list-num">                       <!-- Start of numbered list -->
-                        <li><p class="hyp">The first part is understanding the concepts of how Git manages version control <span class="first-use">(the theory if you will)</span></p></li>
+                        <li><p class="hyp"><span class="first-use">Collaboration</span>: the VCS allows a team of people to work on the same project at the same time</p></li>
 
-                        <li><p class="hyp">The second part is installing it all and making it work <span class="first-use">(and that&rsquo;s not as easy as it sounds)</span></p></li>
+                        <li><p class="hyp"><span class="first-use">Version storage</span>: the VCS manages all the versions of all the files, stores them, names them and can recover them</p></li>
 
-                        <li><p class="hyp">The third part is using something better than Git&rsquo;s command line to manage it all. I&rsquo;ve chosen to use Brackets and some specialist extensions that make the whole thing much easier to use <span class="first-use">(it moves away from the command line environment to something more modern)</span></p></li>
+                        <li><p class="hyp"><span class="first-use">Tracking the changes</span>: the VCS record precisely what was changed and a reason must be given for the change</p></li>
+
+                        <li><p class="hyp"><span class="first-use">Restoring changes and regression paths</span>: the VCS allows individual files or groups of files to be restored to a previous version. </p></li>
                     </ol>                                       <!-- End of numbered list -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">This chapter is concerned with the first of these three; I explain how Git works, how it operates as a version control system and what the hell all that peculiar terminology means.</p>
+                    <p class="hyp">Looking at these in turn:</p>
 
-                    <p class="hyp">I should say right from the start, that Git and GitHub are designed by geeks for geeks&mdash;and by God does it show. They belong to a bit of a club where those in the club don&rsquo;t really want to explain it to those outside; they say they do (because it&rsquo;s open source, left-wing and trendy) but they don&rsquo;t. There&rsquo;s lots of information but it&rsquo;s all designed to be a bit intimidating and to make you feel, well, stupid. It reminds me very much of the gramophone sketch by the <a class="hlink nohyp" href="https://www.youtube.com/watch?v=dSINO6MKtco">not&nbsp;the&nbsp;nine&nbsp;o&rsquo;clock&nbsp;news</a> team. It&rsquo;s the same attitude.</p>
+                </div>                                          <!-- End of section text area   -->
 
-                    <p class="hyp">So if you don&rsquo;t want a bag on your head, read on. I hope I&rsquo;ve explained it better here.</p>
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020101a">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Collaboration</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">If your idea of working in collaboration is shouting across the office that you&rsquo;re working on Function Bock 12 and no one else should touch it until you&rsquo;re finished; then you are probably doing it wrong.</p>
+
+                    <p class="hyp">With a version control system anybody within the project team should be able to work on any file at any time; even the same file<sup>1</sup>.</p>
+
+                    <p class="hyp">The VCS should be clever enough to work out what has changed and allow all these changed to be merged back into a common version.</p>
+
+                    <p class="hyp">The VCS should allow any member of the team to take a copy of the project, work on it locally on their machine and then recombine all the changes back into the main project.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      TABLE - FOOTNOTE
@@ -426,7 +494,7 @@ Date          Issue        Author         Reason for Modification
      By default each table row has a bottom border, this can be turned off
      by giving the <tr> element the class .no-border
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
                         <tr>                                    <!-- TABLE - footnote header line -->
                             <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
                             <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
@@ -436,15 +504,234 @@ Date          Issue        Author         Reason for Modification
                         <tr>                                    <!-- TABLE - Start of footnote row 01 -->
                             <td class="table-left"><em>&dagger;1</em></td>
                             <td class="table-left"></td>
-                            <td colspan="2" class="table-left">I worked for one company that shall be nameless (let’s just call them Consolidated Gyroscope); they operated a blame-free culture intended to prevent accidents by encouraging people to report the smallest incident. The idea being if you stop the small things, you will prevent the larger things. This was fine for small things, no body minds being told to use a coaster for their coffee cup. Bit different when the building burns down.</td>
-                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
-                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
-                            <td class="table-left"></td>
-                            <td class="table-left"></td>
-                            <td colspan="2" class="table-left">It did lead to a bit of a sub-culture—whilst they operated a blame-free policy, they did like to know whose fault it was.</td>
+                            <td colspan="2" class="table-left">I&rsquo;m not sure I recommend this though&mdash;sometimes it&rsquo;s inevitable, but try to avoid it as much as possible.</td>
                         </tr>                                   <!-- TABLE - End of footnote row 01   -->
                     </table>                                    <!-- TABLE - End of footnote    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020101b">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Version storage</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Soring a version of software isn&rsquo;t as easy as you think, look at my example at the start of this section.</p>
+
+                    <p class="hyp">When you store a version, it begs the question what do you actually store; do you store the whole project and every file within it (even though most of these files won&rsquo;t have changed) or do you just store the files you&rsquo;ve modified (hoping that you&rsquo;ve remembered to include all the files that you&rsquo;ve changed).</p>
+
+                    <p class="hyp">If it&rsquo;s the first case, you will have as I did lots of unnecessary information and files stored on your system.</p>
+
+                    <p class="hyp">In the second case, it is very difficult to have a complete picture of the whole project at any given point.</p>
+
+                    <p class="hyp">This is what the VCS does for a living; it keeps track of the changes and is able to reconstruct the whole project at any given revision. It does it for you and provides the complete set of project files (or indeed just individual files) from any particular revision.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020101c">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Tracking changes</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">This is important; it comes down to how revisions are numbered, and what is in each revision.</p>
+
+                    <p class="hyp">You would think numbering would be straight forward start at V01.00 and work up. Unfortunately, this generally only works when you have one person working on a project in a linear fashion.</p>
+
+                    <p class="hyp">What version does a file get if two people work on it at the same time? Perhaps files should be revised with date and time? Again this falls down if you need two different versions of the same file (perhaps one for internal use and one for customers &amp;c.).</p>
+
+                    <p class="hyp">It&rsquo;s fairly certain that unless it is a single person project, things will get out of hand quickly.</p>
+
+                    <p class="hyp">The next thing is knowing what changes are contained within each revision; in my example at the start, I recorded the changes made to each file in a header at the start of each file. And that is ok when there are only a small number of files, but by the end I had thousands of files and it meant I had to open each file to see when it had changed and what those changes were.</p>
+
+                    <p class="hyp">Even trying to keep a separate log (in say, a spreadsheet) doesn&rsquo;t work, you eventually forget to record something.</p>
+
+                    <p class="hyp">A VCS keeps a log of all the changes and ensures that no change is made without a corresponding record being made when the change is stored (it won&rsquo;t accept the change without a statement from the person making the change, <span class="first-use">that doesn&rsquo;t stop the person entering complete bollocks, but it&rsquo;s a start</span>).</p>
+
+                    <p class="hyp">This log is visible and easy to navigate, it shows the changes made, when they were made, what was changed, who made the change and most importantly a statement explaining why the changes were made.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020101d">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Restoring changes</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Being able to restore older versions of files or even the whole project makes it difficult to screw things up. It&rsquo;s always possible to go back to an earlier version and start again.</p>
+
+                    <p class="hyp">A regression path shows the changes that have been made and the order in which they were made, it allows a user to track the changes backwards and if a bug were introduced regress to an earlier version.</p>
+
+                    <p class="hyp"><span class="first-use">There is one final point:</span></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020101e">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Project backup</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">A VCS doesn&rsquo;t necessarily provide backup facilities, if it exists on a single machine and the VCS repository is deleted, then there will be no backup (unless the operator made one). However, if the VCS is distributed (like Git and GitHub) or indeed if more than one person is working on the project, then each team member will have a local copy of the project that can be restored.</p>
+
+                    <p class="hyp">With Git and GitHub it is possible to keep an online copy of the project that is always up to date and can be copied to another PC.</p>
+
+                    <p class="hyp"><span class="first-use">Well, two final points:</span></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020101f">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>VCS the downside</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Yes, there is a downside&mdash;it all takes time&mdash;you have to think when to add a new version. I also spend some time composing the messages that get stored with the changes; <span class="first-use">I like them to be right.</span></p>
+
+                    <p class="hyp">I find that managing the requirements of the VCS spoils the flow of the work, it interrupts the creative juices as it were.</p>
+
+                    <p class="hyp">In short, managing the VCS is time consuming and disruptive.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -472,7 +759,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="01-02-paying.html#js--010200">Prev</a>
+                        <a class="xref" href="02-00-concept.html#js--020000">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -482,7 +769,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="02-01-concept.html#js--020100">Next</a>
+                        <a class="xref" href="02-02-concept.html#js--020200">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
