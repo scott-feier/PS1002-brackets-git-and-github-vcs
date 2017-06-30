@@ -75,7 +75,7 @@ COLOURS IN USE
  Text (red)           | Red text highlight                     | #c0504d
  Untested link        | Highlights untested links              | #ff0000
 
- git-red              | Red colour used for Git commands       | #f05133
+ git-cmd              | Blue colour used for Git commands      | #4F81BD
  git-background       | Git command table background colour    | #404030
 -------------------------------------------------------------------------------
 MODIFICATION HISTORY:
@@ -84,6 +84,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+28 Jun 2017   d-P02.02.02  M. Gledhill    Git commands made blue instead of red
+
 10 Jun 2017   P02          M. Gledhill    Published
 
 07 Jun 2017   d-P01.01.03  M. Gledhill    .pay link class added for PayPal link
@@ -97,7 +99,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 P02"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P02.02.02"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -128,6 +130,7 @@ Date          Issue        Author         Reason for Modification
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
 }
@@ -714,7 +717,6 @@ body {
     margin:0;
     list-style: none;
     -webkit-column-count: 2;
-    -moz-column-count: 2;
     column-count: 2;
     color: #4C6C9C;
     font-family: "conc-t3-r";
@@ -828,7 +830,7 @@ body {
    ------------------------------------------------------------------------- */
 
 @media all and (max-width:760px){
-    .toc-list { -webkit-column-count: 1; -moz-column-count: 1; column-count: 1; }
+    .toc-list { -webkit-column-count: 1; column-count: 1; }
     .toc-pad { display: none; }
     .toc-lev1-num, .toc-lev1-text { font-size: 120% ;}
     .toc-lev2-num, .toc-lev2-text { font-size: 120% ;}
@@ -933,7 +935,7 @@ body {
       .menu                | indicates a menu selection in Windows or an
                            | application (small caps blue)
      ----------------------+------------------------------------------------
-      .git-cmd             | Applies a san-serif font with a red colour
+      .git-cmd             | Applies a san-serif font with a blue colour
                            |
      ----------------------+------------------------------------------------
       .git-incid           | Applies a serif font with a red colour
@@ -1157,7 +1159,7 @@ body {
 /* --- GIT VCS INLINE STYLES ----------------------------------------------- */
 .git-cmd {                                     /* TEXT STYLE - git commmand */
     font-family: "conc-t3-b";
-    color: #f05133;
+    color: #4F81BD;
 }
 
 .git-incid {                                     /* TEXT STYLE - git commmand */
