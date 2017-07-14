@@ -84,6 +84,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+12 Jul 2017   d-P02.02.04  M. Gledhill    .git-incid line height reduced
+
 28 Jun 2017   d-P02.02.02  M. Gledhill    Git commands made blue instead of red
 
 10 Jun 2017   P02          M. Gledhill    Published
@@ -99,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P02.02.02"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P02.02.04"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -1166,7 +1168,7 @@ body {
     font-family: "eqty-ta-r";
     color: #f05133;
     font-size: 1rem;
-    line-height: 180%;
+    line-height: 140%;
 }
 
 

@@ -2,7 +2,7 @@
 
 ###### A series of technical documents for engineers (and others)
 
-# Git, GitHub and Brackets VCS Website <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/build-badge.svg">
+# Git, GitHub and Brackets VCS Website <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/D02-02-04.svg">
 
 <p align="center">
     <img width="300px" src="0-0201-repository-information/01-images/logo-lrg-min.png">
@@ -10,6 +10,22 @@
 
 This is the website source code for the Practical Series of Publications website:
 **Understanding Git & GitHub with Brackets**.
+
+## Revision information
+
+The master branch only contains either finished publishable work or a completed and released website. 
+
+Publishable work is a section of the website that is complete in itself—it does not indicate that the whole website is finished, just that the section in question is complete, tested and deployable.
+
+Development work always takes place on a separate branch. Development branches always spur from some published or released point on the master branch.
+
+**The current published and development status is:**
+
+
+| Branch             | Revision
+| ------------------ | --------------------------------------
+| master             | <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/P02.svg">
+| d-02-concept       | <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/D02-02-04.svg">
 
 ## Contents
 

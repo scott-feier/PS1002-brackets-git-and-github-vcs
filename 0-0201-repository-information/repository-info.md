@@ -40,7 +40,7 @@ The repository folder structure is:
     <img width="50%" src="01-images/fig-01-01-repo-folders-min.png">
 </p>
 
-The red folders are the publishable website (the bit that has to be uploaded to the web server). However, this is just the VSS section of the website; the website itself contains other publications, all of which are contained in their own subfolders within the website.
+The red folders are the publishable website (the bit that has to be uploaded to the web server). However, this is just the VCS section of the website; the website itself contains other publications, all of which are contained in their own subfolders within the website.
 
 The full offline version of the live website is stored on the primary NAS drive and has the location:
 

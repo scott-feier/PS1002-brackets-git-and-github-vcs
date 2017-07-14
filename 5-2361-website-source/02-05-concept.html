@@ -1,0 +1,2147 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="The basic concept of version control: Git, how to merge branches and conflict resolution">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   02-05-CONCEPT.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+12 Jul 2017   d-P02.02.04  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)  -->       <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language)  -->   <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/02-05-concept/05-local-js/02-05-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles  -->       <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/02-05-concept/01-local-css/02-05-prettifylines.css">  -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Reset to a Previous Commit with Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="02-04-concept.html#js--020400"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="01-00-introduction.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="03-00-install.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="02-06-concept.html#js--020600"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>2</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">2</span>Git, the concept</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;d-P02.02.04</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 2 Git, the concept
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-020000" href="02-00-concept.html#js--020000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">2</span><span class="toc-lev1-text">Git, the concept</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-020100" href="02-01-concept.html#js--020100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.1</span><span class="toc-lev2-text">What is version control?</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020101" href="02-01-concept.html#js--020101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.1.1</span><span class="toc-lev3-text">Why use version control</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020200" href="02-02-concept.html#js--020200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.2</span><span class="toc-lev2-text">Version control with Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020201" href="02-02-concept.html#js--020201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.1</span><span class="toc-lev3-text">The local repository&mdash;how it works</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020202" href="02-02-concept.html#js--020202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.2</span><span class="toc-lev3-text">Commit version numbers</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020203" href="02-02-concept.html#js--020203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.3</span><span class="toc-lev3-text">How to view commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020204" href="02-02-concept.html#js--020204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.4</span><span class="toc-lev3-text">Committing changes&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020300" href="02-03-concept.html#js--020300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.3</span><span class="toc-lev2-text">Branching</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020301" href="02-03-concept.html#js--020301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.3.1</span><span class="toc-lev3-text"> Switch branches&mdash;what happens</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020302" href="02-03-concept.html#js--020302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.3.2</span><span class="toc-lev3-text">Branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020400" href="02-04-concept.html#js--020400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.4</span><span class="toc-lev2-text">More branches and merging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020401" href="02-04-concept.html#js--020401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.4.1</span><span class="toc-lev3-text">Conflict when merging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020402" href="02-04-concept.html#js--020402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.4.2</span><span class="toc-lev3-text">Branches and work flow&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020500" href="02-05-concept.html#js--020500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.5</span><span class="toc-lev2-text">Resetting to an older commit point</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020501" href="02-05-concept.html#js--020501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.1</span><span class="toc-lev3-text">A project to explain the reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020502" href="02-05-concept.html#js--020502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.2</span><span class="toc-lev3-text">A hard reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020503" href="02-05-concept.html#js--020503">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.3</span><span class="toc-lev3-text">Making changes after a reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020504" href="02-05-concept.html#js--020504">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.4</span><span class="toc-lev3-text">Using resets&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020505" href="02-05-concept.html#js--020505">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.5</span><span class="toc-lev3-text">A mixed reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020506" href="02-05-concept.html#js--020506">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.6</span><span class="toc-lev3-text">A soft reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020507" href="02-05-concept.html#js--020507">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.7</span><span class="toc-lev3-text">Reset, a summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020600" href="02-06-concept.html#js--020600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.6</span><span class="toc-lev2-text">Tagging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020601" href="02-06-concept.html#js--020601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.1</span><span class="toc-lev3-text">Lightweight tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020602" href="02-06-concept.html#js--020602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.2</span><span class="toc-lev3-text">Annotated tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020603" href="02-06-concept.html#js--020603">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.3</span><span class="toc-lev3-text">Using tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020604" href="02-06-concept.html#js--020604">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.4</span><span class="toc-lev3-text">Tag naming restrictions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020700" href="02-07-concept.html#js--020700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.7</span><span class="toc-lev2-text">Ignoring files with <span class="code">.gitignore</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020800" href="02-08-concept.html#js--020800">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.8</span><span class="toc-lev2-text">The remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020801" href="02-08-concept.html#js--020801">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.8.1</span><span class="toc-lev3-text">Local and remote repositories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020802" href="02-08-concept.html#js--020802">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.8.2</span><span class="toc-lev3-text">Where does a remote repository live?</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020900" href="02-09-concept.html#js--020900">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.9</span><span class="toc-lev2-text">Moving data between repositories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020901" href="02-09-concept.html#js--020901">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.1</span><span class="toc-lev3-text">Sending data to a remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020902" href="02-09-concept.html#js--020902">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.2</span><span class="toc-lev3-text">Getting data from a remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020903" href="02-09-concept.html#js--020903">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.3</span><span class="toc-lev3-text">What happens if there is a conflict </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020904" href="02-09-concept.html#js--020904">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.4</span><span class="toc-lev3-text">Creating a local repository from an existing remote</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020905" href="02-09-concept.html#js--020905">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.5</span><span class="toc-lev3-text">A note on remote connection names</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020906" href="02-09-concept.html#js--020906">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.6</span><span class="toc-lev3-text">Working with remotes&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 020500]
+     SECTION - 2.4 MORE BRANCHES AND MERGING
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020500">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>2.5</h2></div>
+                 <div class="sub-title-text-box"><h2>Recovering an older commit with a reset</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Recovering data from a previous commit point can be accomplished in by using the <span class="git-cmd">reset</span> command.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-cent">Reset&mdash;a word of warning </th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left"><p>Reset is the process of switching a project to a previous commit point.</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p><span class="git-incid">RESET IS A VERY CONFUSING ASPECT OF GIT,<br>IT&rsquo;S A RIGHT BASTARD TO UNDERSTAND</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There are three types of <span class="git-cmd">reset</span>: <span class="first-use">soft</span>, <span class="first-use">mixed</span> and <span class="first-use">hard</span>. The differences are to do with what happens to files in the working directory and staging area.</p>
+
+                    <p class="hyp">I will explain all of them, but before I do, I need to set up a project by way of an example that we can work with:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020501]
+     SUBSECTION - 2.5.1 A PROJECT TO EXPLAIN THE RESET
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020501">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.1</h3></div>
+                    <div class="sub-title-text-box"><h3>A project to explain the reset</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The easiest type of <span class="git-cmd">reset</span> to understand is the <span class="first-use">hard</span> reset; it resets a project back to an earlier commit and replaces all the files in the working directory with the files that were present at the time of the specified commit.</p>
+
+                    <p class="hyp">To explain this let&rsquo;s consider a simple project with just one file (<span class="code">test.txt</span>). I will go through modifying the file and creating commits in a step-by-step way do demonstrate exactly what happens with a reset.</p>
+
+                    <p class="hyp">Let&rsquo;s assume we have a new project and we&rsquo;ve just created a new file called <span class="code">test.txt</span>. This file is present in the working area only, we haven&rsquo;t added or committed the file yet (step 1). Next add the file to the staging area (step 2) and then commit it to the local repository (step 3):</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 1</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26a-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26a.svg" alt="Reset step 1">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">In a new repository create the file <span class="code">test.txt</span> and add some text to it. This is now in the working area and is version <em>V01</em> of the file.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 2</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26b-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26b.svg" alt="Reset step 2">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left" style="vertical-align: top"><span class="git-cmd">Add</span> the file to put it in the staging area.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 3</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26c-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26c.svg" alt="Reset step 3">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left hyp" style="vertical-align: top">Now <span class="git-cmd">commit</span> the file to the local repository.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This gives our first commit <span class="code">[ac452db]</span>.</p>
+
+                    <p class="hyp">Now let&rsquo;s modify the  <span class="code">test.txt</span> file (making it V02) and repeat the <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> process to give our second commit  <span class="code">[5493a7c]</span> (step&nbsp;4).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 4</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26d-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26d.svg" alt="Reset step 4">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left hyp">
+                                <p>Modify <span class="code">text.txt</span>. It is now <em>V02</em>.</p>
+                                <p>Now <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> the file to the local repository.</p>
+</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now we do it all again for a third <span class="git-cmd">commit</span> <span class="code">[22af5b5]</span> and a file at V03 (step&nbsp;5).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 5</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26e-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26e.svg" alt="Reset step 4">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p>Modify <span class="code">text.txt</span> again. It is now <em>V03</em>.</p>
+                                <p>Now <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> the file to the local repository to give 3 commits in total.</p>
+                            </td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>Some of you may be wondering why I show files in the staged area after a commit, when in <a class="hlink nohyp" href="02-02-concept.html#js--f02-07">Figure&nbsp;2.7</a> to <a class="hlink nohyp" href="02-02-concept.html#js--f02-10">Figure&nbsp;2.10</a> I showed it as empty. In practice, the staged area does still hold the files (I showed it as empty to make the explanation easier to understand).</li>
+                    </ul>
+                    <!-- End of note -->
+                    <p class="hyp" style="padding-left: 3.3rem"><span class="first-use">The staged area always holds the files, but if they are the same as the committed files, Git considers it to be empty&mdash;it isn&rsquo;t, but there is nothing in there that requires action.</span></p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Finally, let&rsquo;s modify the working copy of <span class="code">test.txt</span> (making it V04) and <span class="git-cmd">add</span> it to the staging area (step 6). Do not <span class="git-cmd">commit</span> these changes; this is work in progress and I will use it to show how the different types of reset work. We have this as the final step:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 6</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26f-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26f.svg" alt="Reset step 4">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p>Modify <span class="code">text.txt</span> again. It is now <em>V04</em>.</p>
+                                <p>Now <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> the file to the staged area.</p>
+                            </td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;ve show the modified and staged file version in red.</p>
+
+                    <p class="hyp">Now let&rsquo;s look at what a reset does.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-cent">Reset&mdash;a reassuring point</th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left"><p>The reset process can be destructive; it can overwrite data (it&rsquo;s one of the few things that Git does that can lose your data). That said:</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p><em>A reset will never change or delete committed data.</em></p>
+                                <p><em>Committed data is always safe, a commit point will never be deleted and you can always go back to it.</em></p>
+                                <p>The worst a reset can do is overwrite changes in working or staged files.</p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I will start with a hard reset; like a hard Brexit, it&rsquo;s the option that makes most sense.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020502]
+     SUBSECTION - 2.5.2 A HARD RESET
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020502">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.2</h3></div>
+                    <div class="sub-title-text-box"><h3>A hard reset</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Ok, we now have a project with three commits in it. The <span class="git-cmd">head</span> is on the <span class="git-cmd">master</span> branch and is at the latest of those commits <span class="code">[22af5b5]</span>. All well and good, this is just exactly the same as the example we worked through in the previous section.</p>
+
+                    <p class="hyp">We&rsquo;ve also got a modified working copy file that has also been staged but not committed (step 6).</p>
+
+                    <p class="hyp">A reset (any reset) moves the head to a different commit point (a bit like switching branches). <em>A hard reset overwrites the files in the working and staged areas</em> with the files from the commit point that we are resetting to.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020502a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">For example, if we <span class="git-cmd">hard reset</span> to the commit point <span class="code">[5493a7c]</span> then we would get:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p class="hyp"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[5493a7c]</span>.</p>
+                                <p class="hyp"><span class="git-cmd">Head</span> moves to a different commit point. This overwrites the staged and working areas with the files from the <span class="code">[5493a7c]</span> commit point.</p>
+                            </td>
+                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26g-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26g.svg" alt="Reset step 4">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">At this point we have lost the V04 changes to <span class="code">test.txt</span> that were in the working and staged areas (step&nbsp;5).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>This hard reset is a bit like changing branches; however, Git won&rsquo;t let you change branches if you have modified files in the working or staged area (because they would be lost, <a class="hlink nohyp" href="02-03-concept.html#js--020302">&sect;&nbsp;2.3.2</a>). Git has no such qualms about a reset, you will lose any uncommitted changes that are in the working or staged areas when you do a hard reset.</li>
+                    </ul>
+                    <!-- End of note -->
+                    <p class="hyp" style="padding-left: 3.3rem"><span class="first-use">As with branches, best thing to do is commit any modifications prior to a reset.</span></p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"></p>
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 5493a7c <br>--hard</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020502b">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">If we now do another reset (without modifying anything) back to the most recent commit point <span class="code">[22af4b5]</span> we just end up back where we were at step&nbsp;5:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p class="hyp">A second <span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[22af4b5]</span>.</p>
+                                <p class="hyp">Moves the <span class="git-cmd">Head</span> back to the most recent commit point.</p>
+                                <p class="hyp">This restores the project to the step 5 state above.</p>
+                            </td>
+                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem;">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26h-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26h.svg" alt="Reset step 4">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 22af4b5 <br>--hard</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020503]
+     SUBSECTION - 2.5.3 MAKING CHANGES AFTER A RESET
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020503">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Making changes after a reset</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp"><span class="first-use">This is a bit like going back in time and accidentally killing your own father&mdash;it leaves things hanging.</span></p>
+
+                    <p class="hyp">Currently we are at step 5 and our commit history is:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - COMMIT HISTORY
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="width: 25%; border-bottom: 1px solid #E6E9E9"><span class="code">[22af4b5]</span></td>
+                            <td class="table-left" style="width: 75%; border-bottom: 1px solid #E6E9E9">Version V03</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border" style="background-color: #DFE2E2">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2"><span class="code">[5493a7c]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2">Version V02</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9"><span class="code">[ac452db]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9">Version V01</td>
+                        </tr>                                   <!-- TABLE - End of row  -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now <span class="git-cmd">hard reset</span> back to commit point <span class="code">[5493a7c]</span> just like we did in the previous section&mdash;we get exactly the same result:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p class="hyp"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[5493a7c]</span>.</p>
+                                <p class="hyp"><span class="git-cmd">Head</span> moves to a different commit point. This overwrites the staged and working areas with the files from the <span class="code">[5493a7c]</span> commit point.</p>
+                            </td>
+                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26g-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26g.svg" alt="Reset step 4">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The history shows:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - COMMIT HISTORY
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="width: 25%; border-bottom: 1px solid #E6E9E9"><span class="code">[5493a7c]</span></td>
+                            <td class="table-left" style="width: 75%; border-bottom: 1px solid #E6E9E9">Version V02</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border" style="background-color: #DFE2E2">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2"><span class="code">[ac452db]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2">Version V01</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It&rsquo;s not showing the <span class="code">[22af4b5]</span> commit point.</p>
+
+                    <p class="hyp">This makes sense, the history only includes things up to the current <span class="git-cmd">head</span> point.</p>
+
+                    <p class="hyp">We can still move back to the <span class="code">[22af4b5]</span> commit point because we did in the previous section. <span class="first-use">The problem is what if we make changes at this earlier commit point?</span></p>
+
+                    <p class="hyp">Do it, modify <span class="code">test.txt</span> this time we&rsquo;ll call it V05&mdash;<span class="first-use">like the shampoo (I used V04 before remember)</span>&mdash;commit the changes, this is commit <span class="code">[8f46c7b]</span>.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p class="hyp">Modify <span class="code">text.txt</span> again, it is now V05.</p>
+                                <p class="hyp">Now <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> the file to the local repository.</p>
+                            </td>
+                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26i-lrg.svg" data-lightbox="fig-set" data-title="Reset">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26i.svg" alt="Reset">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And now if we look at the history:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - COMMIT HISTORY
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="width: 25%; border-bottom: 1px solid #E6E9E9"><span class="code">[8f46c7b]</span></td>
+                            <td class="table-left" style="width: 75%; border-bottom: 1px solid #E6E9E9">Version V05</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border" style="background-color: #DFE2E2">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2"><span class="code">[5493a7c]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2">Version V02</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9"><span class="code">[ac452db]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9">Version V01</td>
+                        </tr>                                   <!-- TABLE - End of row  -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Commit point <span class="code">[22af4b5]</span> isn&rsquo;t there. A bit like Stalin, we&rsquo;ve rewritten history.</p>
+
+                    <p class="hyp">The missing commit point is still there<sup>&dagger;1</sup>, it no longer fits into the chain of commits&mdash;it&rsquo;s just floating around in the Git repository.</p>
+
+                    <p class="hyp">It&rsquo;s perfectly possible to switch to the missing commit point <span class="code">[22af4b5]</span>. If we were to reset to it <span class="code">[22af4b5]</span> we would have:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p class="hyp"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[22af4b5]</span>.</p>
+                            </td>
+                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26j-lrg.svg" data-lightbox="fig-set" data-title="Modification after reset">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26j.svg" alt="Modification after reset">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The commit history being:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - COMMIT HISTORY
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="width: 25%; border-bottom: 1px solid #E6E9E9"><span class="code">[22af4b5]</span></td>
+                            <td class="table-left" style="width: 75%; border-bottom: 1px solid #E6E9E9">Version V03</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border" style="background-color: #DFE2E2">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2"><span class="code">[5493a7c]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2">Version V02</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9"><span class="code">[ac452db]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9">Version V01</td>
+                        </tr>                                   <!-- TABLE - End of row  -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">Confusing isn&rsquo;t it?</span></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Footnotes use a four column table to give the appearance of a Word style
+     footnote (this has a partial border that extends part way across the page)
+
+     The footnote table has class .table-fnote.
+
+     The heading row of a footnote table is empty, it does no more than set the
+     row widths.
+
+     The footnote table has only one row (excepting the header), the first cell
+     of this row contains the footnote number.
+
+     The second cell is a spacing cell and contains no text (it simply separates
+     the number from the main text).
+
+     The final cell spans two columns and contains the text of the footnote.
+
+     Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+
+     By default each table row has a bottom border, this can be turned off
+     by giving the <tr> element the class .no-border
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">You need to be careful with these floating commit points, they are deleted when the database is cleaned up (<span class="first-use">pruned</span> in Git terminology&mdash;it&rsquo;s gardening, like branches).</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020504]
+     SUBSECTION - 2.5.4 USING RESETS-BEST PRACTICE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020504">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Using resets&mdash;best practice</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I don&rsquo;t like the idea of resetting to a previous commit point and then progressing on from there as if nothing had happened (effectively bypassing the later commits).</p>
+
+                    <p class="hyp">Let&rsquo;s assume that we&rsquo;ve progressed from step&nbsp;1 to step&nbsp;5 in the previous example and we haven&rsquo;t done any resets (i.e. commit <span class="code">[8f46c7b]</span> never happened). We have this:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 5</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26k-lrg.svg" data-lightbox="fig-set" data-title="Reset step 5">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26k.svg" alt="Reset step 5">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left"><span class="code">text.txt</span> is at V03; there are no changes pending.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s also assume that there is some problem with <span class="code">test.txt</span> and we realise that the version we need is actually version 01 with some slight modification. The best procedure to recover V01, modify it and commit the modifications is as follows:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020504a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">Commit or discard any pending changes (in our case there aren&rsquo;t any) and reset the project back to the V01 commit point with a <span class="git-cmd">hard reset</span> <span class="code">[ac452db]</span>.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 6</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26l-lrg.svg" data-lightbox="fig-set" data-title="Reset step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26l.svg" alt="Reset step 6">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[ac452db]</span>.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This places the V01 file in the working area.</p>
+
+                    <p class="hyp">Now either open the <span class="code">test.txt</span> file and copy the contents or just copy the entire file to the clipboard.</p>
+
+                    <p class="hyp">We haven&rsquo;t changed any files at this point (just copied data).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb" id="js--t02-00c">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset ac452db
+--hard</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020504b">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Now hard reset back to the latest commit in the chain <span class="code">[22af4b5]</span>.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 7</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26h-lrg.svg" data-lightbox="fig-set" data-title="Reset step 7">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26h.svg" alt="Reset step 7">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[22af4b5]</span>.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Next either open up the latest file, the V03 file, that is in the working area, delete everything and paste in the V01 copied contents from the clipboard, or just overwrite the file with the copied version.</p>
+
+                    <p class="hyp">Either way, the <span class="code">test.txt</span> file in the working area now contains the V01 version that we copied from the step&nbsp;6 <span class="git-cmd">hard reset</span>.</p>
+
+                    <p class="hyp">Make any other modifications that are required and save the file (we will call this V1a for simplicity).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 8</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26m-lrg.svg" data-lightbox="fig-set" data-title="Reset step 8">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26m.svg" alt="Reset step 8">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">Modify <span class="code">test.txt</span>, it is now version V1a.</td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> the changes with the commit message <span class="first-use">test.txt v1a&nbsp;&mdash;&nbsp;based on v01 with modifications</span>. In this case it is commit <span class="code">[9c43e67]</span>.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 9</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26n-lrg.svg" data-lightbox="fig-set" data-title="Reset step 9">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 100%" src="01-pages/02-05-concept/02-images/fig-02-26n.svg" alt="Reset step 9">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left"><span class="git-cmd">Commit</span> the changes <span class="code">[9c43e67]</span></td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The commit history for this is:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - COMMIT HISTORY
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="width: 25%; border-bottom: 1px solid #E6E9E9"><span class="code">[9c43e67]</span></td>
+                            <td class="table-left" style="width: 75%; border-bottom: 1px solid #E6E9E9">test.txt v1a&nbsp;&mdash;&nbsp;based on v01 with modifications</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border" style="background-color: #DFE2E2">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2"><span class="code">[22af4b5]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2">Version V03</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr style="background-color: #E6E9E9">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9"><span class="code">[5493a7c]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #E6E9E9">Version V02</td>
+                        </tr>                                   <!-- TABLE - End of row  -->
+                        <tr class="no-border" style="background-color: #DFE2E2">  <!-- TABLE - Start of row -->
+                            <td class="leading"></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2"><span class="code">[ac452db]</span></td>
+                            <td class="table-left" style="border-bottom: 1px solid #DFE2E2">Version V01</td>
+                        </tr>                                   <!-- TABLE - End of row   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This I think keeps things clearer.</p>
+
+                    <p class="hyp">From an engineering point of view, it is not acceptable to just move the project back a couple of notches and then carry on as if nothing had happened&mdash;it breaks the traceability&mdash;and that&rsquo;s when they send you to gaol&mdash;it leaves the question: <span class="first-use">what happens to the commit points that got skipped?</span> They&rsquo;re still there, someone could use them, it adds to the confusion&mdash;just record what you did to put it right and move on, even if that means copying files and data from an earlier commit point.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-cent"></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p><em>Just explain what you did and why.</em></p>
+                                <p><em>It&rsquo;s the engineer&rsquo;s code&mdash;use it wisely young Skywalker.</em></p>
+                             </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent">
+                                <p></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb" id="js--t02-00d">                           <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 22af4b5
+--hard
+</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020505]
+     SUBSECTION - 2.5.5 A MIXED RESET
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020505">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.5</h3></div>
+                    <div class="sub-title-text-box"><h3>A mixed reset</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Let me say now, <em>a hard reset is the only one to use.</em></p>
+
+                    <p class="hyp"><span class="first-use">Boy am I goanna get some emails—they’ll all be from Linux people, they usually are</span><sup>&dagger;2</sup>.</p>
+
+                    <p class="hyp">My rules for resetting: </p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Numbered lists are an ordered list of class .list-num. The text of each
+      point must be contained in its own <p> element
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ol class="list-num">                       <!-- Start of numbered list -->
+                        <li><p class="hyp">Always commit or delete modified files before resetting</p></li>
+
+                        <li><p class="hyp">Always use a <span class="git-cmd">hard reset</span></p></li>
+
+                        <li><p class="hyp">Resetting a project should only be done to view the files as they were at that point in time, never to modify them</p></li>
+
+                        <li><p class="hyp">Never modify files at any commit point other than the latest (most recent) commit (on a given branch)</p></li>
+                    </ol>                                       <!-- End of numbered list -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">That said I will explain what the other types of reset do—I just haven’t figured out what they are for.</p>
+
+                    <p class="hyp">The first one is a <span class="git-cmd">mixed reset</span>. This is the default type of reset applied by Git.</p>
+
+                    <p class="hyp">Set up the project as it was in <a class="xref nohyp js--sc-020501" href="#">&sect;&nbsp;2.5.1</a> step&nbsp;6. It looks like this:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 6</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26o-lrg.svg" data-lightbox="fig-set" data-title="Reset step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26o.svg" alt="Reset step 6">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p>The most up to date commit has <span class="code">text.txt</span> at V03.</p>
+                                <p>he working and staged areas hold a modified version of <span class="code">text.txt</span> at V04. </p>
+                            </td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020505a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">The <span class="git-cmd">mixed reset</span> is a non-destructive reset. It does not overwrite the working copy but it does change the staging area and (obviously) the <span class="git-cmd">head</span>. If we <span class="git-cmd">reset</span> (<span class="git-cmd">mixed</span>) to the V02 commit point <span class="code">[5493a7c]</span> we would have:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 7</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26p-lrg.svg" data-lightbox="fig-set" data-title="Reset step 7">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26p.svg" alt="Reset step 7">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p><span class="git-cmd">Reset</span> (<span class="git-cmd">mixed</span>) to <span class="code">[5493a7c]</span></p>
+                            </td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It leaves the working file <span class="code">test.txt</span> exactly as it was at version V04. It means we could stage and commit the V04 modification to a new commit based on the V02 commit point <span class="code">[5493a7c]</span> we&rsquo;ve just reset to if we wanted to. <span class="first-use">But we wouldn&rsquo;t do that would we?</span></p>
+
+                    <p class="hyp"><span class="first-use">Sound confusing?</span></p>
+
+                    <p class="hyp">Well it is. I appreciate it is non-destructive; it hasn&rsquo;t overwritten the V04 file in the working area. It&rsquo;s also pretty useless because I can&rsquo;t see any of the V02 files. None of the V02 files have been put in the working area and the working files are the only files that are visible or editable.</p>
+
+                    <p class="hyp">The <span class="code">test.txt</span> file will be flagged as modified but not staged.</p>
+
+                    <p class="hyp">Again, I don&rsquo;t see a use for it. <span class="first-use">I&rsquo;ll just wait for the Linux people to stop shouting and explain it to me.</span></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Footnotes use a four column table to give the appearance of a Word style
+     footnote (this has a partial border that extends part way across the page)
+
+     The footnote table has class .table-fnote.
+
+     The heading row of a footnote table is empty, it does no more than set the
+     row widths.
+
+     The footnote table has only one row (excepting the header), the first cell
+     of this row contains the footnote number.
+
+     The second cell is a spacing cell and contains no text (it simply separates
+     the number from the main text).
+
+     The final cell spans two columns and contains the text of the footnote.
+
+     Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+
+     By default each table row has a bottom border, this can be turned off
+     by giving the <tr> element the class .no-border
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;2</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">In my experience and judging by my inbox, Linux people are a bit like Jeremy Corbyn&rsquo;s supporters: entirely convinced of their own moral superiority and completely dismissive of any other argument. They have a stifling certitude, an implacable self-righteousness and they are always willing to be offended.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb" id="js--t02-00e">                           <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 5493a7c<br>--mixed</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020506]
+     SUBSECTION - 2.5.6 A SOFT RESET
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020506">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.6</h3></div>
+                    <div class="sub-title-text-box"><h3>A soft reset</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I refer you to the comments I made about the mixed reset in the previous section.</p>
+
+                    <p class="hyp">A soft rest does even less; all it does is move the <span class="git-cmd">head</span>.</p>
+
+                    <p class="hyp">Set up the project as it was in <a class="xref nohyp js--sc-020501" href="#">&sect;&nbsp;2.5.1</a> step&nbsp;6. It looks like this:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 6</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26o-lrg.svg" data-lightbox="fig-set" data-title="Reset step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26o.svg" alt="Reset step 6">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p>The most up to date commit has <span class="code">text.txt</span> at V03.</p>
+                                <p>he working and staged areas hold a modified version of <span class="code">text.txt</span> at V04. </p>
+                            </td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020506a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">The <span class="git-cmd">soft reset</span> is again a non-destructive reset. It does not overwrite the working copy or staged area; all it does is move the <span class="git-cmd">head</span>. If we <span class="git-cmd">reset</span> (<span class="git-cmd">soft</span>) to the V02 commit point <span class="code">[5493a7c]</span> we would have:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="width: 25%">Action</th>
+                            <th class="table-left" style="width: 75%">Result</th>
+                        </tr>                                   <!-- TABLE - End of header   -->
+
+                        <tr class="no-border">                  <!-- TABLE - Start of ROW  -->
+                            <th class="leading"></th>
+                            <th class="table-left" style="vertical-align: top">Step 7</th>
+                            <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26q-lrg.svg" data-lightbox="fig-set" data-title="Reset step 7">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26q.svg" alt="Reset step 7">
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="leading"></td>
+                            <td class="table-left">
+                                <p><span class="git-cmd">Reset</span> (<span class="git-cmd">soft</span>) to <span class="code">[5493a7c]</span></p>
+                            </td>
+                        </tr>
+
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>           <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It leaves the working file <span class="code">test.txt</span> exactly as it was at version V04 in both the working and staged area. It means we could commit the V04 modification to a new commit based on the V02 commit <span class="code">[5493a7c]</span> we&rsquo;ve just reset to if we wanted to.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb" id="js--t02-00f">                           <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 5493a7c<br>--soft</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020507]
+     SUBSECTION - 2.5.7 RESET, A SUMMARY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020507">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.5.7</h3></div>
+                    <div class="sub-title-text-box"><h3>Reset, a summary</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">My rules and notes for resetting are:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Numbered lists are an ordered list of class .list-num. The text of each
+      point must be contained in its own <p> element
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ol class="list-num">                       <!-- Start of numbered list -->
+                        <li><p class="hyp">A reset will never change or delete any committed data or commit points</p></li>
+
+                        <li><p class="hyp">Always make a note of the latest commit number (hash)<sup>&dagger;3</sup> </p></li>
+
+                        <li><p class="hyp">Always commit modified files before resetting</p></li>
+
+                        <li><p class="hyp">Always use a hard reset</p></li>
+
+                        <li><p class="hyp">Resetting a project should only be done to view the files as they were at that point in time, never to modify them</p></li>
+
+                        <li><p class="hyp">It&rsquo;s ok to copy files from an earlier commit (following a hard reset) and paste them into the latest commit point (ensure you explain it in the commit message)</p></li>
+
+                        <li><p class="hyp">Never modify files at a commit other than the latest (most recent) commit (on a given branch)</p></li>
+
+                    </ol>                                       <!-- End of numbered list -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Footnotes use a four column table to give the appearance of a Word style
+     footnote (this has a partial border that extends part way across the page)
+
+     The footnote table has class .table-fnote.
+
+     The heading row of a footnote table is empty, it does no more than set the
+     row widths.
+
+     The footnote table has only one row (excepting the header), the first cell
+     of this row contains the footnote number.
+
+     The second cell is a spacing cell and contains no text (it simply separates
+     the number from the main text).
+
+     The final cell spans two columns and contains the text of the footnote.
+
+     Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+
+     By default each table row has a bottom border, this can be turned off
+     by giving the <tr> element the class .no-border
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn03">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;3</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I say this because if you reset to an earlier commit, the later ones don&rsquo;t show up in the history and this makes it harder to get back to a later commit if you don&rsquo;t know its commit number. There are ways around this,  see <a class="hlink nohyp utx" href="07-02-regression.html#js--070201">&sect;&nbsp;7.2.1</a>).</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="02-04-concept.html#js--020400">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+
+               <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="02-06-concept.html#js--020600">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>
