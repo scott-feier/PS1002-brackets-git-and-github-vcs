@@ -25,7 +25,7 @@ Development work always takes place on a separate branch. Development branches a
 | Branch             | Revision
 | ------------------ | --------------------------------------
 | master             | <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/P02.svg">
-| d-02-concept       | <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/D02-02-04.svg">
+| d-02-concept       | <img src="http://practicalseries.com/1002-vcs/11-resources/02-images/02-build-status/D02-02-05.svg">
 
 ## Contents
 
@@ -89,7 +89,7 @@ The following table contains the development branch abbreviations and associated
 
 The following shows the project status as a workflow diagram:
 
-<img src="http://practicalseries.com/1002-vcs/11-resources/02-images/03-workflow/workflow.svg">
+<img src="http://practicalseries.com/1002-vcs/11-resources/02-images/03-workflow/D02-02-05-wf.svg">
 
 ## Additional information
 

@@ -1,0 +1,534 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="The basic concept of version control: Git, how to merge branches and conflict resolution">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   02-08-CONCEPT.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+15 Jul 2017   d-P02.02.05  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)  -->       <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language)  -->   <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/02-08-concept/05-local-js/02-08-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles  -->       <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/02-08-concept/01-local-css/02-08-prettifylines.css">  -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Remote repositories with Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="02-07-concept.html#js--020700"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="01-00-introduction.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="03-00-install.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="02-09-concept.html#js--020900"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>2</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">2</span>Git, the concept</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 02-08&nbsp;&mdash;&nbsp;d-P02.02.05</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 2 Git, the concept
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-020000" href="02-00-concept.html#js--020000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">2</span><span class="toc-lev1-text">Git, the concept</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-020100" href="02-01-concept.html#js--020100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.1</span><span class="toc-lev2-text">What is version control?</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020101" href="02-01-concept.html#js--020101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.1.1</span><span class="toc-lev3-text">Why use version control</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020200" href="02-02-concept.html#js--020200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.2</span><span class="toc-lev2-text">Version control with Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020201" href="02-02-concept.html#js--020201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.1</span><span class="toc-lev3-text">The local repository&mdash;how it works</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020202" href="02-02-concept.html#js--020202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.2</span><span class="toc-lev3-text">Commit version numbers</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020203" href="02-02-concept.html#js--020203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.3</span><span class="toc-lev3-text">How to view commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020204" href="02-02-concept.html#js--020204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.2.4</span><span class="toc-lev3-text">Committing changes&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020300" href="02-03-concept.html#js--020300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.3</span><span class="toc-lev2-text">Branching</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020301" href="02-03-concept.html#js--020301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.3.1</span><span class="toc-lev3-text"> Switch branches&mdash;what happens</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020302" href="02-03-concept.html#js--020302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.3.2</span><span class="toc-lev3-text">Branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020400" href="02-04-concept.html#js--020400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.4</span><span class="toc-lev2-text">More branches and merging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020401" href="02-04-concept.html#js--020401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.4.1</span><span class="toc-lev3-text">Conflict when merging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020402" href="02-04-concept.html#js--020402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.4.2</span><span class="toc-lev3-text">Branches and work flow&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020500" href="02-05-concept.html#js--020500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.5</span><span class="toc-lev2-text">Resetting to an older commit point</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020501" href="02-05-concept.html#js--020501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.1</span><span class="toc-lev3-text">A project to explain the reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020502" href="02-05-concept.html#js--020502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.2</span><span class="toc-lev3-text">A hard reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020503" href="02-05-concept.html#js--020503">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.3</span><span class="toc-lev3-text">Making changes after a reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020504" href="02-05-concept.html#js--020504">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.4</span><span class="toc-lev3-text">Using resets&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020505" href="02-05-concept.html#js--020505">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.5</span><span class="toc-lev3-text">A mixed reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020506" href="02-05-concept.html#js--020506">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.6</span><span class="toc-lev3-text">A soft reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020507" href="02-05-concept.html#js--020507">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.5.7</span><span class="toc-lev3-text">Reset, a summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020600" href="02-06-concept.html#js--020600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.6</span><span class="toc-lev2-text">Tagging</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020601" href="02-06-concept.html#js--020601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.1</span><span class="toc-lev3-text">Lightweight tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020602" href="02-06-concept.html#js--020602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.2</span><span class="toc-lev3-text">Annotated tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020603" href="02-06-concept.html#js--020603">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.3</span><span class="toc-lev3-text">Using tags</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020604" href="02-06-concept.html#js--020604">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.6.4</span><span class="toc-lev3-text">Tag naming restrictions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020700" href="02-07-concept.html#js--020700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.7</span><span class="toc-lev2-text">Ignoring files with <span class="code">.gitignore</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020800" href="02-08-concept.html#js--020800">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.8</span><span class="toc-lev2-text">The remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020801" href="02-08-concept.html#js--020801">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.8.1</span><span class="toc-lev3-text">Local and remote repositories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020802" href="02-08-concept.html#js--020802">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.8.2</span><span class="toc-lev3-text">Where does a remote repository live?</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-020900" href="02-09-concept.html#js--020900">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">2.9</span><span class="toc-lev2-text">Moving data between repositories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020901" href="02-09-concept.html#js--020901">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.1</span><span class="toc-lev3-text">Sending data to a remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020902" href="02-09-concept.html#js--020902">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.2</span><span class="toc-lev3-text">Getting data from a remote repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020903" href="02-09-concept.html#js--020903">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.3</span><span class="toc-lev3-text">What happens if there is a conflict </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020904" href="02-09-concept.html#js--020904">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.4</span><span class="toc-lev3-text">Creating a local repository from an existing remote</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020905" href="02-09-concept.html#js--020905">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.5</span><span class="toc-lev3-text">A note on remote connection names</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-020906" href="02-09-concept.html#js--020906">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">2.9.6</span><span class="toc-lev3-text">Working with remotes&mdash;best practice</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 020800]
+     SECTION - 2.8 THE REMOTE REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020800">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>2.8</h2></div>
+                 <div class="sub-title-text-box"><h2>The remote repository</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">A remote repository is generally a copy of a local repository that exists on a server somewhere that other people also have access to.</p>
+
+                    <p class="hyp">There are two points to having a remote repository:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Numbered lists are an ordered list of class .list-num. The text of each
+      point must be contained in its own <p> element
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ol class="list-num">                       <!-- Start of numbered list -->
+                        <li><p class="hyp">It acts as a backup for the local repository</p></li>
+
+                        <li><p class="hyp">It allows a team of people to collaborate on a Git project</p></li>
+
+                    </ol>                                       <!-- End of numbered list -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020801]
+     SUBSECTION - 2.8.1 LOCAL AND REMOTE REPOSITORIES: THE DIFFERENCES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020801">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.8.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Local and remote repositories: the differences</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">To state the bleeding obvious&mdash;local repositories are, well, local; they live on a specific computer used by a single project team member. The local repository is for the use of that specific person on that specific machine.</p>
+
+                    <p class="hyp">A remote repository on the other hand is hosted on a server somewhere and can be accessed by all the team members.</p>
+
+                    <p class="hyp">Local repositories have associated working and staging areas where work is developed staged and ultimately committed to the local repository.</p>
+
+                    <p class="hyp">Remote repositories do not have working and staging areas; it is just the bare repository.</p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 020802]
+     SUBSECTION - 2.8.2 WHERE DOES A REMOTE REPOSITORY LIVE?
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--020802">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>2.8.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Where does a remote repository live?</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The answer to this is it could be on a networked server on a local network (within say, the office); or it could be stored on an internet based server (such as <a class="hlink nohyp" href="https://github.com/">github</a> or <a class="hlink nohyp" href="https://bitbucket.org/">bitbucket</a>).</p>
+
+                    <p class="hyp">In this publication I only consider a GitHub remote repository; this is the most common remote repository and it works very well. I explain how to use it in great detail in section &sect;&sect;&nbsp;<a class="hlink nohyp" href="09-00-github.html#js--090000">9</a> and <a class="hlink nohyp" href="10-00-collaboration.html#js--100000">10</a>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="02-07-concept.html#js--020700">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+
+               <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="02-09-concept.html#js--020900">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>
