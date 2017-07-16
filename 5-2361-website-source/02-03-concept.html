@@ -41,6 +41,10 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+16 Jul 2017   t-P02.02.P03 M. Gledhill    Comments corrected, some minor
+                                          typographical corrections
+                                          Validated
+
 29 Jun 2017   d-P02.02.03  M. Gledhill    Workflow diagrams correctly sized
 
 29 Jun 2017   d-P02.02.02  M. Gledhill    Meta description changed
@@ -85,7 +89,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights  -->   <link rel="stylesheet" type="text/css" href="01-pages/02-03-concept/01-local-css/02-03-prettifylines.css">
+        <!-- Code frag highlights  -->  <link rel="stylesheet" type="text/css" href="01-pages/02-03-concept/01-local-css/02-03-prettifylines.css">
 
 
 
@@ -151,7 +155,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">  <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -160,7 +164,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-03&nbsp;&mdash;&nbsp;d-P02.02.03</p>
+<!--REVISION-->         <p>Rev: 02-03&nbsp;&mdash;&nbsp;t-P02.02.P03</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -383,7 +387,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">There is nothing special about the <span class="git-cmd">master</span> branch, it is just the first branch created in the repository and by default Git always calls it &ldquo;<span class="git-cmd">master</span>&rdquo;. It is perfectly possible to rename it or even delete it. But don&rsquo;t.</p>
 
-                    <p class="hyp">Virtually every project ever created with Git or GitHub will have a <span class="git-cmd">master</span> branch. Not because it is special or particularly important, but because everybody just keeps it. In this sense it has had importance thrust upon it; the <span class="git-cmd">master</span> branch has become the default branch for deployable code. This is just a convention you understand, there is absolutely nothing special about the <span class="git-cmd">master</span> branch itself, but it is a convention I use and I explain it in the best practice section (<a class="hlink nohyp utx" href="02-04-concept.html#js--020402">&sect;&nbsp;2.4.2</a> and <a class="hlink nohyp utx" href="90b-00-appendix.html#js--020402">appendix&nbsp;b</a>).</p>
+                    <p class="hyp">Virtually every project ever created with Git or GitHub will have a <span class="git-cmd">master</span> branch. Not because it is special or particularly important, but because everybody just keeps it. In this sense it has had importance thrust upon it; the <span class="git-cmd">master</span> branch has become the default branch for deployable code. This is just a convention you understand, there is absolutely nothing special about the <span class="git-cmd">master</span> branch itself, but it is a convention I use and I explain it in the best practice section (<a class="hlink nohyp" href="02-04-concept.html#js--020402">&sect;&nbsp;2.4.2</a> and <a class="hlink nohyp utx" href="90b-00-appendix.html#js--020402">appendix&nbsp;b</a>).</p>
 
                     <p class="hyp">In <a class="xref js--sc-f02-12" href="#">Figure&nbsp;2.12</a> I&rsquo;ve added a <sub><img src="01-pages/02-03-concept/02-images/fig-02-12a.png" style="height: 1rem" alt="Head symbol"></sub>  symbol; this is, in Git parlance, the <span class="git-cmd">head</span>. The <span class="git-cmd">head</span> (by default) points to the latest (most recent) commit on the currently active branch. In this case it is on the <span class="git-cmd">master</span> branch (the only one we have) and points to commit  <span class="code">[88934e8]</span> which is the most recent commit.</p>
 
@@ -391,7 +395,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Well let&rsquo;s suppose that our <span class="code">index.html</span> page is finished and we&rsquo;re completely happy with it and its finished code is sitting at commit <span class="code">[88934e8]</span>.</p>
 
-                    <p class="hyp">Now let&rsquo;s suppose that we want to add another page called <span class="code">01-intro.html</span>. In my best practice model for branching (<a class="hlink nohyp utx" href="02-04-concept.html#js--020402">&sect;&nbsp;2.4.2</a>), the tested deployable code is always on the master branch. Any development work needs to be done on a new branch. In this case we will call it the <span class="git-cmd">dev-01-intro</span> branch (I start development branches with <span class="git-cmd">dev</span> for clarity; in later sections I abbreviate this to <span class="git-cmd">d-</span>).</p>
+                    <p class="hyp">Now let&rsquo;s suppose that we want to add another page called <span class="code">01-intro.html</span>. In my best practice model for branching (<a class="hlink nohyp" href="02-04-concept.html#js--020402">&sect;&nbsp;2.4.2</a>), the tested deployable code is always on the master branch. Any development work needs to be done on a new branch. In this case we will call it the <span class="git-cmd">dev-01-intro</span> branch (I start development branches with <span class="git-cmd">dev</span> for clarity; in later sections I abbreviate this to <span class="git-cmd">d-</span>).</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -477,7 +481,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">To change to the new branch we use the Git checkout command. This now switches us to the new branch. It looks like this, <a class="xref js--sc-f02-13" href="#">Figure&nbsp;2.13</a>:</p>
+                    <p class="hyp">To change to the new branch we use the Git <span class="git-cmd">checkout</span> command. This now switches us to the new branch. It looks like this, <a class="xref js--sc-f02-13" href="#">Figure&nbsp;2.13</a>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -889,7 +893,7 @@ Date          Issue        Author         Reason for Modification
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">There is a way around this, it&rsquo;s called <span class="git-cmd">stashing</span> files and it&rsquo;s essentially a temporary way of storing files that are a <span class="first-use">work in progress</span> (WIP in Git terminology) without committing them&mdash;it essentially pushes the files onto a storage stack (<span class="first-use">remember the Z80 push/pop assembler commands?&mdash;no?&mdash;never mind</span>). Neither Brackets nor GitHub support the stash and suffice it to say, I&rsquo;m not a great fan of the stash either&mdash;<span class="first-use">hence I don&rsquo;t cover it in these pages</span>.</p>
+                    <p class="hyp">There is a way around this, it&rsquo;s called <span class="git-cmd">stashing</span> files and it&rsquo;s essentially a temporary way of storing files that are a <span class="first-use">work in progress</span> (WIP in Git terminology) without committing them&mdash;it essentially pushes the files onto a storage stack <span class="first-use">(remember the Z80 push/pop assembler commands?&mdash;no?&mdash;never mind)</span>. Neither Brackets nor GitHub support the stash and suffice it to say, I&rsquo;m not a great fan of the stash either&mdash;<span class="first-use">hence I don&rsquo;t cover it in these pages</span>.</p>
 
                     <p class="hyp"><em>We will always commit our changes before switching branches<sup>&dagger;1</sup>.</em></p>
 

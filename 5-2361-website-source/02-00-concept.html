@@ -41,6 +41,10 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+16 Jul 2017   t-P02.02.P03 M. Gledhill    Comments corrected, some minor
+                                          typographical corrections
+                                          Validated
+
 11 Jun 2017   d-P02.02.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -81,7 +85,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/02-00-concept/01-local-css/02-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/02-00-concept/01-local-css/02-00-prettifylines.css"> -->
 
 
 
@@ -147,7 +151,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">  <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -156,7 +160,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-00&nbsp;&mdash;&nbsp;d-P02.02.01</p>
+<!--REVISION-->         <p>Rev: 02-00&nbsp;&mdash;&nbsp;t-P02.02.P03</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -348,7 +352,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">I AM BY PROFESSION</span> an engineer, I build and programme control systems for a living (industrial machinery, pharmaceutical manufacturing, even tritium handling systems for nuclear reactors). The software that goes in these systems is (usually) rigorously tested and anything that goes into a regulated environment (pharmaceutical, nuclear, safety systems &amp;c.) has quite stringent version control and traceability requirements.</p>
+                    <p class="hyp"><span class="all-caps">I AM BY PROFESSION</span> an engineer, I build and programme control systems for a living (industrial machinery, pharmaceutical manufacturing, even tritium handling systems for nuclear reactors). The software that goes in these systems is (<span class="first-use">usually</span>) rigorously tested and anything that goes into a regulated environment (pharmaceutical, nuclear, safety systems &amp;c.) has quite stringent version control and traceability requirements.</p>
 
                     <p class="hyp">Version control is important, particularly when the reactor melts down and you want to know who&rsquo;s to blame<sup>1</sup>. It&rsquo;s also important when you&rsquo;ve completely screwed things up and you need to back to an earlier, less screwed up version.</p>
 
@@ -380,9 +384,6 @@ Date          Issue        Author         Reason for Modification
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       NUMBERED LIST
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      Numbered lists are an ordered list of class .list-num. The text of each
-      point must be contained in its own <p> element
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ol class="list-num">                       <!-- Start of numbered list -->
                         <li><p class="hyp">The first part is understanding the concepts of how Git manages version control <span class="first-use">(the theory if you will)</span></p></li>
@@ -401,30 +402,6 @@ Date          Issue        Author         Reason for Modification
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      TABLE - FOOTNOTE
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     Footnotes use a four column table to give the appearance of a Word style
-     footnote (this has a partial border that extends part way across the page)
-
-     The footnote table has class .table-fnote.
-
-     The heading row of a footnote table is empty, it does no more than set the
-     row widths.
-
-     The footnote table has only one row (excepting the header), the first cell
-     of this row contains the footnote number.
-
-     The second cell is a spacing cell and contains no text (it simply separates
-     the number from the main text).
-
-     The final cell spans two columns and contains the text of the footnote.
-
-     Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-
-     By default each table row has a bottom border, this can be turned off
-     by giving the <tr> element the class .no-border
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
                         <tr>                                    <!-- TABLE - footnote header line -->

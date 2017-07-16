@@ -41,6 +41,10 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+16 Jul 2017   t-P02.02.P03 M. Gledhill    Comments corrected, some minor
+                                          typographical corrections
+                                          Validated
+
 12 Jul 2017   d-P02.02.04  M. Gledhill    Minor typographial corrections
 
 01 Jul 2017   d-P02.02.03  M. Gledhill    Page created
@@ -83,7 +87,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights  -->   <link rel="stylesheet" type="text/css" href="01-pages/02-04-concept/01-local-css/02-04-prettifylines.css">
+        <!-- Code frag highlights  -->  <link rel="stylesheet" type="text/css" href="01-pages/02-04-concept/01-local-css/02-04-prettifylines.css">
 
 
 
@@ -149,7 +153,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">  <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -158,7 +162,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-04&nbsp;&mdash;&nbsp;d-P02.02.04</p>
+<!--REVISION-->         <p>Rev: 02-04&nbsp;&mdash;&nbsp;t-P02.02.P03</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -545,12 +549,12 @@ Date          Issue        Author         Reason for Modification
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git branch dev-01-about</td>
+                                <td class="table-left" style="width: 95%">git branch dev-02-about</td>
                             </tr>                                                               <!-- TABLE - End of header   -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git checkout dev-01-about</td>
+                                <td class="table-left" style="width: 95%">git checkout dev-02-about</td>
                             </tr>                                                               <!-- TABLE - End of header   -->
                         </table>                                                                <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -726,7 +730,7 @@ p {                                 /* TEXT STYLE - paragraph */
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">And we can, we do it by changing to the branch that we want to receive the changes (the target branch), in this case it is the <span class="code">master</span> branch. Then we use the <span class="code">merge</span> command to bring in the changes from the source branch.</p>
+                    <p class="hyp">And we can, we do it by changing to the branch that we want to receive the changes (the target branch), in this case it is the <span class="git-cmd">master</span> branch. Then we use the <span class="git-cmd">merge</span> command to bring in the changes from the source branch.</p>
 
                     <p class="hyp">This automatically creates a merge commit; this is just another commit with the message <span class="first-use">Merge branch &lt;branch-name&gt;</span> in our case it is <span class="first-use">Merge branch dev-01-intro</span>. The merge commit is <span class="code">[e659dad]</span>.</p>
 
@@ -1107,7 +1111,7 @@ p {                                 /* TEXT STYLE - paragraph */
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00b">                            <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
@@ -1140,7 +1144,7 @@ p {                                 /* TEXT STYLE - paragraph */
 
                     <p class="hyp">We need to choose what we want to do, we can accept the <span class="git-cmd">master</span> version, the <span class="git-cmd">dev-02-about</span> version or we can choose to do something entirely different&mdash;we can also choose to abort the merge and think about things a bit longer.</p>
 
-                    <p class="hyp">In this case I&rsquo;m going to choose the <span class="git-cmd">master</span> version (the blue one). I do this by modifying the style.css file and committing the change. This will accept my resolution of the conflict and attach the commit message:</p>
+                    <p class="hyp">In this case I&rsquo;m going to choose the <span class="git-cmd">master</span> version (the blue one). I do this by modifying the <span class="code">style.css</span> file and committing the change. This will accept my resolution of the conflict and attach the commit message:</p>
 
                     <p class="hyp" style="margin-left: 4rem"><span class="first-use">Merge branch 'dev-02-about'<br># Conflicts:<br># 11-resources/01-css/style.css</span></p>
 
@@ -1164,17 +1168,6 @@ p {                                 /* TEXT STYLE - paragraph */
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <span class="first-use"></span>
-                    <span class="code"></span>
-                    <span class="git-cmd"></span>
-                    <!-- <a class="xref js--sc-f02-10 utx" href="#">Figure&nbsp;2.10</a> -->
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -1205,7 +1198,7 @@ p {                                 /* TEXT STYLE - paragraph */
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00c">                            <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
@@ -1293,7 +1286,7 @@ p {                                 /* TEXT STYLE - paragraph */
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00d">                            <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->

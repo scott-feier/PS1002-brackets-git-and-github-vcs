@@ -16,7 +16,7 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="The basic concept of version control: Git, how to merge branches and conflict resolution">
+        <meta name="description" content="The basic concept of version control: Git, how to recover an older commit with a reset">
 
 <!-- ==========================================================================
 
@@ -41,6 +41,10 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+16 Jul 2017   t-P02.02.P03 M. Gledhill    Comments corrected, some minor
+                                          typographical corrections
+                                          Validated
+
 15 Jul 2017   d-P02.02.05  M. Gledhill    Typographical correction to comments
 
 12 Jul 2017   d-P02.02.04  M. Gledhill    Page created
@@ -83,7 +87,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/02-05-concept/01-local-css/02-05-prettifylines.css">  -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/02-05-concept/01-local-css/02-05-prettifylines.css">  -->
 
 
 
@@ -149,7 +153,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">  <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -158,7 +162,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;d-P02.02.04</p>
+<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;t-P02.02.P03</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -325,7 +329,7 @@ Date          Issue        Author         Reason for Modification
 
 
 <!-- ************************************************************************** [WP 020500]
-     SECTION - 2.5 RECOVERING AN OLDER COMMIT WITH A RESET
+     SECTION - 2.5 RESETTING TO AN OLDER COMMIT POINT
      ***********************************************************************-->
 
         <section class="section-std" id="js--020500">           <!-- Start of section -->
@@ -336,7 +340,7 @@ Date          Issue        Author         Reason for Modification
                     <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
                  <div class="sub-title-num-box"><h2>2.5</h2></div>
-                 <div class="sub-title-text-box"><h2>Recovering an older commit with a reset</h2></div>
+                 <div class="sub-title-text-box"><h2>Resetting to an older commit point</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -350,7 +354,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Recovering data from a previous commit point can be accomplished in by using the <span class="git-cmd">reset</span> command.</p>
+                    <p class="hyp">Recovering data from a previous commit point can be accomplished by using the <span class="git-cmd">reset</span> command.</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - INCIDENTAL TABLE (EN PASSANT)
@@ -367,7 +371,7 @@ Date          Issue        Author         Reason for Modification
                             <th class="table-cent">Reset&mdash;a word of warning </th>                            <!-- set column 01 width here -->
                         </tr>                                   <!-- TABLE - End of header   -->
                         <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
-                            <td class="table-left"><p>Reset is the process of switching a project to a previous commit point.</p>
+                            <td class="table-cent"><p>Reset is the process of switching a project to a previous commit point.</p>
                             </td>
                         </tr>                                   <!-- TABLE - End of row 01   -->
                         <tr class="in-no-border">                                    <!-- TABLE - Start of row 01 -->
@@ -443,8 +447,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 1</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26a-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26a.svg" alt="Reset step 1">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26a-lrg.svg" data-lightbox="fig-set" data-title="Reset - step 1">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26a.svg" alt="Reset - step 1">
                                 </a>
                             </th>
                         </tr>
@@ -457,8 +461,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 2</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26b-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26b.svg" alt="Reset step 2">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26b-lrg.svg" data-lightbox="fig-set" data-title="Reset - step 2">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26b.svg" alt="Reset - step 2">
                                 </a>
                             </th>
                         </tr>
@@ -471,8 +475,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 3</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26c-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26c.svg" alt="Reset step 3">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26c-lrg.svg" data-lightbox="fig-set" data-title="Reset - step 3">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26c.svg" alt="Reset - step 3">
                                 </a>
                             </th>
                         </tr>
@@ -506,8 +510,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 4</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26d-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26d.svg" alt="Reset step 4">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26d-lrg.svg" data-lightbox="fig-set" data-title="Reset - step 4">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 60%" src="01-pages/02-05-concept/02-images/fig-02-26d.svg" alt="Reset - step 4">
                                 </a>
                             </th>
                         </tr>
@@ -542,8 +546,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 5</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26e-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26e.svg" alt="Reset step 4">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26e-lrg.svg" data-lightbox="fig-set" data-title="Reset - step 5">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26e.svg" alt="Reset - step 5">
                                 </a>
                             </th>
                         </tr>
@@ -593,8 +597,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 6</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26f-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26f.svg" alt="Reset step 4">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26f-lrg.svg" data-lightbox="fig-set" data-title="Reset - step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26f.svg" alt="Reset - step 6">
                                 </a>
                             </th>
                         </tr>
@@ -690,7 +694,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Ok, we now have a project with three commits in it. The <span class="git-cmd">head</span> is on the <span class="git-cmd">master</span> branch and is at the latest of those commits <span class="code">[22af5b5]</span>. All well and good, this is just exactly the same as the example we worked through in the previous section.</p>
 
-                    <p class="hyp">We&rsquo;ve also got a modified working copy file that has also been staged but not committed (step 6).</p>
+                    <p class="hyp">We&rsquo;ve also got a modified working copy file that has also been staged but not committed (step 6 above).</p>
 
                     <p class="hyp">A reset (any reset) moves the head to a different commit point (a bit like switching branches). <em>A hard reset overwrites the files in the working and staged areas</em> with the files from the commit point that we are resetting to.</p>
 
@@ -737,9 +741,9 @@ Date          Issue        Author         Reason for Modification
                                 <p class="hyp"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[5493a7c]</span>.</p>
                                 <p class="hyp"><span class="git-cmd">Head</span> moves to a different commit point. This overwrites the staged and working areas with the files from the <span class="code">[5493a7c]</span> commit point.</p>
                             </td>
-                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26g-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26g.svg" alt="Reset step 4">
+                            <td class="table-left" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26g-lrg.svg" data-lightbox="fig-set" data-title="Hard reset to an earlier commit point">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26g.svg" alt="Hard reset to an earlier commit point">
                                 </a>
                             </td>
                         </tr>
@@ -840,9 +844,9 @@ Date          Issue        Author         Reason for Modification
                                 <p class="hyp">Moves the <span class="git-cmd">Head</span> back to the most recent commit point.</p>
                                 <p class="hyp">This restores the project to the step 5 state above.</p>
                             </td>
-                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem;">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26h-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26h.svg" alt="Reset step 4">
+                            <td class="table-left" style="padding-left: 0.5rem;">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26h-lrg.svg" data-lightbox="fig-set" data-title="Hard reset to latest commit point">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26h.svg" alt="Hard reset to latest commit point">
                                 </a>
                             </td>
                         </tr>
@@ -965,9 +969,9 @@ Date          Issue        Author         Reason for Modification
                                 <p class="hyp"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[5493a7c]</span>.</p>
                                 <p class="hyp"><span class="git-cmd">Head</span> moves to a different commit point. This overwrites the staged and working areas with the files from the <span class="code">[5493a7c]</span> commit point.</p>
                             </td>
-                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26g-lrg.svg" data-lightbox="fig-set" data-title="Reset step 1">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26g.svg" alt="Reset step 4">
+                            <td class="table-left" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26g-lrg.svg" data-lightbox="fig-set" data-title="Hard reset to V02 commit point">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26g.svg" alt="Hard reset to V02 commit point">
                                 </a>
                             </td>
                         </tr>
@@ -1018,12 +1022,12 @@ Date          Issue        Author         Reason for Modification
                         <tr>
                             <td class="leading"></td>
                             <td class="table-left">
-                                <p class="hyp">Modify <span class="code">text.txt</span> again, it is now V05.</p>
+                                <p class="hyp">Modify <span class="code">text.txt</span> again, it is now <em>V05</em>.</p>
                                 <p class="hyp">Now <span class="git-cmd">add</span> and <span class="git-cmd">commit</span> the file to the local repository.</p>
                             </td>
-                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26i-lrg.svg" data-lightbox="fig-set" data-title="Reset">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26i.svg" alt="Reset">
+                            <td class="table-left" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26i-lrg.svg" data-lightbox="fig-set" data-title="Modification after a reset to an earlier commit point">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26i.svg" alt="Modification after a reset to an earlier commit point">
                                 </a>
                             </td>
                         </tr>
@@ -1079,7 +1083,7 @@ Date          Issue        Author         Reason for Modification
                             <td class="table-left">
                                 <p class="hyp"><span class="git-cmd">Reset</span> (<span class="git-cmd">hard</span>) to <span class="code">[22af4b5]</span>.</p>
                             </td>
-                            <td class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
+                            <td class="table-left" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
                                 <a href="01-pages/02-05-concept/02-images/fig-02-26j-lrg.svg" data-lightbox="fig-set" data-title="Modification after reset">         <!-- LIGHTBOX LINK -->
                                     <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26j.svg" alt="Modification after reset">
                                 </a>
@@ -1214,14 +1218,14 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 5</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26k-lrg.svg" data-lightbox="fig-set" data-title="Reset step 5">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26k.svg" alt="Reset step 5">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26k-lrg.svg" data-lightbox="fig-set" data-title="Reset best practice - step 5">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26k.svg" alt="Reset best practice - step 5">
                                 </a>
                             </th>
                         </tr>
                         <tr>
                             <td class="leading"></td>
-                            <td class="table-left"><span class="code">text.txt</span> is at V03; there are no changes pending.</td>
+                            <td class="table-left"><span class="code">text.txt</span> is at <em>V03</em>; there are no changes pending.</td>
                         </tr>
 
                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
@@ -1275,8 +1279,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 6</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26l-lrg.svg" data-lightbox="fig-set" data-title="Reset step 6">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26l.svg" alt="Reset step 6">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26l-lrg.svg" data-lightbox="fig-set" data-title="Reset best practice - step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26l.svg" alt="Reset best practice - step 6">
                                 </a>
                             </th>
                         </tr>
@@ -1327,7 +1331,7 @@ Date          Issue        Author         Reason for Modification
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00c">                            <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
@@ -1372,8 +1376,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 7</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26h-lrg.svg" data-lightbox="fig-set" data-title="Reset step 7">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26h.svg" alt="Reset step 7">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26h-lrg.svg" data-lightbox="fig-set" data-title="Reset best practice - step 7">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26h.svg" alt="Reset best practice - step 7">
                                 </a>
                             </th>
                         </tr>
@@ -1409,14 +1413,14 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 8</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26m-lrg.svg" data-lightbox="fig-set" data-title="Reset step 8">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26m.svg" alt="Reset step 8">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26m-lrg.svg" data-lightbox="fig-set" data-title="Reset best practice - step 8">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26m.svg" alt="Reset best practice - step 8">
                                 </a>
                             </th>
                         </tr>
                         <tr>
                             <td class="leading"></td>
-                            <td class="table-left">Modify <span class="code">test.txt</span>, it is now version V1a.</td>
+                            <td class="table-left">Modify <span class="code">test.txt</span>, it is now version <em>V1a</em>.</td>
                         </tr>
 
                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
@@ -1442,8 +1446,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 9</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26n-lrg.svg" data-lightbox="fig-set" data-title="Reset step 9">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 100%" src="01-pages/02-05-concept/02-images/fig-02-26n.svg" alt="Reset step 9">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26n-lrg.svg" data-lightbox="fig-set" data-title="Reset best practice - step 9">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 100%" src="01-pages/02-05-concept/02-images/fig-02-26n.svg" alt="Reset best practice - step 9">
                                 </a>
                             </th>
                         </tr>
@@ -1553,7 +1557,7 @@ Date          Issue        Author         Reason for Modification
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00d">                           <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
@@ -1617,7 +1621,7 @@ Date          Issue        Author         Reason for Modification
                     </ol>                                       <!-- End of numbered list -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">That said I will explain what the other types of reset do—I just haven’t figured out what they are for.</p>
+                    <p class="hyp">That said I will explain what the other types of reset do&mdash;<span class="first-use">I just haven’t figured out what they are for</span>.</p>
 
                     <p class="hyp">The first one is a <span class="git-cmd">mixed reset</span>. This is the default type of reset applied by Git.</p>
 
@@ -1637,16 +1641,16 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 6</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26o-lrg.svg" data-lightbox="fig-set" data-title="Reset step 6">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26o.svg" alt="Reset step 6">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26o-lrg.svg" data-lightbox="fig-set" data-title="Mixed reset - step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26o.svg" alt="Mixed reset - step 6">
                                 </a>
                             </th>
                         </tr>
                         <tr>
                             <td class="leading"></td>
                             <td class="table-left">
-                                <p>The most up to date commit has <span class="code">text.txt</span> at V03.</p>
-                                <p>he working and staged areas hold a modified version of <span class="code">text.txt</span> at V04. </p>
+                                <p>The most up to date commit has <span class="code">text.txt</span> at <em>V03</em>.</p>
+                                <p>he working and staged areas hold a modified version of <span class="code">text.txt</span> at <em>V04</em>. </p>
                             </td>
                         </tr>
 
@@ -1698,8 +1702,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 7</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26p-lrg.svg" data-lightbox="fig-set" data-title="Reset step 7">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26p.svg" alt="Reset step 7">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26p-lrg.svg" data-lightbox="fig-set" data-title="Mixed reset - step 7">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26p.svg" alt="Mixed reset - step 7">
                                 </a>
                             </th>
                         </tr>
@@ -1798,7 +1802,7 @@ Date          Issue        Author         Reason for Modification
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00e">                           <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
@@ -1857,16 +1861,16 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 6</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26o-lrg.svg" data-lightbox="fig-set" data-title="Reset step 6">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26o.svg" alt="Reset step 6">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26o-lrg.svg" data-lightbox="fig-set" data-title="Soft reset - step 6">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26o.svg" alt="Soft reset - step 6">
                                 </a>
                             </th>
                         </tr>
                         <tr>
                             <td class="leading"></td>
                             <td class="table-left">
-                                <p>The most up to date commit has <span class="code">text.txt</span> at V03.</p>
-                                <p>he working and staged areas hold a modified version of <span class="code">text.txt</span> at V04. </p>
+                                <p>The most up to date commit has <span class="code">text.txt</span> at <em>V03</em>.</p>
+                                <p>he working and staged areas hold a modified version of <span class="code">text.txt</span> at <em>V04</em>. </p>
                             </td>
                         </tr>
 
@@ -1919,8 +1923,8 @@ Date          Issue        Author         Reason for Modification
                             <th class="leading"></th>
                             <th class="table-left" style="vertical-align: top">Step 7</th>
                             <th class="table-left" rowspan="2" style="padding-left: 0.5rem; border-bottom: 1px solid #cccccc">
-                                <a href="01-pages/02-05-concept/02-images/fig-02-26q-lrg.svg" data-lightbox="fig-set" data-title="Reset step 7">         <!-- LIGHTBOX LINK -->
-                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26q.svg" alt="Reset step 7">
+                                <a href="01-pages/02-05-concept/02-images/fig-02-26q-lrg.svg" data-lightbox="fig-set" data-title="Soft reset - step 7">         <!-- LIGHTBOX LINK -->
+                                    <img style="width: 78%" src="01-pages/02-05-concept/02-images/fig-02-26q.svg" alt="Soft reset - step 7">
                                 </a>
                             </th>
                         </tr>
@@ -1969,7 +1973,7 @@ Date          Issue        Author         Reason for Modification
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb" id="js--t02-00f">                           <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
@@ -2023,11 +2027,11 @@ Date          Issue        Author         Reason for Modification
 
                         <li><p class="hyp">Always commit modified files before resetting</p></li>
 
-                        <li><p class="hyp">Always use a hard reset</p></li>
+                        <li><p class="hyp"><em>Always use a <span class="git-cmd">hard reset</span></em></p></li>
 
                         <li><p class="hyp">Resetting a project should only be done to view the files as they were at that point in time, never to modify them</p></li>
 
-                        <li><p class="hyp">It&rsquo;s ok to copy files from an earlier commit (following a hard reset) and paste them into the latest commit point (ensure you explain it in the commit message)</p></li>
+                        <li><p class="hyp">It&rsquo;s ok to copy files from an earlier commit (following a <span class="git-cmd">hard reset</span>) and paste them into the latest commit point (ensure you explain it in the commit message)</p></li>
 
                         <li><p class="hyp">Never modify files at a commit other than the latest (most recent) commit (on a given branch)</p></li>
 
