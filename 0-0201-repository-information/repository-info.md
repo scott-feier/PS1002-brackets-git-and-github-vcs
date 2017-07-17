@@ -1,3 +1,10 @@
+# File revision information
+
+The current version of this file is:
+
+<img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-P03.svg">
+
+
 # Repository basic information
 Both the remote and the local repositories are called:
 
