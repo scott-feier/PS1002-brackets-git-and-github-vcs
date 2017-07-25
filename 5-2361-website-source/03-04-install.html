@@ -1,0 +1,1174 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="How to change the Git default configuration, set up a username, configure a core text editor and merge/difference tools">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   03-04-INSTALL.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+24 Jul 2017   d-P03.03.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/03-04-install/05-local-js/03-04-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/03-04-install/01-local-css/03-04-prettifylines.css">  -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Changing the Git default configuration | PracticalSeries: Installing Git</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="03-03-install.html#js--030300"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="02-00-concept.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="04-00-linking.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="04-00-linking.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>3</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">3</span>Installing Git</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 03-04&nbsp;&mdash;&nbsp;d-P03.03.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 3 Installing Git
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-030000" href="03-00-install.html#js--030000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">3</span><span class="toc-lev1-text">Installing Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-030100" href="03-01-install.html#js--030100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.1</span><span class="toc-lev2-text">Downloading and installing Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-030200" href="03-02-install.html#js--030200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.2</span><span class="toc-lev2-text">Downloading everything else</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030201" href="03-02-install.html#js--030201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.2.1</span><span class="toc-lev3-text">A default text editor for Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030202" href="03-02-install.html#js--030202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.2.2</span><span class="toc-lev3-text">A difference and merge tool</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-030300" href="03-03-install.html#js--030300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.3</span><span class="toc-lev2-text">Changing the Git default locations</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030301" href="03-04-install.html#js--030301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.3.1</span><span class="toc-lev3-text">Changing the default directories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-030400" href="03-04-install.html#js--030400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.4</span><span class="toc-lev2-text">Changing the Git default settings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030401" href="03-04-install.html#js--030401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.1</span><span class="toc-lev3-text">Configuring a Username and email</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030402" href="03-04-install.html#js--030402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.2</span><span class="toc-lev3-text">Configuring a default text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030403" href="03-04-install.html#js--030403">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.3</span><span class="toc-lev3-text">Configuring a default difference tool</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030404" href="03-04-install.html#js--030404">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.4</span><span class="toc-lev3-text">Configuring a default merge tool</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030405" href="03-04-install.html#js--030405">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.5</span><span class="toc-lev3-text">Defining an alias</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 030400]
+     SECTION - 3.4 CHANGING THE GIT DEFAULT SETTINGS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030400">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>3.4</h2></div>
+                 <div class="sub-title-text-box"><h2>Changing the Git default settings</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Git Bash starts life, well, looking like a colourful version of MS-DOS 6.2; and it works in much the same way&mdash;<span class="first-use">thank God it&rsquo;s so easy to learn</span>.</p>
+
+                 </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 030401]
+     SUBSECTION - 3.4.1 CHANGING THE DEFAULT DIRECTORIES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030401">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>3.4.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Configuring a Username and email address</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Before we do anything else, we need to set ourselves up as a user on the local Git system. This means giving Git a user name and an email address.</p>
+
+                    <p class="hyp">The email address is purely an internal thing, Git will not use it as an actual email address, it will never send anything to it, try to verify it or pass it to any other party. It uses it to identify the user that has made a change to a file within a Git repository.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>The username and email address supplied here don&rsquo;t need to match the username and email account used to set up your GitHub account (see <a class="hlink nohyp utx" href="04-01-linking.html#js--040100">&sect;&nbsp;4.1</a>)&mdash;they don&rsquo;t need to, but in my case they do, it just make identifying who has made changes easier.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Start Git Bash and at the $ prompt enter the following commands:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global user.name "your-username"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Don&rsquo;t actually enter <span class="code">your-username</span>, that would be silly. Enter the username you want to use. My username is <span class="code">practicalseries-lab</span> so I entered:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global user.name "practicalseries-lab"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">You won&rsquo;t get much of a response if you did it right, it just displays the <span class="code">$</span> prompt on the next line.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>Git Bash does this a lot&mdash;<em>no news is good news</em>. <br>If it hasn&rsquo;t complained, it&rsquo;s probably worked.<br>&ldquo;You are in a maze of twisty little passages, all alike&rdquo;.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <p class="hyp">Next comes the email settings&mdash;in much the same way:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global user.email "your-email"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In my case it&rsquo;s:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global user.email "lab@practicalseries.com"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">These commands are great, so blindingly obvious&mdash;so easy to learn don&rsquo;t you think?</span></p>
+
+                    <p class="hyp">This is what it looked like on my screen (<a class="xref js--sc-f03-27" href="#">Figure&nbsp;3.27</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-27">
+                            <a href="01-pages/03-04-install/02-images/fig-03-27-lrg.png" data-lightbox="fig-set" data-title="Figure 3.27 - Configure Username and Email">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-27.png" alt="Figure 3.27 - Configure Username and Email">
+                            </a>
+                            <p>Figure 3.27 &emsp; Configure Username and Email</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">How can I tell it&rsquo;s worked? You ask</span>.</p>
+
+                    <p class="hyp">The answer is you can&rsquo;t, not yet, not until we&rsquo;ve configured the text editor. That&rsquo;s next:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 030402]
+     SUBSECTION - 3.4.2 CONFIGURING A DEFAULT (CORE) TEXT EDITOR
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030402">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>3.4.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Configuring a default text editor</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I&rsquo;m assuming you are going to use Notepad++ as the default text editor for Git Bash (this is the one I installed in <a class="hlink nohyp" href="03-02-install.html#js--030201">&sect;&nbsp;3.2.1</a>). Notepad++ works well with Git, some of the others (Brackets<sup>&dagger;1</sup> for example) don&rsquo;t work so well.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I may be confusing things here; I&rsquo;m using Brackets as the interface to Git. When I say Brackets doesn&rsquo;t work with Git, I mean as a command line editor in Git Bash. Brackets and its extensions manage Git in the Brackets development environment very well.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Ok, you&rsquo;ll like this; it&rsquo;s a trip down memory lane. To make Notepad++ the default text editor for Git Bash we have to adjust the <span class="first-use">Windows Environment Variable</span>. I think the last time I had to do this was when I was using WordPerfect 5.1 and Lotus 123. It was 1989, I was 23, MS-DOS was the operating system of choice, Margret Thatcher was prime minister and my children hadn&rsquo;t been born&mdash;<span class="first-use">happy times</span>.</p>
+
+                    <p class="hyp">Environment Variables (<span class="first-use">can&rsquo;t believe I&rsquo;m talking about this&mdash;it&rsquo;s like talking about my Grandmother&rsquo;s mangle or outside lavatories</span>), they still exist in Windows, though most programmes just set them up as part of the installation process or use the registry instead. In Windows, Environment variables describe the computer environment within which programmes run; they define common names (the name of the computer for example) and default file extensions. </p>
+
+                    <p class="hyp">The best known Environment Variable is <span class="all-caps">PATH</span>, this contains a list of directory paths. If a user types a command without specifying the path, the operating system will search the current directory and then each of the paths listed in the <span class="all-caps">PATH</span> environment variable trying to find it. Git Bash relies on the <span class="all-caps">PATH</span> environment variable to find any programme we wish to execute&mdash;<span class="first-use">of course it does, that&rsquo;s what programmes did in the eighties</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030402a">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Adding Notepad++ to the <span class="all-caps">PATH</span> Environment Variable</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">To make Notepad++ the default text editor for Git Bash, we must add the path to the notepad++ executable file to the <span class="all-caps">PATH</span> environment variable.</p>
+
+                    <p class="hyp">If you have a Notepad++ icon on your desk top, you can find the path by right clicking it and selecting <span class="menu">properties</span>. This opens the Shortcut dialogue box (<a class="xref js--sc-f03-28" href="#">Figure&nbsp;3.28</a>).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-28">
+                            <a href="01-pages/03-04-install/02-images/fig-03-28.png" data-lightbox="fig-set" data-title="Figure 3.28 - Notepad++ path">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 350px" src="01-pages/03-04-install/02-images/fig-03-28.png" alt="Figure 3.28 - Notepad++ path">
+                            </a>
+                            <p>Figure 3.28 &emsp; Notepad++ path</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The information we need is in the <span class="menu">target</span> box, it&rsquo;s everything up to the last reverse oblique (i.e. everything but the filename), highlighted in blue in the above figure.</p>
+
+                    <p class="hyp">In my case (and probably your case too if you didn&rsquo;t change where the programme was installed) it is:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">C:\Program Files (x86)\Notepad++</span></p>
+
+                    <p class="hyp">Highlight it and copy it to the clipboard (<span class="menu">ctrl+c</span>).</p>
+
+                    <p class="hyp">Now to change the <span class="all-caps">PATH</span> Environment variable. To do this we need the system properties screen. On Windows 7, click the <span class="menu">start</span> button and then right click <span class="menu">computer</span> and select <span class="menu">properties</span>. On Windows 10, right click the <span class="menu">start</span> button and select <span class="menu">system</span>. Alternatively, use the shortcut <span class="menu">win+pause/break</span> (this is the Windows key and the pause/break key&mdash;top right of your keyboard), this works on either.</p>
+
+                    <p class="hyp">The system properties screen looks like this (Windows 7 left and Windows 10 right):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                     <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-2" id="js--f03-29">
+                            <a href="01-pages/03-04-install/02-images/fig-03-29.png" data-lightbox="fig-set" data-title="Figure 3.29 - System properties Windows 7">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-29.png" alt="Figure 3.29 - System properties Windows 7">
+                            </a>
+                            <p>Figure 3.29 &emsp; System properties Windows 7</p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-30">
+                            <a href="01-pages/03-04-install/02-images/fig-03-30.png" data-lightbox="fig-set" data-title="Figure 3.30 - System properties Windows 10">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-30.png" alt="Figure 3.30 - System properties Windows 10">
+                            </a>
+                            <p>Figure 3.30 &emsp; System properties Windows 10</p><!-- Figure caption -->
+                        </div>
+
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In either case, click advanced system settings and then click environment variables (this is much the same on Windows 7 and Windows 10), <a class="xref js--sc-f03-31" href="#">Figure&nbsp;3.31</a>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-31">
+                            <a href="01-pages/03-04-install/02-images/fig-03-31.png" data-lightbox="fig-set" data-title="Figure 3.31 - Select environment variables">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 400px" src="01-pages/03-04-install/02-images/fig-03-31.png" alt="Figure 3.31 - Select environment variables">
+                            </a>
+                            <p>Figure 3.31 &emsp; Select environment variables</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This opens the Environment Variable dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-32">
+                            <a href="01-pages/03-04-install/02-images/fig-03-32.png" data-lightbox="fig-set" data-title="Figure 3.32 - Select Path environment variable">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 500px" src="01-pages/03-04-install/02-images/fig-03-32.png" alt="Figure 3.32 - Select Path environment variable">
+                            </a>
+                            <p>Figure 3.32 &emsp; Select Path environment variable</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again this looks pretty much the same in Windows 7 and Windows 10. In the lower window (<span class="menu">system variables</span>) scroll down until you find the <span class="menu">path</span> variable, highlighted in <a class="xref js--sc-f03-32" href="#">Figure&nbsp;3.32</a>.</p>
+
+                    <p class="hyp">Select the line and click edit&mdash;things are a little bit different now between Windows 7 and Windows 10. Windows 7 first:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                     <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-2" id="js--f03-33">
+                            <a href="01-pages/03-04-install/02-images/fig-03-33-lrg.png" data-lightbox="fig-set" data-title="Figure 3.33 - Windows 7 path variable ">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-33.png" alt="Figure 3.33 - Windows 7 path variable ">
+                            </a>
+                            <p>Figure 3.33 &emsp; Windows 7 path variable </p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-34">
+                            <a href="01-pages/03-04-install/02-images/fig-03-34-lrg.png" data-lightbox="fig-set" data-title="Figure 3.34 - Windows 7 modified path variable">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-34.png" alt="Figure 3.34 - Windows 7 modified path variable">
+                            </a>
+                            <p>Figure 3.34 &emsp; Windows 7 modified path variable</p><!-- Figure caption -->
+                        </div>
+
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In Windows 7 this opens a simple edit dialogue box (<a class="xref js--sc-f03-33" href="#">Figure&nbsp;3.33</a>). Click inside the <span class="menu">variable value</span> box and cursor right to the end of the line <span class="first-use">(by default the box will be showing you the end of the line&mdash;there will be a lot of stuff in there)</span>.</p>
+
+                    <p class="hyp">Add a semicolon (<span class="code">;</span>) and then hit <span class="menu">ctlr+v</span> to past in the path copied from the Notepad++ shortcut properties (<a class="xref js--sc-f03-28" href="#">Figure&nbsp;3.28</a>). In my case (and probably yours) I added:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">;C:\Program Files (x86)\Notepad++</span></p>
+
+                    <p class="hyp">Note the leading semicolon (this separates one path from another, see <a class="xref js--sc-f03-34" href="#">Figure&nbsp;3.34</a>).</p>
+
+                    <p class="hyp">That&rsquo;s it, click <span class="menu">ok</span> repeatedly and close the System Properties window.</p>
+
+                    <p class="hyp">In Windows 10, thing are a bit easier. Clicking <span class="menu">edit</span> opens a slightly more intuitive edit dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-35">
+                            <a href="01-pages/03-04-install/02-images/fig-03-35.png" data-lightbox="fig-set" data-title="Figure 3.35 - Windows 10 modified path variable">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 500px" src="01-pages/03-04-install/02-images/fig-03-35.png" alt="Figure 3.35 - Windows 10 modified path variable">
+                            </a>
+                            <p>Figure 3.35 &emsp; Windows 10 modified path variable</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click new and past the link in the empty line at the bottom (<a class="xref js--sc-f03-35" href="#">Figure&nbsp;3.35</a>).</p>
+
+                    <p class="hyp">Again, repeatedly click <span class="menu">ok</span>, close the System Properties window and we&rsquo;re done.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030402b">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Setting the Git Bash core text editor</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Now if all that has worked, we can tell Git Bash to use Notepad++ as the default <span class="first-use">(core)</span> text editor.</p>
+
+                    <p class="hyp">Start Git Bash and type the following easy to understand command:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global core.editor "notepad++ -multiInst -nosession"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And that&rsquo;s it&mdash;<span class="first-use">has it worked?</span> You ask.</p>
+
+                    <p class="hyp">Well if it has worked when you type the following, you should see the global configuration file open in Notepad++ (this is the global file edit command, <span class="first-use">just go with it for now)</span>:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global -e</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The file is the <span class="code">.gitconfig</span> file I talked about earlier (<a class="hlink nohyp" href="03-03-install.html#js--030301">&sect;&nbsp;3.3.1</a>). It looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-36">
+                            <a href="01-pages/03-04-install/02-images/fig-03-36.png" data-lightbox="fig-set" data-title="Figure 3.36 - Windows 10 modified path variable">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-36.png" alt="Figure 3.36 - Windows 10 modified path variable">
+                            </a>
+                            <p>Figure 3.36 &emsp; Windows 10 modified path variable</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Finally, we can see that the username and email is configured (<a class="xref nohyp js--sc-030401 utx" href="#">&sect;&nbsp;3.4.1</a>) and that the core editor is set to Notepad++ (obviously, your file will have different user information).</p>
+
+                    <p class="hyp">While this file is open, there is something important to note:</p>
+
+                    <p class="hyp">If you look at your Git Bash window, it will look like something similar to <a class="xref js--sc-f03-37" href="#">Figure&nbsp;3.37</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-37">
+                            <a href="01-pages/03-04-install/02-images/fig-03-37-lrg.png" data-lightbox="fig-set" data-title="Figure 3.37 - .gitconfig file in default text editor">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-37.png" alt="Figure 3.37 - .gitconfig file in default text editor">
+                            </a>
+                            <p>Figure 3.37 &emsp; .gitconfig file in default text editor</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">You can see that Git Bash has not returned with the <span class="code">$</span> prompt, Git Bash is waiting for the text editor to close and this is exactly what we want it to do. Generally, Git Bash should wait for the triggered application to finish before it moves on<sup>&dagger;2</sup>.</p>
+
+                    <p class="hyp">Close Notepad++ and Git Bash will return to normal with a <span class="code">$</span> prompt indicating it is waiting for your next instruction.</p>
+
+                    <p class="hyp"><span class="first-use">Now, I don&rsquo;t know about you, but this stuff doesn&rsquo;t seem that easy to learn to me. I&rsquo;m not sure I agree with their statement &ldquo;Git is easy to learn&rdquo;</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;2</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">This is exactly what it didn&rsquo;t do with Atom, it just dropped through to the $ prompt. I think this is a problem with Git (or Atom itself) running under Windows. It is for this reason that I&rsquo;m not using Atom.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 030403]
+     SUBSECTION - 3.4.3 CONFIGURING A DEFAULT DIFFERENCE TOOL
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030403">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>3.4.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Configuring a default difference tool</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp"><span class="first-use">Strictly speaking, this bit isn’t necessary; however, it does improve the command line—we don’t need it to operate Git through the Brackets interface. Skip it if you want to</span>.</p>
+
+                    <p class="hyp">When Git detects a conflict in a file (this happens when two different users have modified the same section of a particular file and Git doesn’t know which version to select, see <a class="hlink nohyp" href="02-04-concept.html#js--020401">&sect;&nbsp;2.4.1</a>), it will try to display the conflict by using a difference or comparison tool. Git Bash has a rudimentary difference tool built into it, but it is limited and difficult to use. </p>
+
+                    <p class="hyp">To overcome this, we can configure Git Bash to use a third party difference tool, these generally have a graphical interface, accept the same arguments as the built in tool and are much easier to use.</p>
+
+                    <p class="hyp">In my case I use P4Merge, the thing we downloaded and installed in <a class="hlink nohyp" href="03-02-install.html#js--030202">&sect;&nbsp;3.2.2</a>.</p>
+
+                    <p class="hyp">To tell Git Bash to use P4Merge as its diff tool, enter the following commands:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global diff.tool p4merge</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global difftool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global difftool.prompt false</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">You can cut and past the commands from the above list. In Git Bash use:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp"><span class="menu">shft+insert</span>&mdash;insert selection from clipboard</p></li>
+
+                        <li><p class="hyp"><span class="menu">ctrl+insert</span>&mdash;copy selection to clipboard</p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>In the second line, the path <span class="code">C:/Program Files/Perforce/p4merge.exe</span> is the path to the P4Merge executable; it&rsquo;s probably the same on your machine if you didn&rsquo;t change the defaults. If you did you will have to type in the correct path for your PC.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp" style="margin-left: 3.4rem"><span class="first-use">Again note that in Git Bash, any Windows reverse oblique </span>(\) <span class="first-use">in the path must be replaced by an oblique </span>(/).</p>
+
+                    <p class="hyp">To see if all this has worked, look in the global configuration fie by typing:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global -e</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This time you should have:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-38">
+                            <a href="01-pages/03-04-install/02-images/fig-03-38.png" data-lightbox="fig-set" data-title="Figure 3.38 - gitconfig file with difftool configuration">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-38.png" alt="Figure 3.38 - gitconfig file with difftool configuration">
+                            </a>
+                            <p>Figure 3.38 &emsp; gitconfig file with difftool configuration</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 030404]
+     SUBSECTION - 3.4.4 CONFIGURING A DEFAULT MERGE TOOL
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030404">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>3.4.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Configuring a default merge tool</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The merge tool is going to be P4Merge (same as the difference tool), this is because the package does both functions. Merging is the process of resolving a conflict displayed with the difftool; normally, this is by selecting one modification over another, again <a class="hlink nohyp" href="02-04-concept.html#js--020401">&sect;&nbsp;2.4.1</a>.</p>
+
+                    <p class="hyp">The commands for setting the default merge tool are identical to those used to set the default difftool, but use the word merge instead of diff. Enter the following:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global merge.tool p4merge</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global mergetool.prompt false</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again to see the changes have been made, edit the global configuration file:</p>
+
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global -e</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-39">
+                            <a href="01-pages/03-04-install/02-images/fig-03-39.png" data-lightbox="fig-set" data-title="Figure 3.39 - gitconfig file with diff and merge tool configuration">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-04-install/02-images/fig-03-39.png" alt="Figure 3.39 - gitconfig file with diff and merge tool configuration">
+                            </a>
+                            <p>Figure 3.39 &emsp; gitconfig file with diff and merge tool configuration</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">That&rsquo;s all the default files set up.</p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <span class="first-use"></span>
+                    <span class="code"></span>
+                    <span class="menu"></span>
+                    <span class="git-cmd"></span>
+                    <span class="all-caps"></span>
+                    <a class="xref js--sc-f02-10 utx" href="#">Figure&nbsp;2.10</a>
+                    <a class="hlink nohyp utx" href="02-03-concept.html#js--020302">&sect;&nbsp;2.3.2</a>
+                    <a class="xref nohyp js--sc-020501 utx" href="#">&sect;&nbsp;2.5.1</a>
+                    <a class="hlink nohyp" href="http://practicaltypography.com/">Practical&nbsp;Typography</a>
+                    <p class="hyp" style="text-align: center;"><span class="code">git-2.13.3-64bit.exe</span></p>
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 030405]
+     SUBSECTION - 3.4.5 DEFINING AN ALIAS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030405">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>3.4.5</h3></div>
+                    <div class="sub-title-text-box"><h3>Defining an alias</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">There&rsquo;s one more thing to do. In Git bash, we can trigger Notepad++ just by typing its name at the <span class="code">$</span> prompt:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git config --global merge.tool p4merge</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again to see the changes have been made, edit the global configuration file:</p>
+
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">notepad++</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">But this is rather a lot to type each time. There is a fairly common abbreviation for Notepad++ and that is <span class="code">npp</span>, better to just be able to type npp. To do this, we must assign an alias to <span class="code">notepad++</span>.</p>
+
+                    <p class="hyp">Aliases are assigned in another of the Git Bash configuration files, this time it is a file called <span class="code">.bash_profile</span>.</p>
+
+                    <p class="hyp">We&rsquo;ll edit it from within Git Bash itself type:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">notepad++ ~/.bash_profile</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will open or create the <span class="code">.bash_profile</span> file in Notepad++ (it will be empty). </p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp"></p>
+
+                    <span class="all-caps"></span>
+                    <span class="first-use"></span>
+                    <span class="code"></span>
+                    <span class="menu"></span>
+                    <span class="git-cmd"></span>
+                    <a class="xref js--sc-f02-10 utx" href="#">Figure&nbsp;2.10</a>
+                    <a class="hlink nohyp utx" href="02-03-concept.html#js--020302">&sect;&nbsp;2.3.2</a>
+                    <a class="xref nohyp js--sc-020501 utx" href="#">&sect;&nbsp;2.5.1</a>
+                    <a class="hlink nohyp" href="http://practicaltypography.com/">Practical&nbsp;Typography</a>
+                    <p class="hyp" style="text-align: center;"><span class="code">git-2.13.3-64bit.exe</span></p>
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="03-03-install.html#js--030300">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="04-00-linking.html#js--000000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>
