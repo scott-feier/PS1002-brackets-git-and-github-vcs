@@ -25,7 +25,7 @@ Development work always takes place on a separate branch. Development branches a
 | Branch             | Revision
 | ------------------ | --------------------------------------
 | master             | <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-P03.svg">
-| d-03-install       | <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-D03-03-01.svg">
+| d-03-install       | <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-T03-03-P04.svg">
 
 ## Contents
 

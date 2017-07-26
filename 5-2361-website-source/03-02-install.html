@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+26 Jul 2017   t-P03.03.P04  M. Gledhill    Typographical and link corrections
+
 20 Jul 2017   d-P03.03.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -156,7 +158,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 03-02&nbsp;&mdash;&nbsp;d-P03.03.01</p>
+<!--REVISION-->         <p>Rev: 03-02&nbsp;&mdash;&nbsp;t-P03.03.P04</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -198,7 +200,7 @@ Date          Issue        Author         Reason for Modification
                         <li><a class="js--sc-030300" href="03-03-install.html#js--030300">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev2-num">3.3</span><span class="toc-lev2-text">Changing the Git default locations</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-030301" href="03-04-install.html#js--030301">  <!-- TOC link start -->
+                        <li><a class="js--sc-030301" href="03-03-install.html#js--030301">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">3.3.1</span><span class="toc-lev3-text">Changing the default directories</span></div></a>
                         </li>                                   <!-- TOC link end   -->
 
@@ -309,7 +311,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">I’m a big fan of Brackets; I use it for all my web development stuff. I wax lyrical about it <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/01-04-tools.html#js--010401">here</a>. The only problem is that it doesn’t play nicely with the Git Bash command line; specifically it won’t create a new file from the command line which is a bit of a problem for Git. My next favourite is <a class="hlink nohyp" href="https://atom.io/">atom</a> but this also has problems with Git, It’s difficult to set up as the default editor: under Windows, Git won’t wait for Atom to close before continuing; again this is a problem for what we want to do.</p>
+                    <p class="hyp">I’m a big fan of Brackets; I use it for all my web development stuff. I wax lyrical about it <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/01-04-tools.html#js--010401">here</a>. The only problem is that it doesn’t play nicely with the Git Bash command line; specifically it won’t create a new file from the command line which is a bit of a problem for Git<sup>&dagger;1</sup>. My next favourite is <a class="hlink nohyp" href="https://atom.io/">atom</a> but this also has problems with Git, It’s difficult to set up as the default editor: under Windows, Git won’t wait for Atom to close before continuing; again this is a problem for what we want to do.</p>
 
                     <p class="hyp">So I used my third favourite <a class="hlink nohyp" href="https://notepad-plus-plus.org/">notepad++</a>. I will still use Brackets for all the web development and I will also use it to manage Git and GitHub repositories. I will just use Notepad++ when creating or editing files directly from the Git Bash command line (that thing you can see in <a class="xref js--sc-f03-09" href="03-01-install.html#js--f03-09">Figure&nbsp;3.9</a>)&mdash;hopefully this won&rsquo;t be too often, the whole point is to manage everything through Brackets and not have to bother with the command line stuff. Unfortunately, we need to use the command line stuff to get everything set up (that&rsquo;s what we&rsquo;re doing now).</p>
 
@@ -394,6 +396,24 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">All the Notepad++ screen shots will have this theme selected.</p>
 
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I may be confusing things here; I&rsquo;m using Brackets as the interface to Git. When I say Brackets doesn&rsquo;t work with Git, I mean as a command line editor in Git Bash. Brackets and its extensions manage Git in the Brackets development environment very well.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -497,7 +517,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">There is the bit we&rsquo;re after, the Visual Merge Tool (<a class="xref js--sc-f03-19" href="#">Figure&nbsp;3.19</a>):</p>
+                    <p class="hyp">This is the bit we&rsquo;re after, the Visual Merge Tool (<a class="xref js--sc-f03-19" href="#">Figure&nbsp;3.19</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
