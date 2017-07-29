@@ -84,6 +84,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+27 Jul 2017   d-P04.04.01  M. Gledhill    .nav-wide-blank class made responsive
+                                          closes #2
+
 16 Jul 2017   P03          M. Gledhill    Published
 
 12 Jul 2017   d-P02.02.04  M. Gledhill    .git-incid line height reduced
@@ -103,7 +106,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 P03"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P04.04.01"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -348,25 +351,27 @@ body {
    ------------------------------------------------------------------------- */
 
 @media all {.nav-wide, .nav-narrow { height: 60px; }}
-@media all and (max-width:1276px) {.nav-wide, .nav-narrow { height: 60px; padding-top: 18px; }}
-@media all and (max-width:960px)  {.nav-wide, .nav-narrow { height: 57px; padding-top: 17px; }}
-@media all and (max-width:920px)  {.nav-wide, .nav-narrow { height: 54px; padding-top: 16px; }}
-@media all and (max-width:880px)  {.nav-wide, .nav-narrow { height: 54px; padding-top: 16px; }}
-@media all and (max-width:840px)  {.nav-wide, .nav-narrow { height: 51px; padding-top: 15px; }}
-@media all and (max-width:800px)  {.nav-wide, .nav-narrow { height: 50px; padding-top: 15px; }}
-@media all and (max-width:760px)  {.nav-wide, .nav-narrow { height: 47px; padding-top: 14px; }}
-@media all and (max-width:720px)  {.nav-wide, .nav-narrow { height: 44px; padding-top: 13px; }}
-@media all and (max-width:680px)  {.nav-wide, .nav-narrow { height: 41px; padding-top: 12px; }}
+@media all and (max-width:1276px) {.nav-wide, .nav-narrow, .nav-wide-blank { height: 60px; padding-top: 18px; }}
+@media all and (max-width:960px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 57px; padding-top: 17px; }}
+@media all and (max-width:920px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 54px; padding-top: 16px; }}
+@media all and (max-width:880px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 54px; padding-top: 16px; }}
+@media all and (max-width:840px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 51px; padding-top: 15px; }}
+@media all and (max-width:800px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 50px; padding-top: 15px; }}
+@media all and (max-width:760px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 47px; padding-top: 14px; }}
+@media all and (max-width:720px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 44px; padding-top: 13px; }}
+@media all and (max-width:680px)  {.nav-wide, .nav-narrow, .nav-wide-blank { height: 41px; padding-top: 12px; }}
 @media all and (max-width:640px){
     .top-nav-text { display: none; }        /* hide text in navigation bar */
     .nav-wide,
-    .nav-narrow {
+    .nav-narrow,
+    .nav-wide-blank {
         height: 40px;                       /* fix height and font-size */
         padding-top: 6px;
         font-size: 24px;
     }
     .fixed-nav .nav-narrow,                 /* in fixed-nav make all button widths the same */
-    .fixed-nav .nav-wide { width: 16.66%; }
+    .fixed-nav .nav-wide,
+    .fixed-nav .nav-wide-blank { width: 16.66%; }
 }
 
 
