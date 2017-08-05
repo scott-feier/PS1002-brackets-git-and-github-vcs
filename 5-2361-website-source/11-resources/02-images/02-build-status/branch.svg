@@ -2707,11 +2707,11 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="16.392297"
-     inkscape:cx="65.000004"
+     inkscape:cx="63.932429"
      inkscape:cy="9.9999575"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="true"
+     showgrid="false"
      gridtolerance="10000"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
@@ -2732,7 +2732,8 @@
      inkscape:object-paths="true"
      inkscape:snap-intersection-paths="true"
      inkscape:snap-midpoints="true"
-     inkscape:snap-smooth-nodes="true">
+     inkscape:snap-smooth-nodes="true"
+     showborder="false">
     <inkscape:grid
        type="xygrid"
        id="grid2985"
@@ -2919,7 +2920,7 @@
                sodipodi:role="line"
                id="tspan6388"
                x="649.60675"
-               y="92.389503">d-03-install</tspan></text>
+               y="92.389503">d-04-linking</tspan></text>
           <text
              id="text8328-7-0-0-5-2-9-8-0"
              y="91.322838"
@@ -2930,7 +2931,7 @@
                sodipodi:role="line"
                id="tspan6386"
                x="649.60675"
-               y="91.322838">d-03-install</tspan></text>
+               y="91.322838">d-04-linking</tspan></text>
         </g>
       </g>
     </g>

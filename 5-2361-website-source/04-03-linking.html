@@ -1,0 +1,911 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="How to create an SSH key to link a local repository to GitHub">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   04-03-LINKING.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+04 Aug 2017   d-P04.04.02  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/04-03-linking/05-local-js/04-03-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/04-03-linking/01-local-css/04-03-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Creating an SSH key | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="04-02-linking.html#js--040200"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="03-00-install.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>4</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">4</span>GitHub and SSH Linking</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 04-03&nbsp;&mdash;&nbsp;d-P04.04.02</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 4 GitHub and SSH Linking
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-040000" href="04-00-linking.html#js--040000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">4</span><span class="toc-lev1-text">GitHub and SSH Linking</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-040100" href="04-01-linking.html#js--040100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">4.1</span><span class="toc-lev2-text">Creating a GitHub account</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-040200" href="04-02-linking.html#js--040200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">4.2</span><span class="toc-lev2-text">Creating a first GitHub repository</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-040300" href="04-03-linking.html#js--040300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">4.3</span><span class="toc-lev2-text">Creating an SSH key</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-040301" href="04-03-linking.html#js--040301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">4.3.1</span><span class="toc-lev3-text">Creating an SSH key pair</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-040302" href="04-03-linking.html#js--040302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">4.3.2</span><span class="toc-lev3-text">Adding the public key to GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-040303" href="04-03-linking.html#js--040303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">4.3.3</span><span class="toc-lev3-text">Testing the SSH connection</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 040300]
+     SECTION - 4.3 CREATING AN SSH KEY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--040300">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>4.3</h2></div>
+                 <div class="sub-title-text-box"><h2>Creating an SSH key</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Ok, we&rsquo;ve got our fist remote repository in GitHub, now we want to link our local version of Git to this repository and we do this by using a <span class="first-use">secure shell</span> (SSH) protocol connection.</p>
+
+                    <p class="hyp">SSH is a secure way of connecting a machine to a remote server; in our case connecting a local machine to a GitHub profile.</p>
+
+                    <p class="hyp">SSH uses a pair of connected keys (these are text files that contain a unique and long string of characters) one key is the private key, this will live on the local machine and the other is the public key, this will be given to the server. When the local machine tries to connect to the server, the private key on the local machine is compared with the public key on the server; if the two are a pair, the server grants access to the local machine without the need for a password.</p>
+
+                    <p class="hyp">The SSH keys are long enough to be very secure, and are nearly impossible to crack with a brute force attack.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 040301]
+     SUBSECTION - 4.3.1 CHANGING THE DEFAULT DIRECTORIES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--040301">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>4.3.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating an SSH key pair</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Start Git Bash <span class="first-use">(yes we&rsquo;re back here again)</span>.</p>
+
+                    <p class="hyp">This will start in the default directory; earlier I set this to be:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects</span></p>
+
+                    <p class="hyp">You probably have a different directory, but I&rsquo;ll run through it on my machine.</p>
+
+                    <p class="hyp">This is what I have (<a class="xref js--sc-f04-13" href="#">Figure&nbsp;4.13</a>):</p>
+
+                    <p class="hyp"></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-13">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-13.png" data-lightbox="fig-set" data-title="Figure 4.13 - Git Bash home directory">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 595px" src="01-pages/04-03-linking/02-images/fig-04-13.png" alt="Figure 4.13 - Git Bash home directory">
+                            </a>
+                            <p>Figure 4.13 &emsp; Git Bash home directory</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+                    <p class="hyp">Now, while this is the directory we want for our repositories, it is not the place to put the SSH keys, these have to go in the user directory for the current user. In my case, this is (if you remember from <a class="hlink nohyp" href="03-03-install.html#js--030300">&sect;&nbsp;3.3</a>):</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">C:\Users\Michael Gledhill\</span></p>
+
+                    <p class="hyp">The easiest way to do this is to, open a Windows command prompt (<span class="menu">win+r</span> then type <span class="menu">cmd</span> in the <span class="menu">open</span> box). This will open a Windows command prompt and it will be set automatically to the correct directory. Mine looks like <a class="xref js--sc-f04-14" href="#">Figure&nbsp;4.14</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-14">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-14.png" data-lightbox="fig-set" data-title="Figure 4.14 - Windows command prompt and home directory">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 677px" src="01-pages/04-03-linking/02-images/fig-04-14.png" alt="Figure 4.14 - Windows command prompt and home directory">
+                            </a>
+                            <p>Figure 4.14 &emsp; Windows command prompt and home directory</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Yours will be different but will be similar (probably something like this):</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">C:\Users\&lt;username&gt;\</span></p>
+
+                    <p class="hyp">We need to create a directory to store the SSH keys. This directory should be called .ssh (note the leading full stop). To create the directory, enter the following command in the Windows command prompt <span class="first-use">(obviously, don&rsquo;t enter the C:\Users\Michael Gledhill&gt; bit, just the stuff after it)</span>:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 95%">C:\Users\Michael Gledhill&gt; mkdir .ssh</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 5%"></td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">To see if its worked, enter:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 95%">C:\Users\Michael Gledhill&gt; dir</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 5%"></td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will list the directories in the user folder I have this (I&rsquo;ve highlighted the new folder in orange  <span class="code">.ssh</span>, <a class="xref js--sc-f04-15" href="#">Figure&nbsp;4.15</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-15">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-15.png" data-lightbox="fig-set" data-title="Figure 4.15 - .ssh directory in the users folder">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 677px" src="01-pages/04-03-linking/02-images/fig-04-15.png" alt="Figure 4.15 - .ssh directory in the users folder">
+                            </a>
+                            <p>Figure 4.15 &emsp; .ssh directory in the users folder</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">That&rsquo;s all we need, close the Windows command prompt by clicking the cross at the top.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>You can&rsquo;t do this from Windows Explorer, Explorer won&rsquo;t let you create a file starting with a full stop (thinks it hasn&rsquo;t got a filename).</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Go back to the Git Bash window we opened earlier.</p>
+
+                    <p class="hyp">The next thing is to use the SSH keygen command to create the keys. Enter the following:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">ssh-keygen -t rsa -C "your_email@something.com"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Use the email address you associated with your GitHub account. In my case I used <span class="code">lab@practicalseries.com</span>. So I entered the command:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">ssh-keygen -t rsa -C "lab@practicalseries.com"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;ll go through what happens step by step. Enter the above command and hit return. You will get the following response (or something similar):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-15a">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-15a-lrg.png" data-lightbox="fig-set" data-title="Figure 4.15a - .ssh key file location">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-15a.png" alt="Figure 4.15a - .ssh key file location">
+                            </a>
+                            <p></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It&rsquo;s saying it wants to save the file in the <span class="code">.ssh</span> directory we just created and that the keys will be in files called <span class="code">id_rsa</span>. Hit return:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-15b">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-15b-lrg.png" data-lightbox="fig-set" data-title="Figure 4.15b - .ssh passphrase">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-15b.png" alt="Figure 4.15b - .ssh passphrase">
+                            </a>
+                            <p></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now it&rsquo;s asking for a passphrase, this is an additional layer of security. If you enter a passphrase<sup>&dagger;1</sup>, you will be prompted for it whenever you connect to the remote repository. I find this too annoying, so I don&rsquo;t use a passphrase.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">An SSH passphrase is a phrase that is known only to you and is used to encrypt your private SSH key, a passphrase should be at least 15 characters in length, contain upper and lower case letters, numbers and punctuation. Something like: <span class="code">H3ct0r &amp; H3nry aRE Stup1D d0g5</span>. It needs to be something you can remember.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 02 -->
+                            <td class="table-left"></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">If a passphrase is not used, anyone who has access to your computer or your private SSH key can gain access to your repositories. If a passphrase is used, then the private key is further encrypted and is useless without the passphrase.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If you want to use a passphrase enter it now, hit return and enter it again. If you don&rsquo;t want a passphrase just press return twice. Now you will get something like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-16">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-16-lrg.png" data-lightbox="fig-set" data-title="Figure 4.16 - .ssh public and private key creation">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-16.png" alt="Figure 4.16 - .ssh public and private key creation">
+                            </a>
+                            <p>Figure 4.16 &emsp; .ssh public and private key creation</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">What this means is that the private key has been saved in the file <span class="code">id-rsa</span> and the public key in the file <span class="code">id_rsa.pub</span>. Both files are in the <span class="code">.ssh</span> directory we created earlier.</p>
+
+                    <p class="hyp">The <span class="first-use">key finger print</span> is a shortened version of the public key and is can be used to identify the key itself&mdash;a bit like the seven digit short hash key rather than the full 40 digit hash for a commit. </p>
+
+                    <p class="hyp">The <span class="first-use">randomart image</span> is a mechanism that allows two keys to be compared by eye (rather than comparing a long string of numbers and letters).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>This isn&rsquo;t actually my SSH key&mdash;I&rsquo;m not that stupid, this is one I made just for demonstration purposes.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The only bit of this we need is the path to the public key, it&rsquo;s highlighted in <a class="xref js--sc-f04-17" href="#">Figure&nbsp;4.17</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-17">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-17-lrg.png" data-lightbox="fig-set" data-title="Figure 4.17 - Public key including its path">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-17.png" alt="Figure 4.17 - Public key including its path">
+                            </a>
+                            <p>Figure 4.17 &emsp; Public key including its path</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We need to open this file in a text editor, the easiest way is to highlight the path in the Git Bash window and copy it (either right click and select <span class="code">copy</span> or hit <span class="code">ctrl+insert</span>).</p>
+
+                    <p class="hyp">Enter the following command <span class="first-use">(obviously with your own data)</span>:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">npp "/c/Users/Michael Gledhill/.ssh/id_rsa.pub"</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Enter <span class="code">npp "</span> then paste in the copied path and filename (right click and select <span class="code">paste</span> or hit <span class="code">shft+insert</span>) followed by a closing quote <span class="code">"</span>, like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-18">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-18-lrg.png" data-lightbox="fig-set" data-title="Figure 4.18 - Open the public key in Notepad++">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-18.png" alt="Figure 4.18 - Open the public key in Notepad++">
+                            </a>
+                            <p>Figure 4.18 &emsp; Open the public key in Notepad++</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Alternatively navigate to the path in Windows Explorer, right click the file and select <span class="menu">edit with notepad++.</span></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-19">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-19.png" data-lightbox="fig-set" data-title="Figure 4.19 - Open public key from Windows Explorer">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-19.png" alt="Figure 4.19 - Open public key from Windows Explorer">
+                            </a>
+                            <p>Figure 4.19 &emsp; Open public key from Windows Explorer</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Either way, the file will open in Notepad++. It will look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-20">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-20.png" data-lightbox="fig-set" data-title="Figure 4.20 - The SSH public key in Notepad++">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-20.png" alt="Figure 4.20 - The SSH public key in Notepad++">
+                            </a>
+                            <p>Figure 4.20 &emsp; The SSH public key in Notepad++</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If you can&rsquo;t see it all, if it disappears off the right hand side of the screen, you need to turn on word wrap, click the <sub><img style="height: 1rem" src="01-pages/04-03-linking/02-images/fig-04-20a.png" alt="Upload button"></sub>  icon (or <span class="menu">view &rarr; wordwrap</span>, about a quarter of the way down).</p>
+
+                    <p class="hyp">Select all the text, from the first <span class="code">s</span> of <span class="code">ssh</span> to the last character of the email address and copy it to the clip board (<span class="menu">edit &rarr; copy</span>, or <span class="menu">ctrl+c</span>). Now you can close the file.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 040302]
+     SUBSECTION - 4.3.2 ADDING THE PUBLIC KEY TO GITHUB
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--040302">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>4.3.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Adding the public key to GitHub</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Go to GitHub and sign in. This will take you to the newsfeed page, this is mine (<a class="xref js--sc-f04-21" href="#">Figure&nbsp;4.21</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-21">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-21.png" data-lightbox="fig-set" data-title="Figure 4.21 - GitHub newsfeed page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-21.png" alt="Figure 4.21 - GitHub newsfeed page">
+                            </a>
+                            <p>Figure 4.21 &emsp; GitHub newsfeed page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the profile icon at the top right and select <span class="menu">settings</span> from the dropdown (again <a class="xref js--sc-f04-21" href="#">Figure&nbsp;4.21</a>).</p>
+
+                    <p class="hyp">This opens the profile page, again mine looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-22">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-22.png" data-lightbox="fig-set" data-title="Figure 4.22 - GitHub profile settings page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-22.png" alt="Figure 4.22 - GitHub profile settings page">
+                            </a>
+                            <p>Figure 4.22 &emsp; GitHub profile settings page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now click <span class="menu">ssh and gpg keys</span>, <a class="xref js--sc-f04-23" href="#">Figure&nbsp;4.23</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-23">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-23.png" data-lightbox="fig-set" data-title="Figure 4.23 - GitHub SSH and GPG keys page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-23.png" alt="Figure 4.22 - GitHub SSH and GPG keys page">
+                            </a>
+                            <p>Figure 4.23 &emsp; GitHub SSH and GPG keys page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the green <span class="menu">new ssh key</span> button at the top to expand the selection box (<a class="xref js--sc-f04-24" href="#">Figure&nbsp;4.24</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-24">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-24.png" data-lightbox="fig-set" data-title="Figure 4.24 - GitHub completed SSH and GPG keys page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-24.png" alt="Figure 4.24 - GitHub completed SSH and GPG keys page">
+                            </a>
+                            <p>Figure 4.24 &emsp; GitHub completed SSH and GPG keys page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click inside the <span class="menu">key</span> area and paste in the public key data copied to the clip board (right click inside it and select <span class="menu">paste</span> or <span class="menu">ctrl+v</span>).</p>
+
+                    <p class="hyp">In the <span class="menu">title</span> box enter something that identifies the machine the key came from. It doesn&rsquo;t have to be the actual machines name, it&rsquo;s just so you can identify where the key originated and the machine it is installed on.</p>
+
+                    <p class="hyp">That&rsquo;s it, click <span class="menu">add ssh key</span>; you will now have to re-enter your GitHub password to confirm the addition (<a class="xref js--sc-f04-25" href="#">Figure&nbsp;4.25</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-25">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-25.png" data-lightbox="fig-set" data-title="Figure 4.25 - GitHub confirm entry">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 430px" src="01-pages/04-03-linking/02-images/fig-04-25.png" alt="Figure 4.25 - GitHub confirm entry">
+                            </a>
+                            <p>Figure 4.25 &emsp; GitHub confirm entry</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will take you back to the SSH and GPG keys page and show the new entry (<a class="xref js--sc-f04-26" href="#">Figure&nbsp;4.26</a>).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-26">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-26.png" data-lightbox="fig-set" data-title="Figure 4.26 - The completed SSH key entry">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-26.png" alt="Figure 4.26 - The completed SSH key entry">
+                            </a>
+                            <p>Figure 4.26 &emsp; The completed SSH key entry</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If you intend to use more than one computer to access the GitHub account, you must make a new key on each additional computer and add the key for that computer to GitHub in the same way we have done here.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 040303]
+     SUBSECTION - 4.3.3 TESTING THE SSH CONNECTION
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--040303">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>4.3.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Testing the SSH connection</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">Ok, we&rsquo;ve set it up; how do we know it&rsquo;s working?&mdash;<span class="first-use">well back to Git bash</span>.</p>
+
+                    <p class="hyp">Close Git Bash and restart it, this just reinitialises everything. </p>
+
+                    <p class="hyp">Now enter the command:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">ssh -T git@github.com</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will generate the following response <span class="first-use">(your finger print will be different, obviously)</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-27">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-27-lrg.png" data-lightbox="fig-set" data-title="Figure 4.27 - Testing the connection">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-27.png" alt="Figure 4.27 - Testing the connection">
+                            </a>
+                            <p>Figure 4.27 &emsp; Testing the connection</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It&rsquo;s just warning you that it is about to connect to a server and are you sure you want to continue. Well we do, type <span class="menu">yes</span> and hit return.</p>
+
+                    <p class="hyp">Now you will get something like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-28">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-28-lrg.png" data-lightbox="fig-set" data-title="Figure 4.28 - The connection is permanently established">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 562px" src="01-pages/04-03-linking/02-images/fig-04-28.png" alt="Figure 4.28 - The connection is permanently established">
+                            </a>
+                            <p>Figure 4.28 &emsp; The connection is permanently established</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is good news, <span class="code">github.com</span> has been permanently added to the list of known hosts and (in my case) the <span class="code">practicalseries-lab</span> user has been authenticated by GitHub. The <span class="code">github does not provide shell access warning is fine</span>, we don&rsquo;t expect it to.</p>
+
+                    <p class="hyp">If you now go back to the SSH and GPG keys page on GitHub (if you still have it open from before, just refresh it, <span class="menu">f5</span>) it. The list of SSH keys will now have changed from <span class="menu">never used</span> at the bottom, to <span class="menu">last used within the last day</span>. The key will also have gone green.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f04-29">
+                            <a href="01-pages/04-03-linking/02-images/fig-04-29.png" data-lightbox="fig-set" data-title="Figure 4.29 - Verification at GitHub that the connection is active">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/04-03-linking/02-images/fig-04-29.png" alt="Figure 4.29 - Verification at GitHub that the connection is active">
+                            </a>
+                            <p>Figure 4.29 &emsp; Verification at GitHub that the connection is active</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">So that&rsquo;s it, everything is now linked together and is working properly.</p>
+
+                    <p class="hyp"><span class="first-use">See, easy</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="04-02-linking.html#js--040200">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="05-00-brackets.html#js--000000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>
