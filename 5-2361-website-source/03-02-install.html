@@ -16,7 +16,7 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="Downloading a text editor, merge tool and diff tool for Git">
+        <meta name="description" content="Downloading Git and selecting the install options">
 
 <!-- ==========================================================================
 
@@ -41,13 +41,15 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+27 Jul 2017   t-P04.04.P05  M. Gledhill   Title change and validated
+
 27 Jul 2017   d-P04.04.01  M. Gledhill    Build-badge alt text added #1
 
 26 Jul 2017   P04          M. Gledhill    Published
 
 26 Jul 2017   t-P03.03.P04 M. Gledhill    Typographical and link corrections
 
-20 Jul 2017   d-P03.03.01  M. Gledhill    Page created
+19 Jul 2017   d-P03.03.01  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -72,7 +74,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/03-02-install/05-local-js/03-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/03-01-install/05-local-js/03-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -86,7 +88,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/03-02-install/01-local-css/03-02-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/03-01-install/01-local-css/03-01-prettifylines.css"> -->
 
 
 
@@ -107,7 +109,405 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Downloading tools for Git | PracticalSeries: Installing Git</title>
+        <title>Downloading tools for Git | <!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="03-00-install.html#js--030000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="02-00-concept.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="04-00-linking.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="03-02-install.html#js--030200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>3</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">3</span>Installing Git</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 03-01&nbsp;&mdash;&nbsp;t-P04.04.P05</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 3 Installing Git
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-030000" href="03-00-install.html#js--030000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">3</span><span class="toc-lev1-text">Installing Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-030100" href="03-01-install.html#js--030100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.1</span><span class="toc-lev2-text">Downloading and installing Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-030200" href="03-02-install.html#js--030200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.2</span><span class="toc-lev2-text">Downloading everything else</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030201" href="03-02-install.html#js--030201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.2.1</span><span class="toc-lev3-text">A default text editor for Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030202" href="03-02-install.html#js--030202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.2.2</span><span class="toc-lev3-text">A difference and merge tool</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-030300" href="03-03-install.html#js--030300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.3</span><span class="toc-lev2-text">Changing the Git default locations</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030301" href="03-03-install.html#js--030301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.3.1</span><span class="toc-lev3-text">Changing the default directories</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-030400" href="03-04-install.html#js--030400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">3.4</span><span class="toc-lev2-text">Changing the Git default settings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030401" href="03-04-install.html#js--030401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.1</span><span class="toc-lev3-text">Configuring a Username and email</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030402" href="03-04-install.html#js--030402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.2</span><span class="toc-lev3-text">Configuring a default text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030403" href="03-04-install.html#js--030403">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.3</span><span class="toc-lev3-text">Configuring a default difference tool</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030404" href="03-04-install.html#js--030404">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.4</span><span class="toc-lev3-text">Configuring a default merge tool</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-030405" href="03-04-install.html#js--030405">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">3.4.5</span><span class="toc-lev3-text">Defining an alias</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 030100]
+     SECTION - 3.1 DOWNLOADING AND INSTALLING GIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--030100">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>3.1</h2></div>
+                 <div class="sub-title-text-box"><h2>Downloading and installing Git</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The first thing to do is install Git. It&rsquo;s available from <a class="hlink nohyp" href="https://git-scm.com/">https://git-scm.com/</a> website. It looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-01">
+                            <a href="01-pages/03-01-install/02-images/fig-03-01.png" data-lightbox="fig-set" data-title="Figure 3.1 - Git website">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-01.jpg" alt="Figure 3.1 - Git website">
+                            </a>
+                            <p>Figure 3.1 &emsp; Git website</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the monitor screen to download the current version for your operating system. Going to <a class="hlink nohyp" href="https://git-scm.com/downloads">downloads</a> will give more download options <span class="first-use">(the monitor is ok for us)</span>.</p>
+
+                    <p class="hyp">This will download the install file, in my case this was:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">git-2.13.3-64bit.exe</span></p>
+
+                    <p class="hyp">Run the install file and select the following options <span class="first-use">(there are a few of these)</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                     <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-2" id="js--f03-02">
+                            <a href="01-pages/03-01-install/02-images/fig-03-02.png" data-lightbox="fig-set" data-title="Figure 3.2 - Git install&mdash;Components">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-02.png" alt="Figure 3.2 - Git install&mdash;Components">
+                            </a>
+                            <p>Figure 3.2 &emsp; Git install&mdash;Components</p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-03">
+                            <a href="01-pages/03-01-install/02-images/fig-03-03.png" data-lightbox="fig-set" data-title="Figure 3.3 - Git install&mdash;Start menu">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-03.png" alt="Figure 3.3 - Git install&mdash;Start menu">
+                            </a>
+                            <p>Figure 3.3 &emsp; Git install&mdash;Start menu</p><!-- Figure caption -->
+                        </div>
+
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The only additional option required on the first screen (<a class="xref js--sc-f03-02" href="#">Figure&nbsp;3.2</a>) is the <span class="menu">additional icons</span>, tick the box if you want a desktop icon <span class="first-use">(I recommend you do, it comes in handy later)</span>.</p>
+
+                    <p class="hyp">The second screen (<a class="xref js--sc-f03-03" href="#">Figure&nbsp;3.3</a>) can be left as it is, if you want a Start Menu folder (when you click the Windows start button), make sure the box at the bottom is <em>unticked</em> <span class="first-use">(that's what I did)</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                     <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-2" id="js--f03-04">
+                            <a href="01-pages/03-01-install/02-images/fig-03-04.png" data-lightbox="fig-set" data-title="Figure 3.4 - Git install&mdash;Path environment">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-04.png" alt="Figure 3.4 - Git install&mdash;Path environment">
+                            </a>
+                            <p>Figure 3.4 &emsp; Git install&mdash;Path environment</p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-05">
+                            <a href="01-pages/03-01-install/02-images/fig-03-05.png" data-lightbox="fig-set" data-title="Figure 3.5 - Git install&mdash;Choosing HTTPS transport">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-05.png" alt="Figure 3.5 - Git install&mdash;Choosing HTTPS transport">
+                            </a>
+                            <p>Figure 3.5 &emsp; Git install&mdash;Choosing HTTPS transport</p><!-- Figure caption -->
+                        </div>
+
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There are no changes to the next two screens (<a class="xref js--sc-f03-04" href="#">Figure&nbsp;3.4</a> and <a class="xref js--sc-f03-05" href="#">Figure&nbsp;3.5</a>), leave the default settings selected.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                     <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-2" id="js--f03-06">
+                            <a href="01-pages/03-01-install/02-images/fig-03-06.png" data-lightbox="fig-set" data-title="Figure 3.6 - Git install&mdash;Line endings">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-06.png" alt="Figure 3.6 - Git install&mdash;Line endings">
+                            </a>
+                            <p>Figure 3.6 &emsp; Git install&mdash;Line endings</p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-07">
+                            <a href="01-pages/03-01-install/02-images/fig-03-07.png" data-lightbox="fig-set" data-title="Figure 3.7 - Git install&mdash;Terminal emulator">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-07.png" alt="Figure 3.7 - Git install&mdash;Terminal emulator">
+                            </a>
+                            <p>Figure 3.7 &emsp; Git install&mdash;Terminal emulator</p><!-- Figure caption -->
+                        </div>
+
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again no changes on the next two (<a class="xref js--sc-f03-06" href="#">Figure&nbsp;3.6</a> and <a class="xref js--sc-f03-07" href="#">Figure&nbsp;3.7</a>). I&rsquo;m using Windows so I want the <span class="menu">windows-style checkout</span>. I don&rsquo;t actually think it makes a great deal of difference. Keep the <span class="menu">use minTTY</span> for terminal emulation&mdash;<span class="first-use">terminal emulation? Really? Who the hell still uses terminal emulators? It&rsquo;s not the 90s anymore</span>.</p>
+
+                    <p class="hyp">Finally, the last screen (<a class="xref js--sc-f03-08" href="#">Figure&nbsp;3.8</a>), no changes here either:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-08">
+                            <a href="01-pages/03-01-install/02-images/fig-03-08.png" data-lightbox="fig-set" data-title="Figure 3.8 - Extra options">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 360px" src="01-pages/03-01-install/02-images/fig-03-08.png" alt="Figure 3.8 - Extra options">
+                            </a>
+                            <p>Figure 3.8 &emsp; Extra options</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">After all this you will have a Git Bash icon on your desktop <span class="first-use">(what&rsquo;s with these names&mdash;pretty sure that&rsquo;s a euphemism for something)</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-08a">
+                            <a href="01-pages/03-01-install/02-images/fig-03-08a.png" data-lightbox="fig-set" data-title="Figure 3.8 - GitBash Icon">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 200px" src="01-pages/03-01-install/02-images/fig-03-08a.png" alt="Figure 3.8 - GitBash Icon">
+                            </a>
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Go on, click it&mdash;but brace yourself for the full <a class="hlink nohyp" href="https://en.wikipedia.org/wiki/BBC_Micro">bbc micro model b experience</a>:</p>
+
+                    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f03-09">
+                            <a href="01-pages/03-01-install/02-images/fig-03-09-lrg.png" data-lightbox="fig-set" data-title="Figure 3.9 - Git Bash">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-01-install/02-images/fig-03-09.png" alt="Figure 3.9 - Git Bash">
+                            </a>
+                            <p>Figure 3.9 &emsp; Git Bash</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I think the window title should be read MinGW not MING W64 (English again: <em>ming</em> [noun, slang] <span class="first-use">an unpleasant smell&mdash;&ldquo;It&rsquo;s started to ming&rdquo;)</span>.</p>
+
+                    <p class="hyp">So there we are; it&rsquo;s 1980 and this is <a class="hlink nohyp" href="https://en.wikipedia.org/wiki/Ceefax">ceefax</a>, <span class="first-use">can I get the weather?</span></p>
+
+                    <p class="hyp">Now with most Windows programmes, you can click <span class="menu">file &rarr; new</span> and something happens, but not here. <span class="first-use">What should I do next? How do I make it work? What did it say on its website? &ldquo;Git is easy to learn&rdquo;</span>&mdash;my hairy English arse it is.</p>
+
+                    <p class="hyp">I tried <span class="menu">xyzzy</span> and <span class="menu">plugh</span><sup>&dagger;1</sup> &mdash;nothing; still, I haven&rsquo;t been killed by a dwarf yet.</p>
+
+                    <p class="hyp">I&rsquo;m starting to think they got the names right. <span class="first-use">This program is a git, it is wank and it does smell bad</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">If you don&rsquo;t know, you&rsquo;re too young to be reading this and I&rsquo;m too old to explain&mdash;try <a class="hlink nohyp" href="https://www.google.co.uk/?gws_rd=ssl#q=xyzzy+plugh">google</a>.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="03-00-install.html#js--030000">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="03-02-install.html#js--030200">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>
+</title>
     </head>
 
 
