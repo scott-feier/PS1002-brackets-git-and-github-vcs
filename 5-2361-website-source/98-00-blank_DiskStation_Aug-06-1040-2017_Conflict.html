@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to use Brackets to link with and manage a remote repository">
+        <meta name="description" content="This is a blank page for use with the website template, it contains the basic page layout, navigation bars and empty section ">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                   08-00-REMOTES.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                     98-00-BLANK.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,9 +41,27 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-10 Jun 2017   P02          M. Gledhill    Published
+27 Jul 2017   d-P04.04.01  M. Gledhill    Build-badge alt text added #1
 
-10 Jun 2017   t-P01.01.04  M. Gledhill    Page created
+26 Jul 2017   P04          M. Gledhill    Published
+
+24 Jul 2017   d-P03.03.01  M. Gledhill    Inline span examples expanded to
+                                          include all-caps and menu
+
+16 Jul 2017   P03          M. Gledhill    Published
+
+15 Jul 2017   d-P02.02.05  M. Gledhill    Inline span examples expanded to
+                                          include links
+
+28 Jun 2017   d-P02.02.02  M. Gledhill    Inline span examples added to
+                                          comments at end
+
+04 Jun 2017   P01          M. Gledhill    First published
+
+03 Jun 2017   D01          M. Gledhill    Next/prev link added to last section
+                                          before footer
+
+27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 *************************************************************************** -->
 
 
@@ -69,7 +87,7 @@ Date          Issue        Author         Reason for Modification
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
 
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-00-remotes/05-local-js/08-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/98-00-blank/05-local-js/98-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -83,7 +101,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/08-00-remotes/01-local-css/08-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/98-00-blank/01-local-css/98-00-prettifylines.css"> -->
 
 
 
@@ -104,7 +122,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>A blank page | PracticalSeries: Brackets &amp; remote repositories</title>
+        <title>A blank page | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -123,19 +141,19 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text utx">Prev. section</span></a>
+                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text utx">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
-                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text utx">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
-                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text utx">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
                         <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text utx">Top</span></a>
                         <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
-                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text utx">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 05 - Next Chapter -->
-                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <a class="nav-wide" href="99-00-typicals.html#js--000000"><span class="top-nav-text utx">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-text utx">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="99-00-typicals.html#js--000000"><span class="top-nav-text utx">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -153,12 +171,12 @@ Date          Issue        Author         Reason for Modification
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
-                    <div class="title-num-box"><p>8</p></div>
-                    <div class="title-text-box"><h1><span class="title-small-num">8</span>Brackets &amp; remote repositories</h1></div>
+                    <div class="title-num-box"><p>98</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">98</span>Blank page</h1></div>
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-00&nbsp;&mdash;&nbsp;P02</p>
+<!--REVISION-->         <p>Rev: 98-00&nbsp;&mdash;&nbsp;d-P04.04.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -428,7 +446,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="07-00-regression.html#js--000000">Prev</a>
+                        <a class="xref" href="80-00-finally.html#js--000000">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -438,7 +456,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="09-00-github.html#js--000000">Next</a>
+                        <a class="xref" href="99-00-typicals.html#js--000000">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -520,6 +538,16 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp"></p>
 
+                    <span class="all-caps"></span>
+                    <span class="first-use"></span>
+                    <span class="code"></span>
+                    <span class="menu"></span>
+                    <span class="git-cmd"></span>
+                    <a class="xref js--sc-f02-10 utx" href="#">Figure&nbsp;2.10</a>
+                    <a class="hlink nohyp utx" href="02-03-concept.html#js--020302">&sect;&nbsp;2.3.2</a>
+                    <a class="xref nohyp js--sc-020501 utx" href="#">&sect;&nbsp;2.5.1</a>
+                    <a class="hlink nohyp" href="http://practicaltypography.com/">Practical&nbsp;Typography</a>
+                    <p class="hyp" style="text-align: center;"><span class="code">git-2.13.3-64bit.exe</span></p>
 
 
      =====================================================================  -->

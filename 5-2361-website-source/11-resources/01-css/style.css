@@ -84,6 +84,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+05 Aug 2017   P05          M. Gledhill    Published
+
 27 Jul 2017   d-P04.04.01  M. Gledhill    .nav-wide-blank class made responsive
                                           closes #2
 
@@ -106,7 +108,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 d-P04.04.01"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 \P05"; }      /* CSS REVISION NUMBER */
 
 
 
