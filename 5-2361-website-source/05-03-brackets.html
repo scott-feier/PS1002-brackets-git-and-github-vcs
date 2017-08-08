@@ -16,7 +16,7 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to clone a GitHub repository with Brackets">
+        <meta name="description" content="How to clone a GitHub repository with Brackets-Git">
 
 <!-- ==========================================================================
 
@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+08 Aug 2017   t-P05.05.P06 M. Gledhill    Section 5 TOC updated & proofread
+
 07 Aug 2017   d-P05.05.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 05-03&nbsp;&mdash;&nbsp;d-P05.05.01</p>
+<!--REVISION-->         <p>Rev: 05-03&nbsp;&mdash;&nbsp;t-P05.05.P06</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -185,7 +187,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-050200" href="05-02-brackets.html#js--050200">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Creating an empty GitHub repository</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Making an empty GitHub repository</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-050201" href="05-02-brackets.html#js--050201">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">5.2.1</span><span class="toc-lev3-text">Create a new repository using GitHub</span></div></a>
@@ -196,7 +198,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-050400" href="05-04-brackets.html#js--050400">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Changes, commits and push from Brackets-Git</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Managing a repository with Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-050401" href="05-04-brackets.html#js--050401">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">5.4.1</span><span class="toc-lev3-text">Creating a new folder in the repository</span></div></a>
@@ -259,7 +261,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Before we create a local copy of the GitHub repository (a <span class="first-use">clone</span> in Git terminology <a class="hlink nohyp" href="02-09-concept.html#js--020904">&sect;&nbsp;2.9.4</a>), we need somewhere to put it on our local machine. In my case, all the Git repositories are stored in the directory:</p>
+                    <p class="hyp">Before we create a local copy of the GitHub repository (a <span class="first-use">clone</span> in Git terminology <a class="hlink nohyp" href="02-09-concept.html#js--020904">&sect;&nbsp;2.9.4</a>), we need somewhere to put it on our local machine. In my case, all the Git repositories are stored in the directory (see <a class="hlink nohyp" href="03-03-install.html#js--030300">&sect;&nbsp;3.3</a>):</p>
 
                     <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects</span></p>
 
@@ -285,7 +287,7 @@ Date          Issue        Author         Reason for Modification
                     </table>                                    <!-- TABLE - End of footnote    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The next thing we need is the ssh link for this repository. In GitHub, navigate to the repository home page (<a class="hlink nohyp utx" href="05-02-brackets.html#js--f05-11">Figure&nbsp;5.11</a>), click <span class="menu">clone or download</span> to open the <span class="menu">clone with</span> dialogue box. If it doesn&rsquo;t say <span class="menu">clone with SSH</span>, click the <span class="menu">Use SSH</span> link at the top right of the box (where <span class="menu">use https</span> is in <a class="xref js--sc-f05-12" href="#">Figure&nbsp;5.12</a>).</p>
+                    <p class="hyp">The next thing we need is the SSH link for this repository. In GitHub, navigate to the repository home page (<a class="hlink nohyp" href="05-02-brackets.html#js--f05-11">Figure&nbsp;5.11</a>), click <span class="menu">clone or download</span> to open the <span class="menu">clone with</span> dialogue box. If it doesn&rsquo;t say <span class="menu">clone with SSH</span>, click the <span class="menu">Use SSH</span> link at the top right of the box (where <span class="menu">use https</span> is in <a class="xref js--sc-f05-12" href="#">Figure&nbsp;5.12</a>).</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -321,7 +323,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Click the <span class="menu">clone</span> button and in the resulting dialog box, paste in the information copied from the <span class="menu">clone or download</span> box in GitHub (<a class="xref js--sc-f05-14" href="#">Figure&nbsp;5.14</a>).</p>
+                    <p class="hyp">Click the <span class="menu">clone</span> button and in the resulting dialog box, paste in the information copied from the <span class="menu">clone or download</span> box in GitHub (<a class="xref js--sc-f05-14" href="#">Figure&nbsp;5.14</a>). There is no need to enter a username or password, we are using an SSH key (see <a class="hlink nohyp" href="04-03-linking.html#js--040300">&sect;&nbsp;4.3</a>).</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -346,7 +348,7 @@ Date          Issue        Author         Reason for Modification
       to be the word Note: with appropriate indentation
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="note">                           <!-- Start of note -->
-                        <li class="hyp">Brackets may ask you for your username and email address in my case: <span class="code">practicalseries-lab</span> and <span class="code">lab@practicalseries.com</span>. It depends if this is the first connection to this repository of if you have previously logged in to a different GitHub account (I discuss this further in <a class="hlink nohyp utx" href="08-03-remotes.html#js--080301">&sect;&nbsp;8.3.1</a>). For now just enter your username and email address if asked.</li>
+                        <li class="hyp">Brackets may ask you for your username and email address as part of this process, in my case: <span class="code">practicalseries-lab</span> and <span class="code">lab@practicalseries.com</span>. It depends if this is the first connection to this repository or if you have previously logged in to a different GitHub account (I discuss this further in <a class="hlink nohyp utx" href="08-03-remotes.html#js--080301">&sect;&nbsp;8.3.1</a>). For now just enter your username and email address if asked.</li>
                     </ul>                                       <!-- End of note -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 

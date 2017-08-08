@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+08 Aug 2017   t-P05.05.P06 M. Gledhill    Section 5 TOC updated & proofread
+
 06 Aug 2017   d-P05.05.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 05-01&nbsp;&mdash;&nbsp;d-P05.05.01</p>
+<!--REVISION-->         <p>Rev: 05-01&nbsp;&mdash;&nbsp;t-P05.05.P06</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -170,7 +172,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
 
-                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                     TOC - 5 Git inside Brackets
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
@@ -185,7 +187,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-050200" href="05-02-brackets.html#js--050200">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Creating an empty GitHub repository</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Making an empty GitHub repository</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-050201" href="05-02-brackets.html#js--050201">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">5.2.1</span><span class="toc-lev3-text">Create a new repository using GitHub</span></div></a>
@@ -196,7 +198,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-050400" href="05-04-brackets.html#js--050400">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Changes, commits and push from Brackets-Git</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Managing a repository with Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-050401" href="05-04-brackets.html#js--050401">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">5.4.1</span><span class="toc-lev3-text">Creating a new folder in the repository</span></div></a>
@@ -259,7 +261,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">The first thing to do is install the Brackets-Git extension in Brackets. Start brackets and open the Extension Manager by clicking the Lego brick on the right hand sidebar:</p>
+                    <p class="hyp">The first thing to do is install the Brackets-Git extension in Brackets. Start brackets and open the Extension Manager by clicking the Lego brick on the right hand sidebar (highlighted in <a class="xref js--sc-f05-01" href="#">Figure&nbsp;5.1</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -274,7 +276,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">In the Extensions Manager, with the <span class="menu">available</span> tab selected type <span class="code">brackets-git</span> into the search box; the results will be:</p>
+                    <p class="hyp">In the Extensions Manager, with the <span class="menu">available</span> tab selected, type <span class="code">brackets-git</span> into the search box; the results will be:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -291,7 +293,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">One of the extensions in the resultant list will be called Brackets-Git (by Martin Zagora), in my case it is top of the list. Click the <span class="menu">install</span> button next to it.</p>
 
-                    <p class="hyp">The installation process has a Git Settings screen with several tabs. The only things I changed were on the first screen (<a class="xref js--sc-f05-03" href="#">Figure&nbsp;5.3</a>), I activated the <span class="menu">enable advanced features</span>; this activates the <span class="git-cmd">reset</span> to commit functionality of Git within Brackets (see <a class="hlink nohyp utx" href="07-02-regression.html#js--070200">&sect;&nbsp;7.2</a>). I also selected the <span class="menu">show Terminal icon in tool bar</span>, this allows the Git Bash terminal to be started from the sidebar, it puts an icon (<sub><img style="height: 0.85rem" src="01-pages/05-01-brackets/02-images/fig-05-02a.png" alt="terminal icon"></sub>) in the right sidebar.</p>
+                    <p class="hyp">The installation process has a Git Settings screen with several tabs. The only things I changed were on the first screen (<a class="xref js--sc-f05-03" href="#">Figure&nbsp;5.3</a>), I activated <span class="menu">enable advanced features</span>; this activates the <span class="git-cmd">reset</span> to commit functionality of Git within Brackets (see <a class="hlink nohyp utx" href="07-02-regression.html#js--070200">&sect;&nbsp;7.2</a>). I also selected the <span class="menu">show terminal icon in tool bar</span>, this allows the Git Bash terminal to be started from the sidebar, it puts an icon (<sub><img style="height: 0.85rem" src="01-pages/05-01-brackets/02-images/fig-05-02a.png" alt="terminal icon"></sub>) in the right sidebar.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
@@ -337,7 +339,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">One other extension that is useful with Brackets and Git is the Markdown Preview extension (GitHub uses a slightly customised form of markdown for things like <span class="code">README.md</span> files, the Markdown Preview shows how these files will look on a GitHub page).</p>
 
-                    <p class="hyp">To get the markdown preview extension, reopen the extension manager and search for &ldquo;markdown preview&rdquo;. The one you are looking for is by Lois Begue:</p>
+                    <p class="hyp">To get the markdown preview extension, reopen the extension manager and search for <span class="code">markdown preview</span>. The one you are looking for is by Lo&iuml;s B&eacute;gu&eacute;:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -352,7 +354,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Brackets will now have a Brackets-Git icon and a Markdown Preview icon on the right sidebar (<a class="xref js--sc-f05-08" href="#">Figure&nbsp;5.8</a>).</p>
+                    <p class="hyp">Brackets will now have a Brackets-Git icon and a Markdown Preview icon on the right sidebar (<a class="xref js--sc-f05-08" href="#">Figure&nbsp;5.8</a>), it will also have a Git Bash terminal icon if you selected that particular option:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -369,7 +371,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The Git Settings (<a class="xref js--sc-f05-03" href="#">Figure&nbsp;5.3</a>-<a class="xref js--sc-f05-06" href="#">Figure&nbsp;5.6</a>) can be accessed at any time by clicking <span class="menu">file&nbsp;&rarr;&nbsp;git settings</span>.</p>
 
-                    <p class="hyp">The Brackets-Git extension itself has its own GitHub repository and can be seen <a class="hlink nohyp" href="https://github.com/zaggino/brackets-git">here</a>. Brackets also has its own GitHub repository <a class="hlink nohyp" href="https://github.com/adobe/brackets">here</a>.</p>
+                    <p class="hyp">The Brackets-Git extension itself has its own GitHub repository and can be seen <a class="hlink nohyp" href="https://github.com/zaggino/brackets-git">here</a>. Brackets itself also has its own GitHub repository <a class="hlink nohyp" href="https://github.com/adobe/brackets">here</a>.</p>
 
                 </div>                                          <!-- End of section text area   -->
 

@@ -16,7 +16,7 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to use Brackets-Git to make changes and commits to a repository and then push them to GitHub">
+        <meta name="description" content="How to use Brackets-Git to make changes and commits to a repository and then push them back to GitHub">
 
 <!-- ==========================================================================
 
@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+08 Aug 2017   t-P05.05.P06 M. Gledhill    Section 5 TOC updated & proofread
+
 07 Aug 2017   d-P05.05.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 05-03&nbsp;&mdash;&nbsp;d-P05.05.01</p>
+<!--REVISION-->         <p>Rev: 05-03&nbsp;&mdash;&nbsp;t-P05.05.P06</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -185,7 +187,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-050200" href="05-02-brackets.html#js--050200">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Creating an empty GitHub repository</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Making an empty GitHub repository</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-050201" href="05-02-brackets.html#js--050201">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">5.2.1</span><span class="toc-lev3-text">Create a new repository using GitHub</span></div></a>
@@ -196,7 +198,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-050400" href="05-04-brackets.html#js--050400">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Changes, commits and push from Brackets-Git</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Managing a repository with Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-050401" href="05-04-brackets.html#js--050401">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">5.4.1</span><span class="toc-lev3-text">Creating a new folder in the repository</span></div></a>
@@ -234,7 +236,7 @@ Date          Issue        Author         Reason for Modification
 
 
 <!-- ************************************************************************** [WP 050400]
-     SECTION - 5.4 CHANGES, COMMITS AND PUSHING FROM BRACKETS-GIT
+     SECTION - 5.4 MANAGING A REPOSITORY WITH BRACKETS
      ***********************************************************************-->
 
         <section class="section-std" id="js--050400">           <!-- Start of section -->
@@ -245,7 +247,7 @@ Date          Issue        Author         Reason for Modification
                     <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
                  <div class="sub-title-num-box"><h2>5.4</h2></div>
-                 <div class="sub-title-text-box"><h2>Changes, commits and pushing from Brackets-Git</h2></div>
+                 <div class="sub-title-text-box"><h2>Managing a repository with Brackets</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -259,7 +261,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Ok we&rsquo;ve cloned the GitHub <span class="code">lab-brackets-git</span> repository to a local directory and we&rsquo;re managing the repository with Brackets using the Brackets-Git extension.</p>
+                    <p class="hyp">Ok, we&rsquo;ve cloned the GitHub <span class="code">lab-brackets-git</span> repository to a local directory and we&rsquo;re managing the repository with Brackets using the Brackets-Git extension.</p>
 
                     <p class="hyp">The next thing we will do is modify the <span class="code">README.md</span> file, add some folders (containing images), commit the changes to the <span class="git-cmd">master</span> branch (the only branch we have at the moment) and then <span class="first-use">push</span> all the changes back to the GitHub remote repository.</p>
 
@@ -317,9 +319,9 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Call the new folder <span class="code">11-resources</span>. Now create another folder inside this new folder called <span class="code">02-images</span> (i.e. <span class="code">\lab-brackets-git\11-resources\02-images</span>). This is just my convention for folders on a website&mdash;if you&rsquo;re interested in the thinking behind it, I explain why <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-02-starting.html#js--040202">here</a>.</p>
+                    <p class="hyp">Call the new folder <span class="code">11-resources</span>. Now create another folder inside this new folder called <span class="code">02-images</span> (i.e. <span class="code">\lab-brackets-git\11-resources\02-images</span>). This is just my convention for naming folders on a website&mdash;if you&rsquo;re interested in the thinking behind it, I explain it <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-02-starting.html#js--040200">here</a>.</p>
 
-                    <p class="hyp">Externally from Brackets, copy the <span class="code">cover.png</span> image (available here: <a class="code-nav" href="01-pages/05-04-brackets/04-data/cover.zip" download><sub><span class="nav-icon notice" style="font-size: 1.1rem">a</span></sub></a>) into the new <span class="code">02-image folder</span>.</p>
+                    <p class="hyp">Externally from Brackets, copy the <span class="code">cover.png</span> image (available here: <a class="code-nav" href="01-pages/05-04-brackets/04-data/cover.zip" download><sub><span class="nav-icon notice" style="font-size: 1.1rem">a</span></sub></a>) into the new <span class="code">02-image</span> folder.</p>
 
                     <p class="hyp">Back in Brackets the system should have detected the change and it will be showing it in the file tree (make sure the <span class="code">11-resources</span> and within it, the <span class="code">02-image</span> folders are expanded; just click them if they&rsquo;re not). It should look like this, <a class="xref js--sc-f05-17" href="#">Figure&nbsp;5.17</a>: </p>
 
@@ -491,7 +493,7 @@ This is a demonstration (teaching) repository that explains how to manage a GitH
 
                     <p class="hyp">The next thing to do is commit the changes (this accepts the changes and puts them in the local repository).</p>
 
-                    <p class="hyp">To do this, tick the boxes to the left of each file (or the single button at the top to select all) and click the <span class="menu">commit</span> button, it looks like this (I&rsquo;ve highlighted the boxes and buttons):</p>
+                    <p class="hyp">To do this, tick the boxes to the left of each file (or the single tick box at the top to select all) and click the <span class="menu">commit</span> button, it looks like this (I&rsquo;ve highlighted the boxes and buttons):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -515,10 +517,10 @@ This is a demonstration (teaching) repository that explains how to manage a GitH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f05-21">
-                            <a href="01-pages/05-04-brackets/02-images/fig-05-21.png" data-lightbox="fig-set" data-title="Figure 5.21 - Staged files">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 639px" src="01-pages/05-04-brackets/02-images/fig-05-21.png" alt="Figure 5.21 - Staged files">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-21.png" data-lightbox="fig-set" data-title="Figure 5.21 - Git commit dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 639px" src="01-pages/05-04-brackets/02-images/fig-05-21.png" alt="Figure 5.21 - Git commit dialogue box">
                             </a>
-                            <p>Figure 5.21 &emsp; Staged files</p>     <!-- Figure caption -->
+                            <p>Figure 5.21 &emsp; Git commit dialogue box</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -568,7 +570,7 @@ This is a demonstration (teaching) repository that explains how to manage a GitH
 
                     <p class="hyp">The next thing is to update the remote repository on GitHub to match our local repository. This in GitHub terminology is called a <span class="first-use">push</span>.</p>
 
-                    <p class="hyp">It&rsquo;s easy to do from Brackets, just press the git push button: <sub><img style="height: rem" src="01-pages/05-04-brackets/02-images/fig-05-21a.png" alt="terminal icon"></sub></p>
+                    <p class="hyp">It&rsquo;s easy to do from Brackets, just press the <span class="menu">git push</span> button: <sub><img style="height: rem" src="01-pages/05-04-brackets/02-images/fig-05-21a.png" alt="terminal icon"></sub></p>
 
                     <p class="hyp">The number in brackets indicates the number of commits that will be pushed to GitHub (in our case, just one).</p>
 
@@ -597,13 +599,13 @@ This is a demonstration (teaching) repository that explains how to manage a GitH
       to be the word Note: with appropriate indentation
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="note">                           <!-- Start of note -->
-                        <li>If you have previously logged in to a different GitHub account, you will be prompted to enter the username and email address of the GitHub you are trying to push to (in my case, <span class="code">practicalseries-lab</span> and <span class="code">lab@practicalseries.com</span>). I discuss this further in <a class="hlink nohyp utx" href="08-03-remotes.html#js--080301">&sect;&nbsp;8.3.1</a>. For now just enter your username and email address if asked.</li>
+                        <li>If you have previously logged in to a different GitHub account, you will be prompted to enter the username and email address of the repository you are trying to push to (in my case, <span class="code">practicalseries-lab</span> and <span class="code">lab@practicalseries.com</span>). I discuss this further in <a class="hlink nohyp utx" href="08-03-remotes.html#js--080301">&sect;&nbsp;8.3.1</a>. For now just enter your username and email address if asked.</li>
                     </ul>                                       <!-- End of note -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                     <p class="hyp">After this you should get a successful Git push response (just click <span class="menu">ok</span> to close it).</p>
 
-                    <p class="hyp">Now go back to the GitHub website and navigate to the <span class="code">lab-brackets-git</span> page.</p>
+                    <p class="hyp">Now go back to the GitHub website and navigate to the <span class="code">lab-brackets-git</span> page (refresh it with <span class="menu">f5</span> if you already have it open).</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
