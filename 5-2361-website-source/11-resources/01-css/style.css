@@ -84,6 +84,11 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+08 Aug 2017   P07          M. Gledhill    Published
+
+08 Aug 2017   d-P05.02.01  M. Gledhill    .table-git-sb display block removed
+                                          (prevents border error on collapse)
+
 05 Aug 2017   P05          M. Gledhill    Published
 
 27 Jul 2017   d-P04.04.01  M. Gledhill    .nav-wide-blank class made responsive
@@ -108,7 +113,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 \P05"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 \P07"; }      /* CSS REVISION NUMBER */
 
 
 
@@ -1840,7 +1845,6 @@ tr.in-no-border th {                        /* incidental table no-bottom border
    row).
    ************************************************************************* */
 .table-git-sb {
-    display: block;                               /* ensures max-width works */
     background-color: #404030;
     font-family: "trip-t4-r";
     color: #fff;
@@ -1879,9 +1883,10 @@ tr.in-no-border th {                        /* incidental table no-bottom border
    A screen widths below 760px, the each table becomes 100% wide
    ------------------------------------------------------------------------- */
 
-@media all and (max-width:760px){ .table-clean { width: 100%; margin: 0; } }
-@media all and (max-width:760px){ .table-dense { width: 100%; margin: 0; } }
-@media all and (max-width:760px){ .table-git   { width: 100%; margin: 0; } }
+@media all and (max-width:760px){ .table-clean  { width: 100%; margin: 0; } }
+@media all and (max-width:760px){ .table-dense  { width: 100%; margin: 0; } }
+@media all and (max-width:760px){ .table-git    { width: 100%; margin: 0; } }
+@media all and (max-width:760px){ .table-git-sb { width: 100%; margin: 0,0,1rem,0; } }
 
 
 

@@ -41,6 +41,14 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+08 Aug 2017   P07          M. Gledhill    Published
+
+08 Aug 2017   t-P05.02.P07  M. Gledhill   Tested and validated
+
+08 Aug 2017   d-P05.02.01  M. Gledhill    Additional sections added to make
+                                          git command sidebars collapse to
+                                          correct inline position
+
 16 Jul 2017   P03          M. Gledhill    Published
 
 16 Jul 2017   t-P02.02.P03 M. Gledhill    Comments corrected, some minor
@@ -164,7 +172,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;P03</p>
+<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;P07</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -716,7 +724,7 @@ Date          Issue        Author         Reason for Modification
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020502a">              <!-- Start of additional row -->
+        <div class="section-std">                               <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -726,6 +734,65 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
                     <p class="hyp">For example, if we <span class="git-cmd">hard reset</span> to the commit point <span class="code">[5493a7c]</span> then we would get:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 5493a7c --hard</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020502a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -773,8 +840,35 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std">                               <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">If we now do another reset (without modifying anything) back to the most recent commit point <span class="code">[22af4b5]</span> we just end up back where we were at step&nbsp;5:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                      <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">reset</span></p>
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - GIT SIDEBAR COMMAND LINE
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -803,7 +897,7 @@ Date          Issue        Author         Reason for Modification
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git reset 5493a7c <br>--hard</td>
+                                <td class="table-left" style="width: 95%">git reset 22af4b5 --hard</td>
                             </tr>                                                               <!-- TABLE - End of header   -->
                         </table>                                                                <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -812,6 +906,8 @@ Date          Issue        Author         Reason for Modification
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
 <!-- ========================================================================== [WP END] -->
+
+
 
 
 <!-- ************************************************************************** [WP ADDITIONAL]
@@ -826,8 +922,6 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">If we now do another reset (without modifying anything) back to the most recent commit point <span class="code">[22af4b5]</span> we just end up back where we were at step&nbsp;5:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -858,41 +952,9 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT SIDEBAR COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      This is a two column table used to represent git commandline instructions
-
-      The table is designated .table-git (this is a table that is simple and
-      clean in appearance, with inverted colours).
-
-      The relative widths of each column is preset in the <td> element
-
-      An additional column is added to the start of each row, this is of zero
-      width and makes no contribution to the table contents (it is of class .
-      leading), it can however hold a <div> element that is used to give a
-      minimum height to the row (this is done with an inline style specifying
-      the min-height of the div).
-
-      Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-      by default the table is set to left justification
-
-      By default each there are no borders surrounding the table
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git reset 22af4b5 <br>--hard</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                        </table>                                                                <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                     </aside>                                   <!-- End of right side bar   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
@@ -1255,7 +1317,7 @@ Date          Issue        Author         Reason for Modification
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020504a">              <!-- Start of additional row -->
+        <div class="section-std">                               <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -1266,6 +1328,65 @@ Date          Issue        Author         Reason for Modification
 
 
                     <p class="hyp">Commit or discard any pending changes (in our case there aren&rsquo;t any) and reset the project back to the V01 commit point with a <span class="git-cmd">hard reset</span> <span class="code">[ac452db]</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset ac452db --hard</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020504a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -1307,8 +1428,35 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std">                               <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Now hard reset back to the latest commit in the chain <span class="code">[22af4b5]</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                      <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">reset</span></p>
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - GIT SIDEBAR COMMAND LINE
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1333,12 +1481,12 @@ Date          Issue        Author         Reason for Modification
 
       By default each there are no borders surrounding the table
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git reset ac452db
---hard</td>
+                                <td class="table-left" style="width: 95%">git reset 22af4b5 --hard
+</td>
                             </tr>                                                               <!-- TABLE - End of header   -->
                         </table>                                                                <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -1347,6 +1495,8 @@ Date          Issue        Author         Reason for Modification
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
 <!-- ========================================================================== [WP END] -->
+
+
 
 
 <!-- ************************************************************************** [WP ADDITIONAL]
@@ -1361,8 +1511,6 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">Now hard reset back to the latest commit in the chain <span class="code">[22af4b5]</span>.</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -1533,43 +1681,9 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT SIDEBAR COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      This is a two column table used to represent git commandline instructions
-
-      The table is designated .table-git (this is a table that is simple and
-      clean in appearance, with inverted colours).
-
-      The relative widths of each column is preset in the <td> element
-
-      An additional column is added to the start of each row, this is of zero
-      width and makes no contribution to the table contents (it is of class .
-      leading), it can however hold a <div> element that is used to give a
-      minimum height to the row (this is done with an inline style specifying
-      the min-height of the div).
-
-      Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-      by default the table is set to left justification
-
-      By default each there are no borders surrounding the table
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git reset 22af4b5
---hard
-</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                        </table>                                                                <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                     </aside>                                   <!-- End of right side bar   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
@@ -1678,7 +1792,7 @@ Date          Issue        Author         Reason for Modification
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020505a">              <!-- Start of additional row -->
+        <div class="section-std">                               <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -1689,6 +1803,66 @@ Date          Issue        Author         Reason for Modification
 
 
                     <p class="hyp">The <span class="git-cmd">mixed reset</span> is a non-destructive reset. It does not overwrite the working copy but it does change the staging area and (obviously) the <span class="git-cmd">head</span>. If we <span class="git-cmd">reset</span> (<span class="git-cmd">mixed</span>) to the V02 commit point <span class="code">[5493a7c]</span> we would have:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 5493a7c --mixed</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020505a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -1778,41 +1952,9 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT SIDEBAR COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      This is a two column table used to represent git commandline instructions
-
-      The table is designated .table-git (this is a table that is simple and
-      clean in appearance, with inverted colours).
-
-      The relative widths of each column is preset in the <td> element
-
-      An additional column is added to the start of each row, this is of zero
-      width and makes no contribution to the table contents (it is of class .
-      leading), it can however hold a <div> element that is used to give a
-      minimum height to the row (this is done with an inline style specifying
-      the min-height of the div).
-
-      Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-      by default the table is set to left justification
-
-      By default each there are no borders surrounding the table
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git reset 5493a7c<br>--mixed</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                        </table>                                                                <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                     </aside>                                   <!-- End of right side bar   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
@@ -1899,7 +2041,7 @@ Date          Issue        Author         Reason for Modification
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020506a">              <!-- Start of additional row -->
+        <div class="section-std">                               <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -1910,6 +2052,66 @@ Date          Issue        Author         Reason for Modification
 
 
                     <p class="hyp">The <span class="git-cmd">soft reset</span> is again a non-destructive reset. It does not overwrite the working copy or staged area; all it does is move the <span class="git-cmd">head</span>. If we <span class="git-cmd">reset</span> (<span class="git-cmd">soft</span>) to the V02 commit point <span class="code">[5493a7c]</span> we would have:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">reset</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git reset 5493a7c --soft</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020506a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -1949,41 +2151,9 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">reset</span></p>
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT SIDEBAR COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      This is a two column table used to represent git commandline instructions
-
-      The table is designated .table-git (this is a table that is simple and
-      clean in appearance, with inverted colours).
-
-      The relative widths of each column is preset in the <td> element
-
-      An additional column is added to the start of each row, this is of zero
-      width and makes no contribution to the table contents (it is of class .
-      leading), it can however hold a <div> element that is used to give a
-      minimum height to the row (this is done with an inline style specifying
-      the min-height of the div).
-
-      Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-      by default the table is set to left justification
-
-      By default each there are no borders surrounding the table
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                           <!-- TABLE - Start of table  -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git reset 5493a7c<br>--soft</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                        </table>                                                                <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                     </aside>                                   <!-- End of right side bar   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
