@@ -41,6 +41,10 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+08 Aug 2017   d-P05.02.01  M. Gledhill    Additional sections added to make
+                                          git command sidebars collapse to
+                                          correct inline position
+
 16 Jul 2017   P03          M. Gledhill    Published
 
 16 Jul 2017   t-P02.02.P03 M. Gledhill    Comments corrected, some minor
@@ -167,7 +171,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-02&nbsp;&mdash;&nbsp;P03</p>
+<!--REVISION-->         <p>Rev: 02-02&nbsp;&mdash;&nbsp;d-P05.02.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -539,7 +543,7 @@ Date          Issue        Author         Reason for Modification
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020201a">              <!-- Start of additional row -->
+        <div class="section-std">                               <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -549,6 +553,71 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
                     <p class="hyp">We do this by <span class="git-cmd">initialising</span> the repository. Once initialised, the repository will contain a new hidden folder called <span class="code">.git</span>. It is this folder (created by Git itself) that holds the local repository. On my system it looks like this, <a class="xref js--sc-f02-03" href="#">Figure&nbsp;2.3</a>:</p>
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">init</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">cd &lt;path-to-folder&gt;</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git init</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020201a">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -695,8 +764,35 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Now let&rsquo;s say that we&rsquo;ve finished <span class="code">index.html</span> and we want to start tracking it, well the first thing to do is move it to the staging area. We do this with the Git command <span class="git-cmd">add</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                      <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">init</span></p>
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">add</span></p>
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - GIT SIDEBAR COMMAND LINE
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -725,12 +821,7 @@ Date          Issue        Author         Reason for Modification
                             <tr class="no-border">                                              <!-- TABLE - Start of header -->
                                 <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
                                 <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">cd &lt;path-to-folder&gt;</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git init</td>
+                                <td class="table-left" style="width: 95%">git add index.html</td>
                             </tr>                                                               <!-- TABLE - End of header   -->
                         </table>                                                                <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -739,6 +830,8 @@ Date          Issue        Author         Reason for Modification
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
 <!-- ========================================================================== [WP END] -->
+
+
 
 
 <!-- ************************************************************************** [WP ADDITIONAL]
@@ -753,8 +846,6 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">Now let&rsquo;s say that we&rsquo;ve finished <span class="code">index.html</span> and we want to start tracking it, well the first thing to do is move it to the staging area. We do this with the Git command <span class="git-cmd">add</span>.</p>
 
                     <p class="hyp">Nothing has actually happened to the file, it&rsquo;s still there in the working area, however, a copy of the file exactly as it was at the time of the <span class="git-cmd">add</span> has been placed in the staging area (we can&rsquo;t see this, it&rsquo;s inside the <span class="code">.git</span> folder and we don&rsquo;t go there). </p>
 
@@ -856,41 +947,9 @@ p {                                 /* TEXT STYLE - paragraph */
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">add</span></p>
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT SIDEBAR COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      This is a two column table used to represent git commandline instructions
-
-      The table is designated .table-git (this is a table that is simple and
-      clean in appearance, with inverted colours).
-
-      The relative widths of each column is preset in the <td> element
-
-      An additional column is added to the start of each row, this is of zero
-      width and makes no contribution to the table contents (it is of class .
-      leading), it can however hold a <div> element that is used to give a
-      minimum height to the row (this is done with an inline style specifying
-      the min-height of the div).
-
-      Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-      by default the table is set to left justification
-
-      By default each there are no borders surrounding the table
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git add index.html</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                        </table>                                                                <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                     </aside>                                   <!-- End of right side bar   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
@@ -901,7 +960,7 @@ p {                                 /* TEXT STYLE - paragraph */
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020201c">              <!-- Start of additional row -->
+        <div class="section-std">              <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -912,34 +971,11 @@ p {                                 /* TEXT STYLE - paragraph */
 
                     <p class="hyp">Now, the <span class="code">index.html</span> file is already in the staging area, the next thing to do is add the <span class="code">style.css</span> and the <span class="code">logo.png</span>. This is done with another <span class="git-cmd">add</span></p>
 
-                    <p class="hyp">Out repository now looks like this:</p>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     This is a single full width figure inserted into a section of the
-     document (class .fig1-1, the numbering is similar to that of grid
-     columns).
-
-     Full width images have a maximum width of 768 px
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f02-06">
-                            <a href="01-pages/02-02-concept/02-images/fig-02-06.svg" data-lightbox="fig-set" data-title="Figure 2.6 - Repository with staged files">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/02-02-concept/02-images/fig-02-06.svg" alt="Figure 2.6 - Repository with staged files">
-                            </a>
-                            <p>Figure 2.6 &emsp; Repository with staged files</p>     <!-- Figure caption -->
-                        </div>
-                    </figure>                                   <!-- END OF FIGURE -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">All the files are now in the staging area, the staging area acts as a collection area for files that we want to put into the local repository. It allows multiple files to be collected together and added to the local repository in one go. It means we can just have one message for the whole thing (we don&rsquo;t have to enter separate messages for each file).</p>
-
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                      <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">add all</span></p>
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">add all</span></p>
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - GIT SIDEBAR COMMAND LINE
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -983,7 +1019,55 @@ p {                                 /* TEXT STYLE - paragraph */
      SECTION - ADDITIONAL ROW
      ***********************************************************************-->
 
-        <div class="section-std" id="js--020201d">              <!-- Start of additional row -->
+        <div class="section-std" id="js--020201c">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Out repository now looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     This is a single full width figure inserted into a section of the
+     document (class .fig1-1, the numbering is similar to that of grid
+     columns).
+
+     Full width images have a maximum width of 768 px
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f02-06">
+                            <a href="01-pages/02-02-concept/02-images/fig-02-06.svg" data-lightbox="fig-set" data-title="Figure 2.6 - Repository with staged files">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/02-02-concept/02-images/fig-02-06.svg" alt="Figure 2.6 - Repository with staged files">
+                            </a>
+                            <p>Figure 2.6 &emsp; Repository with staged files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">All the files are now in the staging area, the staging area acts as a collection area for files that we want to put into the local repository. It allows multiple files to be collected together and added to the local repository in one go. It means we can just have one message for the whole thing (we don&rsquo;t have to enter separate messages for each file).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std">              <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <!-- <aside class="aside-left">                  Start of left side bar   -->
@@ -993,6 +1077,63 @@ p {                                 /* TEXT STYLE - paragraph */
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
                     <p class="hyp">Files are sent from the staging area to the local repository with a <span class="git-cmd">commit</span> instruction. When a commit is executed, a specific message must be entered, in this case, the message is <span class="first-use">initial commit</span> (with Git command line, the message can be entered as part of the command line syntax as shown in the sidebar).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="no-hyp"><span class="first-use">Git</span> <span class="git-cmd">commit</span></p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT SIDEBAR COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a two column table used to represent git commandline instructions
+
+      The table is designated .table-git (this is a table that is simple and
+      clean in appearance, with inverted colours).
+
+      The relative widths of each column is preset in the <td> element
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+      by default the table is set to left justification
+
+      By default each there are no borders surrounding the table
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
+                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
+                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
+                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
+                                <td class="table-left" style="width: 95%">git commit –m "initial commit"</td>
+                            </tr>                                                               <!-- TABLE - End of header   -->
+                        </table>                                                                <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--020201d">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
                     <p class="hyp">Now we have this:</p>
 
@@ -1135,41 +1276,9 @@ p {                                 /* TEXT STYLE - paragraph */
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                        <p class="no-hyp"><span class="first-use">Git command</span> <span class="git-cmd">commit</span></p>
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT SIDEBAR COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      This is a two column table used to represent git commandline instructions
-
-      The table is designated .table-git (this is a table that is simple and
-      clean in appearance, with inverted colours).
-
-      The relative widths of each column is preset in the <td> element
-
-      An additional column is added to the start of each row, this is of zero
-      width and makes no contribution to the table contents (it is of class .
-      leading), it can however hold a <div> element that is used to give a
-      minimum height to the row (this is done with an inline style specifying
-      the min-height of the div).
-
-      Each cell can be centred, left or right justified by applying the classes
-            .table-cent
-            .table-left
-            .table-right
-      by default the table is set to left justification
-
-      By default each there are no borders surrounding the table
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-git-sb">                            <!-- TABLE - Start of table  -->
-                            <tr class="no-border">                                              <!-- TABLE - Start of header -->
-                                <td class="leading"><div style="min-height: 1em"></div></td>    <!-- Leading row (sets min-height) -->
-                                <td class="table-left" style="width: 5%">$</td>                 <!-- set column width here -->
-                                <td class="table-left" style="width: 95%">git commit –m "initial commit"</td>
-                            </tr>                                                               <!-- TABLE - End of header   -->
-                        </table>                                                                <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                     </aside>                                   <!-- End of right side bar   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
