@@ -1,0 +1,693 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="How to use Brackets-Git to make changes and commits to a repository and then push them to GitHub">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                  05-04-BRACKETS.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+07 Aug 2017   d-P05.05.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/05-04-brackets/05-local-js/05-04-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/05-04-brackets/01-local-css/05-04-prettifylines.css">
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Changes, commits and pushing from Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="05-03-brackets.html#js--050300"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="04-00-linking.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="06-00-example.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="06-00-example.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>5</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">5</span>Git inside Brackets</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 05-03&nbsp;&mdash;&nbsp;d-P05.05.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 5 Git inside Brackets
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-050000" href="05-00-brackets.html#js--050000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">5</span><span class="toc-lev1-text">Git inside Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-050100" href="05-01-brackets.html#js--050100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.1</span><span class="toc-lev2-text">Installing Brackets-Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-050200" href="05-02-brackets.html#js--050200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Creating an empty GitHub repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050201" href="05-02-brackets.html#js--050201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.2.1</span><span class="toc-lev3-text">Create a new repository using GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-050300" href="05-03-brackets.html#js--050300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.3</span><span class="toc-lev2-text">Cloning the GitHub repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-050400" href="05-04-brackets.html#js--050400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Changes, commits and push from Brackets-Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050401" href="05-04-brackets.html#js--050401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.1</span><span class="toc-lev3-text">Creating a new folder in the repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050402" href="05-04-brackets.html#js--050402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.2</span><span class="toc-lev3-text">Modifying a file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050403" href="05-04-brackets.html#js--050403">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.3</span><span class="toc-lev3-text">Committing the changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050404" href="05-04-brackets.html#js--050404">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.4</span><span class="toc-lev3-text">Pushing the changes back to GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 050400]
+     SECTION - 5.4 CHANGES, COMMITS AND PUSHING FROM BRACKETS-GIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--050400">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>5.4</h2></div>
+                 <div class="sub-title-text-box"><h2>Changes, commits and pushing from Brackets-Git</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Ok we&rsquo;ve cloned the GitHub <span class="code">lab-brackets-git</span> repository to a local directory and we&rsquo;re managing the repository with Brackets using the Brackets-Git extension.</p>
+
+                    <p class="hyp">The next thing we will do is modify the <span class="code">README.md</span> file, add some folders (containing images), commit the changes to the <span class="git-cmd">master</span> branch (the only branch we have at the moment) and then <span class="first-use">push</span> all the changes back to the GitHub remote repository.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 050401]
+     SUBSECTION - 5.4.1 CREATING A NEW FOLDER IN THE REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--050401">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>5.4.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating a new folder in the repository</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">Make sure the lab-brackets-git project is open in Brackets; it should look like <a class="hlink nohyp" href="05-03-brackets.html#js--f05-15">Figure&nbsp;5.15</a>.</p>
+
+                    <p class="hyp">Now right click in the left sidebar and select new folder (<a class="xref js--sc-f05-16" href="#">Figure&nbsp;5.16</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-16">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-16.png" data-lightbox="fig-set" data-title="Figure 5.16 - Create a new folder">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-04-brackets/02-images/fig-05-16.png" alt="Figure 5.16 - Create a new folder">
+                            </a>
+                            <p>Figure 5.16 &emsp; Create a new folder</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Call the new folder <span class="code">11-resources</span>. Now create another folder inside this new folder called <span class="code">02-images</span> (i.e. <span class="code">\lab-brackets-git\11-resources\02-images</span>). This is just my convention for folders on a website&mdash;if you&rsquo;re interested in the thinking behind it, I explain why <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-02-starting.html#js--040202">here</a>.</p>
+
+                    <p class="hyp">Externally from Brackets, copy the <span class="code">cover.png</span> image (available here: <a class="code-nav" href="01-pages/05-04-brackets/04-data/cover.zip" download><sub><span class="nav-icon notice" style="font-size: 1.1rem">a</span></sub></a>) into the new <span class="code">02-image folder</span>.</p>
+
+                    <p class="hyp">Back in Brackets the system should have detected the change and it will be showing it in the file tree (make sure the <span class="code">11-resources</span> and within it, the <span class="code">02-image</span> folders are expanded; just click them if they&rsquo;re not). It should look like this, <a class="xref js--sc-f05-17" href="#">Figure&nbsp;5.17</a>: </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-17">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-17.png" data-lightbox="fig-set" data-title="Figure 5.17 - Examine the image">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-04-brackets/02-images/fig-05-17.png" alt="Figure 5.17 - Examine the image">
+                            </a>
+                            <p>Figure 5.17 &emsp; Examine the image</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If Brackets hasn&rsquo;t automatically refreshed <span class="first-use">(sometimes it doesn&rsquo;t with networked files)</span>, right click the left sidebar and select <span class="menu">refresh file tree</span> or just hit <span class="menu">f5</span>. The Brackets-Git pane (light grey at the bottom) is now showing an untracked file. In my case:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">Untracked&emsp;&emsp;&emsp;11-resources/02-images/cover.png</span></p>
+
+                    <p class="hyp">This is good, it means that Git has detected the file but doesn&rsquo;t yet know what to do with it (it&rsquo;s a new file as far as the repository is concerned).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 050402]
+     SUBSECTION - 5.4.2 MODIFYING A FILE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--050402">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>5.4.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Modifying a file</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">Now let&rsquo;s modify the <span class="code">README.md</span> file that GitHub created for us.</p>
+
+                    <p class="hyp">GitHub likes <span class="code">README.md</span> files; it will automatically display the contents of it on the repository home page. The <span class="code">.md</span> extension means the file is written in the <span class="first-use">markdown</span> language.</p>
+
+                    <p class="hyp">Markdown is simple text formatting language (markdown is actually a <span class="first-use">mark-up</span> language&mdash;<span class="first-use">go figure</span>), it uses standard keyboard characters to display headings, emphasis, lists &amp;c. even basic HTML. GitHub uses a slightly enhanced version (called <span class="first-use">GitHub Flavoured Markdown</span>) that can display code fragments and link to issues and users within GitHub. I give a summary of markdown and Git Flavoured Markdown in <a class="hlink nohyp utx" href="09c-00-appendix.html#js--000000">appendix&nbsp;c</a>).</p>
+
+                    <p class="hyp">In Brackets, double click the <span class="code">README.md</span> file to open it.</p>
+
+                    <p class="hyp">Replace the default text with the following:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header"><span style="text-transform: uppercase">README</span>.md</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c05-01"># A PracticalSeries Publication
+
+&lt;p align="center"&gt;
+&nbsp; &nbsp; &lt;img src="11-resources/02-images/cover.png"&gt;
+&lt;/p&gt;
+
+The **Practical Series of publications** is a website resource for web developers and engineers. It contains a number of online publications designed to help and explain how to build a website, how to use version control and how to write engineering software for control systems.
+
+## lab-brackets-git: How to use Brackets-Git
+
+This is a demonstration (teaching) repository that explains how to manage a GitHub repository from within the Brackets text editor using the Brackets-Git extension.
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 5.1 &emsp; README.md file contents </td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/05-04-brackets/04-data/README.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">ctrl+s</span> to save the file.</p>
+
+                    <p class="hyp">If you have the markdown preview activated (<sub><img style="height: 0.9rem" src="01-pages/05-04-brackets/02-images/fig-05-18a.png" alt="terminal icon"></sub>), the <span class="code">README.md</span> will be displayed as it will appear on GitHub at the bottom of the screen (<a class="xref js--sc-f05-18" href="#">Figure&nbsp;5.18</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-18">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-18.png" data-lightbox="fig-set" data-title="Figure 5.18 - Modify the README.md file">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-04-brackets/02-images/fig-05-18.png" alt="Figure 5.18 - Modify the README.md file">
+                            </a>
+                            <p>Figure 5.18 &emsp; Modify the README.md file</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In the Git pane, we now have two files listed that need attention: </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-19">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-19.png" data-lightbox="fig-set" data-title="Figure 5.19 - New and modified files">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 733px" src="01-pages/05-04-brackets/02-images/fig-05-19.png" alt="Figure 5.19 - New and modified files">
+                            </a>
+                            <p>Figure 5.19 &emsp; New and modified files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 050403]
+     SUBSECTION - 5.4.3 COMMITTING THE CHANGES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--050403">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>5.4.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Committing the changes</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">The next thing to do is commit the changes (this accepts the changes and puts them in the local repository).</p>
+
+                    <p class="hyp">To do this, tick the boxes to the left of each file (or the single button at the top to select all) and click the <span class="menu">commit</span> button, it looks like this (I&rsquo;ve highlighted the boxes and buttons):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-20">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-20.png" data-lightbox="fig-set" data-title="Figure 5.20 - Staged files">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 733px" src="01-pages/05-04-brackets/02-images/fig-05-20.png" alt="Figure 5.20 - Staged files">
+                            </a>
+                            <p>Figure 5.20 &emsp; Staged files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The Git commit dialogue box will open showing the changes (deletions in red, additions in green). Enter the following commit message: </p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">Cover image added and README updated from default</span></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-21">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-21.png" data-lightbox="fig-set" data-title="Figure 5.21 - Staged files">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 639px" src="01-pages/05-04-brackets/02-images/fig-05-21.png" alt="Figure 5.21 - Staged files">
+                            </a>
+                            <p>Figure 5.21 &emsp; Staged files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">ok</span> to accept the changes. The Git pane will now show :</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">Nothing to commit, working directory clean</span></p>
+
+                    <p class="hyp">This is exactly what we want; we have successfully modified the working files and committed them to the local repository.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 050404]
+     SUBSECTION - 5.4.4 PUSHING THE CHANGES BACK TO GITHUB
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--050404">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>5.4.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Pushing the changes back to GitHub</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">The next thing is to update the remote repository on GitHub to match our local repository. This in GitHub terminology is called a <span class="first-use">push</span>.</p>
+
+                    <p class="hyp">It&rsquo;s easy to do from Brackets, just press the git push button: <sub><img style="height: rem" src="01-pages/05-04-brackets/02-images/fig-05-21a.png" alt="terminal icon"></sub></p>
+
+                    <p class="hyp">The number in brackets indicates the number of commits that will be pushed to GitHub (in our case, just one).</p>
+
+                    <p class="hyp">This opens the Push to remote dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-22">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-22.png" data-lightbox="fig-set" data-title="Figure 5.22 - Git push to remote dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 597px" src="01-pages/05-04-brackets/02-images/fig-05-22.png" alt="Figure 5.22 - Git push to remote dialogue box">
+                            </a>
+                            <p>Figure 5.22 &emsp; Git push to remote dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Just click <span class="menu">ok</span>.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>If you have previously logged in to a different GitHub account, you will be prompted to enter the username and email address of the GitHub you are trying to push to (in my case, <span class="code">practicalseries-lab</span> and <span class="code">lab@practicalseries.com</span>). I discuss this further in <a class="hlink nohyp utx" href="08-03-remotes.html#js--080301">&sect;&nbsp;8.3.1</a>. For now just enter your username and email address if asked.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">After this you should get a successful Git push response (just click <span class="menu">ok</span> to close it).</p>
+
+                    <p class="hyp">Now go back to the GitHub website and navigate to the <span class="code">lab-brackets-git</span> page.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-23">
+                            <a href="01-pages/05-04-brackets/02-images/fig-05-23.png" data-lightbox="fig-set" data-title="Figure 5.23 - Modified page in GitHub">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-04-brackets/02-images/fig-05-23.png" alt="Figure 5.23 - Modified page in GitHub">
+                            </a>
+                            <p>Figure 5.23 &emsp; Modified page in GitHub</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Here we can see the changes we have made, the <span class="code">README</span> file is being displayed with the changes we made in Brackets, there is a <span class="code">11-resources/02-image</span> folder and the <span class="code">cover.png</span> image is being displayed on the <span class="code">README.md</span> section.</p>
+
+                    <p class="hyp">If you&rsquo;re seeing this, it&rsquo;s worked.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="05-03-brackets.html#js--050300">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="06-00-example.html#js--000000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

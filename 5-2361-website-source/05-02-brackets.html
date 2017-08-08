@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="This is a blank page for use with the website template, it contains the basic page layout, navigation bars and empty section ">
+        <meta name="description" content="How to create an empty GitHub repository for use with Brackets-Git">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                     98-00-BLANK.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                  05-02-BRACKETS.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,27 +41,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-27 Jul 2017   d-P04.04.01  M. Gledhill    Build-badge alt text added #1
-
-26 Jul 2017   P04          M. Gledhill    Published
-
-24 Jul 2017   d-P03.03.01  M. Gledhill    Inline span examples expanded to
-                                          include all-caps and menu
-
-16 Jul 2017   P03          M. Gledhill    Published
-
-15 Jul 2017   d-P02.02.05  M. Gledhill    Inline span examples expanded to
-                                          include links
-
-28 Jun 2017   d-P02.02.02  M. Gledhill    Inline span examples added to
-                                          comments at end
-
-04 Jun 2017   P01          M. Gledhill    First published
-
-03 Jun 2017   D01          M. Gledhill    Next/prev link added to last section
-                                          before footer
-
-27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
+07 Aug 2017   d-P05.05.01  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -85,9 +65,8 @@ Date          Issue        Author         Reason for Modification
         <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
-
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/98-00-blank/05-local-js/98-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/05-02-brackets/05-local-js/05-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -98,10 +77,10 @@ Date          Issue        Author         Reason for Modification
         <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
         <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
         <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
-        <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/98-00-blank/01-local-css/98-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/05-02-brackets/01-local-css/05-02-prettifylines.css"> -->
 
 
 
@@ -122,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>A blank page | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Creating an empty GitHub repository for Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -141,19 +120,19 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text utx">Prev. section</span></a>
+                        <a class="nav-wide" href="05-01-brackets.html#js--050100"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
-                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text utx">Prev. chapter</span></a>
+                        <a class="nav-wide" href="04-00-linking.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
-                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text utx">Home</span><span class="top-nav-icon">h</span></a>
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
-                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text utx">Top</span></a>
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
                         <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
-                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text utx">Home</span><span class="top-nav-icon">h</span></a>
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 05 - Next Chapter -->
-                        <a class="nav-wide" href="99-00-typicals.html#js--000000"><span class="top-nav-text utx">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <a class="nav-wide" href="06-00-example.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="99-00-typicals.html#js--000000"><span class="top-nav-text utx">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="05-03-brackets.html#js--050300"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -167,16 +146,16 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
-                    <div class="title-num-box"><p>98</p></div>
-                    <div class="title-text-box"><h1><span class="title-small-num">98</span>Blank page</h1></div>
+                    <div class="title-num-box"><p>5</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">5</span>Git inside Brackets</h1></div>
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 98-00&nbsp;&mdash;&nbsp;d-P04.04.01</p>
+<!--REVISION-->         <p>Rev: 05-02&nbsp;&mdash;&nbsp;d-P05.05.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -192,28 +171,46 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
 
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    TOC - 98 Blank
+                    TOC - 5 Git inside Brackets
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-980000" href="98-00-blank.html#js--000000">  <!-- TOC link start -->
-                               <div class="toc-lev"><span class="toc-lev1-num utx">98</span><span class="toc-lev1-text">Blank page</span></div></a>
+                        <li><a class="js--sc-050000" href="05-00-brackets.html#js--050000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">5</span><span class="toc-lev1-text">Git inside Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
 
                     <ul class="toc-list">                       <!-- Start of TOC in columns -->
-                        <li><a class="js--sc-980100" href="98-00-blank.html#js--980100">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num utx">98.1</span><span class="toc-lev2-text">Empty Section</span></div></a>
+                        <li><a class="js--sc-050100" href="05-01-brackets.html#js--050100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.1</span><span class="toc-lev2-text">Installing Brackets-Git</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-980101" href="98-00-blank.html#js--980101">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx">98.1.1</span><span class="toc-lev3-text">Empty subsection</span></div></a>
+
+                        <li><a class="js--sc-050200" href="05-02-brackets.html#js--050200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.2</span><span class="toc-lev2-text">Creating an empty GitHub repository</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-980101a" href="98-00-blank.html#js--980101a"> <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx"></span><span class="toc-lev3-text">Empty inline section</span></div></a>
-                            <!-- <br class="top-pad">                 Apply padding to give symmetry to toc (must be before </li> -->
-                        </li>
-                        <li><a class="js--sc-980101b" href="98-00-blank.html#js--980101b">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx"></span><span class="toc-lev3-text">Additional section</span></div></a>
-                        </li>
+                        <li><a class="js--sc-050201" href="05-02-brackets.html#js--050201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.2.1</span><span class="toc-lev3-text">Create a new repository using GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-050300" href="05-03-brackets.html#js--050300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.3</span><span class="toc-lev2-text">Cloning the GitHub repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-050400" href="05-04-brackets.html#js--050400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">5.4</span><span class="toc-lev2-text">Changes, commits and push from Brackets-Git</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050401" href="05-04-brackets.html#js--050401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.1</span><span class="toc-lev3-text">Creating a new folder in the repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050402" href="05-04-brackets.html#js--050402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.2</span><span class="toc-lev3-text">Modifying a file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050403" href="05-04-brackets.html#js--050403">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.3</span><span class="toc-lev3-text">Committing the changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-050404" href="05-04-brackets.html#js--050404">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">5.4.4</span><span class="toc-lev3-text">Pushing the changes back to GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
                     </ul>                                       <!-- End of TOC in columns -->
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -236,63 +233,19 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 980000]
-     CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
+<!-- ************************************************************************** [WP 050200]
+     SECTION - 5.2 CREATING AN EMPTY GITHUB REPOSITORY
      ***********************************************************************-->
 
-        <section class="section-std" id="js--980000">           <!-- Start of section -->
-            <!-- Subtitle row is not normally needed at the start of the first section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-thinline"></div>      <!-- Thin overline (after TOC) -->
-                    <div class="sub-title-num-box"><h6>Placeholder</h6></div>   <!-- Heading 6 is a placehoder heading needed in sections without a heading to satisfy html validation -->
-                <!--     <div class="sub-title-num-box"><h2>X</h2></div>        Optional numbered heading
-                         <div class="sub-title-text-box"><h2>Text</h2></div> -->
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
-
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <h2>Side heading (h2 level)</h2>        <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp"><span class="all-caps">This</span> section is used as the start of a chapter, it has a thin line above and an optional side heading</p>
-
-                    <p class="hyp">Chapters with only a thin line do not have a heading (the heading is set in the title section &mdash; usually level h2), a nominal h6 level (h6 headings do not display) is also given to satisfy HTML validation requirements (sections must contain a heading element).</p>
-
-                    <p class="hyp">If a side heading is used, this will have an h2 heading level</p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content  -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP 980100]
-     SECTION - TYPICAL SECTION (X.Y)
-     ***********************************************************************-->
-
-        <section class="section-std" id="js--980100">           <!-- Start of section -->
+        <section class="section-std" id="js--050200">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
-                 <div class="sub-title-num-box"><h2>98.1</h2></div>
-                 <div class="sub-title-text-box"><h2>Section</h2></div>
+                 <div class="sub-title-num-box"><h2>5.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Creating an empty GitHub repository</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -306,9 +259,23 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">This is a typical section, it will be numbered X.Y.</p>
+                    <p class="hyp">In this section I will do the following:</p>
 
-                    <p class="hyp">Sections have an h2 heading level.</p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ol class="list-num">                       <!-- Start of numbered list -->
+                        <li><p class="hyp">Create an empty remote repository using GitHub</p></li>
+
+                        <li><p class="hyp">Make a local copy <span class="first-use">(clone)</span> of the repository using Brackets-Git</p></li>
+
+                        <li><p class="hyp">Populate the local repository with an example project</p></li>
+
+                        <li><p class="hyp">Update the GitHub repository by <span class="first-use">pushing</span> the local changes to it</p></li>
+                    </ol>                                       <!-- End of numbered list -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Here we go:</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -322,17 +289,17 @@ Date          Issue        Author         Reason for Modification
 <!-- ========================================================================== [WP END] -->
 
 
-<!-- ************************************************************************** [WP 980101]
-     SUBSECTION - TYPICAL SUBSECTION (X.Y.Z)
+<!-- ************************************************************************** [WP 040303]
+     SUBSECTION - 5.2.1 CREATE A NEW REPOSITORY USING GITHUb
      ***********************************************************************-->
 
-        <section class="section-std" id="js--980101">           <!-- Start of section -->
+        <section class="section-std" id="js--040303">           <!-- Start of section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
-                    <div class="sub-title-num-box"><h3>98.1.1</h3></div>
-                    <div class="sub-title-text-box"><h3>Subsection</h3></div>
+                    <div class="sub-title-num-box"><h3>5.2.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Create a new repository using GitHub</h3></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -346,9 +313,103 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">This is a typical subsection, it will be numbered X.Y.Z.</p>
 
-                    <p class="hyp">Subsections have an h3 heading level.</p>
+                    <p class="hyp">Go to the <a class="hlink nohyp" href="https://github.com/zaggino/brackets-git">GitHub</a> website and login to your account. This will take you to your newsfeed page, mine looks like <a class="xref js--sc-f05-09" href="#">Figure&nbsp;5.9</a>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-09">
+                            <a href="01-pages/05-02-brackets/02-images/fig-05-09.png" data-lightbox="fig-set" data-title="Figure 5.9 - My GitHub newsfeed page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-02-brackets/02-images/fig-05-09.png" alt="Figure 5.9 - My GitHub newsfeed page">
+                            </a>
+                            <p>Figure 5.9 &emsp; My GitHub newsfeed page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We already have a repository (<span class="code">lab-1st-repo</span>) that we made in the last section, but I’m going to make a new one. I’m going to call it:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">lab-brackets-git</span></p>
+
+                    <p class="hyp">To do this, click either the <span class="menu">start a project</span> button (highlighted) or the <span class="menu">new&nbsp;repository</span> button (they both do the same).</p>
+
+                    <p class="hyp">Either option will move you to the Create new repository page. I’m going to select the following options (<a class="xref js--sc-t05-01" href="#">Table&nbsp;5.1</a> and <a class="xref js--sc-f05-10" href="#">Figure&nbsp;5.10</a>):</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t05-01">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-cent" style="width: 30%">PROPERTY</th>      <!-- set column 01 width here -->
+                            <th class="table-left" style="width: 70%">VALUE</th>    <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Repository name</td>
+                            <td class="table-left"><span class="code">lab-brackets-git</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Description</td>
+                            <td class="table-left"><span class="code">A repository to demonstrate how to use the brackets-git extension for the Brackets text editor</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Public/private</td>
+                            <td class="table-left"><span class="code">Public</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Initialise with README</td>
+                            <td class="table-left"><span class="code">Ticked (selected)</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Add .gitignore</td>
+                            <td class="table-left"><span class="code">None</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Add a license</td>
+                            <td class="table-left"><span class="code">None</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption">Table 5.1 &emsp; lab-brackets-git settings</td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-10">
+                            <a href="01-pages/05-02-brackets/02-images/fig-05-10.png" data-lightbox="fig-set" data-title="Figure 5.10 - GitHub&mdash;Create a new repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-02-brackets/02-images/fig-05-10.png" alt="Figure 5.10 - GitHub&mdash;Create a new repository">
+                            </a>
+                            <p>Figure 5.10 &emsp; GitHub&mdash;Create a new repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">create repository</span> and, just like last time, it will automatically open the repository page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f05-11">
+                            <a href="01-pages/05-02-brackets/02-images/fig-05-11.png" data-lightbox="fig-set" data-title="Figure 5.11 - GitHub&mdash;lab-brackets-git repository page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/05-02-brackets/02-images/fig-05-11.png" alt="Figure 5.11 - GitHub&mdash;lab-brackets-git repository page">
+                            </a>
+                            <p>Figure 5.11 &emsp; GitHub&mdash;lab-brackets-git repository page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -362,91 +423,17 @@ Date          Issue        Author         Reason for Modification
 <!-- ========================================================================== [WP END] -->
 
 
-<!-- ************************************************************************** [WP INLINE]
-     SECTION INLINE
-     ***********************************************************************-->
-
-        <section class="section-std" id="js--980101a">          <!-- Start of section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
-                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Inline section</h4></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
-
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                <!--     <aside class="aside-left">                  Start of left side bar   -->
-                <!--         <p></p>                                 Side bar content         -->
-                <!--     </aside>                                    End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">This is an inline section, it has no number but does appy emphasis to a distinct section of text</p>
-
-                    <p class="hyp">Inline sections have an h4 heading level.</p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content  -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP ADDITIONAL]
-     SECTION - ADDITIONAL ROW
-     ***********************************************************************-->
-
-        <div class="section-std" id="js--980101b">              <!-- Start of additional row -->
-            <div class="rg-row">                                <!-- Start of row content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-left">                  <!-- Start of left side bar   -->
-                        <p>Additional Sidebar</p>               <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp"><em>This is an additional section row</em> it follows any section and allows additional sidebars to be used and aligned with the top of the row text.</p>
-
-                    <p class="hyp">additional section rows are constructed with <span class="code">&lt;div&gt;</span> elements (rather than <span class="code">&lt;section&gt;</span> elements and consequently do not require a heading).</p>
-
-                    <p class="hyp">As many additional section rows can be added as are needed.</p>
-
-
-                    <p> <br class="toc-pad"></p>
-                    <p> <br class="toc-pad"></p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of row content  -->
-        </div>                                                  <!-- End of additional row -->
-<!-- ========================================================================== [WP END] -->
-
-
 <!-- ************************************************************************** [WP 999901]
      SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
      ***********************************************************************-->
 
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
         <div class="section-std" id="js--999901">              <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="80-00-finally.html#js--000000">Prev</a>
+                        <a class="xref" href="05-01-brackets.html#js--050100">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -456,7 +443,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="99-00-typicals.html#js--000000">Next</a>
+                        <a class="xref" href="05-03-brackets.html#js--050300">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -489,65 +476,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      JAVASCRIPT (POST PAGE LOAD)
      ***********************************************************************-->
-        <!-- Lightbox                   <script type="text/javascript" src="21-global/05-js/lightbox.js"></script> -->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
 
     </body>
 </html>
-
-
-
-<!-- **************************************************************************
-     COMMENT & CONTENT STORAGE AREA
-     **************************************************************************
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <span class="all-caps"></span>
-                    <span class="first-use"></span>
-                    <span class="code"></span>
-                    <span class="menu"></span>
-                    <span class="git-cmd"></span>
-                    <a class="xref js--sc-f02-10 utx" href="#">Figure&nbsp;2.10</a>
-                    <a class="hlink nohyp utx" href="02-03-concept.html#js--020302">&sect;&nbsp;2.3.2</a>
-                    <a class="xref nohyp js--sc-020501 utx" href="#">&sect;&nbsp;2.5.1</a>
-                    <a class="hlink nohyp" href="http://practicaltypography.com/">Practical&nbsp;Typography</a>
-                    <p class="hyp" style="text-align: center;"><span class="code">git-2.13.3-64bit.exe</span></p>
-
-
-     =====================================================================  -->

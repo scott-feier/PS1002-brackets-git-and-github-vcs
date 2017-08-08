@@ -8,6 +8,9 @@
 Thumbs.db
 Desktop.ini
 
+# Synology
+*conflict*
+**/*conflict*
 
 # Mac OS Files
 .DS_store
