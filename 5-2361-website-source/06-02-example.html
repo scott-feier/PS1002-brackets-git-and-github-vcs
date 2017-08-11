@@ -1,0 +1,1217 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="Using Brackets-Git to create folders and files in a local repository">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   06-02-EXAMPLE.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+09 Aug 2017   d-P09.06.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/06-02-example/05-local-js/06-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/06-02-example/01-local-css/06-02-prettifylines.css">
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Creating the folder structure and initial files | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="06-01-example.html#js--060100"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="06-03-example.html#js--060300"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>6</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">6</span>Git &amp; Brackets a worked example</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 06-02&nbsp;&mdash;&nbsp;d-P09.06.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 6 GIT AND BRACKETS A WORKED EXAMPLE
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-060000" href="06-00-example.html#js--060000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">6</span><span class="toc-lev1-text">Git &amp; Brackets a worked example</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-060100" href="06-01-example.html#js--060100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.1</span><span class="toc-lev2-text">Creating the local repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060200" href="06-02-example.html#js--060200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.2</span><span class="toc-lev2-text">Creating the folders  and initial files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060201" href="06-02-example.html#js--060201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.1</span><span class="toc-lev3-text">The <span class="code">.gitignore</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060202" href="06-02-example.html#js--060202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.2</span><span class="toc-lev3-text">Creating a folder structure</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060203" href="06-02-example.html#js--060203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.3</span><span class="toc-lev3-text">Adding images to the project</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060204" href="06-02-example.html#js--060204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.4</span><span class="toc-lev3-text">The <span class="code">README.md</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060205" href="06-02-example.html#js--060205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.5</span><span class="toc-lev3-text">The <span class="code">index.html</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060206" href="06-02-example.html#js--060206">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.6</span><span class="toc-lev3-text">The <span class="code">style.css</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060300" href="06-03-example.html#js--060300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.3</span><span class="toc-lev2-text">The first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060301" href="06-03-example.html#js--060301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.1</span><span class="toc-lev3-text">Staging the files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060302" href="06-03-example.html#js--060302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.2</span><span class="toc-lev3-text">Making the first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060303" href="06-03-example.html#js--060303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.3</span><span class="toc-lev3-text">Viewing the commit history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060304" href="06-03-example.html#js--060304">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.4</span><span class="toc-lev3-text">Tagging the commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.4</span><span class="toc-lev2-text">Adding another commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060401" href="06-04-example.html#js--060401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.1</span><span class="toc-lev3-text">Viewing the file history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060402" href="06-04-example.html#js--060402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.2</span><span class="toc-lev3-text">Viewing the contents of a file at a previous commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060500" href="06-05-example.html#js--060500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.5</span><span class="toc-lev2-text">Branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060501" href="06-05-example.html#js--060501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.1</span><span class="toc-lev3-text">Adding a branch in Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060502" href="06-05-example.html#js--060502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.2</span><span class="toc-lev3-text">Making a commit on a new branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060600" href="06-06-example.html#js--060600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.6</span><span class="toc-lev2-text">Switching branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060601" href="06-06-example.html#js--060601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.1</span><span class="toc-lev3-text">Switching branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060602" href="06-06-example.html#js--060602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.2</span><span class="toc-lev3-text">Discarding the latest changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060700" href="06-07-example.html#js--060700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.7</span><span class="toc-lev2-text">Merging, conflicts and deleting branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060701" href="06-07-example.html#js--060701">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.1</span><span class="toc-lev3-text">Merging a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060702" href="06-07-example.html#js--060702">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.2</span><span class="toc-lev3-text">Deleting a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060703" href="06-07-example.html#js--060703">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.3</span><span class="toc-lev3-text">Merging a branch with a Conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 060200]
+     SECTION - 6.2 CREATING THE LOCAL REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060200">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>6.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Creating the folder structure and initial files</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">In this section, I&rsquo;m going to create the project folder structure, add the first set of files for the project to these folders and then make them ready for a first commit to store it all in the local repository.</p>
+
+                    <p class="hyp">This is essentially the initial build of the project.</p>
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060201]
+     SUBSECTION - 6.2.1 CREATING A NEW FOLDER IN THE REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060201">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.2.1</h3></div>
+                    <div class="sub-title-text-box"><h3>The <span class="code">.gitignore</span> file</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">First thing, since it&rsquo;s there&mdash;let&rsquo;s change the <span class="code">.gitignore</span> file. </p>
+
+                    <p class="hyp">Double click the <span class="code">.gitignore</span> file in the left hand pane to open it in Brackets:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-08">
+                            <a href="01-pages/06-02-example/02-images/fig-06-08.png" data-lightbox="fig-set" data-title="Figure 6.8 - .gitignore in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-08.png" alt="Figure 6.8 - .gitignore in Brackets">
+                            </a>
+                            <p>Figure 6.8 &emsp; .gitignore in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Leave the stuff that&rsquo;s in there (The Brackets-Git extension added these things when it created the file. They don&rsquo;t do any harm, <span class="first-use">but I don&rsquo;t exactly know what they do either</span>) and add the following (lines 7 onwards):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">.gitignore</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c06-01"># https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example .gitignore files: https://github.com/github/gitignore
+/bower_components/
+/node_modules/
+
+# Windows OS Files
+Thumbs.db
+Desktop.ini
+
+# Mac OS Files
+.DS_store</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.1 &emsp; .gitignore modifications</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-02-brackets/04-data/code-06-01.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save the file (<span class="menu">file &rarr; save</span> or <span class="menu">ctrl+s</span> or, if you have <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-01-starting.html#js--040102">autosave</a>, just click outside the Brackets window). The Git pane will recognise the change and will now show the file as <span class="git-cmd">untracked</span> (it will no longer be in the staging area).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-09">
+                            <a href="01-pages/06-02-example/02-images/fig-06-09.png" data-lightbox="fig-set" data-title="Figure 6.9 - File status change Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-09.png" alt="Figure 6.9 - File status change Brackets">
+                            </a>
+                            <p>Figure 6.9 &emsp; File status change Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The little green line that shows next to the file in the left hand file tree of Brackets indicates that the file has been modified (doesn&rsquo;t match the file in the repository). The green line will disappear when we commit the changes and everything matches.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060202]
+     SUBSECTION - 6.2.2 CREATING A NEW FOLDER IN THE REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060202">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.2.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating a folder structure</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">Now let&rsquo;s add some folders and images to the project Git handles folders quite well<sup>&dagger;1</sup>. The folder structure I&rsquo;m looking for is shown in <a class="xref js--sc-f06-10" href="#">Figure&nbsp;6.10</a>. </p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>I&rsquo;m not showing the <span class="code">.git folder</span>.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-10">
+                            <a href="01-pages/06-02-example/02-images/fig-06-10.svg" data-lightbox="fig-set" data-title="Figure 6.10 - lab-01-website Folder structure">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 80%" src="01-pages/06-02-example/02-images/fig-06-10.svg" alt="Figure 6.10 - lab-01-website Folder structure">
+                            </a>
+                            <p>Figure 6.10 &emsp; lab-01-website Folder structure</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">Git will always keep files in the correct folder and different folders can hold files of the same name—it all works as you would expect. Git doesn’t however, track empty folders; empty folders are ignored by Git and won’t be in the repository. This leads to dummy files, placeholders <span class="first-use">(lieutenants if you will—in England it is pronounced “leff-tanant”, sorry Americans, you’ve been saying it wrong all these years)</span> being used to make Git correctly store empty folders. There is an informal convention that these placeholder files are called <span class="code">.gitkeep</span>. It is a convention I use</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">To create the first folder (<span class="code">11-resources</span>) right click in the file tee (left pane of Brackets) and select <span class="menu">new folder</span> (<a class="xref js--sc-f06-11" href="#">Figure&nbsp;6.11</a>).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-11">
+                            <a href="01-pages/06-02-example/02-images/fig-06-11.png" data-lightbox="fig-set" data-title="Figure 6.11 - Brackets, create folder">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-11.png" alt="Figure 6.11 - Brackets, create folder">
+                            </a>
+                            <p>Figure 6.11 &emsp; Brackets, create folder</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Call the new folder <span class="code">11-resources</span> (it will be highlighted in the left hand tree view).</p>
+
+                    <p class="hyp">Now right click the new <span class="code">11-resources</span> folder and create another new folder within it, call this one <span class="code">01-css</span>. Then repeat the process (right click <span class="code">11-resources</span> again) and create a second folder called <span class="code">02-images</span>. The final thing should look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-12">
+                            <a href="01-pages/06-02-example/02-images/fig-06-12.png" data-lightbox="fig-set" data-title="Figure 6.12 - Brackets, final folder structure">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-12.png" alt="Figure 6.12 - Brackets, final folder structure">
+                            </a>
+                            <p>Figure 6.12 &emsp; Brackets, final folder structure</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>Although the new folders are showing in Brackets, they are not listed in the Git pane; this is because they are empty. We&rsquo;ll fill them soon.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">That&rsquo;s the folder structure in place. Next thing is to add some files. </p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060203]
+     SUBSECTION - 6.2.3 ADDING IMAGES TO THE PROJECT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060203">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.2.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Adding images to the project</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The first thing is the two images (<span class="code">logo.png</span> and <span class="code">readme.png</span>). They look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                     <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-2" id="js--f06-12a">
+                            <a href="01-pages/06-02-example/02-images/fig-06-13.png" data-lightbox="fig-set" data-title="Figure 6.13 - logo.png">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 300px" src="01-pages/06-02-example/02-images/fig-06-13.png" alt="Figure 6.13 - logo.png">
+                            </a>
+                            <p>Figure 6.13 &emsp; logo.png</p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-03">
+                            <a href="01-pages/06-02-example/02-images/fig-06-14.png" data-lightbox="fig-set" data-title="Figure 6.14 - readme.png">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 300px" src="01-pages/06-02-example/02-images/fig-06-14.png" alt="Figure 6.14 - readme.png">
+                            </a>
+                            <p>Figure 6.14 &emsp; readme.png</p><!-- Figure caption -->
+                        </div>
+
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">These two files can be downloaded here <a class="code-nav" href="01-pages/06-02-example/04-data/images.zip" download><sub><span class="nav-icon notice" style="font-size: 1.1rem">a</span></sub></a>. Copy and paste them into the <span class="code">02-images</span> folder (the easiest way is with Windows Explorer).</p>
+
+                    <p class="hyp">Brackets should automatically recognise that two new files are present and update the left hand file tree accordingly. If it doesn&rsquo;t (sometimes it is slow with networked drives) right click the left sidebar and select <span class="menu">refresh file tree</span> or just hit <span class="menu">f5</span>. </p>
+
+                    <p class="hyp">Either way it should look like this (click the little arrow heads at the side of the folder names in the left hand file tree to expand them), <a class="xref js--sc-f06-15" href="#">Figure&nbsp;6.15</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-15">
+                            <a href="01-pages/06-02-example/02-images/fig-06-15.png" data-lightbox="fig-set" data-title="Figure 6.15 - Brackets, with image files">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-15.png" alt="Figure 6.15 - Brackets, with image files">
+                            </a>
+                            <p>Figure 6.15 &emsp; Brackets, with image files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We can also see that the two files have been detected by Git and are correctly flagged as <span class="git-cmd">untracked</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060204]
+     SUBSECTION - 6.2.4 CREATING A NEW FOLDER IN THE REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060204">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.2.4</h3></div>
+                    <div class="sub-title-text-box"><h3>The <span class="code">README.md</span> file</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">I haven&rsquo;t really discussed the <span class="code">README.md</span> file. I mentioned it briefly in <a class="hlink nohyp" href="05-04-brackets.html#js--050400">section&nbsp;5.4</a> and made some changes by way of example. The <span class="code">README.md</span> file was introduced with GitHub. GitHub likes readme files. It likes them to such an extent that if one lives in the root folder it will be displayed on the home screen for that repository.</p>
+
+                    <p class="hyp">Now I know that this is a local repository and isn&rsquo;t on GitHub; but I&rsquo;m still going to create a <span class="code">README.md</span> file. I think they&rsquo;re a good idea and we will be putting this project into a remote GitHub repository in a subsequent section (<a class="hlink nohyp" href="08-00-remotes.html#js--080000">section&nbsp;8</a>).</p>
+
+                    <p class="hyp">The <span class="code">README.md</span> file is a markdown file <span class="first-use">(ironically this is actually a version of a mark-up language)</span> hence the <span class="code">.md</span> extension. It is widely used for README files. It allows the text in the file to be formatted by using simple character combinations:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t06-01">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-left" style="width: 43%">MARKDOWN</th>      <!-- set column 01 width here -->
+                            <th class="table-left" style="width: 57%">RESULT</th>    <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code"># This is an h1 heading</span></td>
+                            <td class="table-left">
+                                <figure class="fig-row">                    <!-- START OF FIGURE -->
+                                    <div class="fig-col fig1-1">
+                                        <img src="01-pages/06-02-example/02-images/fig-06-15a.png" alt="Markdown - heading 1">
+                                     </div>
+                                </figure>                                   <!-- END OF FIGURE -->
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">## This is a h2 heading</span></td>
+                            <td class="table-left">
+                                <figure class="fig-row">                    <!-- START OF FIGURE -->
+                                    <div class="fig-col fig1-1">
+                                        <img src="01-pages/06-02-example/02-images/fig-06-15b.png" alt="Markdown - heading 2">
+                                     </div>
+                                </figure>                                   <!-- END OF FIGURE -->
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">###### This is a h6 heading</span></td>
+                            <td class="table-left">
+                                <figure class="fig-row">                    <!-- START OF FIGURE -->
+                                    <div class="fig-col fig1-1">
+                                        <img src="01-pages/06-02-example/02-images/fig-06-15c.png" alt="Markdown - heading 6">
+                                     </div>
+                                </figure>                                   <!-- END OF FIGURE -->
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">*Text in italics*</span></td>
+                            <td class="table-left">
+                                <figure class="fig-row">                    <!-- START OF FIGURE -->
+                                    <div class="fig-col fig1-1">
+                                        <img src="01-pages/06-02-example/02-images/fig-06-15d.png" alt="Markdown - italics">
+                                     </div>
+                                </figure>                                   <!-- END OF FIGURE -->
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">**Text in bold**</span></td>
+                            <td class="table-left">
+                                <figure class="fig-row">                    <!-- START OF FIGURE -->
+                                    <div class="fig-col fig1-1">
+                                        <img src="01-pages/06-02-example/02-images/fig-06-15e.png" alt="Markdown - bold">
+                                     </div>
+                                </figure>                                   <!-- END OF FIGURE -->
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">1. Item 1<br>
+2. Item 2<br>
+3. Item 3<br>
+&nbsp;&nbsp;&nbsp;* Item 3a<br>
+&nbsp;&nbsp;&nbsp;* Item 3b
+</span></td>
+                            <td class="table-left">
+                                <figure class="fig-row">                    <!-- START OF FIGURE -->
+                                    <div class="fig-col fig1-1">
+                                        <img src="01-pages/06-02-example/02-images/fig-06-15f.png" alt="Markdown - list">
+                                     </div>
+                                </figure>                                   <!-- END OF FIGURE -->
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption">Table 6.1 &emsp; Basic markdown</td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">GitHub uses a slightly more advanced version of markdown, this is called <span class="first-use">Git Flavoured Markdown</span> and allows images, code fragments and some directly encoded HTML.</p>
+
+                    <p class="hyp"><a class="hlink nohyp utx" href="09c-00-appendix.html#js--000000">appendix&nbsp;c</a> gives a summary and some examples of both markdown and Git flavoured markdown.</p>
+
+                    <p class="hyp">The <span class="code">README.md</span> should contain certain specific things:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Unnumbered lists are an unordered list of class .list-no-num. The text of
+      each point must be contained in its own <p> element
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp">A title</p></li>
+
+                        <li><p class="hyp">An Introduction (what the project is for)</p></li>
+
+                        <li><p class="hyp">A Table of Content (TOC)</p></li>
+
+                        <li><p class="hyp">Instructions for use</p></li>
+
+                        <li><p class="hyp">Installation instruction (if required)</p></li>
+
+                        <li><p class="hyp">Links to other documentation (if not all contained here)</p></li>
+
+                        <li><p class="hyp">List of contributors</p></li>
+
+                        <li><p class="hyp">Licence (unless listed in another document)</p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s create the readme file. It needs to be in the root of the project folder.</p>
+
+                    <p class="hyp">In Brackets, right click the bottom of the file tree and click new file and then rename the new file as <span class="code">README.md</span><sup>&dagger;2</sup> .</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;2</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">The <span class="code">README.md</span> file is by convention written with README in capitals (I think to make it noticeable). There is no actual requirement for this; GitHub will quite happily use <span class="code">readme.md</span> instead. If both are present, it will display <span class="code">README.md</span> in preference to <span class="code">readme.md</span>.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Double click the new file and add the following code to it:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header"><span style="text-transform: uppercase">README</span>.md</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c06-02"># A PracticalSeries Publication
+
+&lt;p align="center"&gt;
+&nbsp; &nbsp; &lt;img src="11-resources/02-images/readme.png"&gt;
+&lt;/p&gt;
+
+The **Practical Series of publications** is a website resource for web developers and engineers. It contains a number of online publications designed to help and explain how to build a website, how to use version control and how to write engineering software for control systems.
+This particular repository is designed as an example project to demonstrate how to build a Git and GitHub repository using the Brackets-Git extension for the Brackets text editor.
+The full set of PracticalSeries publications is available at [practicalseries.com](http://practicalseries.com "Practical Series Website").
+
+## How to use this repository
+This repository is a worked example demonstrating how to build a version control project using Git and GitHub from within the Brackets text editor.
+This repository is intended to be used with the accompanying documentation [practicalseries Git and GitHub](http://practicalseries.com/0021-git-vcs/index.html "Practical Series&nbsp;-&nbsp;Git and GitHub").
+
+## Contributors
+This repository was constructed by [Michael Gledhill](https://github.com/practicalseries-lab "Michael Gledhill").
+
+## Licence
+This is simply a demonstration repository, the contents are free to use by anyone who wishes to do so.
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.2 &emsp; README.md file contents </td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-02-example/04-data/code-06-02.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again when you save the file, Git will detect it and it will appear in the Git pane marked as <span class="git-cmd">untracked</span>.</p>
+
+                    <p class="hyp">If you have the markdown preview activated <sub><img style="height: 0.85rem" src="01-pages/06-02-example/02-images/fig-06-15g.png" alt="terminal icon"></sub>, the <span class="code">README.md</span> will be displayed as it will appear on GitHub at the bottom of the screen (<a class="xref js--sc-f06-16" href="#">Figure&nbsp;6.16</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-16">
+                            <a href="01-pages/06-02-example/02-images/fig-06-16.png" data-lightbox="fig-set" data-title="Figure 6.16 - README file in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-16.png" alt="Figure 6.16 - README file in Brackets">
+                            </a>
+                            <p>Figure 6.16 &emsp; README file in Bracketss</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The actual <span class="code">README.md</span> file is shown in full in <a class="xref js--sc-f06-17" href="#">Figure&nbsp;6.17</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-17">
+                            <a href="01-pages/06-02-example/02-images/fig-06-17.png" data-lightbox="fig-set" data-title="Figure 6.17 - README file in full">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-17.png" alt="Figure 6.17 - README file in full">
+                            </a>
+                            <p>Figure 6.17 &emsp; README file in full</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">That&rsquo;s it for the <span class="code">README.md</span> file.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060205]
+     SUBSECTION - 6.2.5 THE INDEX.HTML FILE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060205">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.2.5</h3></div>
+                    <div class="sub-title-text-box"><h3>The <span class="code">index.html</span> file</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">Nearly there, just two more files to go.</p>
+
+                    <p class="hyp">First <span class="code">index.html</span>. Create a new file in the root directory (same place as <span class="code">.gitignore</span> and <span class="code">README.md</span>). Call it <span class="code">index.html</span> and add the following code:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">index.html</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c06-03">&lt;html lang="en"&gt;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &lt;!-- Declare language --&gt;
+&nbsp; &nbsp; &lt;head&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Start of head section --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt; &nbsp; &nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
+
+&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&lt;/title&gt;&nbsp; &nbsp;
+&nbsp; &nbsp; &lt;/head&gt;
+
+&nbsp; &nbsp; &lt;body&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;figure class="cover-fig"&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;img src="11-resources/02-images/logo.png" alt="cover logo"&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;/figure&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;A note by the author&lt;/h3&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&lt;p&gt;This is my second Practical Series publication&mdash;this one happened by accident too. The first publication is all about building a website, you can see it here. This publication came about because I wanted some sort of version control mechanism for the first publication.&lt;/p&gt;
+
+&lt;p&gt;There are lots of different version control systems (VCS) out there; some are free, some are commercial applications just google it. If you do, you will find that Git and GitHub show up again and again.&lt;/p&gt;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.3 &emsp; index.html</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-02-example/04-data/code-06-03.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save the file and again confirm that it is recognised by Brackets&mdash;is in the Git pane and is marked as <span class="git-cmd">untracked</span> (<a class="xref js--sc-f06-18" href="#">Figure&nbsp;6.18</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-18">
+                            <a href="01-pages/06-02-example/02-images/fig-06-18.png" data-lightbox="fig-set" data-title="Figure 6.18 - index.html file in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-18.png" alt="Figure 6.18 - index.html file in Brackets">
+                            </a>
+                            <p>Figure 6.18 &emsp; index.html file in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060206]
+     SUBSECTION - 6.2.6 THE STYLE.CSS FILE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060206">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.2.6</h3></div>
+                    <div class="sub-title-text-box"><h3>The <span class="code">style.css</span> file</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Finally, the <span class="code">style.css</span> file.</p>
+
+                    <p class="hyp">The <span class="code">style.css</span> file needs to be created in the <span class="code">11-resources\01-css\</span> folder. If the folder isn’t visible, expand the folder by clicking the small arrow next to the folder name in the left hand file tree view. Once you can see the <span class="code">01-css</span> folder right click it and select <span class="menu">new file</span>. Rename the new file <span class="code">style.css</span>. Add the following code:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">style.css</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-css wrap" id="js--c06-04">* {
+&nbsp; &nbsp; margin: 0;
+&nbsp; &nbsp; padding: 0;
+&nbsp; &nbsp; box-sizing: border-box;
+&nbsp; &nbsp; position: relative;
+}
+
+html {
+&nbsp; &nbsp; background-color: #fbfaf6; &nbsp; &nbsp; /* Set cream coloured page background */
+&nbsp; &nbsp; color: #404030;
+&nbsp; &nbsp; font-family: serif;
+&nbsp; &nbsp; font-size: 26px;
+&nbsp; &nbsp; text-rendering: optimizeLegibility;
+}
+
+body {
+&nbsp; &nbsp; max-width: 1276px;
+&nbsp; &nbsp; margin: 0 auto;
+&nbsp; &nbsp; background-color: #fff;&nbsp; &nbsp; &nbsp; &nbsp; /* make content area background white */
+&nbsp; &nbsp; border-left: 1px solid #ededed;
+&nbsp; &nbsp; border-right: 1px solid #ededed;
+}
+
+h1, h2, h3, h4, h5, h6 {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* set standard headings */
+&nbsp; &nbsp; font-family: sans-serif;
+&nbsp; &nbsp; font-weight:normal;
+&nbsp; &nbsp; font-size: 3rem;
+&nbsp; &nbsp; padding: 2rem 5rem 2rem 5rem;
+}
+h3 { font-size: 2.5rem; }
+
+.cover-fig {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* holder for cover image */
+&nbsp; &nbsp; width: 50%;
+&nbsp; &nbsp; margin: 2rem auto;
+&nbsp; &nbsp; padding: 0;
+}
+.cover-fig img {width: 100%;}&nbsp; &nbsp; &nbsp; /* format cover image */
+
+p {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   /* TEXT STYLE&nbsp;-&nbsp;paragraph */
+&nbsp; &nbsp; margin-bottom: 1.2rem;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* *** THIS SETS PARAGRAPH SPACING *** */
+&nbsp; &nbsp; padding: 0 5rem;
+&nbsp; &nbsp; line-height: 135%;
+}
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.4 &emsp; style.css</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-02-example/04-data/code-06-04.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save the file and again confirm that it is recognised by Git. Git should now have six <span class="git-cmd">untracked</span> files <a class="xref js--sc-t06-02" href="#">Table&nbsp;6.2</a> and <a class="xref js--sc-f06-19" href="#">Figure&nbsp;6.19</a>; all files are displayed in the Brackets file tree:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t06-02">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-left" style="width: 60%">FILE (AND PATH)</th>      <!-- set column 01 width here -->
+                            <th class="table-left" style="width: 40%">STATUS</th>    <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">.gitignore</span></td>
+                            <td class="table-left">Untracked</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">11-resources/01-css/style.css</span></td>
+                            <td class="table-left">Untracked</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">11-resources/02-images/logo.png</span></td>
+                            <td class="table-left">Untracked</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">11-resources/02-images/readme.png</span></td>
+                            <td class="table-left">Untracked</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">README.md</span></td>
+                            <td class="table-left">Untracked</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left"><span class="code">index.html</span></td>
+                            <td class="table-left">Untracked</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption">Table 6.2 &emsp; List of all files</td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-19">
+                            <a href="01-pages/06-02-example/02-images/fig-06-19.png" data-lightbox="fig-set" data-title="Figure 6.19 - style.css and all six untracked files">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-02-example/02-images/fig-06-19.png" alt="Figure 6.19 - style.css and all six untracked files">
+                            </a>
+                            <p>Figure 6.19 &emsp; style.css and all six untracked files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">These files are now ready to be staged and committed. <span class="first-use">That&rsquo;s next</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="06-01-example.html#js--060100">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="06-03-example.html#js--060300">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

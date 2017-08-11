@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="A worked, practical example of using Git within Brackets.">
+        <meta name="description" content="How to create a local repository with Brackets-Git">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                   06-00-EXAMPLE.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                   06-01-EXAMPLE.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,12 +41,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-09 Aug 2017   d-P09.06.01  M. Gledhill    Page formally created (replacing
-                                          P02 place holder)
-
-10 Jun 2017   P02          M. Gledhill    Published
-
-10 Jun 2017   t-P01.01.04  M. Gledhill    Page created
+06 Aug 2017   d-P09.06.01  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -71,7 +66,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/06-00-example/05-local-js/06-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/06-01-example/05-local-js/06-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -82,10 +77,10 @@ Date          Issue        Author         Reason for Modification
         <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
         <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
         <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
-        <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/06-00-example/01-local-css/06-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/06-01-example/01-local-css/06-01-prettifylines.css"> -->
 
 
 
@@ -106,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Git &amp; Brackets a worked example | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Creating a local repository | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -125,7 +120,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="05-04-brackets.html#js--050400"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <a class="nav-wide" href="06-00-example.html#js--060000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
@@ -137,7 +132,7 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="06-01-example.html#js--060100"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="06-02-example.html#js--060200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -151,7 +146,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/branch.png" alt="Build info">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -160,7 +155,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 06-00&nbsp;&mdash;&nbsp;d-P09.06.01</p>
+<!--REVISION-->         <p>Rev: 06-01&nbsp;&mdash;&nbsp;d-P09.06.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -295,59 +290,178 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 060000]
-     CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
+<!-- ************************************************************************** [WP 060100]
+     SECTION - 6.1 CREATING THE LOCAL REPOSITORY
      ***********************************************************************-->
 
-        <section class="section-std" id="js--060000">           <!-- Start of section -->
+        <section class="section-std" id="js--060100">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-thinline"></div>      <!-- Thin overline (after TOC) -->
-                    <div class="sub-title-num-box"><h6>Placeholder</h6></div>   <!-- Heading 6 is a placehoder heading needed in sections without a heading to satisfy html validation -->
-                <!--     <div class="sub-title-num-box"><h2>X</h2></div>        Optional numbered heading
-                         <div class="sub-title-text-box"><h2>Text</h2></div> -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>6.1</h2></div>
+                 <div class="sub-title-text-box"><h2>Creating the local repository</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
 
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <p class="hyp">A worked, practical example of using Git within Brackets.</p>                                 <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">In this section</span>, I use the Brackets-Git extension to create the <span class="code">lab-01-website</span> discussed in a theoretical manner in <a class="hlink nohyp" href="02-02-concept.html#js--020201">section&nbsp;2.2.1</a>.</p>
+                    <p class="hyp">Let’s start with a very simple example, a single page website with a picture; I’m going to call it <span class="code">lab-01-website</span>. This is the same website I discussed in a theoretical fashion in <a class="hlink nohyp" href="02-02-concept.html#js--020201">section&nbsp;2.2.1</a>. I’m now going to build it for real using Brackets<sup>&dagger;1</sup>.</p>
 
-                    <p class="hyp">I will go through this process as a fully worked example demonstrating branching, merging and conflict resolution.</p>
-
-                    <p class="hyp">Broadly, I will use Brackets-Git to do the following:</p>
-
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      NUMBERED LIST
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ol class="list-num">                       <!-- Start of numbered list -->
-                        <li><p class="hyp">Create a new repository on a local machine</p></li>
-
-                        <li><p class="hyp">Create the initial website and add it to the repository</p></li>
-
-                        <li><p class="hyp">Create new branches to develop additional web pages</p></li>
-
-                        <li><p class="hyp">Merge these branches back into the master branch</p></li>
-
-                        <li><p class="hyp">Explain how to resolve conflicts</p></li>
-
-                        <li><p class="hyp">Tagging commit points</p></li>
-                    </ol>                                       <!-- End of numbered list -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I’m just going to refer to it as Brackets rather than Bracket-Git or Brackets with Git. When I say Brackets, I mean Brackets equipped with the Brackets-Git extension installed (see <a class="hlink nohyp" href="05-01-brackets.html#js--050100">&sect;&nbsp;5.1</a>).</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">This section deals entirely with a local repository on a single PC. In subsequent sections I expand this website and incorporate it into a remote repository to demonstrate how Brackets-Git can manage remote as well as local repositories.</p>
+                    <p class="hyp">On my machine I keep all my Git repositories under a single directory, that directory is on my D: drive and is called <span class="code">2500 Git Projects</span>. Like this:</p>
 
-                    <p class="hyp">Some of what I do here is similar to what I did in the previous chapter&mdash;that however was just an introduction. This is a fully worked example and covers Brackets-Git in much more detail.</p>
+                    <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects</span></p>
+
+                    <p class="hyp">I need a new empty directory to keep the repository in. Using Windows Explorer I’ve created a <span class="code">lab-01-website</span> folder under the <span class="code">2500 Git Projects</span> directory, thus:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects\lab-01-website</span></p>
+
+                    <p class="hyp">It looks like this in Windows Explorer (<a class="xref js--sc-f06-01" href="#">Figure&nbsp;6.1</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-01">
+                            <a href="01-pages/06-01-example/02-images/fig-06-01.png" data-lightbox="fig-set" data-title="Figure 6.1 - A new folder for the repository">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 728px" src="01-pages/06-01-example/02-images/fig-06-01.png" alt="Figure 6.1 - A new folder for the repository">
+                            </a>
+                            <p>Figure 6.1 &emsp; A new folder for the repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The next thing is to open the new folder in Brackets, the easiest way it to just right click the folder in Windows Explorer and select <span class="menu">open as a brackets project</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-02">
+                            <a href="01-pages/06-01-example/02-images/fig-06-02.png" data-lightbox="fig-set" data-title="Figure 6.2 - Open the new folder in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 728px" src="01-pages/06-01-example/02-images/fig-06-02.png" alt="Figure 6.2 - Open the new folder in Brackets">
+                            </a>
+                            <p>Figure 6.2 &emsp; Open the new folder in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This can also be done from within Brackets, click <span class="menu">file &rarr; open folder...</span> and navigate to the newly created lab-01-website folder and click select folder.</p>
+
+                    <p class="hyp">Either way, you will have an empty folder open in Brackets. It should look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-03">
+                            <a href="01-pages/06-01-example/02-images/fig-06-03.png" data-lightbox="fig-set" data-title="Figure 6.3 - lab-01-website project in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-01-example/02-images/fig-06-03.png" alt="Figure 6.3 - lab-01-website project in Brackets">
+                            </a>
+                            <p>Figure 6.3 &emsp; lab-01-website project in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">At this point, all we&rsquo;ve done is create an empty folder and open it in Brackets. The next thing is to <span class="git-cmd">initialise</span> the folder and make it a Git repository.</p>
+
+                    <p class="hyp">Click the <span class="menu">Brackets-Git</span> icon (<sub><img style="height: 0.85rem" src="01-pages/06-01-example/02-images/fig-06-03a.png" alt="terminal icon"></sub>)  on the right hand sidebar, the icon will turn blue and the Git interface window will open in the bottom pane of the Brackets window (<a class="xref js--sc-f06-04" href="#">Figure&nbsp;6.4</a>), I call this the <span class="first-use">Git pane</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-04">
+                            <a href="01-pages/06-01-example/02-images/fig-06-04.png" data-lightbox="fig-set" data-title="Figure 6.4 - Initialise the repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-01-example/02-images/fig-06-04.png" alt="Figure 6.4 - Initialise the repository">
+                            </a>
+                            <p>Figure 6.4 &emsp; Initialise the repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the <span class="menu">init</span> button and this will initialise the repository. It will do two things: it will create the <span class="code">.git</span> folder inside the <span class="code">lab-01-website</span> making this a Git repository. It also creates a <span class="code">.gitignore</span> file.</p>
+
+                    <p class="hyp">The <span class="code">.git</span> folder can be seen by navigating to <span class="code">lab-01-website</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-05">
+                            <a href="01-pages/06-01-example/02-images/fig-06-05.png" data-lightbox="fig-set" data-title="Figure 6.5 - The local repository in the new folder">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 728px" src="01-pages/06-01-example/02-images/fig-06-05.png" alt="Figure 6.5 - The local repository in the new folder">
+                            </a>
+                            <p>Figure 6.5 &emsp; The local repository in the new folder</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s look at what we have in Brackets <a class="xref js--sc-f06-06" href="#">Figure&nbsp;6.6</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-06">
+                            <a href="01-pages/06-01-example/02-images/fig-06-06.png" data-lightbox="fig-set" data-title="Figure 6.6 - A newly created repository in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-01-example/02-images/fig-06-06.png" alt="Figure 6.6 - A newly created repository in Brackets">
+                            </a>
+                            <p>Figure 6.6 &emsp; A newly created repository in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There is a couple of thing to notice. Firstly a local repository has been created and the active branch is <span class="git-cmd">master</span> (point <span class="index">1</span> in <a class="xref js--sc-f06-06" href="#">Figure&nbsp;6.6</a>).</p>
+
+                    <p class="hyp">Secondly, the new <span class="code">.gitignore</span> file is showing in Brackets (point <span class="index">2</span> in <a class="xref js--sc-f06-06" href="#">Figure&nbsp;6.6</a>).</p>
+
+                    <p class="hyp">The <span class="code">.gitignore</span> file is used to exclude certain files from the Git repository (see <a class="hlink nohyp" href="02-07-concept.html#js--020700">&sect;&nbsp;2.7</a>). Brackets has also detected the presence of the file and wants to add it to the repository. It is flagged as <span class="first-use">staged</span> in the Git pane:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-07">
+                            <a href="01-pages/06-01-example/02-images/fig-06-07.png" data-lightbox="fig-set" data-title="Figure 6.7 - Staged files">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 728px" src="01-pages/06-01-example/02-images/fig-06-07.png" alt="Figure 6.7 - Staged files">
+                            </a>
+                            <p>Figure 6.7 &emsp; Staged files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Don&rsquo;t commit the changes yet, I want to do some work before we commit anything (I go through commits in <a class="hlink nohyp utx" href="06-03-example.html#js--060300">&sect;&nbsp;6.3</a>).</p>
+
+                    <p class="hyp">So there we are, we&rsquo;ve created a new Git repository <span class="first-use">(and, best of all, we haven&rsquo;t had to use the command line)</span>.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -371,7 +485,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="05-04-brackets.html#js--050400">Prev</a>
+                        <a class="xref" href="06-00-example.html#js--060000">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -381,7 +495,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="06-01-example.html#js--060100">Next</a>
+                        <a class="xref" href="06-02-example.html#js--060200">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -414,7 +528,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      JAVASCRIPT (POST PAGE LOAD)
      ***********************************************************************-->
-        <!-- Lightbox                   <script type="text/javascript" src="21-global/05-js/lightbox.js"></script> -->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
 
     </body>
 </html>

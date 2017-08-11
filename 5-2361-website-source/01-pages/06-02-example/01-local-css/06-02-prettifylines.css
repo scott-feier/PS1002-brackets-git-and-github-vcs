@@ -53,10 +53,35 @@ Date          Issue        Author         Reason for Modification
 
 
 /* ****************************************************************************
-   CODE FRAGMENT c05-01 - FORMATTING
+   CODE FRAGMENT c06-01 - FORMATTING
    ************************************************************************* */
-#js--c05-01 li:nth-child(1) .pln {color: #D9369F}
+#js--c06-01 li:nth-child(n+7):nth-child(-n+12) { background: #EAF1DD }                      /* line background green */
 
-#js--c05-01 li:nth-child(9) .pln {color: #D9369F}
 /* ************************************************************************* */
 
+/* ****************************************************************************
+   CODE FRAGMENT c06-02 - FORMATTING
+   ************************************************************************* */
+#js--c06-02 li:nth-child(1)  .pln {color: #D9369F}
+#js--c06-02 li:nth-child(11) .pln {color: #D9369F}
+#js--c06-02 li:nth-child(15) .pln {color: #D9369F}
+#js--c06-02 li:nth-child(18) .pln {color: #D9369F}
+/* ************************************************************************* */
+
+
+/* ****************************************************************************
+   CODE FRAGMENT c06-03 - FORMATTING
+   ************************************************************************* */
+#js--c06-03 li:nth-child(5) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
+#js--c06-03 li:nth-child(19) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
+#js--c06-03 li:nth-child(21) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
+
+/* ************************************************************************* */
+
+/* ****************************************************************************
+   CODE FRAGMENT c06-03 - FORMATTING
+   ************************************************************************* */
+#js--c06-04 .pln { color: #4271ae;}                                      /* overlay style colours for CSS fragment */
+#js--c06-04 .lit { color: #718c00;}
+
+/* ************************************************************************* */
