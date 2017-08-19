@@ -41,6 +41,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+19 Aug 2017   t-P09.06.P20 M. Gledhill    Section 6 TOC updated & proofread
+                                          and validated
+
 18 Aug 2017   d-P09.06.02  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -154,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 06-05&nbsp;&mdash;&nbsp;d-P09.06.02</p>
+<!--REVISION-->         <p>Rev: 06-07&nbsp;&mdash;&nbsp;t-P09.06.P10</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -222,6 +225,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
@@ -480,9 +484,16 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
                     <div class="code-extract">                              <!-- Start of code fragment -->
                         <div class="code-area">                             <!-- Start of code extract holder -->
 
-                            <pre class="prettyprint linenums:30 lang-css" id="js--c06-08a">h3 { font-size: 2.5rem; color: #c0504d; }</pre>
+                            <pre class="prettyprint linenums:30 lang-css" id="js--c06-08a">h3 { font-size: 2.5rem; color: #4F81BD; }</pre>
 
                         </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%"></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%"></td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
                     </div>                                                  <!-- End of code fragment -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -619,7 +630,7 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Also, the <span class="code">01-intro.html</span> file and the <span class="code">02-about.html</span> files are missing (these don&rsquo;t exist on the master branch). I&rsquo;m showing the <span class="code">style.css</span> file in <a class="xref js--sc-f06-64" href="#">Figure&nbsp;6.64</a>, you can see here that the <span class="git-cmd">master</span> branch version doesn&rsquo;t have the h3 changes.</p>
+                    <p class="hyp">Also, the <span class="code">01-intro.html</span> file and the <span class="code">02-about.html</span> files are missing (these don&rsquo;t exist on the master branch). I&rsquo;m showing the <span class="code">style.css</span> file in <a class="xref js--sc-f06-64" href="#">Figure&nbsp;6.64</a>, you can see here that the <span class="git-cmd">master</span> branch version doesn&rsquo;t have the <span class="code">h3</span> changes.</p>
 
                     <p class="hyp">Once again:</p>
 
@@ -696,7 +707,7 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
 
                     <p class="hyp">The next two tick boxes:</p>
 
-                    <p class="hyp"><span class="menu">rebase</span>&mdash;rebase allows us to effectively re-write history. I don&rsquo;t like rebase and I recommend you don&rsquo;t use it. I explain it as a topic and why I don&rsquo;t like it in <a class="hlink nohyp utx" href="90e-01-appendix.html#js--0e0100">appendix&nbsp;e1</a>. <em>Leave this box unticked</em>.</p>
+                    <p class="hyp"><span class="menu">rebase</span>&mdash;rebase allows us to effectively re-write history. I don&rsquo;t like rebase and I recommend you don&rsquo;t use it. I explain it as a topic and why I don&rsquo;t like it in <a class="hlink nohyp utx" href="90e-01-appendix.html#js--000100">appendix&nbsp;e1</a>. <em>Leave this box unticked</em>.</p>
 
                     <p class="hyp">Tick the final box <span class="menu">create a merge commit even when the merge resolves as a fast-forward</span>. A fast-forward merge is basically a merge with no conflicts. I still want a commit point after the merge, even if there were no problems. <em>Tick this box</em>. That&rsquo;s it, click <span class="menu">ok</span>. This will generate a merge result dialogue box:</p>
 
@@ -713,7 +724,7 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Ok, we changed two files (<span class="code">01-intro.html</span> and <span class="code">style.css</span>) and I&rsquo;m willing to bet there were 19 additions and two deletions. Click <span class="menu">close</span>.</p>
+                    <p class="hyp">Ok, we changed two files (<span class="code">01-intro.html</span> and <span class="code">style.css</span>) and I&rsquo;m willing to bet there were 19 additions and one deletion. Click <span class="menu">close</span>.</p>
 
                     <p class="hyp">The <span class="git-cmd">master</span> branch is still active; it now has a new commit, the merge commit, <span class="code">[abf1121]</span> in my case. Give this the tag <span class="code">P02</span> and open the commit history:</p>
 
@@ -745,7 +756,7 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">At this point, everything on the <span class="git-cmd">d-01-intro</span> branch has been merged on to the <span class="git-cmd">master branch</span>. <span class="git-cmd">d-01-intro</span> still exists and it still has the two commit points on it (you can see if you change to the branch and view the commit history). However, the branch doesn&rsquo;t contain anything we need&mdash;the commits have been merged on to the <span class="git-cmd">master</span> branch.</p>
+                    <p class="hyp">At this point, everything on the <span class="git-cmd">d-01-intro</span> branch has been merged on to the <span class="git-cmd">master branch</span>&mdash;<span class="git-cmd">d-01-intro</span> still exists and it still has the two commit points on it (you can see this if you change to the branch and view the commit history). However, the branch doesn&rsquo;t contain anything we need&mdash;the commits have been merged on to the <span class="git-cmd">master</span> branch.</p>
 
                     <p class="hyp">The best thing to do now is delete the <span class="git-cmd">d-01-intro</span> branch. It&rsquo;s served its purpose and we don&rsquo;t need it anymore <span class="first-use">(we can always recreate it if we need to work on 01-intro again)</span>.</p>
 
@@ -1101,6 +1112,13 @@ h3 { font-size: 2.5rem; color: #c0504d;}
                             <pre class="prettyprint lang-css" id="js--c06-10a">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</pre>
 
                         </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%"></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%"></td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
                     </div>                                                  <!-- End of code fragment -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -1122,6 +1140,13 @@ h3 { font-size: 2.5rem; color: #c0504d;}
                             <pre class="prettyprint lang-css" id="js--c06-10b">h3 { font-size: 2.5rem; color: #4F81BD; }</pre>
 
                         </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%"></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%"></td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
                     </div>                                                  <!-- End of code fragment -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -1141,6 +1166,13 @@ h3 { font-size: 2.5rem; color: #c0504d;}
                             <pre class="prettyprint lang-css" id="js--c06-10c">=======</pre>
 
                         </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%"></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%"></td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
                     </div>                                                  <!-- End of code fragment -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -1162,6 +1194,13 @@ h3 { font-size: 2.5rem; color: #c0504d;}
 </pre>
 
                         </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%"></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%"></td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
                     </div>                                                  <!-- End of code fragment -->
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

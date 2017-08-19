@@ -41,6 +41,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+19 Aug 2017   t-P09.06.P20 M. Gledhill    Section 6 TOC updated & proofread
+                                          and validated
+
 15 Aug 2017   d-P09.06.02  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -154,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 06-03&nbsp;&mdash;&nbsp;d-P09.06.02</p>
+<!--REVISION-->         <p>Rev: 06-03&nbsp;&mdash;&nbsp;t-P09.06.P10</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -222,6 +225,7 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
@@ -467,7 +471,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Let’s look at what we’ve got.</p>
 
-                    <p class="hyp">The most obvious thing is the bit in the middle (the green bit), this shows all the changes to each of the staged files, scroll down to see all the changes in each file one after the other. This bit is here to make sure you know what you are about to commit <span class="first-use">(I suspect most people don’t bother looking)</span>.</p>
+                    <p class="hyp">The most obvious thing is the bit in the middle (the green bit), this shows all the changes to each of the staged files, scroll down to see all the changes in each file one after the other. This bit is here to make sure you know what you are about to commit <span class="first-use">(I suspect most people are like me and don’t bother looking)</span>.</p>
 
                     <p class="hyp">The thing this dialogue box is really asking for is the bit in the box underneath this. <span class="first-use">The commit message</span>. The commit message is very important; it explains the reason for the change. I have my own style for commit messages; I explain it in <a class="hlink nohyp utx" href="90b-00-appendices.html#js--000000">appendix&nbsp;B</a>, feel free to use it or use whatever style you prefer.</p>
 
@@ -501,7 +505,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The golden rules of commit messages is that the first line should be less than 50 characters long<sup>&dagger;1</sup>  <span class="first-use">(that&rsquo;s what the number is in the box at the top right of the message area&mdash;unfortunately it doesn&rsquo;t really work when using the extended box, it counts everything)</span>. If entering a multiline message, make sure there is a blank line after the first line.</p>
+                    <p class="hyp">The golden rule of commit messages is that the first line should be less than 50 characters long<sup>&dagger;1</sup>  <span class="first-use">(that&rsquo;s what the number is in the box at the top right of the message area&mdash;unfortunately it doesn&rsquo;t really work when using the extended box, it counts everything)</span>. If entering a multiline message, make sure there is a blank line after the first line.</p>
 
                     <p class="hyp"><span class="git-cmd">Commit</span> the changes by pressing the <span class="menu">ok</span> button <span class="first-use">(this is the point of no return)</span>.</p>
 
@@ -518,7 +522,7 @@ Date          Issue        Author         Reason for Modification
                         <tr>                                    <!-- TABLE - Start of footnote row 01 -->
                             <td class="table-left"><em>&dagger;1</em></td>
                             <td class="table-left"></td>
-                            <td colspan="2" class="table-left">There are some basic rules for commit messages that apply to all messages (and not just to my particular style of message). These are:</td>
+                            <td colspan="2" class="table-left">There are some other basic rules for commit messages that apply to all messages (and not just to my particular style of message). These are:</td>
                         </tr>                                   <!-- TABLE - End of footnote row 02   -->
                         <tr>                                    <!-- TABLE - Start of footnote row 01 -->
                             <td class="table-left"></td>
@@ -609,7 +613,7 @@ Date          Issue        Author         Reason for Modification
                         <tr>                                    <!-- TABLE - Start of footnote row 01 -->
                             <td class="table-left"><em>&dagger;2</em></td>
                             <td class="table-left"></td>
-                            <td colspan="2" class="table-left">I did a bit of digging with this; I think Brackets want&rsquo;s to have the username and email in the local configuration file (config), see <a class="hlink nohyp" href="03-03-install.html#js--030301">&sect;&nbsp;3.3.1</a>, this is inside the <span class="code">.git</span> folder <span class="first-use">(where we never go)</span>. Remember we put the username and email in the <span class="code">.gitconfig</span> file in home directory. If the information is not in the <span class="code">config</span> file Brackets will ask for it.</td>
+                            <td colspan="2" class="table-left">I did a bit of digging with this; I think Brackets want&rsquo;s to have the username and email in the local configuration file (<span class="code">config</span>), see <a class="hlink nohyp" href="03-03-install.html#js--030301">&sect;&nbsp;3.3.1</a>, this is inside the <span class="code">.git</span> folder <span class="first-use">(where we never go)</span>. Remember we put the username and email in the <span class="code">.gitconfig</span> file in home directory. If the information is not in the <span class="code">config</span> file Brackets will ask for it.</td>
                         </tr>                                   <!-- TABLE - End of footnote row 02   -->
                         <tr>                                    <!-- TABLE - Start of footnote row 01 -->
                             <td class="table-left"><em></em></td>
@@ -729,7 +733,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The next thing is the commit number, mine is: <sub><img src="01-pages/06-03-example/02-images/fig-06-30a.png" alt="short commint number"></sub></p>
 
-                    <p class="hyp">This is the seven digit short form of the commit number. If you click the three blue dots following it, you get the full 40 digit hash (SHA-1) number (see <a class="hlink nohyp utx" href="02-02-concept.html#js--020202">&sect;&nbsp;2.2.2</a> for an explanation). In my case this is it:</p>
+                    <p class="hyp">This is the seven digit short form of the commit number. If you click the three blue dots following it, you get the full 40 digit hash (SHA-1) number (see <a class="hlink nohyp" href="02-02-concept.html#js--020202">&sect;&nbsp;2.2.2</a> for an explanation). In my case this is it:</p>
 
                     <p class="hyp" style="text-align: center;"><sub><img src="01-pages/06-03-example/02-images/fig-06-30b.png" alt="full commit number"></sub></p>
 
@@ -789,7 +793,7 @@ Date          Issue        Author         Reason for Modification
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f06-31">
                             <a href="01-pages/06-03-example/02-images/fig-06-31.png" data-lightbox="fig-set" data-title="Figure 6.31 - Tag dialogue box">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/06-03-example/02-images/fig-06-31.png" alt="Figure 6.31 - Tag dialogue box">
+                                <img style="max-width: 500px" src="01-pages/06-03-example/02-images/fig-06-31.png" alt="Figure 6.31 - Tag dialogue box">
                             </a>
                             <p>Figure 6.31 &emsp; Tag dialogue box</p>     <!-- Figure caption -->
                         </div>
@@ -827,7 +831,7 @@ Date          Issue        Author         Reason for Modification
                         <tr>                                    <!-- TABLE - Start of footnote row 01 -->
                             <td class="table-left"><em>&dagger;3</em></td>
                             <td class="table-left"></td>
-                            <td colspan="2" class="table-left">Brackets won&rsquo;t let you tag anything but the current commit. Git however will, the Git command line terminal GitHub can be used to assign a tag to any previous commit (see <a class="hlink nohyp utx" href="09-06-github.html#js--090600">&sect;&nbsp;9.6</a>).</td>
+                            <td colspan="2" class="table-left">Brackets won&rsquo;t let you tag anything but the current commit. Git however will, the Git command line terminal Git Bash can be used to assign a tag to any previous commit (see <a class="hlink nohyp utx" href="09-06-github.html#js--090600">&sect;&nbsp;9.6</a>).</td>
                         </tr>                                   <!-- TABLE - End of footnote row 02   -->
                     </table>                                    <!-- TABLE - End of footnote    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -877,7 +881,7 @@ Date          Issue        Author         Reason for Modification
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f06-33">
                             <a href="01-pages/06-03-example/02-images/fig-06-33.png" data-lightbox="fig-set" data-title="Figure 6.33 - Workflow (D01)">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/06-03-example/02-images/fig-06-33.png" alt="Figure 6.33 - Workflow (D01)">
+                                <img style="max-width: 166px" src="01-pages/06-03-example/02-images/fig-06-33.png" alt="Figure 6.33 - Workflow (D01)">
                             </a>
                             <p>Figure 6.33 &emsp; Workflow (D01)</p>     <!-- Figure caption -->
                         </div>
