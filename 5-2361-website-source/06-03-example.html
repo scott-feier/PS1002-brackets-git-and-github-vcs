@@ -1,0 +1,958 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="Using Brackets-Git to make the first commit to a repository">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   06-03-EXAMPLE.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+15 Aug 2017   d-P09.06.02  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/06-03-example/05-local-js/06-03-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/06-03-example/01-local-css/06-03-prettifylines.css">
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>The first commit with Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="06-02-example.html#js--060200"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="06-04-example.html#js--060400"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>6</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">6</span>Git &amp; Brackets a worked example</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 06-03&nbsp;&mdash;&nbsp;d-P09.06.02</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 6 GIT AND BRACKETS A WORKED EXAMPLE
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-060000" href="06-00-example.html#js--060000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">6</span><span class="toc-lev1-text">Git &amp; Brackets a worked example</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-060100" href="06-01-example.html#js--060100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.1</span><span class="toc-lev2-text">Creating the local repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060200" href="06-02-example.html#js--060200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.2</span><span class="toc-lev2-text">Creating the folders  and initial files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060201" href="06-02-example.html#js--060201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.1</span><span class="toc-lev3-text">The <span class="code">.gitignore</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060202" href="06-02-example.html#js--060202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.2</span><span class="toc-lev3-text">Creating a folder structure</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060203" href="06-02-example.html#js--060203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.3</span><span class="toc-lev3-text">Adding images to the project</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060204" href="06-02-example.html#js--060204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.4</span><span class="toc-lev3-text">The <span class="code">README.md</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060205" href="06-02-example.html#js--060205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.5</span><span class="toc-lev3-text">The <span class="code">index.html</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060206" href="06-02-example.html#js--060206">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.6</span><span class="toc-lev3-text">The <span class="code">style.css</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060300" href="06-03-example.html#js--060300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.3</span><span class="toc-lev2-text">The first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060301" href="06-03-example.html#js--060301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.1</span><span class="toc-lev3-text">Staging the files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060302" href="06-03-example.html#js--060302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.2</span><span class="toc-lev3-text">Making the first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060303" href="06-03-example.html#js--060303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.3</span><span class="toc-lev3-text">Viewing the commit history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060304" href="06-03-example.html#js--060304">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.4</span><span class="toc-lev3-text">Tagging the commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.4</span><span class="toc-lev2-text">Adding another commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060401" href="06-04-example.html#js--060401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.1</span><span class="toc-lev3-text">Viewing the file history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060402" href="06-04-example.html#js--060402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.2</span><span class="toc-lev3-text">Viewing the contents of a file at a previous commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060500" href="06-05-example.html#js--060500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.5</span><span class="toc-lev2-text">Branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060501" href="06-05-example.html#js--060501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.1</span><span class="toc-lev3-text">Adding a branch in Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060502" href="06-05-example.html#js--060502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.2</span><span class="toc-lev3-text">Making a commit on a new branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060600" href="06-06-example.html#js--060600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.6</span><span class="toc-lev2-text">Switching branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060601" href="06-06-example.html#js--060601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.1</span><span class="toc-lev3-text">Switching branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060602" href="06-06-example.html#js--060602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.2</span><span class="toc-lev3-text">Discarding the latest changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060700" href="06-07-example.html#js--060700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.7</span><span class="toc-lev2-text">Merging, conflicts and deleting branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060701" href="06-07-example.html#js--060701">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.1</span><span class="toc-lev3-text">Merging a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060702" href="06-07-example.html#js--060702">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.2</span><span class="toc-lev3-text">Deleting a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060703" href="06-07-example.html#js--060703">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.3</span><span class="toc-lev3-text">Merging a branch with a Conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 060300]
+     SECTION - 6.3 THE FIRST COMMIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060300">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>6.3</h2></div>
+                 <div class="sub-title-text-box"><h2>The first commit</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">We&rsquo;ve reached the point where we have six files that we are ready to <span class="git-cmd">commit</span> to the repository. These are the files listed in <a class="hlink nohyp" href="06-02-example.html#js--t06-02">Table&nbsp;6.2</a>. All are listed as <span class="git-cmd">untracked</span>. This is apparent by looking at the Git pane in Brackets:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-20">
+                            <a href="01-pages/06-03-example/02-images/fig-06-20.png" data-lightbox="fig-set" data-title="Figure 6.20 - All six untracked files">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-20.png" alt="Figure 6.20 - All six untracked files">
+                            </a>
+                            <p>Figure 6.20 &emsp; All six untracked files</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">When we worked through this example in <a class="hlink nohyp" href="02-02-concept.html#js--020200">&sect;&nbsp;2.2</a>, the first thing we did after creating them was add them to the staging are&mdash;this was a process in its own right with Git and similar to the commit process itself (it used the <span class="git-cmd">add</span> command to stage the files in a similar way to using the <span class="git-cmd">commit</span> command to add them to the local repository).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060301]
+     SUBSECTION - 6.3.1 STAGING THE FILES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060301">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.3.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Staging the files</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">With Brackets it is a bit easier, to stage the files just click the tick box next to the file in the Git pane. If I do this for the <span class="code">.gitignore</span> file its status will change to <span class="git-cmd">staged</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-21">
+                            <a href="01-pages/06-03-example/02-images/fig-06-21.png" data-lightbox="fig-set" data-title="Figure 6.21 - A staged file in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-21.png" alt="Figure 6.21 - A staged file in Brackets">
+                            </a>
+                            <p>Figure 6.21 &emsp; A staged file in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We actually want to stage all six files, this can be done individually or with the common tick box at the top (next to the commit button), this will select all the files in the list. It looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-22">
+                            <a href="01-pages/06-03-example/02-images/fig-06-22.png" data-lightbox="fig-set" data-title="Figure 6.22 - Stage all the files in Brackets">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-22.png" alt="Figure 6.22 - Stage all the files in Brackets">
+                            </a>
+                            <p>Figure 6.22 &emsp; Stage all the files in Brackets</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="git-cmd">diff</span> icon <sub><img style="height:1rem" src="01-pages/06-03-example/02-images/fig-06-22a.png" alt="file history icon"></sub>, if clicked will open a window showing the changes made to the associated file, it&rsquo;s a bit meaningless here, all the files are new so everything in them is a difference.</p>
+
+                    <p class="hyp">To <span class="first-use">unstage</span> a file just untick the box. If you modify a staged file, it will automatically be unstaged and you will have to tick the box again.</p>
+
+                    <p class="hyp">The next thing is to commit the files.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060302]
+     SUBSECTION - 6.3.2 MAKING THE FIRST COMMIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060302">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.3.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Making the first commit</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Ok, we’ve got all six files staged and we want to commit them. It’s easy, just press the <span class="menu">commit</span> button <sub><img style="height:1rem" src="01-pages/06-03-example/02-images/fig-06-22b.png" alt="commit icon"></sub>. Don’t worry, you still get chance to cancel out.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>Only staged files will be committed, those with a tick in the box.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This opens the Git commit dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-23">
+                            <a href="01-pages/06-03-example/02-images/fig-06-23.png" data-lightbox="fig-set" data-title="Figure 6.23 - Brackets Git commit dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-23.png" alt="Figure 6.23 - Brackets Git commit dialogue box">
+                            </a>
+                            <p>Figure 6.23 &emsp; Brackets Git commit dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let’s look at what we’ve got.</p>
+
+                    <p class="hyp">The most obvious thing is the bit in the middle (the green bit), this shows all the changes to each of the staged files, scroll down to see all the changes in each file one after the other. This bit is here to make sure you know what you are about to commit <span class="first-use">(I suspect most people don’t bother looking)</span>.</p>
+
+                    <p class="hyp">The thing this dialogue box is really asking for is the bit in the box underneath this. <span class="first-use">The commit message</span>. The commit message is very important; it explains the reason for the change. I have my own style for commit messages; I explain it in <a class="hlink nohyp utx" href="90b-00-appendices.html#js--000000">appendix&nbsp;B</a>, feel free to use it or use whatever style you prefer.</p>
+
+                    <p class="hyp">This dialogue box allows the commit message to be entered as either a single line (how it looks in <a class="xref js--sc-f06-23" href="#">Figure&nbsp;6.23</a>) or if you click the <span class="code">extended</span> button at the top <sub><img style="height:1rem" src="01-pages/06-03-example/02-images/fig-06-24a.png" alt="extended icon"></sub> you can enter multiple lines: </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-24">
+                            <a href="01-pages/06-03-example/02-images/fig-06-24.png" data-lightbox="fig-set" data-title="Figure 6.24 - Brackets Git extended commit message box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-24.png" alt="Figure 6.24 - Brackets Git extended commit message box">
+                            </a>
+                            <p>Figure 6.24 &emsp; Brackets Git extended commit message box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is my message:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-25">
+                            <a href="01-pages/06-03-example/02-images/fig-06-25.png" data-lightbox="fig-set" data-title="Figure 6.25 - Initial commit message">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-25.png" alt="Figure 6.25 - Initial commit message">
+                            </a>
+                            <p>Figure 6.25 &emsp; Initial commit message</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The golden rules of commit messages is that the first line should be less than 50 characters long<sup>&dagger;1</sup>  <span class="first-use">(that&rsquo;s what the number is in the box at the top right of the message area&mdash;unfortunately it doesn&rsquo;t really work when using the extended box, it counts everything)</span>. If entering a multiline message, make sure there is a blank line after the first line.</p>
+
+                    <p class="hyp"><span class="git-cmd">Commit</span> the changes by pressing the <span class="menu">ok</span> button <span class="first-use">(this is the point of no return)</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">There are some basic rules for commit messages that apply to all messages (and not just to my particular style of message). These are:</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"></td>
+                            <td class="table-left"></td>
+                            <td class="table-cent">1</td>
+                            <td class="table-left">The first line should be less than 50 characters.<br>It can be more, but best practice is not to make it too long otherwise it gets cut off in the display area</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"></td>
+                            <td class="table-left"></td>
+                            <td class="table-cent">2</td>
+                            <td class="table-left">If using an extended commit message, always leave a blank line after the first line&mdash;this ensures the first line is treated as a title for the commit</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"></td>
+                            <td class="table-left"></td>
+                            <td class="table-cent">3</td>
+                            <td class="table-left">When using extended comments, keep each line short (75 characters max) otherwise these can also be cut off</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060302a">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>A note on the first commit with Brackets</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Usually, with the first commit, Brackets will ask you to change the username and email for the repository. This is because we haven&rsquo;t set them yet for this project (it didn&rsquo;t ask us when we initialised the project and for some reason it doesn&rsquo;t just adopt the ones we setup in the Git installation<sup>&dagger;2</sup> <a class="hlink nohyp" href="03-04-install.html#js--030401">&sect;&nbsp;3.4.1</a>). So we have to give it the information. In my case my username is <span class="code">practicalseries-lab</span> and email is <span class="code">lab@practicalseries.com</span>. Enter your own <span class="first-use">(obviously)</span>.</p>
+
+                    <p class="hyp">The entry boxes look like <a class="xref js--sc-f06-26" href="#">Figure&nbsp;6.26</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-26">
+                            <a href="01-pages/06-03-example/02-images/fig-06-26.png" data-lightbox="fig-set" data-title="Figure 6.26 - Enter username and email for the repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-26.png" alt="Figure 6.26 - Enter username and email for the repository">
+                            </a>
+                            <p>Figure 6.26 &emsp; Enter username and email for the repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Enter the information and click <span class="menu">ok</span> each time.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn02">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;2</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I did a bit of digging with this; I think Brackets want&rsquo;s to have the username and email in the local configuration file (config), see <a class="hlink nohyp" href="03-03-install.html#js--030301">&sect;&nbsp;3.3.1</a>, this is inside the <span class="code">.git</span> folder <span class="first-use">(where we never go)</span>. Remember we put the username and email in the <span class="code">.gitconfig</span> file in home directory. If the information is not in the <span class="code">config</span> file Brackets will ask for it.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em></em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">	There is some sense to this, it means Brackets can switch repositories and adopt the username and email for the new project automatically.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Unfortunately, the commit <em>will not</em> have been made, it takes you back to the staging area and you have to click the <span class="menu">commit</span> button <sub><img style="height:1rem" src="01-pages/06-03-example/02-images/fig-06-22b.png" alt="commit icon"></sub> again&mdash;don&rsquo;t worry, you won&rsquo;t have to re-enter the commit message, it will still be there. Just click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp">That&rsquo;s it we&rsquo;ve committed the changes to the repository.</p>
+
+                    <p class="hyp">Brackets now looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-27">
+                            <a href="01-pages/06-03-example/02-images/fig-06-27.png" data-lightbox="fig-set" data-title="Figure 6.27 - Brackets, post commit">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-27.png" alt="Figure 6.27 - Brackets, post commit">
+                            </a>
+                            <p>Figure 6.27 &emsp; Brackets, post commit</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Brackets is now reporting <span class="code">Nothing to commit, working directory clean.</span></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060303]
+     SUBSECTION - 6.3.3 VIEWING THE COMMIT HISTORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060303">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.3.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Viewing the commit history</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Seeing the commit history is easy, just click the <sub><img style="height:1rem" src="01-pages/06-03-example/02-images/fig-06-27a.png" alt="commit history icon"></sub> (<span class="menu">show history</span>) button. It opens the current history in the Git pane:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-28">
+                            <a href="01-pages/06-03-example/02-images/fig-06-28.png" data-lightbox="fig-set" data-title="Figure 6.28 - Brackets, post commit detail">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-28.png" alt="Figure 6.28 - Brackets, post commit detail">
+                            </a>
+                            <p>Figure 6.28 &emsp; Brackets, post commit detail</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There are a couple of things to see here, first is the commit number on the right, in my case it is <span class="code">[8ce2e8e]</span>. The second is the commit message, it shows the first line of the commit message we entered in the previous section.</p>
+
+                    <p class="hyp">It also shows who made the commit (<span class="code">practicalseries-lab</span>) and when (if you don’t like the <span class="first-use">2 hours ago</span> style, it can be changed, see <a class="hlink nohyp utx" href="07-01-regression.html#js--070101">&sect;&nbsp;7.1.1</a>). The white <sub><img src="01-pages/06-03-example/02-images/fig-06-28a.png" alt="user icon"></sub> on an orange background is generated by Brackets, it is just the first letter of the username on a coloured background&mdash;it allows commits made by different users to be readily identified.</p>
+
+                    <p class="hyp">Clicking anywhere on a commit line in the Git pane, opens a larger commit information pane above it. I.e.:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-29">
+                            <a href="01-pages/06-03-example/02-images/fig-06-29.png" data-lightbox="fig-set" data-title="Figure 6.29 - Commit information">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-29.png" alt="Figure 6.29 - Commit information">
+                            </a>
+                            <p>Figure 6.29 &emsp; Commit information</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s concentrate on the information pane, make it a bit bigger:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-30">
+                            <a href="01-pages/06-03-example/02-images/fig-06-30.png" data-lightbox="fig-set" data-title="Figure 6.30 - Commit information in full">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-30.png" alt="Figure 6.30 - Commit information in full">
+                            </a>
+                            <p>Figure 6.30 &emsp; Commit information in full</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Let&rsquo;s start at the top; it shows the Brackets generated icon for the user (<sub><img style="height:1rem" src="01-pages/06-03-example/02-images/fig-06-28a.png" alt="user icon"></sub>) followed by the username, email address and the time of the commit.</p>
+
+                    <p class="hyp">The next thing is the commit number, mine is: <sub><img src="01-pages/06-03-example/02-images/fig-06-30a.png" alt="short commint number"></sub></p>
+
+                    <p class="hyp">This is the seven digit short form of the commit number. If you click the three blue dots following it, you get the full 40 digit hash (SHA-1) number (see <a class="hlink nohyp utx" href="02-02-concept.html#js--020202">&sect;&nbsp;2.2.2</a> for an explanation). In my case this is it:</p>
+
+                    <p class="hyp" style="text-align: center;"><sub><img src="01-pages/06-03-example/02-images/fig-06-30b.png" alt="full commit number"></sub></p>
+
+                    <p class="hyp">I&rsquo;m going to ignore the <span class="menu">checkout</span> and <span class="menu">reset index</span> buttons; these are to do with moving to earlier commit points and I cover this in <a class="hlink nohyp" href="07-00-regression.html#js--000000">section&nbsp;7</a> (If you can&rsquo;t see the buttons, you probably haven&rsquo;t activated one of the options, again it&rsquo;s in <a class="hlink nohyp" href="07-00-regression.html#js--000000">section&nbsp;7</a>).</p>
+
+                    <p class="hyp">Next is the commit message in full, the first line of the commit message is shown as a heading.</p>
+
+                    <p class="hyp">Underneath this is a list of all the files that were in the commit. If you click the small arrow on the left of the file name, it expands the file showing the changes that were made at the time of the commit. In <a class="xref js--sc-f06-30" href="#">Figure&nbsp;6.30</a> I&rsquo;ve expanded the <span class="code">.gitignore</span> file. If you click the <span class="menu">expand all</span> button <sub><img src="01-pages/06-03-example/02-images/fig-06-30c.png" alt="expand all icon"></sub> at the top, it expands all files in the commit.</p>
+
+                    <p class="hyp">Finally, the little eye symbol <img src="01-pages/06-03-example/02-images/fig-06-30d.png" alt="eye icon">, This opens the current version of the file in the Brackets editor (if the file is already opened in Brackets, then the button doesn&rsquo;t do anything).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060304]
+     SUBSECTION - 6.3.4 TAGGING THE COMMIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060304">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.3.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Tagging the commit</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I&rsquo;m going to tag the commits as I go along <span class="first-use">(you don&rsquo;t have to do this if you don&rsquo;t want to)</span> I&rsquo;m doing it because I want to demonstrate tagging and it&rsquo;s easier to demonstrate if we do it as we go along&mdash;it is also useful for identifying commit points.</p>
+
+                    <p class="hyp">I&rsquo;m using the tagging arrangement listed in <a class="hlink nohyp utx" href="09b-00-appendix.html#js--000000">appendix&nbsp;b</a>. Brackets will let you tag the latest commit point (it won&rsquo;t let you tag earlier commits<sup>&dagger;3</sup>&mdash;<span class="first-use">hence I&rsquo;m doing it as we go along</span>).</p>
+
+                    <p class="hyp">To tag the latest commit point, click the tag icon in the Git pane <sub><img style="height: 0.85rem" src="01-pages/06-03-example/02-images/fig-06-30e.png" alt="tag icon"></sub>. This opens a simple tag dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-31">
+                            <a href="01-pages/06-03-example/02-images/fig-06-31.png" data-lightbox="fig-set" data-title="Figure 6.31 - Tag dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-31.png" alt="Figure 6.31 - Tag dialogue box">
+                            </a>
+                            <p>Figure 6.31 &emsp; Tag dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;m going to call the first tag <span class="code">D01</span>. Enter it in the box and click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp">This will automatically activate the history view in the Git pane; this will show the new tag against the latest commit point:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-32">
+                            <a href="01-pages/06-03-example/02-images/fig-06-32.png" data-lightbox="fig-set" data-title="Figure 6.32 - A tagged commit point">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-32.png" alt="Figure 6.32 - A tagged commit point">
+                            </a>
+                            <p>Figure 6.32 &emsp; A tagged commit point</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn03">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;3</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">Brackets won&rsquo;t let you tag anything but the current commit. Git however will, the Git command line terminal GitHub can be used to assign a tag to any previous commit (see <a class="hlink nohyp utx" href="09-06-github.html#js--090600">&sect;&nbsp;9.6</a>).</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 02   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060305]
+     SUBSECTION - 6.3.5 THE CURRENT WORKFLOW
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060305">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.3.5</h3></div>
+                    <div class="sub-title-text-box"><h3>The current workflow</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+
+                    <p class="hyp">This is another London Underground diagram, just like <a class="hlink nohyp" href="https://en.wikipedia.org/wiki/Mornington_Crescent_(game)">mornington&nbsp;crescent</a>. It shows where we are in the current project as a series of branches and commits. It&rsquo;s very simple at the minute:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-33">
+                            <a href="01-pages/06-03-example/02-images/fig-06-33.png" data-lightbox="fig-set" data-title="Figure 6.33 - Workflow (D01)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-03-example/02-images/fig-06-33.png" alt="Figure 6.33 - Workflow (D01)">
+                            </a>
+                            <p>Figure 6.33 &emsp; Workflow (D01)</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;ll expand this diagram as we go along.</p>
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="06-02-example.html#js--060200">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="06-04-example.html#js--060400">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

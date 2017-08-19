@@ -1,0 +1,611 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="Using Brackets-Git to switch between branches in a repository">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   06-06-EXAMPLE.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+18 Aug 2017   d-P09.06.02  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/06-06-example/05-local-js/06-06-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/06-06-example/01-local-css/06-06-prettifylines.css">
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Switching branches with Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="06-05-example.html#js--060500"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="06-07-example.html#js--060700"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>6</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">6</span>Git &amp; Brackets a worked example</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 06-05&nbsp;&mdash;&nbsp;d-P09.06.02</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 6 GIT AND BRACKETS A WORKED EXAMPLE
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-060000" href="06-00-example.html#js--060000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">6</span><span class="toc-lev1-text">Git &amp; Brackets a worked example</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-060100" href="06-01-example.html#js--060100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.1</span><span class="toc-lev2-text">Creating the local repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060200" href="06-02-example.html#js--060200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.2</span><span class="toc-lev2-text">Creating the folders  and initial files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060201" href="06-02-example.html#js--060201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.1</span><span class="toc-lev3-text">The <span class="code">.gitignore</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060202" href="06-02-example.html#js--060202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.2</span><span class="toc-lev3-text">Creating a folder structure</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060203" href="06-02-example.html#js--060203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.3</span><span class="toc-lev3-text">Adding images to the project</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060204" href="06-02-example.html#js--060204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.4</span><span class="toc-lev3-text">The <span class="code">README.md</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060205" href="06-02-example.html#js--060205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.5</span><span class="toc-lev3-text">The <span class="code">index.html</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060206" href="06-02-example.html#js--060206">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.6</span><span class="toc-lev3-text">The <span class="code">style.css</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060300" href="06-03-example.html#js--060300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.3</span><span class="toc-lev2-text">The first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060301" href="06-03-example.html#js--060301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.1</span><span class="toc-lev3-text">Staging the files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060302" href="06-03-example.html#js--060302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.2</span><span class="toc-lev3-text">Making the first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060303" href="06-03-example.html#js--060303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.3</span><span class="toc-lev3-text">Viewing the commit history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060304" href="06-03-example.html#js--060304">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.4</span><span class="toc-lev3-text">Tagging the commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.4</span><span class="toc-lev2-text">Adding another commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060401" href="06-04-example.html#js--060401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.1</span><span class="toc-lev3-text">Viewing the file history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060402" href="06-04-example.html#js--060402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.2</span><span class="toc-lev3-text">Viewing the contents of a file at a previous commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060500" href="06-05-example.html#js--060500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.5</span><span class="toc-lev2-text">Branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060501" href="06-05-example.html#js--060501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.1</span><span class="toc-lev3-text">Adding a branch in Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060502" href="06-05-example.html#js--060502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.2</span><span class="toc-lev3-text">Making a commit on a new branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060600" href="06-06-example.html#js--060600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.6</span><span class="toc-lev2-text">Switching branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060601" href="06-06-example.html#js--060601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.1</span><span class="toc-lev3-text">Switching branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060602" href="06-06-example.html#js--060602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.2</span><span class="toc-lev3-text">Discarding the latest changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060700" href="06-07-example.html#js--060700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.7</span><span class="toc-lev2-text">Merging, conflicts and deleting branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060701" href="06-07-example.html#js--060701">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.1</span><span class="toc-lev3-text">Merging a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060702" href="06-07-example.html#js--060702">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.2</span><span class="toc-lev3-text">Deleting a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060703" href="06-07-example.html#js--060703">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.3</span><span class="toc-lev3-text">Merging a branch with a Conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 060600]
+     SECTION - 6.6  SWITCHING BRANCHES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060600">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>6.6</h2></div>
+                 <div class="sub-title-text-box"><h2>Switching branches</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">This is a small but important point. </p>
+
+                    <p class="hyp">If I&rsquo;m on the <span class="git-cmd">d-01-intro</span> branch I have these files in the file tree and the following commits:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-50">
+                            <a href="01-pages/06-06-example/02-images/fig-06-50.png" data-lightbox="fig-set" data-title="Figure 6.50 - Files and commits on the d-01-intro branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-06-example/02-images/fig-06-50.png" alt="Figure 6.50 - Files and commits on the d-01-intro branch">
+                            </a>
+                            <p>Figure 6.50 &emsp; Files and commits on the <span class="git-cmd">d-01-intro</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I clearly have the <span class="code">01-intro.html</span> file and there are three commits.</p>
+
+                    <p class="hyp">Change back to the <span class="git-cmd">master</span> branch (by clicking the small arrow next to the branch in the file tree and selecting <span class="git-cmd">master</span>, <a class="xref js--sc-f06-51" href="#">Figure&nbsp;6.51</a>).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-51">
+                            <a href="01-pages/06-06-example/02-images/fig-06-51.png" data-lightbox="fig-set" data-title="Figure 6.51 - Brackets&mdash;switch branches">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 200px" src="01-pages/06-06-example/02-images/fig-06-51.png" alt="Figure 6.51 - Brackets&mdash;switch branches">
+                            </a>
+                            <p>Figure 6.51 &emsp; Brackets&mdash;switch branches</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <p class="hyp">Now I get:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-52">
+                            <a href="01-pages/06-06-example/02-images/fig-06-52.png" data-lightbox="fig-set" data-title="Figure 6.52 - Files and commits on the master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-06-example/02-images/fig-06-52.png" alt="Figure 6.52 - Files and commits on the master branch">
+                            </a>
+                            <p>Figure 6.52 &emsp; Files and commits on the <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="code">01-intro.html</span> file is no longer there and there are only two commits.</p>
+
+                    <p class="hyp">To reiterate what I said in <a class="hlink nohyp" href="02-03-concept.html#js--020301">section&nbsp;2.3.1</a>:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">SWITCHING BRANCHES CHANGES THE FILES<br>IN YOUR WORKING DIRECTORY</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is important. Like I said <span class="first-use">&ldquo;you&rsquo;ll remember it when you&rsquo;re on the wrong branch wondering where all your files have gone&rdquo;</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060601]
+     SUBSECTION - 6.6.1 SWITCHING BRANCHES WITH UNCOMMITTED CHANGES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060601">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.6.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Switching branches with uncommitted changes</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I said before, <span class="first-use">&ldquo;you can&rsquo;t switch branches if you have uncommitted changes on that branch&rdquo;</span>.</p>
+
+                    <p class="hyp">Switch back to the <span class="git-cmd">d-01-intro</span> branch and open the <span class="code">01-intro.html</span> file. Add some text into the <span class="code">&lt;h3&gt;Introduction&lt;/h3&gt;</span> line (line 13) and save the file. The file status will now be modified:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-53">
+                            <a href="01-pages/06-06-example/02-images/fig-06-53.png" data-lightbox="fig-set" data-title="Figure 6.53 - Modified file on d-01-intro">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-06-example/02-images/fig-06-53.png" alt="Figure 6.53 - Modified file on d-01-intro">
+                            </a>
+                            <p>Figure 6.53 &emsp; Modified file on <span class="git-cmd">d-01-intro</span></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If I now try to change back to the master branch I get the following message:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-54">
+                            <a href="01-pages/06-06-example/02-images/fig-06-54.png" data-lightbox="fig-set" data-title="Figure 6.54 - Brackets switch branch error">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 500px" src="01-pages/06-06-example/02-images/fig-06-54.png" alt="Figure 6.54 - Brackets switch branch error">
+                            </a>
+                            <p>Figure 6.54 &emsp; Brackets switch branch error</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Brackets won&rsquo;t let you change branches if you have uncommitted changes.</p>
+
+                    <p class="hyp">Again this confirms what I said in <a class="hlink nohyp" href="02-03-concept.html#js--020301">section&nbsp;2.3.1</a>:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">YOU CANNOT CHANGE BRANCHES IF YOU HAVE <br>UNCOMMITTED CHANGES IN YOUR WORKING COPY</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><em>Always commit changes before switching branches.</em></p>
+
+                    <p class="hyp">See the footnote in <a class="hlink nohyp" href="02-03-concept.html#js--020301">&sect;&nbsp;2.3.1</a> for the reasons why.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060602]
+     SUBSECTION - 6.6.2 DISCARDING THE LATEST CHANGES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060602">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.6.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Discarding the latest changes</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I made the modification to <span class="code">01-intro.html</span> to prove the above point; I don&rsquo;t really want to make these changes. However, I&rsquo;ve saved the file so <span class="first-use">how do I go back?</span></p>
+
+                    <p class="hyp">The answer is simple, click the <span class="menu">more actions</span> button <sub><img style="height: 1rem" src="01-pages/06-06-example/02-images/fig-06-54a.png" alt="terminal icon"></sub> and select <span class="menu">discard all changes since last commit</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-55">
+                            <a href="01-pages/06-06-example/02-images/fig-06-55.png" data-lightbox="fig-set" data-title="Figure 6.55 - Brackets&mdash;discard changes">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 300px" src="01-pages/06-06-example/02-images/fig-06-55.png" alt="Figure 6.55 - Brackets&mdash;discard changes">
+                            </a>
+                            <p>Figure 6.55 &emsp; Brackets&mdash;discard changes</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">ok</span>, the file will go back to how it was and Git will show:</p>
+
+                    <p class="hyp"><span class="code">Nothing to commit, working directory clean.</span></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="06-05-example.html#js--060400">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="06-07-example.html#js--060600">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

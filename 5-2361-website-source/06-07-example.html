@@ -1,0 +1,1379 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="Using Brackets-Git to merge and delete branches and resolve conflicts">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                   06-07-EXAMPLE.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+18 Aug 2017   d-P09.06.02  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/06-07-example/05-local-js/06-07-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/06-07-example/01-local-css/06-07-prettifylines.css">
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Merging, conflicts and deleting branches with Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="06-06-example.html#js--060600"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="05-00-brackets.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>6</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">6</span>Git &amp; Brackets a worked example</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 06-05&nbsp;&mdash;&nbsp;d-P09.06.02</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 6 GIT AND BRACKETS A WORKED EXAMPLE
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-060000" href="06-00-example.html#js--060000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">6</span><span class="toc-lev1-text">Git &amp; Brackets a worked example</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-060100" href="06-01-example.html#js--060100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.1</span><span class="toc-lev2-text">Creating the local repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060200" href="06-02-example.html#js--060200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.2</span><span class="toc-lev2-text">Creating the folders  and initial files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060201" href="06-02-example.html#js--060201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.1</span><span class="toc-lev3-text">The <span class="code">.gitignore</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060202" href="06-02-example.html#js--060202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.2</span><span class="toc-lev3-text">Creating a folder structure</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060203" href="06-02-example.html#js--060203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.3</span><span class="toc-lev3-text">Adding images to the project</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060204" href="06-02-example.html#js--060204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.4</span><span class="toc-lev3-text">The <span class="code">README.md</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060205" href="06-02-example.html#js--060205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.5</span><span class="toc-lev3-text">The <span class="code">index.html</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060206" href="06-02-example.html#js--060206">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.2.6</span><span class="toc-lev3-text">The <span class="code">style.css</span> file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060300" href="06-03-example.html#js--060300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.3</span><span class="toc-lev2-text">The first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060301" href="06-03-example.html#js--060301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.1</span><span class="toc-lev3-text">Staging the files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060302" href="06-03-example.html#js--060302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.2</span><span class="toc-lev3-text">Making the first commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060303" href="06-03-example.html#js--060303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.3</span><span class="toc-lev3-text">Viewing the commit history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060304" href="06-03-example.html#js--060304">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.4</span><span class="toc-lev3-text">Tagging the commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.4</span><span class="toc-lev2-text">Adding another commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060401" href="06-04-example.html#js--060401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.1</span><span class="toc-lev3-text">Viewing the file history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060402" href="06-04-example.html#js--060402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.4.2</span><span class="toc-lev3-text">Viewing the contents of a file at a previous commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060500" href="06-05-example.html#js--060500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.5</span><span class="toc-lev2-text">Branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060501" href="06-05-example.html#js--060501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.1</span><span class="toc-lev3-text">Adding a branch in Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060502" href="06-05-example.html#js--060502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.5.2</span><span class="toc-lev3-text">Making a commit on a new branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060600" href="06-06-example.html#js--060600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.6</span><span class="toc-lev2-text">Switching branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060601" href="06-06-example.html#js--060601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.1</span><span class="toc-lev3-text">Switching branches with uncommitted changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060602" href="06-06-example.html#js--060602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.6.2</span><span class="toc-lev3-text">Discarding the latest changes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-060700" href="06-07-example.html#js--060700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">6.7</span><span class="toc-lev2-text">Merging, conflicts and deleting branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060701" href="06-07-example.html#js--060701">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.1</span><span class="toc-lev3-text">Merging a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060702" href="06-07-example.html#js--060702">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.2</span><span class="toc-lev3-text">Deleting a branch with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060703" href="06-07-example.html#js--060703">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.3</span><span class="toc-lev3-text">Merging a branch with a Conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 060700]
+     SECTION - 6.7  MERGING, CONFLICTS AND DELETING BRANCHES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060700">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>6.7</h2></div>
+                 <div class="sub-title-text-box"><h2>Merging, conflicts and deleting branches</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I&rsquo;m going to demonstrate merging branches in exactly the same way I did theoretically in <a class="hlink nohyp" href="02-04-concept.html#js--020400">section&nbsp;2.4</a>.</p>
+
+                    <p class="hyp">I&rsquo;ll start by adding another page to the <span class="code">lab-01-website</span>. The <span class="git-cmd">master</span> branch still has the latest version of the deployable code (although <span class="git-cmd">d-01-intro</span> is more advanced than the <span class="git-cmd">master branch</span>, it is under development&mdash;new branches should always be based on the latest deployable code, see <a class="hlink nohyp utx" href="90b-00-appendix.html#js--000000">appendix&nbsp;b</a>).</p>
+
+                    <p class="hyp">I&rsquo;m going to add a new <span class="code">02-about.htm</span> page and I&rsquo;m going to do so by creating a new branch from the <span class="code">[25c1410]</span> commit point on the <span class="git-cmd">master</span> branch. Switch back to the <span class="git-cmd">master</span> branch, create a new branch <span class="git-cmd">d-02-about</span> and switch to this new branch.</p>
+
+                    <p class="hyp">Now we have <a class="xref js--sc-f06-56" href="#">Figure&nbsp;6.56</a></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-56">
+                            <a href="01-pages/06-07-example/02-images/fig-06-56.png" data-lightbox="fig-set" data-title="Figure 6.56 - A third branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 375px" src="01-pages/06-07-example/02-images/fig-06-56.png" alt="Figure 6.56 - A third branch">
+                            </a>
+                            <p>Figure 6.56 &emsp; A third branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Time for another file. In the new <span class="git-cmd">d-02-about</span> branch add <span class="code">02-about.html</span> in the root folder (same place as <span class="code">index.html</span>) and add the following code to it:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">02-about.html</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c06-07">&lt;html lang="en"&gt;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &lt;!-- Declare language --&gt;
+&nbsp; &nbsp; &lt;head&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Start of head section --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt; &nbsp; &nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
+
+&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&nbsp;&mdash;&nbsp;About us&lt;/title&gt;
+&nbsp; &nbsp; &lt;/head&gt;
+
+&nbsp; &nbsp; &lt;body&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;About Us&lt;/h3&gt;
+
+&lt;p&gt;This page explains who we are and how we came to be doing this.&lt;/p&gt;
+
+&nbsp; &nbsp; &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.7 &emsp; <span class="git-cmd">d-02-about</span> branch&mdash;create new file: 02-about.html</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-07-example/04-data/code-06-07.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save the file, and in the Git pane tick the box to stage the file:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-57">
+                            <a href="01-pages/06-07-example/02-images/fig-06-57.png" data-lightbox="fig-set" data-title="Figure 6.57 - 02-about.html">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-57.png" alt="Figure 6.57 - 02-about.html">
+                            </a>
+                            <p>Figure 6.57 &emsp; 02-about.html</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="git-cmd">Commit</span> the changes with the commit message:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">D: Incremental Build&nbsp;-&nbsp;02-about page</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">02-about.html added.</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Give the new commit point the tag <span class="code">d-P01.02.01</span>. In my case the commit point is <span class="code">[3f15582]</span>.</p>
+
+                    <p class="hyp">I now have four commits:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-58">
+                            <a href="01-pages/06-07-example/02-images/fig-06-58.png" data-lightbox="fig-set" data-title="Figure 6.58 - Current commits">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-58.png" alt="Figure 6.58 - Current commits">
+                            </a>
+                            <p>Figure 6.58 &emsp; Current commits</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The workflow is:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-59">
+                            <a href="01-pages/06-07-example/02-images/fig-06-59.png" data-lightbox="fig-set" data-title="Figure 6.59 - Second new branch with first commit">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 417px" src="01-pages/06-07-example/02-images/fig-06-59.png" alt="Figure 6.59 - Second new branch with first commit">
+                            </a>
+                            <p>Figure 6.59 &emsp; Second new branch with first commit</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;m going to do some jumping about between branches here to set up the merge situation. First switch to <span class="git-cmd">d-01-intro</span> and change the <span class="code">style.css</span> file:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">style.css</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:24 lang-css wrap" id="js--c06-08">h1, h2, h3, h4, h5, h6 {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* set standard headings */
+&nbsp; &nbsp; font-family: sans-serif;
+&nbsp; &nbsp; font-weight:normal;
+&nbsp; &nbsp; font-size: 3rem;
+&nbsp; &nbsp; padding: 2rem 5rem 2rem 5rem;
+}
+h3 { font-size: 2.5rem; color: #4F81BD;}
+
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.8 &emsp; style.css modified in <span class="git-cmd">d-01-intro</span></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-07-example/04-data/code-06-08.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The only thing I&rsquo;ve done is to change the colour of the <span class="code">h3</span> element in line 30; I&rsquo;ve made it blue by adding a colour declaration (see below):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint linenums:30 lang-css" id="js--c06-08a">h3 { font-size: 2.5rem; color: #c0504d; }</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save the file, tick the <span class="menu">stage box</span> and <span class="git-cmd">commit</span> the change to <span class="code">style.css</span> with the commit message:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">S: Staged&nbsp;-&nbsp;01-intro page</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">Style.css modified &lt;h3&gt; colour changed to blue.</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It makes the page look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-60">
+                            <a href="01-pages/06-07-example/02-images/fig-06-60.png" data-lightbox="fig-set" data-title="Figure 6.60 - 01-intro.html page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-60.png" alt="Figure 6.60 - 01-intro.html page">
+                            </a>
+                            <p>Figure 6.60 &emsp; 01-intro.html page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">My commit point is <span class="code">[f5aeb76]</span>. Tag the commit with the label <span class="code">s-P01.01.P02</span>. This will be the last commit on this branch <span class="first-use">(hence the tag, see</span> <a class="hlink nohyp utx" href="90b-00-appendix.html#js--000000">appendix&nbsp;b</a>).</p>
+
+                    <p class="hyp">We are now at this point:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-61">
+                            <a href="01-pages/06-07-example/02-images/fig-06-61.png" data-lightbox="fig-set" data-title="Figure 6.61 - Second commit on d-01-intro">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 417px" src="01-pages/06-07-example/02-images/fig-06-61.png" alt="Figure 6.61 - Second commit on d-01-intro">
+                            </a>
+                            <p>Figure 6.61 &emsp; Second commit on <span class="git-cmd">d-01-intro</span></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The next thing is to merge the two commits on the <span class="git-cmd">d-01-intro</span> branch onto the <span class="git-cmd">master branch</span>, like <a class="xref js--sc-f06-62" href="#">Figure&nbsp;6.62</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-62">
+                            <a href="01-pages/06-07-example/02-images/fig-06-62.png" data-lightbox="fig-set" data-title="Figure 6.62 - Merging one branch into another">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 500px" src="01-pages/06-07-example/02-images/fig-06-62.png" alt="Figure 6.62 - Merging one branch into another">
+                            </a>
+                            <p>Figure 6.62 &emsp; Merging one branch into another</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060701]
+     SUBSECTION - 6.7.1 MERGING A BRANCH WITH BRACKETS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060701">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.7.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Merging a branch with Brackets</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">This is something new, we haven&rsquo;t merged a branch with Brackets yet, this is how you do it.</p>
+
+                    <p class="hyp">I want to merge the <span class="git-cmd">d-01-intro</span> branch back onto the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">The first thing is to <em>switch to the receiving branch</em>. In this case we need to be on the <span class="git-cmd">master</span> branch. To do that; click the small arrow next to the <span class="git-cmd">d-01-intro</span> branch in the file tree and in the dropdown select <span class="git-cmd">master</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-63">
+                            <a href="01-pages/06-07-example/02-images/fig-06-63.png" data-lightbox="fig-set" data-title="Figure 6.63 - Switch to master branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 292px" src="01-pages/06-07-example/02-images/fig-06-63.png" alt="Figure 6.63 - Switch to master branch">
+                            </a>
+                            <p>Figure 6.63 &emsp; Switch to <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Back on the <span class="git-cmd">master</span> branch, if you open the history, you will only see the first two commits:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-64">
+                            <a href="01-pages/06-07-example/02-images/fig-06-64.png" data-lightbox="fig-set" data-title="Figure 6.64 - Switch to master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-64.png" alt="Figure 6.64 - Switch to master branch">
+                            </a>
+                            <p>Figure 6.64 &emsp; Switch to <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Also, the <span class="code">01-intro.html</span> file and the <span class="code">02-about.html</span> files are missing (these don&rsquo;t exist on the master branch). I&rsquo;m showing the <span class="code">style.css</span> file in <a class="xref js--sc-f06-64" href="#">Figure&nbsp;6.64</a>, you can see here that the <span class="git-cmd">master</span> branch version doesn&rsquo;t have the h3 changes.</p>
+
+                    <p class="hyp">Once again:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Incidental tables hold additional information (in a similar way to an
+      aside) but span the central content area and can contain more information
+      than an asisde.
+
+      The table spans 84% of the content area, is lightly shaded  and uses
+      small caps for the heading.
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">SWITCHING BRANCHES CHANGES THE FILES<br>IN YOUR WORKING DIRECTORY</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Ok, now to do the merge.</p>
+
+                    <p class="hyp">Click the small arrow next to the <span class="git-cmd">master</span> branch in the file tree.</p>
+
+                    <p class="hyp">I want to merge in the changes on the <span class="git-cmd">d-01-intro</span> branch&mdash;to do this, click the merge icon <sub><img style="height: 1rem" src="01-pages/06-07-example/02-images/fig-06-64a.png" alt="terminal icon"></sub> next to <span class="git-cmd">d-01-intro</span> in the dropdown menu, <a class="xref js--sc-f06-65" href="#">Figure&nbsp;6.65</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-65">
+                            <a href="01-pages/06-07-example/02-images/fig-06-65.png" data-lightbox="fig-set" data-title="Figure 6.65 - Brackets&mdash;merge branches">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 292px" src="01-pages/06-07-example/02-images/fig-06-65.png" alt="Figure 6.65 - Brackets&mdash;merge branches">
+                            </a>
+                            <p>Figure 6.65 &emsp; Brackets&mdash;merge branches</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will open the merge branch dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-66">
+                            <a href="01-pages/06-07-example/02-images/fig-06-66.png" data-lightbox="fig-set" data-title="Figure 6.66 - Brackets&mdash;merge branch dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-66.png" alt="Figure 6.66 - Brackets&mdash;merge branch dialogue box">
+                            </a>
+                            <p>Figure 6.66 &emsp; Brackets&mdash;merge branch dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The first line <span class="menu">target branch</span>, can&rsquo;t be changed; it is set to this because we were on the<span class="git-cmd">master</span> branch when we made the merge.</p>
+
+                    <p class="hyp">When I make the merge (by clicking <span class="menu">ok</span>), Brackets will create a new commit point on the <span class="git-cmd">master</span> branch. This is a called a <span class="first-use">merge commit</span>.</p>
+
+                    <p class="hyp">Merge commits, like every other commit, need a commit message and that is what the next line is. The <span class="menu">merge message</span> box is asking for a one line commit message, enter: </p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr style="border-bottom: 1px solid #cccccc">                      <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">P02: Published (merged d-01-intro).</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="menu">PR</span> button next to the message puts in an automatic <span class="first-use">pull request</span> message. Pull request is a GitHub thing, I haven&rsquo;t covered this yet (see <a class="hlink nohyp utx" href="10-01-collaboration.html#js--100102">&sect;&nbsp;10.1.2</a>). For the minute don&rsquo;t push the button&mdash;<span class="first-use">you will just have to delete the text it puts in the box if you do</span>.</p>
+
+                    <p class="hyp">The next two tick boxes:</p>
+
+                    <p class="hyp"><span class="menu">rebase</span>&mdash;rebase allows us to effectively re-write history. I don&rsquo;t like rebase and I recommend you don&rsquo;t use it. I explain it as a topic and why I don&rsquo;t like it in <a class="hlink nohyp utx" href="90e-01-appendix.html#js--0e0100">appendix&nbsp;e1</a>. <em>Leave this box unticked</em>.</p>
+
+                    <p class="hyp">Tick the final box <span class="menu">create a merge commit even when the merge resolves as a fast-forward</span>. A fast-forward merge is basically a merge with no conflicts. I still want a commit point after the merge, even if there were no problems. <em>Tick this box</em>. That&rsquo;s it, click <span class="menu">ok</span>. This will generate a merge result dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-67">
+                            <a href="01-pages/06-07-example/02-images/fig-06-67.png" data-lightbox="fig-set" data-title="Figure 6.67 - Brackets&mdash;merge result dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-67.png" alt="Figure 6.67 - Brackets&mdash;merge result dialogue box">
+                            </a>
+                            <p>Figure 6.67 &emsp; Brackets&mdash;merge result dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Ok, we changed two files (<span class="code">01-intro.html</span> and <span class="code">style.css</span>) and I&rsquo;m willing to bet there were 19 additions and two deletions. Click <span class="menu">close</span>.</p>
+
+                    <p class="hyp">The <span class="git-cmd">master</span> branch is still active; it now has a new commit, the merge commit, <span class="code">[abf1121]</span> in my case. Give this the tag <span class="code">P02</span> and open the commit history:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-68">
+                            <a href="01-pages/06-07-example/02-images/fig-06-68.png" data-lightbox="fig-set" data-title="Figure 6.68 - Brackets&mdash;master branch after merge">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-68.png" alt="Figure 6.68 - Brackets&mdash;master branch after merge">
+                            </a>
+                            <p>Figure 6.68 &emsp; Brackets&mdash;master branch after merge</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="git-cmd">master</span> branch now has five commits on it. The last one being the merge commit. The workflow now looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-69">
+                            <a href="01-pages/06-07-example/02-images/fig-06-69.png" data-lightbox="fig-set" data-title="Figure 6.69 - Workflow after d-01-intro merge">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 500px" src="01-pages/06-07-example/02-images/fig-06-69.png" alt="Figure 6.69 - Workflow after d-01-intro merge">
+                            </a>
+                            <p>Figure 6.69 &emsp; Workflow after <span class="git-cmd">d-01-intro</span> merge</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">At this point, everything on the <span class="git-cmd">d-01-intro</span> branch has been merged on to the <span class="git-cmd">master branch</span>. <span class="git-cmd">d-01-intro</span> still exists and it still has the two commit points on it (you can see if you change to the branch and view the commit history). However, the branch doesn&rsquo;t contain anything we need&mdash;the commits have been merged on to the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">The best thing to do now is delete the <span class="git-cmd">d-01-intro</span> branch. It&rsquo;s served its purpose and we don&rsquo;t need it anymore <span class="first-use">(we can always recreate it if we need to work on 01-intro again)</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060702]
+     SUBSECTION - 6.7.2 DELETING A BRANCH WITH BRACKETS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060702">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.7.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Deleting a branch with Brackets</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">This is easy; <em>make sure that the branch you want to delete is not active</em>. In my case I&rsquo;m on the <span class="git-cmd">master</span> branch and I want to delete <span class="git-cmd">d-01-intro</span> so this is ok.</p>
+
+                    <p class="hyp">Again click the small arrow next to the <span class="git-cmd">master</span> branch in the file tree.</p>
+
+                    <p class="hyp">This time I want to delete the <span class="git-cmd">d-01-intro</span> branch&mdash;to do this, click the delete icon <sub><img style="height: 1rem" src="01-pages/06-07-example/02-images/fig-06-69a.png" alt="terminal icon"></sub> next to <span class="git-cmd">d-01-intro</span> (on the left) in the dropdown menu, <a class="xref js--sc-f06-70" href="#">Figure&nbsp;6.70</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-70">
+                            <a href="01-pages/06-07-example/02-images/fig-06-70.png" data-lightbox="fig-set" data-title="Figure 6.70 - Brackets&mdash;delete a branch link">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 292px" src="01-pages/06-07-example/02-images/fig-06-70.png" alt="Figure 6.70 - Brackets&mdash;delete a branch link">
+                            </a>
+                            <p>Figure 6.70 &emsp; Brackets&mdash;delete a branch link</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will open an <span class="menu">are you sure? delete local branch</span> dialogue box, click <span class="menu">ok</span> and the branch is gone.</p>
+
+                    <p class="hyp">This gives the workflow of <a class="xref js--sc-f06-71" href="#">Figure&nbsp;6.71</a>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-71">
+                            <a href="01-pages/06-07-example/02-images/fig-06-71.png" data-lightbox="fig-set" data-title="Figure 6.71 - Brackets&mdash;delete a branch workflow">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 550px" src="01-pages/06-07-example/02-images/fig-06-71.png" alt="Figure 6.71 - Brackets&mdash;delete a branch workflow">
+                            </a>
+                            <p>Figure 6.71 &emsp; Brackets&mdash;delete a branch workflow</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 060703]
+     SUBSECTION - 6.7.3 MERGING A BRANCH WITH A CONFLICt
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--060703">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>6.7.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Merging a branch with a Conflict</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp"><span class="first-use">Last bit</span>.</p>
+
+                    <p class="hyp">I&rsquo;m going to create a conflict on the <span class="git-cmd">d-02-about</span> branch and then try to merge it back into the <span class="git-cmd">master</span> branch (just like the theoretical arrangement in <a class="hlink nohyp" href="02-04-concept.html#js--020401">&sect;&nbsp;2.4.1</a>).</p>
+
+                    <p class="hyp">Switch back to the <span class="git-cmd">d-02-about</span> branch. I&rsquo;m going to modify exactly the same line in the <span class="code">style.css</span> as I did with the last change to <span class="git-cmd">d-01-intro</span>. But this time, we&rsquo;ll make the <span class="code">h3</span> element red.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">style.css</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:24 lang-css wrap" id="js--c06-09">h1, h2, h3, h4, h5, h6 {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* set standard headings */
+&nbsp; &nbsp; font-family: sans-serif;
+&nbsp; &nbsp; font-weight:normal;
+&nbsp; &nbsp; font-size: 3rem;
+&nbsp; &nbsp; padding: 2rem 5rem 2rem 5rem;
+}
+h3 { font-size: 2.5rem; color: #c0504d;}
+
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.9 &emsp; style.css modified in <span class="git-cmd">d-02-about</span></td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                    <a class="code-nav" href="01-pages/06-07-example/04-data/code-06-09.zip" download><span class="nav-icon">a</span></a>
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again this is a modification to line 30 (below):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint linenums:30 lang-css" id="js--c06-09a">h3 { font-size: 2.5rem; color: #c0504d; }</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                        <div class="code-caption"><span class="git-cmd">d-02-about</span> branch</div>                    <!-- Code caption (empty)-->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This will conflict with line 30 on the <span class="git-cmd">master branch</span>, this has:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint linenums:30 lang-css" id="js--c06-09b">h3 { font-size: 2.5rem; color: #4F81BD; }</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                        <div class="code-caption"><span class="git-cmd">master</span> branch</div>                    <!-- Code caption (empty)-->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="git-cmd">d-02-about</span> modification makes the <span class="code">02-about</span> page look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-72">
+                            <a href="01-pages/06-07-example/02-images/fig-06-72.png" data-lightbox="fig-set" data-title="Figure 6.72 - 02-about.html page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-72.png" alt="Figure 6.72 - 02-about.html page">
+                            </a>
+                            <p>Figure 6.72 &emsp; 02-about.html page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save the file, tick the <span class="menu">stage box</span> and <span class="git-cmd">commit</span> the change to <span class="code">style.css</span> with the commit message:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">S: Staged&nbsp;-&nbsp;02-about page</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">Style.css modified &lt;h3&gt; colour changed to red.</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">My commit point is <span class="code">[28a335c]</span>. Tag the commit with the label <span class="code">s-P01.02.P03</span>. This will be the last commit on this branch.</p>
+
+                    <p class="hyp">We now have:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-73">
+                            <a href="01-pages/06-07-example/02-images/fig-06-73.png" data-lightbox="fig-set" data-title="Figure 6.73 - Second commit on d-02-about">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 625px" src="01-pages/06-07-example/02-images/fig-06-73.png" alt="Figure 6.73 - Second commit on d-02-about">
+                            </a>
+                            <p>Figure 6.73 &emsp; Second commit on <span class="git-cmd">d-02-about</span></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now switch to the <span class="git-cmd">master</span> branch and merge in the changes on <span class="git-cmd">d-02-about</span> (in just the same way as <a class="xref nohyp js--sc-060701" href="#">&sect;&nbsp;6.7.1</a>). Click the merge icon <sub><img style="height: 1rem" src="01-pages/06-07-example/02-images/fig-06-64a.png" alt="terminal icon"></sub> next to <span class="git-cmd">d-02-about</span> in the dropdown menu, <a class="xref js--sc-f06-74" href="#">Figure&nbsp;6.74</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-74">
+                            <a href="01-pages/06-07-example/02-images/fig-06-74.png" data-lightbox="fig-set" data-title="Figure 6.74 - Brackets&mdash;merge d-02-about">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 292px" src="01-pages/06-07-example/02-images/fig-06-74.png" alt="Figure 6.74 - Brackets&mdash;merge d-02-about">
+                            </a>
+                            <p>Figure 6.74 &emsp; Brackets&mdash;merge <span class="git-cmd">d-02-about</span></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again we have the merge branch dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-75">
+                            <a href="01-pages/06-07-example/02-images/fig-06-75.png" data-lightbox="fig-set" data-title="Figure 6.75 - Brackets&mdash;merge dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-75.png" alt="Figure 6.75 - Brackets&mdash;merge dialogue box">
+                            </a>
+                            <p>Figure 6.75 &emsp; Brackets&mdash;merge dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This time enter the merge message:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr style="border-bottom: 1px solid #cccccc">                      <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">P03: Published (merged d-02-about).</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp"><span class="first-use">This bit is confusing&mdash;bear with me.</span></p>
+
+                    <p class="hyp">This opens an empty Merge result box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-76">
+                            <a href="01-pages/06-07-example/02-images/fig-06-76.png" data-lightbox="fig-set" data-title="Figure 6.76 - Brackets&mdash;empty merge dialogue box (conflict)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-76.png" alt="Figure 6.76 - Brackets&mdash;empty merge dialogue box (conflict)">
+                            </a>
+                            <p>Figure 6.76 &emsp; Brackets&mdash;empty merge dialogue box (conflict)</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It&rsquo;s empty because the merge hasn&rsquo;t happened (yet). Just close the box, <span class="first-use">(you can&rsquo;t enter anything on the line&mdash;as much as it looks as if you should be able to)</span>. Click <span class="menu">close</span>. What we want is behind it</p>
+
+                    <p class="hyp"><span class="first-use">That&rsquo;s the confusing bit over&mdash;just the strange merge result box</span>.</p>
+
+                    <p class="hyp">Things look a bit different now. This is the result:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-77">
+                            <a href="01-pages/06-07-example/02-images/fig-06-77.png" data-lightbox="fig-set" data-title="Figure 6.77 - Brackets&mdash;with a merge conflict">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-77.png" alt="Figure 6.77 - Brackets&mdash;with a merge conflict">
+                            </a>
+                            <p>Figure 6.77 &emsp; Brackets&mdash;with a merge conflict</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">First thing is we now have an <span class="menu">abort merge</span> button in the Git pane. Click that and we go back to where we were before we tried to merge the files (i.e. where we were in <a class="xref js--sc-f06-73" href="#">Figure&nbsp;6.73</a>).</p>
+
+                    <p class="hyp">Brackets is trying to tell us there is a conflict in the <span class="code">style.css</span> file. It&rsquo;s opened the file in the editor and is showing the lines with a problem. It looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">style.css</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:30 lang-css wrap" id="js--c06-10">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+h3 { font-size: 2.5rem; color: #4F81BD; }
+=======
+h3 { font-size: 2.5rem; color: #c0504d;}
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; d-02-about
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.10 &emsp; style.css with a conflict</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It starts with a line of less than signs:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint lang-css" id="js--c06-10a">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">the <span class="code">HEAD</span> tells us that what follows is from the current <span class="git-cmd">head</span> (which is on the <span class="git-cmd">master</span> branch).</p>
+
+                    <p class="hyp">The line that follows is the code as it is on the <span class="git-cmd">master</span> branch:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint lang-css" id="js--c06-10b">h3 { font-size: 2.5rem; color: #4F81BD; }</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Then we have a row of equal signs, this is just a divider:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint lang-css" id="js--c06-10c">=======</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The last two lines show the code as it is on the merging branch: <span class="git-cmd">d-02-about</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint lang-css" id="js--c06-10d">h3 { font-size: 2.5rem; color: #c0504d;}
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; d-02-about
+</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The greater than signs identify the merging branch (<span class="git-cmd">d-02-about</span>).</p>
+
+                    <p class="hyp">Brackets is telling us it can&rsquo;t decide what to do and it wants us to manually change the file to the correct version.</p>
+
+                    <p class="hyp">I could select either version and just delete the other one, or I could enter something completely different. In this case, I&rsquo;m going to put the file back to how it was at the start (without specifying any colour).</p>
+
+                    <p class="hyp">Make the modifications:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">style.css</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:24 lang-css wrap" id="js--c06-11">h1, h2, h3, h4, h5, h6 {                    /* set standard headings */
+    font-family: sans-serif;
+    font-weight:normal;
+    font-size: 3rem;
+    padding: 2rem 5rem 2rem 5rem;
+}
+h3 { font-size: 2.5rem; }
+
+.cover-fig {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* holder for cover image */
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 6.10 &emsp; style.css with a conflict</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>You must delete the lines with the less than, greater than and equals signs too.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Mine looks like this after the modifications, <a class="xref js--sc-f06-78" href="#">Figure&nbsp;6.78</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-78">
+                            <a href="01-pages/06-07-example/02-images/fig-06-78.png" data-lightbox="fig-set" data-title="Figure 6.78 - Brackets&mdash;modified file after conflict">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-78.png" alt="Figure 6.78 - Brackets&mdash;modified file after conflict">
+                            </a>
+                            <p>Figure 6.78 &emsp; Brackets&mdash;modified file after conflict</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Save <span class="code">style.css</span> and make sure it is staged (tick the box in the Git pane).</p>
+
+                    <p class="hyp">Now click <span class="menu">commit</span>.</p>
+
+                    <p class="hyp">This opens a normal commit dialogue box. Its message will have the first line we entered initially. </p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr style="border-bottom: 1px solid #cccccc">                      <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">P03: Published (merged d-02-about).</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It will also have the information that a conflict occurred in <span class="code">style.css</span></p>
+
+                    <p class="hyp">Mine looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-79">
+                            <a href="01-pages/06-07-example/02-images/fig-06-79.png" data-lightbox="fig-set" data-title="Figure 6.79 - Brackets&mdash;Post conflict commit">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-79.png" alt="Figure 6.79 - Brackets&mdash;Post conflict commit">
+                            </a>
+                            <p>Figure 6.79 &emsp; Brackets&mdash;Post conflict commit</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Just click <span class="menu">ok</span>. Brackets will automatically change to the <span class="git-cmd">master branch</span>. In my case the new commit is <span class="code">[07fe437]</span>. Tag the new commit <span class="code">P03</span> and view the history:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-80">
+                            <a href="01-pages/06-07-example/02-images/fig-06-80.png" data-lightbox="fig-set" data-title="Figure 6.80 - Brackets&mdash;master branch after commit">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-80.png" alt="Figure 6.80 - Brackets&mdash;master branch after commit">
+                            </a>
+                            <p>Figure 6.80 &emsp; Brackets&mdash;<span class="git-cmd">master</span> branch after commit</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The workflow is now:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-81">
+                            <a href="01-pages/06-07-example/02-images/fig-06-81.png" data-lightbox="fig-set" data-title="Figure 6.81 - Merging the second branch after conflict resolution">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-81.png" alt="Figure 6.81 - Second Merging the second branch after conflict resolution">
+                            </a>
+                            <p>Figure 6.81 &emsp; Merging the second branch after conflict resolution</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Finally, the last thing to do is delete the redundant branch. Again click the small arrow next to the <span class="git-cmd">master</span> branch in the file tree, click the delete icon <sub><img style="height: 1rem" src="01-pages/06-07-example/02-images/fig-06-69a.png" alt="terminal icon"></sub> next to <span class="git-cmd">d-02-about</span> in the dropdown menu.</p>
+
+                    <p class="hyp"><span class="first-use">We&rsquo;re done</span>. The final workflow is all on the master branch, <a class="xref js--sc-f06-82" href="#">Figure&nbsp;6.82</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f06-82">
+                            <a href="01-pages/06-07-example/02-images/fig-06-82.png" data-lightbox="fig-set" data-title="Figure 6.82 - Final arrangement, all merged back to master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/06-07-example/02-images/fig-06-82.png" alt="Figure 6.82 - Final arrangement, all merged back to master branch">
+                            </a>
+                            <p>Figure 6.82 &emsp; Final arrangement, all merged back to master branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">All the commits from the two branches that were created are now merged onto the <span class="git-cmd">master</span> branch line.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="06-06-example.html#js--060600">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="07-00-regression.html#js--000000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

@@ -3,7 +3,7 @@
 /* PRACTICALSERIES (c) 2017
 
 *******************************************************************************
-Title :          GOOGLE PRETTIFY LINE HIGHLIGHTS        06-02-PRETTIFYLINES.CSS
+Title :          GOOGLE PRETTIFY LINE HIGHLIGHTS        06-05-PRETTIFYLINES.CSS
 *******************************************************************************
 
 PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
@@ -46,40 +46,22 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
-09 Aug 2017   d-P09.06.01  M. Gledhill    Page created
+18 Aug 2017   d-P09.06.02  M. Gledhill    Page created
 ---------------------------------------------------------------------------- */
 
 
 /* ****************************************************************************
-   CODE FRAGMENT c06-01 - FORMATTING
+   CODE FRAGMENT c06-05 - FORMATTING
    ************************************************************************* */
-#js--c06-01 li:nth-child(n+7):nth-child(-n+12) { background: #EAF1DD }                      /* line background green */
+#js--c06-06 li:nth-child(5) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
+#js--c06-06 li:nth-child(15) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
 
 /* ************************************************************************* */
 
 /* ****************************************************************************
-   CODE FRAGMENT c06-02 - FORMATTING
+   CODE FRAGMENT c06-xx - FORMATTING
    ************************************************************************* */
-#js--c06-02 li:nth-child(1)  .pln {color: #D9369F}
-#js--c06-02 li:nth-child(11) .pln {color: #D9369F}
-#js--c06-02 li:nth-child(15) .pln {color: #D9369F}
-#js--c06-02 li:nth-child(18) .pln {color: #D9369F}
-/* ************************************************************************* */
-
-
-/* ****************************************************************************
-   CODE FRAGMENT c06-03 - FORMATTING
-   ************************************************************************* */
-#js--c06-03 li:nth-child(5) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
-#js--c06-03 li:nth-child(19) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
-#js--c06-03 li:nth-child(21) {padding-left: 3.5rem;}                      /* adjust indent for line wrap (standard indent) */
-
-/* ************************************************************************* */
-
-/* ****************************************************************************
-   CODE FRAGMENT c06-04 - FORMATTING
-   ************************************************************************* */
-#js--c06-04 .pln { color: #4271ae;}                                      /* overlay style colours for CSS fragment */
-#js--c06-04 .lit { color: #718c00;}
+#js--c06-xx .pln { color: #4271ae;}                                      /* overlay style colours for CSS fragment */
+#js--c06-xx .lit { color: #718c00;}
 
 /* ************************************************************************* */

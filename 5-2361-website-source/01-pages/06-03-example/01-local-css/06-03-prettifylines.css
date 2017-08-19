@@ -3,7 +3,7 @@
 /* PRACTICALSERIES (c) 2017
 
 *******************************************************************************
-Title :          GOOGLE PRETTIFY LINE HIGHLIGHTS        06-02-PRETTIFYLINES.CSS
+Title :          GOOGLE PRETTIFY LINE HIGHLIGHTS        06-03-PRETTIFYLINES.CSS
 *******************************************************************************
 
 PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
@@ -46,7 +46,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
-09 Aug 2017   d-P09.06.01  M. Gledhill    Page created
+15 Aug 2017   d-P09.06.02  M. Gledhill    Page created
 ---------------------------------------------------------------------------- */
 
 
@@ -77,7 +77,7 @@ Date          Issue        Author         Reason for Modification
 /* ************************************************************************* */
 
 /* ****************************************************************************
-   CODE FRAGMENT c06-04 - FORMATTING
+   CODE FRAGMENT c06-03 - FORMATTING
    ************************************************************************* */
 #js--c06-04 .pln { color: #4271ae;}                                      /* overlay style colours for CSS fragment */
 #js--c06-04 .lit { color: #718c00;}
