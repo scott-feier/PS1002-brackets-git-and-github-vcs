@@ -1,0 +1,579 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="How to checkout an earlier commit with Brackets-Git">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                07-03-REGRESSION.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+20 Aug 2017   d-P10.07.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/07-03-regression/05-local-js/07-03-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/07-03-regression/01-local-css/07-03-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Brackets-Git&mdash;Regressing to an earlier commit with Checkout | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="07-02-regression.html#js--070200"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="06-00-example.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="08-00-remotes.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="08-00-remotes.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>7</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">7</span>Regression with Brackets</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 07-02&nbsp;&mdash;&nbsp;d-P10.07.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 7 Regression with Brackets
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-070000" href="07-00-regression.html#js--070000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">7</span><span class="toc-lev1-text">Regression with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-070100" href="07-01-regression.html#js--070100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">7.1</span><span class="toc-lev2-text">Enabling reset and checkout </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-070101" href="07-01-regression.html#js--070101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">7.1.1</span><span class="toc-lev3-text">Date and time settings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-070200" href="07-02-regression.html#js--070200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">7.2</span><span class="toc-lev2-text">Regressing a with Reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-070202" href="07-02-regression.html#js--070201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">7.2.1</span><span class="toc-lev3-text">Resetting to an earlier commit point</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-070300" href="07-03-regression.html#js--070300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">7.3</span><span class="toc-lev2-text">Regressing with Checkout</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 070300]
+     SECTION - 7.3 Regressing with Checkout
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--070300">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>7.3</h2></div>
+                 <div class="sub-title-text-box"><h2>Regressing with Checkout</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp"><em>I can&rsquo;t stress strongly enough, if you want to look at an earlier commit point do it with the checkout function.</em></p>
+
+                    <p class="hyp">I&rsquo;m going to start from the same point I used for the reset in the previous section:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-16">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-16.png" data-lightbox="fig-set" data-title="Figure 7.16 - Final arrangement, all merged back to master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-03-regression/02-images/fig-07-16.png" alt="Figure 7.16 - Final arrangement, all merged back to master branch">
+                            </a>
+                            <p>Figure 7.16 &emsp; Final arrangement, all merged back to master branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There is a single <span class="git-cmd">master</span> branch with eight commits and the <span class="git-cmd">head</span> is at the most recent commit, in my case <span class="code">[07fe437]</span>. In Brackets, the history is:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-17">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-17.png" data-lightbox="fig-set" data-title="Figure 7.17 - Brackets commit history">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-03-regression/02-images/fig-07-17.png" alt="Figure 7.17 - Brackets commit history">
+                            </a>
+                            <p>Figure 7.17 &emsp; Brackets commit history</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And we have the following files:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t07-03">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-left" style="width: 1000%">LIST OF FILES AT COMMIT <span class="code">07FE437&emsp;&emsp;&emsp;TAG: P03</span></th>      <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left">
+                                <p><span class="code">index.html</span></p>
+                                <p><span class="code">01-intro.html</span></p>
+                                <p><span class="code">02-about.html</span></p>
+                                <p><span class="code">README.md</span></p>
+                                <p><span class="code">.gitignore</span></p>
+                                <p><span class="code">11-resources\01-css\style.css</span></p>
+                                <p><span class="code">11-resources\02-images\logo.png</span></p>
+                                <p><span class="code">11-resources\02-images\readme.png</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                             <td class="table-caption">Table 7.3 &emsp; File list at commit point <span class="code">P03 [07FE437]</span></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Finally, Git is reporting:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">Nothing to commit, working directory clean</span></p>
+
+                    <p class="hyp">So let&rsquo;s do a checkout, again I&rsquo;m going back to the first <span class="code">P01</span> commit point, <span class="code">[25c1410]</span> in my list.</p>
+
+                    <p class="hyp">To do this, open the commit history (<a class="xref js--sc-f07-17" href="#">Figure&nbsp;7.17</a>) and click anywhere on the <span class="code">P01</span> commit line <span class="code">[25c1410]</span>. This will open the commit information screen:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-18">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-18.png" data-lightbox="fig-set" data-title="Figure 7.18 - P01 commit point information screen">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-03-regression/02-images/fig-07-18.png" alt="Figure 7.18 - P01 commit point information screen">
+                            </a>
+                            <p>Figure 7.18 &emsp; P01 commit point information screen</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This time click the checkout button <sub><img src="01-pages/07-03-regression/02-images/fig-07-18a.png" alt="checkout icon"></sub>. This will open the checkout warning dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-19">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-19.png" data-lightbox="fig-set" data-title="Figure 7.19 - Checkout function warning">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 597px" src="01-pages/07-03-regression/02-images/fig-07-19.png" alt="Figure 7.19 - Checkout function warning">
+                            </a>
+                            <p>Figure 7.19 &emsp; Checkout function warning</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is telling us that the project is going into a <span class="git-cmd">detached head</span> state and that we can&rsquo;t make any further <span class="git-cmd">commits</span>. This is ok, we don&rsquo;t want to make any commits&mdash;we just want to have a look. Click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp">Open the commit history, and let&rsquo;s have a look at things:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-20">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-20.png" data-lightbox="fig-set" data-title="Figure 7.20 - Commit history after the checkout">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-03-regression/02-images/fig-07-20.png" alt="Figure 7.20 - PCommit history after the checkout">
+                            </a>
+                            <p>Figure 7.20 &emsp; Commit history after the checkout</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Right, things are a bit different this time. We have just the two commit points (<span class="code">D01</span> and <span class="code">P01</span>) exactly as we had with the reset, but this time we are not on the <span class="code">master</span> branch.</p>
+
+                    <p class="hyp">We are now on a branch called <span class="git-cmd">25c1410</span>. The <span class="git-cmd">master</span> branch is still there, click the down arrow next to the <span class="git-cmd">25c1410</span> branch and you will see it:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-21">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-21.png" data-lightbox="fig-set" data-title="Figure 7.21 - Branches present after a checkout">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 184px" src="01-pages/07-03-regression/02-images/fig-07-21.png" alt="Figure 7.21 - Branches present after a checkout">
+                            </a>
+                            <p>Figure 7.21 &emsp; Branches present after a checkout</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We could switch back to it, and we will; but first let&rsquo;s look around.</p>
+
+                    <p class="hyp">The files have changed to match the earlier commit point (just like with the reset); we now have these files:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t07-04">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-left" style="width: 1000%">LIST OF FILES AT COMMIT <span class="code">07FE437&emsp;&emsp;&emsp;TAG: P03</span></th>      <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left">
+                                <p><span class="code">index.html</span></p>
+                                <p><span class="code">README.md</span></p>
+                                <p><span class="code">.gitignore</span></p>
+                                <p><span class="code">11-resources\01-css\style.css</span></p>
+                                <p><span class="code">11-resources\02-images\logo.png</span></p>
+                                <p><span class="code">11-resources\02-images\readme.png</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                             <td class="table-caption">Table 7.4 &emsp;File list after reset to  <span class="code">P01 [25c1410]</span></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">These files have disappeared:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t07-04a">                 <!-- TABLE - Start of table  -->
+                        <tr style="border-top: 1px solid #cccccc">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left">
+                                <p><span class="code" style="color: #F05133">01-intro.html</span></p>
+                                <p><span class="code" style="color: #F05133">02-about.html</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                             <td class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Again if we were to look inside the <span class="code">lab-01-website</span> folder with Windows Explorer we would only see <span class="code">index.html</span>, <span class="code">README.md</span> and <span class="code">.gitignore</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-22">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-22.png" data-lightbox="fig-set" data-title="Figure 7.22 - The working directory after the checkout">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-03-regression/02-images/fig-07-22.png" alt="Figure 7.22 - The working directory after the checkout">
+                            </a>
+                            <p>Figure 7.22 &emsp; The working directory after the checkout</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">So, the project has moved back in time to the earlier commit points in exactly the same way as it did with the reset and if I opened any of the project files, they would be exactly as they were at the time of the <span class="code">[25c1410]</span> commit.</p>
+
+                    <p class="hyp">The best practice approach to resetting (<a class="hlink nohyp" href="02-05-concept.html#js--020504">&sect;&nbsp;2.5.4</a>), is that if we want to reinstate the files at an earlier commit, we copy any or all of the files from this checked out commit point and, after moving back <span class="first-use">(as in back to the future)</span> to the most recent commit point, paste them into the working area and make a new commit with the old files from the earlier commit (i.e. replace the most up to date files with an older files).</p>
+
+                    <p class="hyp">This, if you remember is where the reset fell down, we couldn&rsquo;t easily get back to the most recent commit point (there was a lot of messing about with the command line).</p>
+
+                    <p class="hyp">Things are much easier with the checkout function.</p>
+
+                    <p class="hyp">The most recent commit point (in my case <span class="code">[07fe437]</span>) is the <span class="git-cmd">head</span> of the <span class="git-cmd">master</span> branch. To get back, just switch to the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">Click the arrow next to the <span class="menu">25c1410</span> branch and in the dropdown click <span class="menu">master</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-23">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-23.png" data-lightbox="fig-set" data-title="Figure 7.23 - Change branch present after a checkout">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 184px" src="01-pages/07-03-regression/02-images/fig-07-23.png" alt="Figure 7.23 - Change branch present after a checkout">
+                            </a>
+                            <p>Figure 7.23 &emsp; Change branch present after a checkout</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This instantly takes us back to where we were; open the commit history and everything is back where it was&mdash;<span class="first-use">easy:</span></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-24">
+                            <a href="01-pages/07-03-regression/02-images/fig-07-24.png" data-lightbox="fig-set" data-title="Figure 7.24 - Returning to the most recent commit">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-03-regression/02-images/fig-07-24.png" alt="Figure 7.24 - Returning to the most recent commit">
+                            </a>
+                            <p>Figure 7.24 &emsp; Returning to the most recent commit</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This time if you click the arrow next to the <span class="git-cmd">master</span> branch, there will not be any other branches listed, the <span class="git-cmd">25c1410</span> branch has disappeared.</p>
+
+                    <p class="hyp">The <span class="git-cmd">25c1410</span> branch that was created by the checkout is just a temporary branch&mdash;it disappears when we switch off it to any other branch.</p>
+
+                    <p class="hyp">The checkout is a much better way of viewing earlier commits.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">ONLY EVER USE THE CHECKOUT FUNCTION<br>TO ACCESS PREVIOUS COMMITS</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="07-02-regression.html#js--070200">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="08-00-remotes.html#js--000000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

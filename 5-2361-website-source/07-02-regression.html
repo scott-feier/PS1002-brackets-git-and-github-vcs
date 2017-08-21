@@ -1,0 +1,848 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="How to reset to an earlier commit with Brackets-Git">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                07-02-REGRESSION.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+20 Aug 2017   d-P10.07.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/07-02-regression/05-local-js/07-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/07-02-regression/01-local-css/07-02-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Brackets-Git&mdash;Regressing to an earlier commit with a Reset | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="07-01-regression.html#js--070100"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="06-00-example.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="08-00-remotes.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="07-03-regression.html#js--070300"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>7</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">7</span>Regression with Brackets</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 07-02&nbsp;&mdash;&nbsp;d-P10.07.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 7 Regression with Brackets
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-070000" href="07-00-regression.html#js--070000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">7</span><span class="toc-lev1-text">Regression with Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-070100" href="07-01-regression.html#js--070100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">7.1</span><span class="toc-lev2-text">Enabling reset and checkout </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-070101" href="07-01-regression.html#js--070101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">7.1.1</span><span class="toc-lev3-text">Date and time settings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-070200" href="07-02-regression.html#js--070200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">7.2</span><span class="toc-lev2-text">Regressing a with Reset</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-070202" href="07-02-regression.html#js--070201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">7.2.1</span><span class="toc-lev3-text">Resetting to an earlier commit point</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-070300" href="07-03-regression.html#js--070300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">7.3</span><span class="toc-lev2-text">Regressing with Checkout</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 070200]
+     SECTION - 7.2 ENABLING RESET AND CHECKOUT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--070200">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>7.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Regressing a with Reset</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Brackets supports two mechanism for moving back <span class="first-use">(regressing)</span> the project to an earlier commit point.</p>
+
+                    <p class="hyp">The mechanisms are called:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp">Reset index</p></li>
+
+                        <li><p class="hyp">Checkout</p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now I discussed how the reset works in <a class="hlink nohyp" href="02-05-concept.html#js--020500">section&nbsp;2.5</a>. The Reset index above is this type of reset (it can do a <span class="first-use">hard</span>, <span class="first-use">mixed</span> or <span class="first-use">soft</span> reset) and it work in exactly the same way I described in that section.</p>
+
+                    <p class="hyp">The reset index function in the Brackets environment has one or two restrictions (restrictions is perhaps the wrong word, shortcomings might be better) that can make things a little difficult.</p>
+
+                    <p class="hyp">For this reason I recommend:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">ONLY EVER USE THE CHECKOUT FUNCTION<br>TO ACCESS PREVIOUS COMMITS</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I cover checkouts in the next section. For now I will explain the Reset index function and its <span class="first-use">shortcomings</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 070201]
+     SUBSECTION - 7.2.1 RESETTING TO AN EARLIER COMMIT POINT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--070201">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>7.2.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Resetting to an earlier commit point</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Currently the project looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-04">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-04.png" data-lightbox="fig-set" data-title="Figure 7.4 - Final arrangement, all merged back to master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-04.png" alt="Figure 7.4 - Final arrangement, all merged back to master branch">
+                            </a>
+                            <p>Figure 7.4 &emsp; Final arrangement, all merged back to master branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There is a single <span class="menu">master</span> branch with eight commits and the <span class="menu">head</span> is at the most recent commit, in my case <span class="code">[07fe437]</span>.</p>
+
+                    <p class="hyp">Looking at this in the Brackets commit history I have:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-05">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-05.png" data-lightbox="fig-set" data-title="Figure 7.5 - Brackets commit history">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-05.png" alt="Figure 7.5 - Brackets commit history">
+                            </a>
+                            <p>Figure 7.5 &emsp; Brackets commit history</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>At this point I suggest you take a screen shot of your commit history<br>&mdash;<em>you will regret it if you don&rsquo;t</em>&mdash;as you will see it&rsquo;s quite handy knowing the commit numbers.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There are a few things to note here: firstly every commit point has a tag <span class="first-use">(this isn&rsquo;t necessarily vital, but it allows me to indicate exactly which commit point I&rsquo;m referring to in the following text)</span>.</p>
+
+                    <p class="hyp">Secondly we have eight files:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t07-01">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-left" style="width: 1000%">LIST OF FILES AT COMMIT <span class="code">07FE437&emsp;&emsp;&emsp;TAG: P03</span></th>      <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left">
+                                <p><span class="code">index.html</span></p>
+                                <p><span class="code">01-intro.html</span></p>
+                                <p><span class="code">02-about.html</span></p>
+                                <p><span class="code">README.md</span></p>
+                                <p><span class="code">.gitignore</span></p>
+                                <p><span class="code">11-resources\01-css\style.css</span></p>
+                                <p><span class="code">11-resources\02-images\logo.png</span></p>
+                                <p><span class="code">11-resources\02-images\readme.png</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                             <td class="table-caption">Table 7.1 &emsp; File list at commit point <span class="code">P03 [07FE437]</span></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If I close the commit history Git is reporting:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">Nothing to commit, working directory clean</span></p>
+
+                    <p class="hyp">So there are no changes pending (the files in the working area and staging all match the committed files).</p>
+
+                    <p class="hyp">So let&rsquo;s do a reset, I&rsquo;m going to go right back to the first <span class="code">P01</span> commit point <span class="code">[25c1410]</span> in my list.</p>
+
+                    <p class="hyp">To do this, open the commit history (<a class="xref js--sc-f07-05" href="#">Figure&nbsp;7.5</a>) and click anywhere on the <span class="code">P01</span> commit line <span class="code">[25c1410]</span>. This will open the commit information screen:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-06">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-06.png" data-lightbox="fig-set" data-title="Figure 7.6 - P01 commit point information screen">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-06.png" alt="Figure 7.6 - P01 commit point information screen">
+                            </a>
+                            <p>Figure 7.6 &emsp; P01 commit point information screen</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now click the <span class="menu">reset index</span> button <sub><img src="01-pages/07-02-regression/02-images/fig-07-06a.png" alt="reset icon"></sub>. This will open the reset type dropdown menu:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-07">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-07.png" data-lightbox="fig-set" data-title="Figure 7.7 - Reset type menu">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-07.png" alt="Figure 7.7 - Reset type menu">
+                            </a>
+                            <p>Figure 7.7 &emsp; Reset type menu</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">As I said in <a class="hlink nohyp" href="02-05-concept.html#js--020500">section&nbsp;2.5</a>, the only type of reset to do is a hard reset:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">THE BEST RESET IS A HARD RESET</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">So let&rsquo;s do that, click the top line <span class="menu">(reset --hard)</span>.</p>
+
+                    <p class="hyp">Now we get an &ldquo;are you sure box?&rdquo;</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-08">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-08.png" data-lightbox="fig-set" data-title="Figure 7.8 - Reset &ldquo;are you sure?&rdquo; box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-08.png" alt="Figure 7.8 - Reset &ldquo;are you sure?&rdquo; box">
+                            </a>
+                            <p>Figure 7.8 &emsp; Reset &ldquo;are you sure?&rdquo; box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp"><span class="first-use">Now we&rsquo;ve done it</span>.</p>
+
+                    <p class="hyp">Open the commit history:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-09">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-09.png" data-lightbox="fig-set" data-title="Figure 7.9 - Commit history after the reset">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-09.png" alt="Figure 7.9 - Commit history after the reset">
+                            </a>
+                            <p>Figure 7.9 &emsp; Commit history after the reset</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Well, we&rsquo;re still on the <span class="git-cmd">master</span> branch. But we now only have two commit points (<span class="code">D01</span> and <span class="code">P01</span>).</p>
+
+                    <p class="hyp">The files have changed too; we now only have these files:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t07-02">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-left" style="width: 1000%">LIST OF FILES AT COMMIT <span class="code">07FE437&emsp;&emsp;&emsp;TAG: P03</span></th>      <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left">
+                                <p><span class="code">index.html</span></p>
+                                <p><span class="code">README.md</span></p>
+                                <p><span class="code">.gitignore</span></p>
+                                <p><span class="code">11-resources\01-css\style.css</span></p>
+                                <p><span class="code">11-resources\02-images\logo.png</span></p>
+                                <p><span class="code">11-resources\02-images\readme.png</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                             <td class="table-caption">Table 7.2 &emsp;File list after reset to  <span class="code">P01 [25c1410]</span></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The files that were added after have disappeared:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t07-02a">                 <!-- TABLE - Start of table  -->
+                        <tr style="border-top: 1px solid #cccccc">                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-left">
+                                <p><span class="code" style="color: #F05133">01-intro.html</span></p>
+                                <p><span class="code" style="color: #F05133">02-about.html</span></p>
+                            </td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                             <td class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Also if we were to look inside the <span class="code">lab-01-website</span> folder with Windows Explorer we would only see <span class="code">index.html</span>, <span class="code">README.md</span> and <span class="code">.gitignore</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-10">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-10.png" data-lightbox="fig-set" data-title="Figure 7.10 - The working directory after the reset">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-02-regression/02-images/fig-07-10.png" alt="Figure 7.10 - The working directory after the reset">
+                            </a>
+                            <p>Figure 7.10 &emsp; The working directory after the reset</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The project really has moved back in time to the earlier commit points, if I opened any of the project files, they would be exactly as they were at the time of the commit.</p>
+
+                    <p class="hyp">Using the best practice approach to resetting I discussed in <a class="hlink nohyp utx" href="02-05-concept.html#js--020504">section&nbsp;2.5.4</a>, this would allow us to copy any or all of the files from this commit point and, after moving back to the most recent commit point, paste them into the working area and make a new commit with the old files from the earlier commit (i.e. replace the most up to date file with an older file).</p>
+
+                    <p class="hyp">This leads to the question: <span class="first-use">&ldquo;how do we get back to the most recent commit?&rdquo;</span></p>
+
+                    <p class="hyp" style="text-align: center;"><em>Errr&hellip;</em></p>
+
+                    <p class="hyp">Well you can&rsquo;t. Not just like that. Not from within Brackets.</p>
+
+                    <p class="hyp">It&rsquo;s like we went back in time and the Tardis broke down and now were stuck with the bloody Victorians <span class="first-use">(and possibly Peter Capaldi, which would be worse)</span>. Actually, it&rsquo;s more like being stuck in the eighties with Zork.</p>
+
+                    <p class="hyp">And fortunately, in the eighties we had access to the command line; and boy can that thing can bail us out of some shit. <span class="first-use">(I don&rsquo;t know how we managed without it&mdash;I take back everything I said)</span>.</p>
+
+                    <p class="hyp">We can start the Git Bash command line terminal emulator from Brackets, in the Git Pane click the terminal icon <sub><img style="height: 1rem" src="01-pages/07-02-regression/02-images/fig-07-10a.png" alt="Git Bash icon"></sub>, if you ticked the show terminal icon in toolbar option in the Git settings (Figure 7.1) you can also start the terminal emulator from the right sidebar icon: <sub><img style="height: 1rem" src="01-pages/07-02-regression/02-images/fig-07-10b.png" alt="Git Bash icon"></sub>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-11">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-11.png" data-lightbox="fig-set" data-title="Figure 7.11 - Git terminal emulator">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 658px" src="01-pages/07-02-regression/02-images/fig-07-11.png" alt="Figure 7.11 - Git terminal emulator">
+                            </a>
+                            <p>Figure 7.11 &emsp; Git terminal emulator</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">I hope you kept a record of all the commits</span>.</p>
+
+                    <p class="hyp">We&rsquo;ve reset the project back to commit point <span class="code">[25c1410]</span>; this can be seen from the history in <a class="xref js--sc-f07-09" href="#">Figure&nbsp;7.9</a>.</p>
+
+                    <p class="hyp">Now the latest commit, is commit <span class="code">[07fe437]</span>; this can be seen in the original history before the reset, <a class="xref js--sc-f07-05" href="#">Figure&nbsp;7.5</a>.</p>
+
+                    <p class="hyp">So in my case, I want to move the <span class="git-cmd">head</span> back to commit point <span class="code">[07fe437]</span> to put everything back how it was. I have to do this in the command line. Enter the following:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git reset 07fe437 --hard</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">Obviously, you need to enter your commit number</span>. It gives me this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-12">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-12.png" data-lightbox="fig-set" data-title="Figure 7.12 - Hard reset using the command line">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 556px" src="01-pages/07-02-regression/02-images/fig-07-12.png" alt="Figure 7.12 - Hard reset using the command line">
+                            </a>
+                            <p>Figure 7.12 &emsp; Hard reset using the command line</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And if I now look at the history in Brackets, I&rsquo;m back where I was:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-13">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-13.png" data-lightbox="fig-set" data-title="Figure 7.13 - Brackets commit history">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 719px" src="01-pages/07-02-regression/02-images/fig-07-13.png" alt="Figure 7.13 - Brackets commit history">
+                            </a>
+                            <p>Figure 7.13 &emsp; Brackets commit history</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp" style="text-align: center;"><em>Phew&hellip;</em></p>
+
+                    <p class="hyp"><span class="first-use">What if I can&rsquo;t remember my original commit?</span></p>
+
+                    <p class="hyp">What did I say at the start of this? <span class="first-use">&ldquo;Take a screen shot of your commits&rdquo; I said, &ldquo;you&rsquo;ll regret it if you don&rsquo;t&rdquo;</span>&mdash;sound familiar?</p>
+
+                    <p class="hyp">Ok, there is a couple of ways round this: firstly, you can reset to a tag.</p>
+
+                    <p class="hyp">In the above example I got back to the most recent commit point by resetting to a commit number:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git reset 07fe437 --hard</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The syntax for this is:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git reset &lt;commit number&gt; --&lt;type of reset&gt;</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The order is <span class="code">commit</span> number followed by <span class="code">type of reset</span>.</p>
+
+                    <p class="hyp">In my case the commit point <span class="code">[07fe437]</span> also has the tag <span class="code">P03</span> (you can see this in <a class="xref js--sc-f07-13" href="#">Figure&nbsp;7.13</a>).</p>
+
+                    <p class="hyp">To reset to the same point using a tag, the command is:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git reset --hard P03</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The syntax being:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git reset --&lt;type of reset&gt; &lt;tag name&gt;</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Yep, the order is <span class="code">type of reset</span> followed by the <span class="code">tag name</span>.</p>
+
+                    <p class="hyp">That&rsquo;s not at all confusing is it? But there we are, what can I say?&mdash;Linux people.</p>
+
+                    <p class="hyp"><span class="first-use">Ah, but what if it the commit doesn&rsquo;t have a tag and I can&rsquo;t remember the commit number?</span></p>
+
+                    <p class="hyp">Well, Git can always list all of the commits.</p>
+
+                    <p class="hyp">Do a hard reset back to the <span class="code">P01</span> commit point (same as I did above).</p>
+
+                    <p class="hyp">You will just have the two commit points of <a class="xref js--sc-f07-09" href="#">Figure&nbsp;7.9</a>.</p>
+
+                    <p class="hyp">Open the Git command line terminal and type:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">gitk --all</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">You should get something that looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-14">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-14.png" data-lightbox="fig-set" data-title="Figure 7.14 - GITK, a commit history viewer">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 719px" src="01-pages/07-02-regression/02-images/fig-07-14.png" alt="Figure 7.14 - GITK, a commit history viewer">
+                            </a>
+                            <p>Figure 7.14 &emsp; GITK, a commit history viewer</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">Wow&mdash;WTF is that? You ask</span>.</p>
+
+                    <p class="hyp"><span class="code">gitk</span> is the commit history viewer that was installed when you install Git. We invoked it when we entered <span class="code">gitk</span> in the command line. The <span class="code">--all</span> tells <span class="code">gitk</span> to show all commit points.</p>
+
+                    <p class="hyp">The important bit is the little diagram at the top. This is currently showing information about the current head point (<span class="code">P01</span> in blue in <a class="xref js--sc-f07-14" href="#">Figure&nbsp;7.14</a>)</p>
+
+                    <p class="hyp">We want the commit number of the most recent commit; this is at the top of the diagram. To get the commit number click the commit message next to the commit (it starts <span class="code">&lsquo;P03: published&rsquo;</span>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-15">
+                            <a href="01-pages/07-02-regression/02-images/fig-07-15.png" data-lightbox="fig-set" data-title="Figure 7.15 - GITK, find a commit number">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 719px" src="01-pages/07-02-regression/02-images/fig-07-15.png" alt="Figure 7.15 - GITK, find a commit number">
+                            </a>
+                            <p>Figure 7.15 &emsp; GITK, find a commit number</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The commit number of the selected commit point is shown in the <span class="menu">sha-1</span> field just under the branch diagram (highlighted in orange in <a class="xref js--sc-f07-15" href="#">Figure&nbsp;7.15</a>). This field can be selected (wholly or in part) and copied to the clipboard, remember you only need to copy the first seven digits of the commit hash number <span class="first-use">(it will work if you copy all of it too)</span>.</p>
+
+                    <p class="hyp">Copy what you need, close <span class="code">gitk</span> and enter the reset command in the command line:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">git reset &lt;copied hash&gt; --hard</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><em>OK, that&rsquo;s resetting&mdash;it&rsquo;s a pain in the arse.</em></p>
+
+                    <p class="hyp"><em>The better way, as I said at the start, is to use the checkout function. I cover this in the next section.</em></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="07-01-regression.html#js--070100">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="07-03-regression.html#js--070300">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

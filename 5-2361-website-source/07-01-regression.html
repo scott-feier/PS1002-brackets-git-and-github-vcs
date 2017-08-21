@@ -16,7 +16,7 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to use Brackets-Git to regress to an earlier commit point in a project using reset and checkout">
+        <meta name="description" content="How to enable the reset and checkout functions within Brackets-Git">
 
 <!-- ==========================================================================
 
@@ -41,12 +41,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-20 Aug 2017   d-P10.07.01  M. Gledhill    Page formally created (replacing
-                                          P02 place holder)
-
-10 Jun 2017   P02          M. Gledhill    Published
-
-10 Jun 2017   t-P01.01.04  M. Gledhill    Page created
+20 Aug 2017   d-P10.07.01  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -71,7 +66,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/07-00-regression/05-local-js/07-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/07-01-regression/05-local-js/07-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -82,10 +77,10 @@ Date          Issue        Author         Reason for Modification
         <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
         <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
         <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
-        <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/07-00-regression/01-local-css/07-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/07-01-regression/01-local-css/07-01-prettifylines.css"> -->
 
 
 
@@ -106,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Regression with Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Brackets-Git&mdash;enabling the reset and checkout functions | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -125,7 +120,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="06-07-example.html#js--060700"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <a class="nav-wide" href="07-00-regression.html#js--070000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="06-00-example.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
@@ -137,7 +132,7 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="08-00-remotes.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="07-01-regression.html#js--070100"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="07-02-regression.html#js--070200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -160,7 +155,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 07-00&nbsp;&mdash;&nbsp;d-P10.07.01</p>
+<!--REVISION-->         <p>Rev: 07-01&nbsp;&mdash;&nbsp;d-P10.07.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -188,7 +183,7 @@ Date          Issue        Author         Reason for Modification
                         <li><a class="js--sc-070100" href="07-01-regression.html#js--070100">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev2-num">7.1</span><span class="toc-lev2-text">Enabling reset and checkout </span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-070201" href="07-01-regression.html#js--070101">  <!-- TOC link start -->
+                        <li><a class="js--sc-070101" href="07-01-regression.html#js--070101">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">7.1.1</span><span class="toc-lev3-text">Date and time settings</span></div></a>
                         </li>                                   <!-- TOC link end   -->
 
@@ -232,43 +227,71 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 070000]
-     CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
+<!-- ************************************************************************** [WP 070100]
+     SECTION - 7.1 ENABLING RESET AND CHECKOUT
      ***********************************************************************-->
 
-        <section class="section-std" id="js--070000">           <!-- Start of section -->
+        <section class="section-std" id="js--070100">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-thinline"></div>      <!-- Thin overline (after TOC) -->
-                    <div class="sub-title-num-box"><h6>Placeholder</h6></div>   <!-- Heading 6 is a placehoder heading needed in sections without a heading to satisfy html validation -->
-                <!--     <div class="sub-title-num-box"><h2>X</h2></div>        Optional numbered heading
-                         <div class="sub-title-text-box"><h2>Text</h2></div> -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>7.1</h2></div>
+                 <div class="sub-title-text-box"><h2>Enabling reset and checkout </h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
 
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <p class="hyp">Using Brackets to regress to an earlier point in a project and copy the files from that commit point.</p>                                 <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">Being able to recover information</span> from an earlier point in a project is an important aspect of any version control system</p>
+                    <p class="hyp">The reset and checkout functions are normally available when looking at the commit history of a project; however the functions must be enabled in the Bracket-Git settings.</p>
 
-                    <p class="hyp">In <a class="hlink nohyp" href="02-05-concept.html#js--020500">section&nbsp;2.5</a> I explained the process of <span class="first-use">resetting</span> a project back to an earlier commit point; I also explained my best practice for doing so.</p>
+                    <p class="hyp">Open the <span class="code">lab-01-website</span> project in Brackets (this is the project we developed in <a class="hlink nohyp" href="06-00-example.html#js--060000">section&nbsp;6</a>) and activate the Git pane by clicking its icon in the right side bar (<sub><img style="height: 0.85rem" src="01-pages/07-01-regression/02-images/fig-07-00a.png" alt="Git icon"></sub>).</p>
 
-                    <p class="hyp">Brackets has a reset facility that allows this process to take place within the Brackets environment (albeit with some limitations).</p>
+                    <p class="hyp">To access the Brackets-Git settings, either click the settings button in the Git pane <sub><img style="height: 1rem" src="01-pages/07-01-regression/02-images/fig-07-00b.png" alt="Git icon"></sub>, or select <span class="menu">file &rarr; git settings</span>. They open the following settings dialogue box:</p>
 
-                    <p class="hyp">Brackets also supports a <span class="first-use">checkout</span> function that performs a similar action but without the restrictions of the reset function.</p>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-01">
+                            <a href="01-pages/07-01-regression/02-images/fig-07-01.png" data-lightbox="fig-set" data-title="Figure 7.1 - Bracket-Git settings dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-01-regression/02-images/fig-07-01.png" alt="Figure 7.1 - Bracket-Git settings dialogue box">
+                            </a>
+                            <p>Figure 7.1 &emsp; Bracket-Git settings dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Git also support this <span class="first-use">checkout an earlier commit</span> function.</p>
+                    <p class="hyp">The thing we need is at the bottom. Make sure <span class="menu">enable advanced features</span> is active (ticked). These advanced features are the very reset and checkout we&rsquo;re looking for. That&rsquo;s it, click <span class="menu">save</span> and if you made any changes it will prompt to restart Brackets. Let it.</p>
 
-                    <p class="hyp">I cover all these options in this section with the aid of the <span class="code">lab-01-website</span> project developed in the previous section.</p>
+                    <p class="hyp">To see if it&rsquo;s worked, click the commit history button in the Git pane <sub><img style="height: 1rem" src="01-pages/07-01-regression/02-images/fig-07-01a.png" alt="Commit history icon"></sub> and then click on any commit line to open the commit information screen (see <a class="hlink nohyp" href="06-03-example.html#js--060303">&sect;&nbsp;6.3.3</a> for detailed instruction). You should have something like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-02">
+                            <a href="01-pages/07-01-regression/02-images/fig-07-02.png" data-lightbox="fig-set" data-title="Figure 7.2 - Bracket-Git reset and checkout buttons">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-01-regression/02-images/fig-07-02.png" alt="Figure 7.2 - Bracket-Git reset and checkout buttons">
+                            </a>
+                            <p>Figure 7.2 &emsp; Bracket-Git reset and checkout buttons</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The buttons are at the top (highlighted in <a class="xref js--sc-f07-02" href="#">Figure&nbsp;7.2</a>). </p>
+
+                    <p class="hyp">If you were to untick the <span class="menu">enable advanced features</span>, the buttons would disappear.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -278,6 +301,67 @@ Date          Issue        Author         Reason for Modification
                 <!--     </aside>                                    End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 070101]
+     SUBSECTION - 7.1.1 DATE AND TIME SETTINGS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--070101">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>7.1.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Date and time settings</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">One other thing I&rsquo;ve done here is change how the time and date of commits are displayed, in the previous section they were shown as relative dates (i.e. <span class="first-use">commit made 3 hours ago</span>). I&rsquo;m going to change this and use absolute times and dates for clarity <span class="first-use">(if I use the relative ones, it keeps changing to mark the lapse of time)</span>.</p>
+
+                    <p class="hyp">I&rsquo;m going to use the standard <a class="hlink nohyp" href="https://en.wikipedia.org/wiki/ISO_8601">iso&nbsp;8601</a> date format <span class="first-use">(this is what engineers always use)</span>.</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">YYYY-MM-DD&emsp;&emsp;HH:mm:ss</span></p>
+
+                    <p class="hyp">To change how the date and time is displayed; reopen the same settings page, <a class="xref js--sc-f07-03" href="#">Figure&nbsp;7.3</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f07-03">
+                            <a href="01-pages/07-01-regression/02-images/fig-07-03.png" data-lightbox="fig-set" data-title="Figure 7.3 - Bracket-Git Commit history date format">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/07-01-regression/02-images/fig-07-03.png" alt="Figure 7.3 - Bracket-Git Commit history date format">
+                            </a>
+                            <p>Figure 7.3 &emsp; Bracket-Git Commit history date format</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Change the <span class="menu">format of commit dates in history</span> to <span class="menu">formatted using your own format</span>. Enter the format you want in the <span class="menu">own date format</span> box (if you click the blue <span class="menu">syntax</span>, it will open a web page showing all the possible formats).</p>
+
+                    <p class="hyp">You can see the format I&rsquo;ve used (the uppercase <span class="code">HH</span> for hours shows it as a two digit 24 hour clock value).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
         </section>                                              <!-- End of section -->
 <!-- ========================================================================== [WP END] -->
 
@@ -292,7 +376,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="06-07-example.html#js--060700">Prev</a>
+                        <a class="xref" href="07-00-regression.html#js--070000">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -302,7 +386,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="07-01-regression.html#js--070100">Next</a>
+                        <a class="xref" href="07-02-regression.html#js--070200">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -335,7 +419,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      JAVASCRIPT (POST PAGE LOAD)
      ***********************************************************************-->
-        <!-- Lightbox                   <script type="text/javascript" src="21-global/05-js/lightbox.js"></script> -->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
 
     </body>
 </html>

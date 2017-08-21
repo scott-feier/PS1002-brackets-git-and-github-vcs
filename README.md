@@ -3,7 +3,7 @@
 ###### A series of technical documents for engineers (and others)
 
 
-# Git, GitHub and Brackets VCS Website <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-P10.svg">
+# Git, GitHub and Brackets VCS Website <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-D10-07-01.svg">
 
 <p align="center">
     <img width="300px" src="0-0201-repository-information/01-images/logo-lrg-min.png">
@@ -26,6 +26,7 @@ Development work always takes place on a separate branch. Development branches a
 | Branch             | Revision
 | ------------------ | --------------------------------------
 | master             | <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-P10.svg">
+| d-07-regression    | <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-D10-07-01.svg">
 
 ## Contents
 
@@ -88,7 +89,7 @@ The following table contains the development branch abbreviations and associated
 
 The following shows the project status as a workflow diagram:
 
-<img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/wf-P10.svg">
+<img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/wf-D10-07-01.svg">
 
 ## Additional information
 
