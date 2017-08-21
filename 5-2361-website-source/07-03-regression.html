@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Aug 2017   t-P10.07.P11 M. Gledhill    Proofread and validated
+
 20 Aug 2017   d-P10.07.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 07-02&nbsp;&mdash;&nbsp;d-P10.07.01</p>
+<!--REVISION-->         <p>Rev: 07-02&nbsp;&mdash;&nbsp;t-P10.07.P11</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -190,7 +192,7 @@ Date          Issue        Author         Reason for Modification
                         <li><a class="js--sc-070200" href="07-02-regression.html#js--070200">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev2-num">7.2</span><span class="toc-lev2-text">Regressing a with Reset</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-070202" href="07-02-regression.html#js--070201">  <!-- TOC link start -->
+                        <li><a class="js--sc-070201" href="07-02-regression.html#js--070201">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">7.2.1</span><span class="toc-lev3-text">Resetting to an earlier commit point</span></div></a>
                         </li>                                   <!-- TOC link end   -->
 
@@ -353,7 +355,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">This is telling us that the project is going into a <span class="git-cmd">detached head</span> state and that we can&rsquo;t make any further <span class="git-cmd">commits</span>. This is ok, we don&rsquo;t want to make any commits&mdash;we just want to have a look. Click <span class="menu">ok</span>.</p>
 
-                    <p class="hyp">Open the commit history, and let&rsquo;s have a look at things:</p>
+                    <p class="hyp">Open the commit history, and let&rsquo;s see what we have:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -452,7 +454,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">So, the project has moved back in time to the earlier commit points in exactly the same way as it did with the reset and if I opened any of the project files, they would be exactly as they were at the time of the <span class="code">[25c1410]</span> commit.</p>
 
-                    <p class="hyp">The best practice approach to resetting (<a class="hlink nohyp" href="02-05-concept.html#js--020504">&sect;&nbsp;2.5.4</a>), is that if we want to reinstate the files at an earlier commit, we copy any or all of the files from this checked out commit point and, after moving back <span class="first-use">(as in back to the future)</span> to the most recent commit point, paste them into the working area and make a new commit with the old files from the earlier commit (i.e. replace the most up to date files with an older files).</p>
+                    <p class="hyp">The best practice approach to resetting (<a class="hlink nohyp" href="02-05-concept.html#js--020504">&sect;&nbsp;2.5.4</a>), is that if we want to reinstate the files at an earlier commit, we copy any or all of the files from this checked out commit point and, after moving back <span class="first-use">(as in back to the future)</span> to the most recent commit point, paste them into the working area and make a new commit with the old files from the earlier commit (i.e. replace the most up to date files with older files).</p>
 
                     <p class="hyp">This, if you remember is where the reset fell down, we couldn&rsquo;t easily get back to the most recent commit point (there was a lot of messing about with the command line).</p>
 

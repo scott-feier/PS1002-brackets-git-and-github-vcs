@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Aug 2017   t-P10.07.P11 M. Gledhill    Proofread and validated
+
 20 Aug 2017   d-P10.07.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 07-02&nbsp;&mdash;&nbsp;d-P10.07.01</p>
+<!--REVISION-->         <p>Rev: 07-02&nbsp;&mdash;&nbsp;t-P10.07.P11</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -190,7 +192,7 @@ Date          Issue        Author         Reason for Modification
                         <li><a class="js--sc-070200" href="07-02-regression.html#js--070200">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev2-num">7.2</span><span class="toc-lev2-text">Regressing a with Reset</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-070202" href="07-02-regression.html#js--070201">  <!-- TOC link start -->
+                        <li><a class="js--sc-070201" href="07-02-regression.html#js--070201">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">7.2.1</span><span class="toc-lev3-text">Resetting to an earlier commit point</span></div></a>
                         </li>                                   <!-- TOC link end   -->
 
@@ -253,7 +255,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Brackets supports two mechanism for moving back <span class="first-use">(regressing)</span> the project to an earlier commit point.</p>
+                    <p class="hyp">Brackets supports two mechanism for moving the project back <span class="first-use">(regressing)</span> to an earlier commit point.</p>
 
                     <p class="hyp">The mechanisms are called:</p>
 
@@ -269,7 +271,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Now I discussed how the reset works in <a class="hlink nohyp" href="02-05-concept.html#js--020500">section&nbsp;2.5</a>. The Reset index above is this type of reset (it can do a <span class="first-use">hard</span>, <span class="first-use">mixed</span> or <span class="first-use">soft</span> reset) and it work in exactly the same way I described in that section.</p>
 
-                    <p class="hyp">The reset index function in the Brackets environment has one or two restrictions (restrictions is perhaps the wrong word, shortcomings might be better) that can make things a little difficult.</p>
+                    <p class="hyp">The reset index function in the Brackets environment has one or two restrictions <span class="first-use">(restrictions is perhaps the wrong word, shortcomings might be better)</span> that can make things a little difficult.</p>
 
                     <p class="hyp">For this reason I recommend:</p>
 
@@ -449,7 +451,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">So let&rsquo;s do that, click the top line <span class="menu">(reset --hard)</span>.</p>
 
-                    <p class="hyp">Now we get an &ldquo;are you sure box?&rdquo;</p>
+                    <p class="hyp">Now we get an &ldquo;are you sure?&rdquo; box:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -550,7 +552,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The project really has moved back in time to the earlier commit points, if I opened any of the project files, they would be exactly as they were at the time of the commit.</p>
 
-                    <p class="hyp">Using the best practice approach to resetting I discussed in <a class="hlink nohyp utx" href="02-05-concept.html#js--020504">section&nbsp;2.5.4</a>, this would allow us to copy any or all of the files from this commit point and, after moving back to the most recent commit point, paste them into the working area and make a new commit with the old files from the earlier commit (i.e. replace the most up to date file with an older file).</p>
+                    <p class="hyp">Using the best practice approach to resetting I discussed in <a class="hlink nohyp" href="02-05-concept.html#js--020504">section&nbsp;2.5.4</a>, this would allow us to copy any or all of the files from this commit point and, after moving back to the most recent commit point, paste them into the working area and make a new commit with the old files from the earlier commit (i.e. replace the most up to date file with an older file).</p>
 
                     <p class="hyp">This leads to the question: <span class="first-use">&ldquo;how do we get back to the most recent commit?&rdquo;</span></p>
 
@@ -562,7 +564,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">And fortunately, in the eighties we had access to the command line; and boy can that thing can bail us out of some shit. <span class="first-use">(I don&rsquo;t know how we managed without it&mdash;I take back everything I said)</span>.</p>
 
-                    <p class="hyp">We can start the Git Bash command line terminal emulator from Brackets, in the Git Pane click the terminal icon <sub><img style="height: 1rem" src="01-pages/07-02-regression/02-images/fig-07-10a.png" alt="Git Bash icon"></sub>, if you ticked the show terminal icon in toolbar option in the Git settings (Figure 7.1) you can also start the terminal emulator from the right sidebar icon: <sub><img style="height: 1rem" src="01-pages/07-02-regression/02-images/fig-07-10b.png" alt="Git Bash icon"></sub>.</p>
+                    <p class="hyp">We can start the Git Bash command line terminal emulator from Brackets; in the Git Pane click the terminal icon <sub><img style="height: 1rem" src="01-pages/07-02-regression/02-images/fig-07-10a.png" alt="Git Bash icon"></sub>, if you ticked the <span class="menu">show terminal icon in toolbar</span> option in the Git settings (<a class="hlink nohyp" href="07-01-regression.html#js--f07-01">Figure&nbsp;7.1</a>) you can also start the terminal emulator from the right sidebar icon: <sub><img style="height: 1rem" src="01-pages/07-02-regression/02-images/fig-07-10b.png" alt="Git Bash icon"></sub>.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -612,7 +614,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">And if I now look at the history in Brackets, I&rsquo;m back where I was:</p>
+                    <p class="hyp">And if I now look at the history in Brackets, I&rsquo;m back where I started:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
