@@ -47,6 +47,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+21 Aug 2017   P11          M. Gledhill    Published
+
 20 Aug 2017   d-P10.07.01  M. Gledhill    Page created
 ---------------------------------------------------------------------------- */
 
@@ -66,7 +68,7 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
    **************************************************************************** */
 
     $('.aside-right-rev').append (
-        "<p>scroll.js&nbsp;&mdash;&nbsp;d-P10.07.01</p>" /* LOCAL JS REVISION NUMBER */
+        "<p>scroll.js&nbsp;&mdash;&nbsp;P11</p>" /* LOCAL JS REVISION NUMBER */
     );
 
 
