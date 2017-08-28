@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to use Brackets-Git to link with and manage a remote repository">
+        <meta name="description" content="Creating an empty GitHub remote repository">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                   08-00-REMOTES.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                08-02-REGRESSION.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,12 +41,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-20 Aug 2017   d-P11.08.01  M. Gledhill    Page formally created (replacing
-                                          P02 place holder)
-
-10 Jun 2017   P02          M. Gledhill    Published
-
-10 Jun 2017   t-P01.01.04  M. Gledhill    Page created
+22 Aug 2017   d-P11.08.01  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -66,12 +61,12 @@ Date          Issue        Author         Reason for Modification
      ***********************************************************************-->
         <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
-        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
-        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-00-remotes/05-local-js/08-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-02-remotes/05-local-js/08-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -81,11 +76,11 @@ Date          Issue        Author         Reason for Modification
      ***********************************************************************-->
         <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
         <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
-        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
-        <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/08-00-remotes/01-local-css/08-00-prettifylines.css"> -->
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/08-02-remotes/01-local-css/08-02-prettifylines.css">
 
 
 
@@ -106,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Manage a remote repository with Brackets-Git | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Brackets-Git&mdash;Creating the remote repository | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -125,7 +120,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="07-03-regression.html#js--070300"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <a class="nav-wide" href="08-01-remotes.html#js--080100"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
@@ -137,7 +132,7 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="08-01-remotes.html#js--080100"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="08-03-remotes.html#js--080300"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -160,7 +155,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-00&nbsp;&mdash;&nbsp;d-P11.08.01</p>
+<!--REVISION-->         <p>Rev: 08-02&nbsp;&mdash;&nbsp;d-P11.08.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -250,56 +245,145 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 080000]
-     CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
+<!-- ************************************************************************** [WP 080200]
+     SECTION - 8.2 CREATING THE REMOTE REPOSITORY
      ***********************************************************************-->
 
-        <section class="section-std" id="js--080000">           <!-- Start of section -->
+        <section class="section-std" id="js--080200">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-thinline"></div>      <!-- Thin overline (after TOC) -->
-                    <div class="sub-title-num-box"><h6>Placeholder</h6></div>   <!-- Heading 6 is a placehoder heading needed in sections without a heading to satisfy html validation -->
-                <!--     <div class="sub-title-num-box"><h2>X</h2></div>        Optional numbered heading
-                         <div class="sub-title-text-box"><h2>Text</h2></div> -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>8.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Creating the remote repository</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
 
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <p class="hyp">Using Brackets to link with and manage a remote repository</p>                                 <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">In this section</span> I cover linking the <span class="code">lab-01-website</span> project to a remote GitHub repository, show how to push, pull and merge changes between a local repository and its remote counterpart.</p>
+                    <p class="hyp">The first thing is to create the empty repository in GitHub:</p>
 
-                    <p class="hyp">I cover:</p>
+                    <p class="hyp">Back to <a class="hlink nohyp" href="https://github.com/">GitHub</a>, log into your account. This is mine:</p>
 
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      NUMBERED LIST
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ol class="list-num">                       <!-- Start of numbered list -->
-                        <li><p class="hyp">Creating a remote repository with GitHub</p></li>
-
-                        <li><p class="hyp">Pushing a local repository up to the GitHub remote repository</p></li>
-
-                        <li><p class="hyp">Understanding how branches work with a remote repository</p></li>
-
-                        <li><p class="hyp">Incorporating remote changes into the local repository</p></li>
-
-                        <li><p class="hyp">Deleting both local and remote branches</p></li>
-
-                    </ol>                                       <!-- End of numbered list -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-09">
+                            <a href="01-pages/08-02-remotes/02-images/fig-08-09.png" data-lightbox="fig-set" data-title="Figure 8.9 - GitHub profile main page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-02-remotes/02-images/fig-08-09.png" alt="Figure 8.9 - GitHub profile main page">
+                            </a>
+                            <p>Figure 8.9 &emsp; GitHub profile main page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp"><a class="hlink nohyp" href="04-00-linking.html#js--000000">section&nbsp;4</a> covered how to create a GitHub profile and how to link it to a local machine using a SSH link. I&rsquo;m assuming in this section that you have done this with your own account and will be able to follow the steps accordingly. </p>
+                    <p class="hyp">There are currently two repositories: <span class="code">lab-1st-repo</span> that we made in <a class="hlink nohyp" href="04-02-linking.html#js--040200">section&nbsp;4.2</a> and <span class="code">lab-brackets-git</span> that we made in <a class="hlink nohyp" href="05-02-brackets.html#js--050200">section&nbsp;5.2</a>.</p>
 
-                    <p class="hyp">I&rsquo;m also assuming that you have the <span class="code">lab-01-website</span> repository (I set this up in <a class="hlink nohyp" href="06-00-example.html#js--000000">section&nbsp;6</a>), this will form the basis of the remote repository.</p>
+                    <p class="hyp">We&rsquo;re now going to make a third repository for the <span class="code">lab-01-website</span> that is currently in our local repository.</p>
+
+                    <p class="hyp">I&rsquo;m going to give the remote repository the same name as the local repository, i.e.:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">lab-01-website</span></p>
+
+                    <p class="hyp">It is not necessary for the names to be the same; I do it only to avoid confusion.</p>
+
+                    <p class="hyp">To create the new remote repository in GitHub, click either the <span class="menu">start project</span> button or the <span class="menu">new repository</span> button (they both do the same).</p>
+
+                    <p class="hyp">Either option will open the Create new repository page. I&rsquo;m going to select the following options (<a class="xref js--sc-t08-02" href="#">Table&nbsp;8.2</a> and <a class="xref js--sc-f08-10" href="#">Figure&nbsp;8.10</a>):</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t08-02">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-cent" style="width: 30%">PROPERTY</th>      <!-- set column 01 width here -->
+                            <th class="table-left" style="width: 70%">VALUE</th>    <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Repository name</td>
+                            <td class="table-left"><span class="code">lab-01-website</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Description</td>
+                            <td class="table-left"><span class="code">A simple website repository used as an example to demonstrate how the Brackets-Git extension works</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Public/private</td>
+                            <td class="table-left"><span class="code">Public</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Initialise with README</td>
+                            <td class="table-left"><span class="code">Unticked (<em>not selected</em>)</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Add .gitignore</td>
+                            <td class="table-left"><span class="code">None</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">Add a license</td>
+                            <td class="table-left"><span class="code">None</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption">Table 8.2 &emsp; lab-01-website repository properties</td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-10">
+                            <a href="01-pages/08-02-remotes/02-images/fig-08-10.png" data-lightbox="fig-set" data-title="Figure 8.10 -GitHub&mdash;Create the lab-01-website repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-02-remotes/02-images/fig-08-10.png" alt="Figure 8.10 - GitHub&mdash;Create the lab-01-website repository">
+                            </a>
+                            <p>Figure 8.10 &emsp; GitHub&mdash;Create the lab-01-website repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">create repository</span> and it will automatically open the repository page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-11">
+                            <a href="01-pages/08-02-remotes/02-images/fig-08-11.png" data-lightbox="fig-set" data-title="Figure 8.11 -GitHub&mdash;lab-01-website repository page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-02-remotes/02-images/fig-08-11.png" alt="Figure 8.11 - GitHub&mdash;lab-01-website repository page">
+                            </a>
+                            <p>Figure 8.11 &emsp; GitHub&mdash;lab-01-website repository page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This gives us a completely empty repository&mdash;GitHub is a bit <span class="first-use">complainy</span> at this point <span class="first-use">(ok, I might have made that word up)</span>. It knows the repository is completely empty and it is telling us how to put something in it.</p>
+
+                    <p class="hyp">That&rsquo;s next.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -323,7 +407,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="07-03-regression.html#js--070300">Prev</a>
+                        <a class="xref" href="08-00-remotes.html#js--080000">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -333,7 +417,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="08-01-remotes.html#js--080100">Next</a>
+                        <a class="xref" href="08-02-remotes.html#js--080200">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -366,7 +450,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      JAVASCRIPT (POST PAGE LOAD)
      ***********************************************************************-->
-        <!-- Lightbox                   <script type="text/javascript" src="21-global/05-js/lightbox.js"></script> -->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
 
     </body>
 </html>
