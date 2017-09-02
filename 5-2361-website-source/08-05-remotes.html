@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+02 Sep 2017   t-P11.08.P12 M. Gledhill    Proofread and validated
+
 01 Sep 2017   d-P11.08.02  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-05&nbsp;&mdash;&nbsp;d-P11.08.02</p>
+<!--REVISION-->         <p>Rev: 08-05&nbsp;&mdash;&nbsp;t-P11.08.P12</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -174,7 +176,7 @@ Date          Issue        Author         Reason for Modification
                     TOC - 8 remotes with Brackets
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-080000" href="08-00-remotes.html#js--080000">  <!-- TOC link start -->
+                        <li><a class="js--sc-080000" href="08-00-remotes.html#js--000000">  <!-- TOC link start -->
                                <div class="toc-lev"><span class="toc-lev1-num">8</span><span class="toc-lev1-text">Brackets and remote repositories</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
@@ -310,7 +312,7 @@ h3 { font-size: 2.5rem; }
 
                     <p class="hyp">Firstly let&rsquo;s modify the file in the local repository.</p>
 
-                    <p class="hyp">Make sure you are on the <span class="git-cmd">d-03-contact</span> branch, open <span class="code">style.css</span> and add a colour declaration to the <span class="code">h3</span> element (this is exactly the same change we made in <a class="hlink nohyp" href="06-07-example.html#js--060700">&sect;&nbsp;6.7.3</a>):</p>
+                    <p class="hyp">Make sure you are on the <span class="git-cmd">d-03-contact</span> branch, open <span class="code">style.css</span> and add a colour declaration to the <span class="code">h3</span> element (this is exactly the same change we made in <a class="hlink nohyp" href="06-07-example.html#js--060703">&sect;&nbsp;6.7.3</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
@@ -362,7 +364,7 @@ h3 { font-size: 2.5rem; }
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Now let&rsquo;s do the same in GitHub. Open the <span class="code">lab-01-website</span> repository, select the <span class="git-cmd">d-03-contact</span> branch and click <span class="code">11-resources</span> to open it, then click <span class="code">01-css</span> and finally <span class="code">style.css</span>. This will open a preview of the file:</p>
+                    <p class="hyp">Now let&rsquo;s do the same in GitHub. Open the <span class="code">lab-01-website</span> repository, select the <span class="git-cmd">d-03-contact</span> branch and click the <span class="code">11-resources</span> folder to open it, then click <span class="code">01-css</span> and finally <span class="code">style.css</span>. This will open a preview of the file:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -453,7 +455,7 @@ h3 { font-size: 2.5rem; }
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Let&rsquo;s refresh the counters in Brackets, click the <span class="menu">fetch</span> button <sub><img style="height: 1rem" src="01-pages/08-05-remotes/02-images/fig-08-51a.png" alt="terminal icon"></sub>.</p>
+                    <p class="hyp">Let&rsquo;s refresh the counters in Brackets, click the <span class="menu">fetch</span> button <sub><img style="height: 1rem" src="01-pages/08-05-remotes/02-images/fig-08-51a.png" alt="fetch icon"></sub>.</p>
 
                     <p class="hyp">It gives this:</p>
 
@@ -490,7 +492,7 @@ h3 { font-size: 2.5rem; }
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">So let&rsquo;s do that. Click the <span class="menu">git pull</span> button <sub><img style="height: 1rem" src="01-pages/08-05-remotes/02-images/fig-08-52a.png" alt="terminal icon"></sub>. This opens the pull dialogue box:</p>
+                    <p class="hyp">So let&rsquo;s do that. Click the <span class="menu">git pull</span> button <sub><img style="height: 1rem" src="01-pages/08-05-remotes/02-images/fig-08-52a.png" alt="pull icon"></sub>. This opens the pull dialogue box:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -522,7 +524,7 @@ h3 { font-size: 2.5rem; }
 
                     <p class="hyp">It tells us that we have a conflict in <span class="code">style.css</span> (as we would expect).</p>
 
-                    <p class="hyp">Click <span class="menu">close</span>, and Brackets will have opened a merged version of <span class="code">style.css</span> in the editor showing the conflict. This process is now identical to resolving the merge conflict we had in <a class="hlink nohyp" href="06-07-example.html#js--060700">&sect;&nbsp;6.7.3</a> and <a class="hlink nohyp" href="06-07-example.html#js--f06-77">Figure&nbsp;6.77</a>:</p>
+                    <p class="hyp">Click <span class="menu">close</span>, and Brackets will have opened a merged version of <span class="code">style.css</span> in the editor showing the conflict. This process is now identical to resolving the merge conflict we had in <a class="hlink nohyp" href="06-07-example.html#js--060703">&sect;&nbsp;6.7.3</a> and <a class="hlink nohyp" href="06-07-example.html#js--f06-77">Figure&nbsp;6.77</a>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -537,7 +539,7 @@ h3 { font-size: 2.5rem; }
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Again we now have an <span class="menu">abort merge</span> button in the Git pane. Click that and we go back to where we were before we tried to merge the repositories.</p>
+                    <p class="hyp">Again we have an <span class="menu">abort merge</span> button in the Git pane. Click that and we go back to where we were before we tried to merge the repositories.</p>
 
                     <p class="hyp">Brackets is telling us there is a conflict in the <span class="code">style.css</span> file in just the same way as before, but this time the conflict is between the local <span class="git-cmd">head</span> on <span class="git-cmd">d-03-contact</span> and the remote <span class="git-cmd">d-03-contact</span> branch on the remote <span class="code">lab-01-website</span> repository:</p>
 
@@ -645,7 +647,7 @@ h3 { font-size: 2.5rem; color: #c0504d;}
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The last two lines are how the code is on the remote repository branch <span class="git-cmd">d-03-contact</span>(this is the blue version):</p>
+                    <p class="hyp">The last two lines are how the code is on the remote repository branch <span class="git-cmd">d-03-contact</span> (this is the blue version):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
@@ -793,6 +795,8 @@ Mine looks like this after the modifications, <a class="xref js--sc-f08-56" href
                     <p class="hyp">Let&rsquo;s do the push to complete the thing. Click the <span class="menu">git push</span> button <sub><img style="height: 1rem" src="01-pages/08-05-remotes/02-images/fig-08-59a.png" alt="push icon"></sub>.</p>
 
                     <p class="hyp">Tick the <span class="menu">send tags</span> box on the push to remote dialogue box and click <span class="menu">ok</span>, and click <span class="menu">ok</span> again to close the response box.</p>
+
+                    <p class="hyp">Now to GitHub. Refresh the repository and make sure the <span class="git-cmd">d-03-commit</span> branch is active. I have this:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH

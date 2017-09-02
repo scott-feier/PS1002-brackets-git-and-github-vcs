@@ -54,4 +54,6 @@ Date          Issue        Author         Reason for Modification
    CODE FRAGMENT c08-02 - FORMATTING
    ************************************************************************* */
 #js--c08-02 li:nth-child(2)  .pln {color: #D9369F}
+
+#js--c08-02 li:nth-child(n+1):nth-child(-n+7) { background: #EAF1DD }
 /* ************************************************************************* */

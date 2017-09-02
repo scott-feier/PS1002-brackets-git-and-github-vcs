@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+02 Sep 2017   t-P11.08.P12 M. Gledhill    Proofread and validated
+
 29 Aug 2017   d-P11.08.02  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-03&nbsp;&mdash;&nbsp;d-P11.08.02</p>
+<!--REVISION-->         <p>Rev: 08-03&nbsp;&mdash;&nbsp;t-P11.08.P12</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -174,7 +176,7 @@ Date          Issue        Author         Reason for Modification
                     TOC - 8 remotes with Brackets
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-080000" href="08-00-remotes.html#js--080000">  <!-- TOC link start -->
+                        <li><a class="js--sc-080000" href="08-00-remotes.html#js--000000">  <!-- TOC link start -->
                                <div class="toc-lev"><span class="toc-lev1-num">8</span><span class="toc-lev1-text">Brackets and remote repositories</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
@@ -273,7 +275,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">I’m going to assume that you’ve already set up the SSH link between your computer and your GitHub profile (the instructions for how to do this are in <a class="hlink nohyp" href="04-00-linking.html#js--040000">&sect;&nbsp;4</a>).</p>
 
-                    <p class="hyp">If you have, all we need is the SSH URL from the GitHub repository page (highlighted in orange in <a class="hlink nohyp utx" href="08-02-remotes.html#js--f08-11">Figure&nbsp;8.11</a>). In my case it is:</p>
+                    <p class="hyp">If you have, all we need is the SSH URL from the GitHub repository page (highlighted in orange in <a class="hlink nohyp" href="08-02-remotes.html#js--f08-11">Figure&nbsp;8.11</a>). In my case it is:</p>
 
                     <p class="hyp" style="text-align: center;"><span class="code">git@github.com:practicalseries-lab/lab-01-website.git</span></p>
 
@@ -315,9 +317,9 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">This is all we need to make the link. Back to Brackets.</p>
+                    <p class="hyp">The SSH URL is all we need to make the link&mdash;back to Brackets.</p>
 
-                    <p class="hyp">We now have to tell Brackets about the remote repository. There is a button for this on the Git pane; it looks like this <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-11a.png" alt="remote link icon"></sub> it says <span class="menu">pick preferred remote</span> if you hover the mouse over it. I&rsquo;ve highlighted its position in Brackets in <a class="xref js--sc-f08-12" href="#">Figure&nbsp;8.12</a>:</p>
+                    <p class="hyp">We have to tell Brackets about the remote repository. There is a button for this on the Git pane; it looks like this <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-11a.png" alt="remote link icon"></sub> it says <span class="menu">pick preferred remote</span> if you hover the mouse over it. I&rsquo;ve highlighted its position in Brackets in <a class="xref js--sc-f08-12" href="#">Figure&nbsp;8.12</a>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -364,7 +366,9 @@ Date          Issue        Author         Reason for Modification
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Now it wants the information we copied from the new repository in GitHub:</p>
+                    <p class="hyp">Now it wants the information we copied from the new repository in GitHub.</p>
+
+                    <p class="hyp">Paste the information in and click <span class="menu">ok</span>.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -378,8 +382,6 @@ Date          Issue        Author         Reason for Modification
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Paste the information in and click <span class="menu">ok</span>.</p>
 
                     <p class="hyp">This activates the remote <span class="menu">fetch</span>, <span class="menu">pull</span> and <span class="menu">push</span> buttons on the Git pane:</p>
 
@@ -432,11 +434,11 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">At this point we&rsquo;ve set up the link to the remote repository, but nothing else has happened we haven&rsquo;t done anything with the remote repository; we haven&rsquo;t even connected to it yet. We&rsquo;ve just given the connection details to Brackets</p>
+                    <p class="hyp">At this point we&rsquo;ve set up the link to the remote repository, but nothing else has happened we haven&rsquo;t done anything with the remote repository; we haven&rsquo;t even connected to it yet. We&rsquo;ve just given the connection details to Brackets.</p>
 
-                    <p class="hyp">The next thing to do is send the local repository up to the remote.</p>
+                    <p class="hyp">The next thing to do is send <span class="first-use">(push)</span> the local repository up to the remote.</p>
 
-                    <p class="hyp">Make sure you are on the master branch and click the git <span class="menu">push</span> button on the Git pane: <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-15a.png" alt="push icon"></sub>.</p>
+                    <p class="hyp">Make sure you are on the master branch and click the <span class="menu">git push</span> button on the Git pane: <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-15a.png" alt="push icon"></sub>.</p>
 
                     <p class="hyp">This opens the push to remote dialogue box:</p>
 
@@ -548,7 +550,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Go back to the main repository screen (click the <span class="code">/lab-01-website</span> at the top of the page under the black bar with the Octocat icon). </p>
 
-                    <p class="hyp">Looking at the branches tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-21a.png" alt="branch icon"></sub> it says there is 1 branch, this is the <span class="git-cmd">master</span> branch. The local repository has two branches, but the remote repository only has one. Why?</p>
+                    <p class="hyp">Looking at the branches tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-21a.png" alt="branch icon"></sub> it says there is 1 branch, this is the <span class="git-cmd">master</span> branch. The local repository has two branches, but the remote repository only has one. <span class="first-use">Why?</span></p>
 
                     <p class="hyp">Click the branch tab, it just shows just the single <span class="git-cmd">master</span> branch.</p>
 
@@ -565,7 +567,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Next is the releases tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-22a.png" alt="branch icon"></sub>, this lists the tags we passed to the remote repository:</p>
+                    <p class="hyp">Next is the releases tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-22a.png" alt="tag icon"></sub>, this lists the tags we passed to the remote repository:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -595,7 +597,7 @@ Date          Issue        Author         Reason for Modification
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Finally, the contributor tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-23a.png" alt="branch icon"></sub>. There is only one contributor, me:</p>
+                    <p class="hyp">Finally, the contributor tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-23a.png" alt="contributor icon"></sub>. There is only one contributor, me:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -667,7 +669,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Back to Brackets. Let&rsquo;s push the <span class="git-cmd">d-03-contact</span> branch up to the remote repository.</p>
 
-                    <p class="hyp">First switch to <span class="git-cmd">d-03-contact</span>, click the small arrow next to the master branch and select <span class="menu">d-03-contact</span> from the dropdown. It should look something like this:</p>
+                    <p class="hyp">First switch to <span class="git-cmd">d-03-contact</span>, click the small arrow next to the <span class="git-cmd">master</span> branch and select <span class="menu">d-03-contact</span> from the dropdown. It should look something like this:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -682,7 +684,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">This time we have a number alongside the <span class="menu">git push</span> button <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-26a.png" alt="branch icon"></sub>, this number means that the current branch d-03-contact has one extra commit that needs to be pushed to the remote repository; indeed there are nine commits listed in the commit history (<a class="xref js--sc-f08-26" href="#">Figure&nbsp;8.26</a>) and we know that the remote repository only has eight commits (<a class="xref js--sc-f08-21" href="#">Figure&nbsp;8.21</a>).</p>
+                    <p class="hyp">This time we have a number alongside the <span class="menu">git push</span> button <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-26a.png" alt="push icon"></sub>, this number means that the current branch <span class="git-cmd">d-03-contact</span> has one extra commit that needs to be pushed to the remote repository; indeed there are nine commits listed in the commit history (<a class="xref js--sc-f08-26" href="#">Figure&nbsp;8.26</a>) and we know that the remote repository only has eight commits (<a class="xref js--sc-f08-21" href="#">Figure&nbsp;8.21</a>).</p>
 
                     <p class="hyp">Click the <span class="menu">git push</span> button:</p>
 
@@ -752,7 +754,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">To change branches, just select the branch you want from the list: <span class="menu">d-03-contact</span>.</p>
+                    <p class="hyp">Select the branch you want from the list, <span class="menu">d-03-contact</span> in this case.</p>
 
                     <p class="hyp">This gives us:</p>
 

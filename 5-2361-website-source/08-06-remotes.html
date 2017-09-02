@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+02 Sep 2017   t-P11.08.P12 M. Gledhill    Proofread and validated
+
 02 Sep 2017   d-P11.08.02  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-05&nbsp;&mdash;&nbsp;d-P11.08.02</p>
+<!--REVISION-->         <p>Rev: 08-06&nbsp;&mdash;&nbsp;t-P11.08.P12</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -174,7 +176,7 @@ Date          Issue        Author         Reason for Modification
                     TOC - 8 remotes with Brackets
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-080000" href="08-00-remotes.html#js--080000">  <!-- TOC link start -->
+                        <li><a class="js--sc-080000" href="08-00-remotes.html#js--000000">  <!-- TOC link start -->
                                <div class="toc-lev"><span class="toc-lev1-num">8</span><span class="toc-lev1-text">Brackets and remote repositories</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
@@ -275,7 +277,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The current situation is that everything is up to date, the local and remote repositories match (this is because I just pushed all the changes to the remote at the end of the previous section).</p>
 
-                    <p class="hyp">To make sure there are no differences between the remote and local, we can do a fetch to check, click the <span class="menu">fetch</span> button <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-62a.png" alt="push icon"></sub>.</p>
+                    <p class="hyp">To make sure there are no differences between the remote and local, we can do a fetch to check, click the <span class="menu">fetch</span> button <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-62a.png" alt="fetch icon"></sub>.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -290,11 +292,11 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The fact that there are no numbers in the <span class="menu">git pull</span> and <span class="menu">git push buttons</span> (highlighted) shows that there are no differences.</p>
+                    <p class="hyp">The fact that there are no numbers in the <span class="menu">git pull</span> and <span class="menu">git push</span> buttons (highlighted) shows that there are no differences.</p>
 
-                    <p class="hyp">Next thing is to merge <span class="menu">d-03-contact</span> into the master branch locally. This is an identical process to that in <a class="hlink nohyp" href="06-07-example.html#js--060701">&sect;&nbsp;6.7.1</a>.</p>
+                    <p class="hyp">Next thing is to merge <span class="git-cmd">d-03-contact</span> into the <span class="git-cmd">master</span> branch locally. This is an identical process to that in <a class="hlink nohyp" href="06-07-example.html#js--060701">&sect;&nbsp;6.7.1</a>.</p>
 
-                    <p class="hyp">To merge branches, we must be on the receiving branch (the <span class="git-cmd">master</span> branch). In Brackets switch to the <span class="git-cmd">master</span> branch, click the arrow next to the selected branch in the left file tree pane:</p>
+                    <p class="hyp">To merge branches, we must be on the receiving branch (the <span class="git-cmd">master</span> branch). In Brackets switch to the <span class="git-cmd">master</span> branch, click the arrow next to the selected branch in the left file tree pane and select <span class="menu">master</span> from the drop down:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -324,17 +326,17 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">To merge the branches, again click the arrow next to the master branch in the file tree and this time click the merge icon <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-65a.png" alt="push icon"></sub> next to <span class="git-cmd">d-03-contact</span>:</p>
+                    <p class="hyp">To merge the branches, again click the arrow next to the <span class="git-cmd">master</span> branch in the file tree and this time click the merge icon <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-65a.png" alt="merge icon"></sub> next to <span class="git-cmd">d-03-contact</span>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f08-66">
-                            <a href="01-pages/08-06-remotes/02-images/fig-08-66.png" data-lightbox="fig-set" data-title="Figure 8.66 - Brackets&mdash;switch back to master branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 262px" src="01-pages/08-06-remotes/02-images/fig-08-66.png" alt="Figure 8.66 - Brackets&mdash;switch back to master branch">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-66.png" data-lightbox="fig-set" data-title="Figure 8.66 - Brackets&mdash;merged d-03-contact branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 262px" src="01-pages/08-06-remotes/02-images/fig-08-66.png" alt="Figure 8.66 - Brackets&mdash;merged d-03-contact branch">
                             </a>
-                            <p>Figure 8.66 &emsp; Brackets&mdash;merge <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.66 &emsp; Brackets&mdash;merged <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -381,7 +383,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">As always, in the push dialogue box make sure the <span class="menu">send tags</span> box is ticked, leave everything else and click <span class="menu">ok</span>.</p>
 
-                    <p class="hyp">Close the response box and open the remote repository in GitHub. I now have 14 commits in total on the master branch, matching the local repository (<a class="xref js--sc-f06-69 utx" href="#">Figure&nbsp;8.69</a>):</p>
+                    <p class="hyp">Close the response box and open the remote repository in GitHub. I now have 14 commits in total on the master branch, matching the local repository (<a class="xref js--sc-f08-69" href="#">Figure&nbsp;8.69</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -508,8 +510,8 @@ Date          Issue        Author         Reason for Modification
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f08-73">
-                            <a href="01-pages/08-06-remotes/02-images/fig-08-73.png" data-lightbox="fig-set" data-title="Figure 8.73 - Brackets&mdash;delete remote branch response">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-06-remotes/02-images/fig-08-73.png" alt="Figure 8.73 - Brackets&mdash;delete remote branch response">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-73.png" data-lightbox="fig-set" data-title="Figure 8.73 - GitHub&mdash;after d-03-contact deletion">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-73.png" alt="Figure 8.73 - GitHub&mdash;after d-03-contact deletion">
                             </a>
                             <p>Figure 8.73 &emsp; GitHub&mdash;after <span class="git-cmd">d-03-contact</span> deletion</p>     <!-- Figure caption -->
                         </div>
@@ -573,7 +575,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Click the cross next to the <span class="git-cmd">d-03-contact</span> branch in the dropdown. Click <span class="menu">ok</span> in the are you sure dialogue box.</p>
+                    <p class="hyp">Click the cross next to the <span class="git-cmd">d-03-contact</span> branch in the dropdown. Click <span class="menu">ok</span> in the &ldquo;are you sure?&rdquo; dialogue box.</p>
 
                     <p class="hyp">That&rsquo;s it; the <span class="git-cmd">d-03-contact</span> branch is now deleted from both the local and remote repositories.</p>
 

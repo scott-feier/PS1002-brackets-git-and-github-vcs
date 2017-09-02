@@ -119,6 +119,7 @@ Date          Issue        Author         Reason for Modification
    ************************************************************************* */
 #js--c08-05 .pln { color: #4271ae;}                                      /* overlay style colours for CSS fragment */
 #js--c08-05 .lit { color: #718c00;}
+#js--c08-05 li:nth-child(7) { background: #EAF1DD }
 
 /* ************************************************************************* */
 
