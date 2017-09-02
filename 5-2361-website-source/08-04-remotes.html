@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to use Brackets-Git to prepare file for linking with a remote repository">
+        <meta name="description" content="How to pull changes from a remote repository into a local repository using Brackets-Git">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                08-01-REGRESSION.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                08-04-REGRESSION.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,9 +41,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-31 Aug 2017   d-P11.08.02  M. Gledhill    Figure numbers corrected
-
-22 Aug 2017   d-P11.08.01  M. Gledhill    Page created
+31 Aug 2017   d-P11.08.02  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -68,7 +66,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-01-remotes/05-local-js/08-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-04-remotes/05-local-js/08-04-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -82,7 +80,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/08-01-remotes/01-local-css/08-01-prettifylines.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/08-04-remotes/01-local-css/08-04-prettifylines.css">
 
 
 
@@ -103,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Brackets-Git&mdash;Extending the current project | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Brackets-Git&mdash;Pulling changes into the local repository | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -122,7 +120,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="08-00-remotes.html#js--080000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <a class="nav-wide" href="08-03-remotes.html#js--080300"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
@@ -134,7 +132,7 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="08-02-remotes.html#js--080200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="08-05-remotes.html#js--080500"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -157,7 +155,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-01&nbsp;&mdash;&nbsp;d-P11.08.01</p>
+<!--REVISION-->         <p>Rev: 08-04&nbsp;&mdash;&nbsp;d-P11.08.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -247,19 +245,19 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 080100]
-     SECTION - 8.1 Extending the current project
+<!-- ************************************************************************** [WP 080400]
+     SECTION - 8.4 PULLING REMOTE CHANGES INTO THE LOCAL REPOSITORY
      ***********************************************************************-->
 
-        <section class="section-std" id="js--080100">           <!-- Start of section -->
+        <section class="section-std" id="js--080400">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
-                 <div class="sub-title-num-box"><h2>8.1</h2></div>
-                 <div class="sub-title-text-box"><h2>Extending the current project</h2></div>
+                 <div class="sub-title-num-box"><h2>8.4</h2></div>
+                 <div class="sub-title-text-box"><h2>Pulling remote changes into the local repository</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -273,222 +271,288 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Currently the project looks like this:</p>
+                    <p class="hyp">This is probably the most common situation that arises when working with remote repositories <span class="first-use">(not so much in my case, the Practical Series website has so far been a solo effort&mdash;I don&rsquo;t always play well with others&mdash;I usually do things my own way and I&rsquo;m too old to change now&mdash;most people get used to me in the end, back me or sack me that&rsquo;s my motto)</span>.</p>
+
+                    <p class="hyp">Where the repository is a team effort, the remote repository quite often changes and moves ahead of your local copy. The remote repository should always be considered the master repository.</p>
+
+                    <p class="hyp">To illustrate the point, let&rsquo;s make a change to the <span class="git-cmd">d-03-contact</span> branch on the remote repository and see how we get this back into our local repository using Brackets. </p>
+
+                    <p class="hyp">To GitHub then. Open the <span class="code">lab-01-website</span> repository in GitHub and switch to the <span class="git-cmd">d-03-contact</span> branch. It should look like this:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-01">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-01.png" data-lightbox="fig-set" data-title="Figure 8.1 - Final arrangement, all merged back to master branch">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-01.png" alt="Figure 8.1 - Final arrangement, all merged back to master branch">
+                        <div class="fig-col fig1-1" id="js--f08-32">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-32.png" data-lightbox="fig-set" data-title="Figure 8.32 - GitHub&mdash;README.md on the d-03-contact branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-32.png" alt="Figure 8.32 - GitHub&mdash;README.md on the d-03-contact branch">
                             </a>
-                            <p>Figure 8.1 &emsp; Final arrangement, all merged back to master branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.32 &emsp; GitHub&mdash;README.md on the <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">There is a single <span class="git-cmd">master</span> branch with eight commits and the <span class="git-cmd">head</span> is at the most recent commit, in my case <span class="code">[07fe437]</span>. In Brackets, the history is:</p>
+                    <p class="hyp">Make sure  <span class="git-cmd">d-03-contact</span> is selected. Now click the <span class="code">README.md</span> file (this is the file we are going to change); it&rsquo;s highlighted in <a class="xref js--sc-f08-32" href="#">Figure&nbsp;8.32</a>. This will show a preview of the <span class="code">README.md</span> file:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-02">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-02.png" data-lightbox="fig-set" data-title="Figure 8.2 - Brackets commit history">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-02.png" alt="Figure 8.2 - Brackets commit history">
+                        <div class="fig-col fig1-1" id="js--f08-33">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-33.png" data-lightbox="fig-set" data-title="Figure 8.33 - GitHub&mdash;README.md preview page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-33.png" alt="Figure 8.33 - GitHub&mdash;README.md preview page">
                             </a>
-                            <p>Figure 8.2 &emsp; Brackets commit history</p>     <!-- Figure caption -->
+                            <p>Figure 8.33 &emsp; GitHub&mdash;README.md preview page</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The repository has the following eight files:</p>
-
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <table class="table-clean" id="js--t08-02">                 <!-- TABLE - Start of table  -->
-                        <tr>                                    <!-- TABLE - Start of header -->
-                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
-                            <th class="table-left" style="width: 1000%">LIST OF FILES AT COMMIT <span class="code">07FE437&emsp;&emsp;&emsp;TAG: P03</span></th>      <!-- set column 01 width here -->
-                        </tr>                                   <!-- TABLE - End of header   -->
-                        <tr>                                    <!-- TABLE - Start of row 01 -->
-                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
-                            <td class="table-left">
-                                <p><span class="code">index.html</span></p>
-                                <p><span class="code">01-intro.html</span></p>
-                                <p><span class="code">02-about.html</span></p>
-                                <p><span class="code">README.md</span></p>
-                                <p><span class="code">.gitignore</span></p>
-                                <p><span class="code">11-resources\01-css\style.css</span></p>
-                                <p><span class="code">11-resources\02-images\logo.png</span></p>
-                                <p><span class="code">11-resources\02-images\readme.png</span></p>
-                            </td>
-                        </tr>                                   <!-- TABLE - End of row 01   -->
-                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
-                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
-                             <td class="table-caption">Table 8.1 &emsp; File list at commit point <span class="code">P03 [07FE437]</span></td>
-                        </tr>                                   <!-- TABLE - End of caption row   -->
-                    </table>                                    <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Before we start working with the remote repository, I want to put a new branch and commit point onto the local project&mdash;this is to demonstrate how GitHub handles branches.</p>
-
-                    <p class="hyp">I&rsquo;m going to add a new <span class="code">03-contact.html</span> page and I&rsquo;m going to do so by creating a new branch from the most recent commit point <span class="code">[07fe437]</span> commit point on the <span class="git-cmd">master</span> branch. From the <span class="git-cmd">master</span> branch, create a new <span class="git-cmd">d-03-contact</span> branch and switch to it (see <a class="hlink nohyp" href="06-05-example.html#js--060500">&sect;&nbsp;6.5</a> for instructions about creating and changing branches).</p>
-
-                    <p class="hyp">Now we have <a class="xref js--sc-f08-03" href="#">Figure&nbsp;8.3</a>, the head is on the new branch, but there are no further commits yet (to make the diagram readable, I&rsquo;ll only show the latest commits):</p>
+                    <p class="hyp">To edit the file click the pencil symbol <sub><img style="height: 0.85rem" src="01-pages/08-04-remotes/02-images/fig-08-33a.png" alt="terminal icon"></sub> (highlighted).This now puts us on the edit page (<a class="xref js--sc-f08-34" href="#">Figure&nbsp;8.34</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-03">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-03.png" data-lightbox="fig-set" data-title="Figure 8.3 - The d-03-contact branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 483px" src="01-pages/08-01-remotes/02-images/fig-08-03.png" alt="Figure 8.3 - The d-03-contact branch">
+                        <div class="fig-col fig1-1" id="js--f08-34">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-34.png" data-lightbox="fig-set" data-title="Figure 8.34 - GitHub&mdash;edit README.md">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-34.png" alt="Figure 8.34 - GitHub&mdash;edit README.md">
                             </a>
-                            <p>Figure 8.3 &emsp; The <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.34 &emsp; GitHub&mdash;edit README.md</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Time for another file; in the new <span class="git-cmd">d-03-contact</span> branch create a file <span class="code">03-contact.html</span> in the root folder (same place as <span class="code">index.html</span>) and add the following code to it (This is just like we did in <a class="hlink nohyp" href="06-05-example.html#js--060502">&sect;&nbsp;6.5.2</a>):</p>
+                    <p class="hyp">Let&rsquo;s add some more text to the file, add the following:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <div class="code-extract">                              <!-- Start of code fragment -->
-                        <div class="code-header">03-contact.html</div>            <!-- Code file name -->
+                        <div class="code-header"><span style="text-transform: uppercase">README</span>.md</div>            <!-- Code file name -->
                         <div class="code-area">                             <!-- Start of code extract holder -->
-                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c08-01">&lt;html lang="en"&gt;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &lt;!-- Declare language --&gt;
-&nbsp; &nbsp; &lt;head&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Start of head section --&gt;
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt; &nbsp; &nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
+                            <pre class="prettyprint linenums:14 lang-html wrap" id="js--c08-02">
 
-&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
-
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&nbsp;&mdash;&nbsp;Contact us&lt;/title&gt;
-&nbsp; &nbsp; &lt;/head&gt;
-
-&nbsp; &nbsp; &lt;body&gt;
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
-
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;Contact Us&lt;/h3&gt;
-
-&lt;p&gt;This page explains how to email Practical Series.&lt;/p&gt;
-
-&nbsp; &nbsp; &lt;/body&gt;
-&lt;/html&gt;
+## Website contents
+This site contains the following pages:
+* index.html
+* 01-intro.html
+* 02-about.html
+* 03-contact.html
 </pre>
                         </div>                                              <!-- End of code extract holder -->
                         <table class="code-caption"> <!-- Caption & download  -->
                             <tr class="no-border">
                                 <td style="width: 5.0%"></td>     <!-- left hand padding -->
-                                <td style="width: 90.0%">Code 8.1 &emsp; <span class="git-cmd">d-03-contact</span> branch&mdash;create new file: 03-contact.html</td>    <!-- Caption text  -->
+                                <td style="width: 90.0%">Code 6.2 &emsp; README.md file contents </td>    <!-- Caption text  -->
                                 <td style="width: 5.0%">          <!-- download link -->
-                                    <a class="code-nav" href="01-pages/08-01-remotes/04-data/code-08-01.zip" download><span class="nav-icon">a</span></a>
+                                    <a class="code-nav" href="01-pages/06-02-example/04-data/code-06-02.zip" download><span class="nav-icon">a</span></a>
                                 </td>
                             </tr>                                   <!-- TABLE - End of header   -->
                         </table>                                    <!-- TABLE - End of table    -->
                     </div>                                          <!-- End of code fragment -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Save the file, and in the Git pane tick the box to stage the file:</p>
+                    <p class="hyp">It looks like this on GitHub:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-04">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-04.png" data-lightbox="fig-set" data-title="Figure 8.4 - 03-contact.html">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-04.png" alt="Figure 8.4 - 03-contact.html">
+                        <div class="fig-col fig1-1" id="js--f08-35">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-35.png" data-lightbox="fig-set" data-title="Figure 8.35 - GitHub&mdash;README.md modifications (highlighted)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-35.png" alt="Figure 8.35 - GitHub&mdash;README.md modifications (highlighted)">
                             </a>
-                            <p>Figure 8.4 &emsp; 03-contact.html</p>     <!-- Figure caption -->
+                            <p>Figure 8.35 &emsp; GitHub&mdash;README.md modifications (highlighted)</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp"><span class="git-cmd">Commit</span> the changes with the commit message:</p>
-
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - INCIDENTAL TABLE (EN PASSANT)
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                        <table class="table-incid"> <!-- TABLE - Start of table  -->
-                        <tr>                                    <!-- TABLE - Start of header -->
-                            <th class="table-left"><p class="sans">D: Incremental Build&nbsp;-&nbsp;03-contact page</p></th>                            <!-- set column 01 width here -->
-                        </tr>                                   <!-- TABLE - End of header   -->
-                        <tr>                                    <!-- TABLE - Start of row 01 -->
-                            <td class="table-left">03-contact added.</td>
-                        </tr>                                   <!-- TABLE - End of row 01   -->
-                    </table>                                    <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Give the new commit point the tag <span class="code">d-P03.03.01</span>. In my case the commit point is <span class="code">[8329b67]</span>.</p>
-
-                    <p class="hyp">I now have nine commits:</p>
+                    <p class="hyp">If you click the <span class="menu">preview changes</span> tab, it will show how the page looks:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-05">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-05.png" data-lightbox="fig-set" data-title="Figure 8.5 - Current commits">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-05.png" alt="Figure 8.5 - Current commits">
+                        <div class="fig-col fig1-1" id="js--f08-36">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-36.png" data-lightbox="fig-set" data-title="Figure 8.36 - GitHub&mdash;README.md modifications preview">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-36.png" alt="Figure 8.36 - GitHub&mdash;README.md modifications preview">
                             </a>
-                            <p>Figure 8.5 &emsp; Current commits</p>     <!-- Figure caption -->
+                            <p>Figure 8.36 &emsp; GitHub&mdash;README.md modifications preview</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The workflow is:</p>
+                    <p class="hyp">To commit the change we need to complete the boxes at the bottom by adding the commit message:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-06">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-06.png" data-lightbox="fig-set" data-title="Figure 8.6 - The d-03-contact branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 526px" src="01-pages/08-01-remotes/02-images/fig-08-06.png" alt="Figure 8.6 - The d-03-contact branch">
+                        <div class="fig-col fig1-1" id="js--f08-37">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-37.png" data-lightbox="fig-set" data-title="Figure 8.37 - GitHub&mdash;README.md commit message">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-37.png" alt="Figure 8.37 - GitHub&mdash;README.md commit message">
                             </a>
-                            <p>Figure 8.6 &emsp; The <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.37 &emsp; GitHub&mdash;README.md commit message</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The last thing is to switch back to the <span class="git-cmd">master</span> branch, the <span class="git-cmd">master</span> branch is still the only deployable branch and it is this branch that I want to upload to the remote repository first.</p>
+                    <p class="hyp">Enter the commit message as shown above and click the green <span class="menu">commit changes</span> button.</p>
 
-                    <p class="hyp">Click the arrow next to the <span class="git-cmd">d-03-contact</span> branch and select <span class="git-cmd">master</span> from the dropdown.</p>
-
-                    <p class="hyp">This gives the following: back on the <span class="git-cmd">master</span> branch there are only eight commits and the new file <span class="code">03-contact.html</span> is not in the file list (this is on the <span class="git-cmd">d-03-contact</span> branch and not visible from the <span class="git-cmd">master</span> branch):</p>
+                    <p class="hyp">Now go back to the repository home page by clicking the <span class="menu">lab-01-website</span> link next to the branch button (highlighted below):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-07">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-07.png" data-lightbox="fig-set" data-title="Figure 8.7 - Local repository master branch">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-07.png" alt="Figure 8.7 - Local repository master branch">
+                        <div class="fig-col fig1-1" id="js--f08-38">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-38.png" data-lightbox="fig-set" data-title="Figure 8.38 - GitHub&mdash;go to repository home page">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 380px" src="01-pages/08-04-remotes/02-images/fig-08-38.png" alt="Figure 8.38 - GitHub&mdash;go to repository home page">
                             </a>
-                            <p>Figure 8.7 &emsp; Local repository master branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.38 &emsp; GitHub&mdash;go to repository home page</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The work flow is now (just the same but with the <span class="git-cmd">head</span> on the master branch):</p>
+                    <p class="hyp">The home page now looks like this (make sure the <span class="git-cmd">d-03-contact</span> branch is selected):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-08">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-08.png" data-lightbox="fig-set" data-title="Figure 8.8 - Local repository master branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 526px" src="01-pages/08-01-remotes/02-images/fig-08-08.png" alt="Figure 8.8 - Local repository master branch">
+                        <div class="fig-col fig1-1" id="js--f08-39">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-39.png" data-lightbox="fig-set" data-title="Figure 8.39 - GitHub&mdash;new commit on d-03-contact branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-39.png" alt="Figure 8.39 - GitHub&mdash;new commit on d-03-contact branch">
                             </a>
-                            <p>Figure 8.8 &emsp; Local repository <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.39 &emsp; GitHub&mdash;new commit on  <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Leave it like this for now while we get the remote repository established.</p>
+                    <p class="hyp">There is a new commit, it is <span class="code">[4da998f]</span> and the workflow is:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-40">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-40.png" data-lightbox="fig-set" data-title="Figure 8.40 - Remote repository workflow">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-40.png" alt="Figure 8.40 - Remote repository workflow">
+                            </a>
+                            <p>Figure 8.40 &emsp; Remote repository workflow</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">To summarise, the remote repository now has an extra commit on the <span class="git-cmd">d-03-contact</span> branch:</p>
+
+                    <p class="hyp">Back to Brackets. My local repository looks like this in Brackets (I&rsquo;m on the <span class="git-cmd">d-03-contact</span> branch):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-41">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-41.png" data-lightbox="fig-set" data-title="Figure 8.41 - Brackets&mdash;d-03-contact commit history">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-41.png" alt="Figure 8.41 - Brackets&mdash;d-03-contact commit history">
+                            </a>
+                            <p>Figure 8.41 &emsp; Brackets&mdash;<span class="git-cmd">d-03-contact</span> commit history</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In Brackets, there is nothing to indicate that it knows of any changes to the remote repository.</p>
+
+                    <p class="hyp">To refresh Brackets with data from the remote repository click the <span class="menu">fetch</span> button <sub><img style="height: 1rem" src="01-pages/08-04-remotes/02-images/fig-08-41a.png" alt="terminal icon"></sub>.</p>
+
+                    <p class="hyp">This will open (briefly) the fetch in progress screen:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-42">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-42.png" data-lightbox="fig-set" data-title="Figure 8.42 - Brackets&mdash;Fetch in progress">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 585px" src="01-pages/08-04-remotes/02-images/fig-08-42.png" alt="Figure 8.42 - Brackets&mdash;Fetch in progress">
+                            </a>
+                            <p>Figure 8.42 &emsp; Brackets&mdash;Fetch in progress</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This refreshes the Git pane counters:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-43">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-43.png" data-lightbox="fig-set" data-title="Figure 8.43 - Bracket&mdash;updated counters">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-43.png" alt="Figure 8.43 - Bracket&mdash;updated counters">
+                            </a>
+                            <p>Figure 8.43 &emsp; Bracket&mdash;updated counters</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">At this point, nothing has actually changed; the changes made to <span class="code">README.md</span> in the remote repository are still not present on the local repository. All we&rsquo;ve done is ask Brackets to check the status of the remote repository.</p>
+
+                    <p class="hyp">Brackets has detected that the remote repository has an additional commit, hence the number 1 in the <span class="menu">git pull</span> button: <sub><img style="height: 1rem" src="01-pages/08-04-remotes/02-images/fig-08-43a.png" alt="terminal icon"></sub>.</p>
+
+                    <p class="hyp">Let&rsquo;s copy (<span class="first-use">pull</span> in Git terminology) the remote repository into the local repository. Click the <span class="menu">git pull</span> button: <sub><img style="height: 1rem" src="01-pages/08-04-remotes/02-images/fig-08-43b.png" alt="terminal icon"></sub>. This opens the pull dialogue box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-44">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-44.png" data-lightbox="fig-set" data-title="Figure 8.44 - Bracket&mdash;pull dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 587px" src="01-pages/08-04-remotes/02-images/fig-08-44.png" alt="Figure 8.44 - Bracket&mdash;pull dialogue box">
+                            </a>
+                            <p>Figure 8.44 &emsp; Bracket&mdash;pull dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There is nothing to change here, click <span class="menu">ok</span>. This give the response screen. </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-45">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-45.png" data-lightbox="fig-set" data-title="Figure 8.45 - Bracket&mdash;pull response dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 591px" src="01-pages/08-04-remotes/02-images/fig-08-45.png" alt="Figure 8.45 - Bracket&mdash;pull response dialogue box">
+                            </a>
+                            <p>Figure 8.45 &emsp; Bracket&mdash;pull response dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click close, and look at the commit history, in my case I have <a class="xref js--sc-f08-46" href="#">Figure&nbsp;8.46</a>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-46">
+                            <a href="01-pages/08-04-remotes/02-images/fig-08-46.png" data-lightbox="fig-set" data-title="Figure 8.46 - Bracket&mdash;after the pull">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-04-remotes/02-images/fig-08-46.png" alt="Figure 8.46 - Bracket&mdash;after the pull">
+                            </a>
+                            <p>Figure 8.46 &emsp; Bracket&mdash;after the pull</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The new commit from the remote repository is visible <span class="code">[4da998f]</span>, and the changes made to <span class="code">README.md</span> are visible in the local working copy.</p>
+
+                    <p class="hyp">The only thing that is missing is a tag for the new commit. This is because I didn&rsquo;t assign one in GitHub. I cover this in <a class="hlink nohyp utx" href="09-06-github.html#js--090600">section&nbsp;9.6</a>.</p>
+
+                    <p class="hyp">In Brackets, give the new commit point <span class="code">[4da998f]</span> the tag <span class="code">d-P03.03.02</span>. </p>
+
+                    <p class="hyp">Do a git push <sub><img style="height: 1rem" src="01-pages/08-04-remotes/02-images/fig-08-46a.png" alt="push icon"></sub> and in the dialogue box tick the <span class="menu">send tags</span> box (just like <a class="hlink nohyp" href="08-03-remotes.html#js--f08-27">Figure&nbsp;8.27</a>).</p>
+
+                    <p class="hyp">The report will say that there were no changes to be made, and this is true <span class="first-use">(we haven&rsquo;t change the code or added a commit point)</span>; however it will push the new tag and if you look at that branch in GitHub it will have 10 releases.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -512,7 +576,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="08-00-remotes.html#js--080000">Prev</a>
+                        <a class="xref" href="08-03-remotes.html#js--080300">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -522,7 +586,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="08-02-remotes.html#js--080200">Next</a>
+                        <a class="xref" href="08-05-remotes.html#js--080500">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->

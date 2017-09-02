@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="How to use Brackets-Git to prepare file for linking with a remote repository">
+        <meta name="description" content="How to delete remote branches with Brackets-Git">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS                08-01-REGRESSION.HTML
+Title :          BRACKETS-GIT & GITHUB VCS                08-06-REGRESSION.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,9 +41,7 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
-31 Aug 2017   d-P11.08.02  M. Gledhill    Figure numbers corrected
-
-22 Aug 2017   d-P11.08.01  M. Gledhill    Page created
+02 Sep 2017   d-P11.08.02  M. Gledhill    Page created
 *************************************************************************** -->
 
 
@@ -63,12 +61,12 @@ Date          Issue        Author         Reason for Modification
      ***********************************************************************-->
         <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
-        <!-- Prettify (main) -->        <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
-        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-01-remotes/05-local-js/08-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/08-06-remotes/05-local-js/08-06-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -78,11 +76,11 @@ Date          Issue        Author         Reason for Modification
      ***********************************************************************-->
         <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
         <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
-        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
         <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/08-01-remotes/01-local-css/08-01-prettifylines.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/08-06-remotes/01-local-css/08-06-prettifylines.css"> -->
 
 
 
@@ -103,7 +101,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>Brackets-Git&mdash;Extending the current project | PracticalSeries: Brackets-Git and GitHub</title>
+        <title>Brackets-Git&mdash;Conflicts between local and remote repositories | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -122,7 +120,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="08-00-remotes.html#js--080000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <a class="nav-wide" href="08-05-remotes.html#js--080500"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="07-00-regression.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
@@ -134,7 +132,7 @@ Date          Issue        Author         Reason for Modification
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="08-02-remotes.html#js--080200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -157,7 +155,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-01&nbsp;&mdash;&nbsp;d-P11.08.01</p>
+<!--REVISION-->         <p>Rev: 08-05&nbsp;&mdash;&nbsp;d-P11.08.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -247,19 +245,19 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 080100]
-     SECTION - 8.1 Extending the current project
+<!-- ************************************************************************** [WP 080600]
+     SECTION - 8.6 DELETING REMOTE BRANCHES
      ***********************************************************************-->
 
-        <section class="section-std" id="js--080100">           <!-- Start of section -->
+        <section class="section-std" id="js--080600">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
-                 <div class="sub-title-num-box"><h2>8.1</h2></div>
-                 <div class="sub-title-text-box"><h2>Extending the current project</h2></div>
+                 <div class="sub-title-num-box"><h2>8.6</h2></div>
+                 <div class="sub-title-text-box"><h2>Deleting remote branches</h2></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -273,222 +271,326 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Currently the project looks like this:</p>
+                    <p class="hyp">There are currently two branches, the <span class="git-cmd">master</span> branch and <span class="git-cmd">d-03-contact</span>. Let&rsquo;s assume that we&rsquo;ve finished everything on the <span class="git-cmd">d-03-contact</span> branch and we want to merge it back on to the <span class="git-cmd">master</span> branch and then delete <span class="git-cmd">d-03-contact</span>.</p>
+
+                    <p class="hyp">The current situation is that everything is up to date, the local and remote repositories match (this is because I just pushed all the changes to the remote at the end of the previous section).</p>
+
+                    <p class="hyp">To make sure there are no differences between the remote and local, we can do a fetch to check, click the <span class="menu">fetch</span> button <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-62a.png" alt="push icon"></sub>.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-01">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-01.png" data-lightbox="fig-set" data-title="Figure 8.1 - Final arrangement, all merged back to master branch">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-01.png" alt="Figure 8.1 - Final arrangement, all merged back to master branch">
+                        <div class="fig-col fig1-1" id="js--f08-63">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-63.png" data-lightbox="fig-set" data-title="Figure 8.63 - Brackets&mdash;check local and remote are in synch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-63.png" alt="Figure 8.63 - Brackets&mdash;check local and remote are in synch">
                             </a>
-                            <p>Figure 8.1 &emsp; Final arrangement, all merged back to master branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.63 &emsp; Brackets&mdash;check local and remote are in synch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">There is a single <span class="git-cmd">master</span> branch with eight commits and the <span class="git-cmd">head</span> is at the most recent commit, in my case <span class="code">[07fe437]</span>. In Brackets, the history is:</p>
+                    <p class="hyp">The fact that there are no numbers in the <span class="menu">git pull</span> and <span class="menu">git push buttons</span> (highlighted) shows that there are no differences.</p>
+
+                    <p class="hyp">Next thing is to merge <span class="menu">d-03-contact</span> into the master branch locally. This is an identical process to that in <a class="hlink nohyp" href="06-07-example.html#js--060701">&sect;&nbsp;6.7.1</a>.</p>
+
+                    <p class="hyp">To merge branches, we must be on the receiving branch (the <span class="git-cmd">master</span> branch). In Brackets switch to the <span class="git-cmd">master</span> branch, click the arrow next to the selected branch in the left file tree pane:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-02">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-02.png" data-lightbox="fig-set" data-title="Figure 8.2 - Brackets commit history">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-02.png" alt="Figure 8.2 - Brackets commit history">
+                        <div class="fig-col fig1-1" id="js--f08-64">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-64.png" data-lightbox="fig-set" data-title="Figure 8.64 - Brackets&mdash;switch back to master branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 261px" src="01-pages/08-06-remotes/02-images/fig-08-64.png" alt="Figure 8.64 - Brackets&mdash;switch back to master branch">
                             </a>
-                            <p>Figure 8.2 &emsp; Brackets commit history</p>     <!-- Figure caption -->
+                            <p>Figure 8.64 &emsp; Brackets&mdash;switch back to <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The repository has the following eight files:</p>
-
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <table class="table-clean" id="js--t08-02">                 <!-- TABLE - Start of table  -->
-                        <tr>                                    <!-- TABLE - Start of header -->
-                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
-                            <th class="table-left" style="width: 1000%">LIST OF FILES AT COMMIT <span class="code">07FE437&emsp;&emsp;&emsp;TAG: P03</span></th>      <!-- set column 01 width here -->
-                        </tr>                                   <!-- TABLE - End of header   -->
-                        <tr>                                    <!-- TABLE - Start of row 01 -->
-                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
-                            <td class="table-left">
-                                <p><span class="code">index.html</span></p>
-                                <p><span class="code">01-intro.html</span></p>
-                                <p><span class="code">02-about.html</span></p>
-                                <p><span class="code">README.md</span></p>
-                                <p><span class="code">.gitignore</span></p>
-                                <p><span class="code">11-resources\01-css\style.css</span></p>
-                                <p><span class="code">11-resources\02-images\logo.png</span></p>
-                                <p><span class="code">11-resources\02-images\readme.png</span></p>
-                            </td>
-                        </tr>                                   <!-- TABLE - End of row 01   -->
-                         <tr class="no-border">                  <!-- TABLE - Start of caption row -->
-                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
-                             <td class="table-caption">Table 8.1 &emsp; File list at commit point <span class="code">P03 [07FE437]</span></td>
-                        </tr>                                   <!-- TABLE - End of caption row   -->
-                    </table>                                    <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Before we start working with the remote repository, I want to put a new branch and commit point onto the local project&mdash;this is to demonstrate how GitHub handles branches.</p>
-
-                    <p class="hyp">I&rsquo;m going to add a new <span class="code">03-contact.html</span> page and I&rsquo;m going to do so by creating a new branch from the most recent commit point <span class="code">[07fe437]</span> commit point on the <span class="git-cmd">master</span> branch. From the <span class="git-cmd">master</span> branch, create a new <span class="git-cmd">d-03-contact</span> branch and switch to it (see <a class="hlink nohyp" href="06-05-example.html#js--060500">&sect;&nbsp;6.5</a> for instructions about creating and changing branches).</p>
-
-                    <p class="hyp">Now we have <a class="xref js--sc-f08-03" href="#">Figure&nbsp;8.3</a>, the head is on the new branch, but there are no further commits yet (to make the diagram readable, I&rsquo;ll only show the latest commits):</p>
+                    <p class="hyp">You should now be on the master branch; the <span class="code">03-contact.html</span> file will no longer be visible in the file tree:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-03">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-03.png" data-lightbox="fig-set" data-title="Figure 8.3 - The d-03-contact branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 483px" src="01-pages/08-01-remotes/02-images/fig-08-03.png" alt="Figure 8.3 - The d-03-contact branch">
+                        <div class="fig-col fig1-1" id="js--f08-65">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-65.png" data-lightbox="fig-set" data-title="Figure 8.65 - Brackets&mdash;on the master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-65.png" alt="Figure 8.65 - Brackets&mdash;on the master branch">
                             </a>
-                            <p>Figure 8.3 &emsp; The <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.65 &emsp; Brackets&mdash;on the <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Time for another file; in the new <span class="git-cmd">d-03-contact</span> branch create a file <span class="code">03-contact.html</span> in the root folder (same place as <span class="code">index.html</span>) and add the following code to it (This is just like we did in <a class="hlink nohyp" href="06-05-example.html#js--060502">&sect;&nbsp;6.5.2</a>):</p>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <div class="code-extract">                              <!-- Start of code fragment -->
-                        <div class="code-header">03-contact.html</div>            <!-- Code file name -->
-                        <div class="code-area">                             <!-- Start of code extract holder -->
-                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c08-01">&lt;html lang="en"&gt;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &lt;!-- Declare language --&gt;
-&nbsp; &nbsp; &lt;head&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Start of head section --&gt;
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt; &nbsp; &nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
-
-&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
-
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&nbsp;&mdash;&nbsp;Contact us&lt;/title&gt;
-&nbsp; &nbsp; &lt;/head&gt;
-
-&nbsp; &nbsp; &lt;body&gt;
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
-
-&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt;Contact Us&lt;/h3&gt;
-
-&lt;p&gt;This page explains how to email Practical Series.&lt;/p&gt;
-
-&nbsp; &nbsp; &lt;/body&gt;
-&lt;/html&gt;
-</pre>
-                        </div>                                              <!-- End of code extract holder -->
-                        <table class="code-caption"> <!-- Caption & download  -->
-                            <tr class="no-border">
-                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
-                                <td style="width: 90.0%">Code 8.1 &emsp; <span class="git-cmd">d-03-contact</span> branch&mdash;create new file: 03-contact.html</td>    <!-- Caption text  -->
-                                <td style="width: 5.0%">          <!-- download link -->
-                                    <a class="code-nav" href="01-pages/08-01-remotes/04-data/code-08-01.zip" download><span class="nav-icon">a</span></a>
-                                </td>
-                            </tr>                                   <!-- TABLE - End of header   -->
-                        </table>                                    <!-- TABLE - End of table    -->
-                    </div>                                          <!-- End of code fragment -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Save the file, and in the Git pane tick the box to stage the file:</p>
+                    <p class="hyp">To merge the branches, again click the arrow next to the master branch in the file tree and this time click the merge icon <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-65a.png" alt="push icon"></sub> next to <span class="git-cmd">d-03-contact</span>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-04">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-04.png" data-lightbox="fig-set" data-title="Figure 8.4 - 03-contact.html">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-04.png" alt="Figure 8.4 - 03-contact.html">
+                        <div class="fig-col fig1-1" id="js--f08-66">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-66.png" data-lightbox="fig-set" data-title="Figure 8.66 - Brackets&mdash;switch back to master branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 262px" src="01-pages/08-06-remotes/02-images/fig-08-66.png" alt="Figure 8.66 - Brackets&mdash;switch back to master branch">
                             </a>
-                            <p>Figure 8.4 &emsp; 03-contact.html</p>     <!-- Figure caption -->
+                            <p>Figure 8.66 &emsp; Brackets&mdash;merge <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp"><span class="git-cmd">Commit</span> the changes with the commit message:</p>
+                    <p class="hyp">In the merge dialogue box, enter the merge message shown below:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-67">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-67.png" data-lightbox="fig-set" data-title="Figure 8.67 - Brackets&mdash;merge dialogue box">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-67.png" alt="Figure 8.67 - Brackets&mdash;merge dialogue box">
+                            </a>
+                            <p>Figure 8.67 &emsp; Brackets&mdash;merge dialogue box</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">ok</span> and <span class="menu">close</span> the merge result box (there are no conflicts).</p>
+
+                    <p class="hyp">My new commit point is <span class="code">[da038e3]</span>, tag the new commit point with tag: <span class="code">P04</span>.</p>
+
+                    <p class="hyp">Examining the commit history now shows:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-68">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-68.png" data-lightbox="fig-set" data-title="Figure 8.68 - Brackets&mdash;final commit history">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-68.png" alt="Figure 8.68 - Brackets&mdash;final commit history">
+                            </a>
+                            <p>Figure 8.68 &emsp; Brackets&mdash;final commit history</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Everything is back on the <span class="git-cmd">master</span> branch (locally at least) and Brackets tells us there are six commits to push to the <span class="git-cmd">master</span> branch on the remote repository.</p>
+
+                    <p class="hyp">This is because all those commits that were on the <span class="git-cmd">d-03-contact</span> branch are now on the <span class="git-cmd">master</span> branch (locally), but the remote repository knows nothing about them yet&mdash;hence six commits to push.</p>
+
+                    <p class="hyp">Make the push, click the <span class="menu">git push</span> button: <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-68a.png" alt="push icon"></sub>.</p>
+
+                    <p class="hyp">As always, in the push dialogue box make sure the <span class="menu">send tags</span> box is ticked, leave everything else and click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp">Close the response box and open the remote repository in GitHub. I now have 14 commits in total on the master branch, matching the local repository (<a class="xref js--sc-f06-69 utx" href="#">Figure&nbsp;8.69</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-69">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-69.png" data-lightbox="fig-set" data-title="Figure 8.69 - GitHub&mdash;updated master branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-69.png" alt="Figure 8.69 - GitHub&mdash;updated master branch">
+                            </a>
+                            <p>Figure 8.69 &emsp; GitHub&mdash;updated  <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It is also showing the most recent <span class="code">P04</span> commit point <span class="code">[da038e3]</span>.</p>
+
+                    <p class="hyp">So that&rsquo;s all good. Only thing now is to delete the <span class="git-cmd">d-03-contact</span> branch, both locally and remotely.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 080601]
+     SUBSECTION - 8.6.1 DELETING THE REMOTE BRANCH
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--080601">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>8.6.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Deleting the remote branch</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">There is one golden rule for deleting a branch in both a local and a remote repository:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - INCIDENTAL TABLE (EN PASSANT)
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                         <table class="table-incid"> <!-- TABLE - Start of table  -->
-                        <tr>                                    <!-- TABLE - Start of header -->
-                            <th class="table-left"><p class="sans">D: Incremental Build&nbsp;-&nbsp;03-contact page</p></th>                            <!-- set column 01 width here -->
-                        </tr>                                   <!-- TABLE - End of header   -->
                         <tr>                                    <!-- TABLE - Start of row 01 -->
-                            <td class="table-left">03-contact added.</td>
+                            <td class="table-cent" style="border-top: 1px solid #cccccc">
+                                <p><span class="git-incid">ALWAYS DELETE THE REMOTE BRANCH FIRST</span></p>
+                            </td>
                         </tr>                                   <!-- TABLE - End of row 01   -->
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Give the new commit point the tag <span class="code">d-P03.03.01</span>. In my case the commit point is <span class="code">[8329b67]</span>.</p>
-
-                    <p class="hyp">I now have nine commits:</p>
+                    <p class="hyp">In Brackets switch to the <span class="git-cmd">d-03-contact</span> branch. It will look like this.</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-05">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-05.png" data-lightbox="fig-set" data-title="Figure 8.5 - Current commits">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-05.png" alt="Figure 8.5 - Current commits">
+                        <div class="fig-col fig1-1" id="js--f08-70">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-70.png" data-lightbox="fig-set" data-title="Figure 8.70 - Brackets&mdash;on the redundant d-03-contact branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-70.png" alt="Figure 8.70 - Brackets&mdash;on the redundant d-03-contact branch">
                             </a>
-                            <p>Figure 8.5 &emsp; Current commits</p>     <!-- Figure caption -->
+                            <p>Figure 8.70 &emsp; Brackets&mdash;on the redundant  <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The workflow is:</p>
+                    <p class="hyp"><em>Make sure you are on</em> <span class="git-cmd">d-03-contact</span> (highlighted). </p>
+
+                    <p class="hyp">You can only delete the remote version of the branch that is active locally. We don&rsquo;t want to delete the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">Now click the <span class="menu">git push</span> button: <sub><img style="height: 1rem" src="01-pages/08-06-remotes/02-images/fig-08-70a.png" alt="push icon"></sub>. This opens the push dialogue box:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-06">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-06.png" data-lightbox="fig-set" data-title="Figure 8.6 - The d-03-contact branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 526px" src="01-pages/08-01-remotes/02-images/fig-08-06.png" alt="Figure 8.6 - The d-03-contact branch">
+                        <div class="fig-col fig1-1" id="js--f08-71">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-71.png" data-lightbox="fig-set" data-title="Figure 8.71 - Brackets&mdash;delete remote branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-71.png" alt="Figure 8.71 - Brackets&mdash;delete remote branch">
                             </a>
-                            <p>Figure 8.6 &emsp; The <span class="git-cmd">d-03-contact</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.71 &emsp; Brackets&mdash;delete remote branch</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The last thing is to switch back to the <span class="git-cmd">master</span> branch, the <span class="git-cmd">master</span> branch is still the only deployable branch and it is this branch that I want to upload to the remote repository first.</p>
-
-                    <p class="hyp">Click the arrow next to the <span class="git-cmd">d-03-contact</span> branch and select <span class="git-cmd">master</span> from the dropdown.</p>
-
-                    <p class="hyp">This gives the following: back on the <span class="git-cmd">master</span> branch there are only eight commits and the new file <span class="code">03-contact.html</span> is not in the file list (this is on the <span class="git-cmd">d-03-contact</span> branch and not visible from the <span class="git-cmd">master</span> branch):</p>
+                    <p class="hyp">This time select <span class="menu">delete remote branch</span> (highlighted), leave everything else and click <span class="menu">ok</span>. This give the following response:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-07">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-07.png" data-lightbox="fig-set" data-title="Figure 8.7 - Local repository master branch">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/08-01-remotes/02-images/fig-08-07.png" alt="Figure 8.7 - Local repository master branch">
+                        <div class="fig-col fig1-1" id="js--f08-72">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-72.png" data-lightbox="fig-set" data-title="Figure 8.72 - Brackets&mdash;delete remote branch response">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-72.png" alt="Figure 8.72 - Brackets&mdash;delete remote branch response">
                             </a>
-                            <p>Figure 8.7 &emsp; Local repository master branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.72 &emsp; Brackets&mdash;delete remote branch response</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The work flow is now (just the same but with the <span class="git-cmd">head</span> on the master branch):</p>
+                    <p class="hyp">Looks like it&rsquo;s done it. Click <span class="menu">ok</span>.</p>
+
+                    <p class="hyp">Refresh the GitHub repository:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f08-08">
-                            <a href="01-pages/08-01-remotes/02-images/fig-08-08.png" data-lightbox="fig-set" data-title="Figure 8.8 - Local repository master branch">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 526px" src="01-pages/08-01-remotes/02-images/fig-08-08.png" alt="Figure 8.8 - Local repository master branch">
+                        <div class="fig-col fig1-1" id="js--f08-73">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-73.png" data-lightbox="fig-set" data-title="Figure 8.73 - Brackets&mdash;delete remote branch response">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-73.png" alt="Figure 8.73 - Brackets&mdash;delete remote branch response">
                             </a>
-                            <p>Figure 8.8 &emsp; Local repository <span class="git-cmd">master</span> branch</p>     <!-- Figure caption -->
+                            <p>Figure 8.73 &emsp; GitHub&mdash;after <span class="git-cmd">d-03-contact</span> deletion</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Leave it like this for now while we get the remote repository established.</p>
+                    <p class="hyp">First thing: in the tab bar it shows just one branch (highlighted). Secondly, clicking the <span class="menu">branch</span> button there is only the <span class="git-cmd">master</span> branch in the dropdown.</p>
+
+                    <p class="hyp">We&rsquo;ve deleted <span class="git-cmd">d-03-contact</span> from the remote repository.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 080602]
+     SUBSECTION - 8.6.2 DELETING THE LOCAL BRANCH
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--080602">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>8.6.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Deleting the local branch</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">This is just what we did in <a class="hlink nohyp" href="06-07-example.html#js--060702">&sect;&nbsp;6.7.2</a>.</p>
+
+                    <p class="hyp">In Brackets, switch back to the <span class="git-cmd">master</span> branch. Click the small arrow next to the <span class="git-cmd">master</span> branch in the file tree:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-74">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-74.png" data-lightbox="fig-set" data-title="Figure 8.74 - Brackets&mdash;delete the local branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 263px" src="01-pages/08-06-remotes/02-images/fig-08-74.png" alt="Figure 8.74 - Brackets&mdash;delete the local branch">
+                            </a>
+                            <p>Figure 8.74 &emsp; Brackets&mdash;delete the local branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the cross next to the <span class="git-cmd">d-03-contact</span> branch in the dropdown. Click <span class="menu">ok</span> in the are you sure dialogue box.</p>
+
+                    <p class="hyp">That&rsquo;s it; the <span class="git-cmd">d-03-contact</span> branch is now deleted from both the local and remote repositories.</p>
+
+                    <p class="hyp">This is the final workflow&mdash;both locally and remotely:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f08-75">
+                            <a href="01-pages/08-06-remotes/02-images/fig-08-75.png" data-lightbox="fig-set" data-title="Figure 8.75 - final workflow">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/08-06-remotes/02-images/fig-08-75.png" alt="Figure 8.75 - final workflow">
+                            </a>
+                            <p>Figure 8.75 &emsp; final workflow</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -512,7 +614,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="08-00-remotes.html#js--080000">Prev</a>
+                        <a class="xref" href="08-05-remotes.html#js--080500">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -522,7 +624,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="08-02-remotes.html#js--080200">Next</a>
+                        <a class="xref" href="09-00-github.html#js--000000">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
