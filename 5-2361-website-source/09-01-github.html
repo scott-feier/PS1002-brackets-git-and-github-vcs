@@ -1,0 +1,581 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="GitHub undestanding the basics">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                    09-01-GITHUB.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+03 Sep 2017   d-P12.09.01  M. Gledhill    age created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/09-01-github/05-local-js/09-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/09-01-github/01-local-css/09-01-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>GitHub&mdash;the basic pages | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="08-00-remotes.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="09-02-github.html#js--090200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>9</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">9</span>GitHub</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 09-01&nbsp;&mdash;&nbsp;d-P12.09.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 9 GitHub
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-090000" href="09-00-github.html#js--090000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">9</span><span class="toc-lev1-text">GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-090100" href="09-01-github.html#js--090100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.1</span><span class="toc-lev2-text">GitHub&mdash;the basic pages</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090101" href="09-01-github.html#js--090101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.1.1</span><span class="toc-lev3-text">GitHub profile&mdash;newsfeed page</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090102" href="09-01-github.html#js--090102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.1.2</span><span class="toc-lev3-text">A repository home page</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090200" href="09-02-github.html#js--090200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.2</span><span class="toc-lev2-text">GitHub&mdash;finding and viewing files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090201" href="09-02-github.html#js--090201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.2.1</span><span class="toc-lev3-text">File view</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090202" href="09-02-github.html#js--090202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.2.2</span><span class="toc-lev3-text">Viewing the contents of a file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090203" href="09-02-github.html#js--090203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.2.3</span><span class="toc-lev3-text">Viewing other types of files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090300" href="09-03-github.html#js--090300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.3</span><span class="toc-lev2-text">GitHub&mdash;file handling</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090301" href="09-03-github.html#js--090301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.1</span><span class="toc-lev3-text">Creating new folders and files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090302" href="09-03-github.html#js--090302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.2</span><span class="toc-lev3-text">Committing files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090303" href="09-03-github.html#js--090303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.3</span><span class="toc-lev3-text">Uploading a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+                        <li><a class="js--sc-090304" href="09-03-github.html#js--090304">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.4</span><span class="toc-lev3-text">Editing a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+                        <li><a class="js--sc-090305" href="09-03-github.html#js--090305">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.5</span><span class="toc-lev3-text">Renaming a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+                        <li><a class="js--sc-090306" href="09-03-github.html#js--090306">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.6</span><span class="toc-lev3-text">Deleting a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090400" href="09-04-github.html#js--090400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.4</span><span class="toc-lev2-text">GitHub&mdash;navigating commit points</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090401" href="09-04-github.html#js--090401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.4.1</span><span class="toc-lev3-text">The commit history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090402" href="09-04-github.html#js--090402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.4.2</span><span class="toc-lev3-text">Recovering data from earlier commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090500" href="09-05-github.html#js--090500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.5</span><span class="toc-lev2-text">GitHub&mdash;handling branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090501" href="09-05-github.html#js--090501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.1</span><span class="toc-lev3-text">Creating a new branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090502" href="09-05-github.html#js--090502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.2</span><span class="toc-lev3-text">Creating a file on the new branc</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090503" href="09-05-github.html#js--090503">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.3</span><span class="toc-lev3-text">Merging branches with a <span class="git-cmd">pull request</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090504" href="09-05-github.html#js--090504">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.4</span><span class="toc-lev3-text">Examining previous <span class="git-cmd">pull requests</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090505" href="09-05-github.html#js--090505">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.5</span><span class="toc-lev3-text"><span class="git-cmd">Pull request</span> merge with a conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090506" href="09-05-github.html#js--090506">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.6</span><span class="toc-lev3-text">Deleting a branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090600" href="09-06-github.html#js--090600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.6</span><span class="toc-lev2-text">GitHub&mdash;tags and releases</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090601" href="09-06-github.html#js--090601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.1</span><span class="toc-lev3-text">Tags and releases&mdash;the differences</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090602" href="09-06-github.html#js--090602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.2</span><span class="toc-lev3-text">Viewing releases (and tags)</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090603" href="09-06-github.html#js--090603">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.3</span><span class="toc-lev3-text">Creating a release</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090604" href="09-06-github.html#js--090604">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.4</span><span class="toc-lev3-text">Pulling releases back into Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 090100]
+     SECTION - 9.1 Extending the current project
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090100">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>9.1</h2></div>
+                 <div class="sub-title-text-box"><h2>GitHub&mdash;the basic pages</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Let&rsquo;s have a look around the GitHub website. Log on to your GitHub profile. This will open your profile landing page&mdash;this is universally called the newsfeed page</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090101]
+     SUBSECTION - 9.1.1 GITHUB PROFILE - NEWSFEED PAGE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090101">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.1.1</h3></div>
+                    <div class="sub-title-text-box"><h3>GitHub profile&mdash;newsfeed page</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">My newsfeed page looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-01">
+                            <a href="01-pages/09-01-github/02-images/fig-09-01.png" data-lightbox="fig-set" data-title="Figure 9.1 - GitHub&mdash;newsfeed page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-01-github/02-images/fig-09-01.png" alt="Figure 9.1 - GitHub&mdash;newsfeed page">
+                            </a>
+                            <p>Figure 9.1 &emsp; GitHub&mdash;newsfeed page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now we&rsquo;ve seen this page in the earlier sections, but I didn&rsquo;t really explain it&mdash;let&rsquo;s look through what we have:</p>
+
+                    <p class="hyp">Starting at the top with the navigation bar:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp"><span class="menu">octocat icon</span>&mdash;always takes you back to the newsfeed page (this page&mdash;<a class="xref js--sc-f09-01" href="#">Figure&nbsp;9.1</a>)</p></li>
+
+                        <li><p class="hyp"><span class="menu">search github</span>&mdash;searches GitHub for repositories and entries in README files</p></li>
+
+                        <li><p class="hyp"><span class="menu">pulls and issues</span>&mdash;I look at these in <a class="hlink nohyp" href="10-00-collaboration.html#js--000000">section&nbsp;10</a></p></li>
+
+                        <li><p class="hyp"><span class="menu">create new</span>&mdash;create a new repository</p></li>
+
+                        <li><p class="hyp"><span class="menu">your profile</span>&mdash;view your profile and settings</p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The main area:</p>
+
+                    <p class="hyp">The top of the main area shows <span class="menu">notifications</span>, the one that is currently on the page &ldquo;<span class="menu">Learn Git...</span>&rdquo; is the default notification you get when you create a profile&mdash;I tend to close the notification area (click the cross indicated).</p>
+
+                    <p class="hyp"><span class="menu">Broadcasts</span>, are blogs and articles that GitHub thinks you might be interested in (again I close this box&mdash;<span class="first-use">I&rsquo;m a right miserable bastard</span>).</p>
+
+                    <p class="hyp"><span class="menu">Newsfeed</span>, this shows posts and activity by any user you might be following (<span class="first-use">watching</span> in the creepy terminology of GitHub). If you view any GitHub user profile, you will be given the option to follow that user; similarly, if you view a particular repository, you can watch that repository. In either case, any relevant postings or activity will show on you newsfeed page.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>A word of caution, once you follow people or repositories you will receive entries on you newsfeed page, you cannot get rid of these entries (even if you stop following that profile or repository).</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Finally, the <span class="menu">repositories</span>; this is a list of your repositories and any other repositories that you may have copied ( <span class="first-use">forked</span> in GitHub parlance). This is a quick way to access your repositories or create a new one.</p>
+
+                    <p class="hyp">After I&rsquo;ve simplified things, the <span class="code">PracticalSeries-lab</span> newsfeed page looks like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-02">
+                            <a href="01-pages/09-01-github/02-images/fig-09-02.png" data-lightbox="fig-set" data-title="Figure 9.2 - GitHub&mdash;tidied up newsfeed page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-01-github/02-images/fig-09-02.png" alt="Figure 9.2 - GitHub&mdash;tidied up newsfeed page">
+                            </a>
+                            <p>Figure 9.2 &emsp; GitHub&mdash;tidied up newsfeed page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>The entries in my newsfeed are from the Brackets-Git repository, I&rsquo;m following it.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">By and large, the newsfeed page is really only useful as a quick way to access your repositories.</p>
+
+                    <p class="hyp">Let&rsquo;s look at a repository home page, click on the <span class="code">lab-01-website</span> link in the <span class="menu">your repositories</span> section:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090102]
+     SUBSECTION - 9.1.2 A REPOSITORY HOME PAGE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090102">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.1.2</h3></div>
+                    <div class="sub-title-text-box"><h3>A repository home page</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Clicking any repository link opens the home page for that repository; this is the <span class="code">lab-01-website</span> home page: </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-03">
+                            <a href="01-pages/09-01-github/02-images/fig-09-03.png" data-lightbox="fig-set" data-title="Figure 9.3 - GitHub&mdash;repository home page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-01-github/02-images/fig-09-03.png" alt="Figure 9.3 - GitHub&mdash;repository home page">
+                            </a>
+                            <p>Figure 9.3 &emsp; GitHub&mdash;repository home page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Starting at the top, the <span class="menu">navigation bar</span>, this is identical to that in <a class="xref nohyp js--sc-090101" href="#">&sect;&nbsp;9.1.1</a></p>
+
+                    <p class="hyp">The <span class="menu">username</span> link and the <span class="menu">repository</span> link navigate to the profile newsfeed page (<a class="xref js--sc-f09-01" href="#">Figure&nbsp;9.1</a>) and the repository home page (this page) respectively. These are quick links to return to the landing page for either the user or the repository&mdash;they are visible from most pages in a repository.</p>
+
+                    <p class="hyp">The <span class="menu">project tabs</span> allow the user to view the various aspects of the project, these are covered in the following sections.</p>
+
+                    <p class="hyp">Beneath the <span class="menu">project tabs</span> is the <span class="menu">project description</span> (entered when the project was created). This description can be modified by clicking the <span class="menu">edit</span> button. The <span class="menu">add topics</span> link can be used to add keywords to the description; these keywords are used to make the repository more discoverable in GitHub searches</p>
+
+                    <p class="hyp">Following this is the <span class="menu">status bar</span> (I covered some aspects of this in <a class="hlink nohyp" href="08-03-remotes.html#js--080302">&sect;&nbsp;8.3.2</a>), I go through the more useful elements of this bar in this section and the next.</p>
+
+                    <p class="hyp">Next we have various <span class="menu">control buttons</span>, these allow various actions to be taken within the repository (change or create branches, create files &amp;c.).</p>
+
+                    <p class="hyp">The <span class="menu">head information</span> shows the <span class="menu">latest commit</span> on the current branch; when it was made, who made it and the first line of the commit message. This is the pale blue band across the middle of the page.</p>
+
+                    <p class="hyp">Underneath this is the current repository directory (<span class="menu">project content area</span>). This allows files and folders to be opened and edited.</p>
+
+                    <p class="hyp">Finally, there is a preview of the <span class="code">README.md</span> file in all its technicolour glory.</p>
+
+                    <p class="hyp">Some of this stuff we&rsquo;ve already used and some of it is new. I&rsquo;m not going to go through absolutely all of it <span class="first-use">(there is some stuff in there I&rsquo;ve never even looked at)</span>, but I will cover the main bits in some detail in the following sections.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="09-00-github.html#js--000000">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="09-01-github.html#js--090100">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

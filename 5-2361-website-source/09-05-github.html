@@ -1,0 +1,1542 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="GitHub how to create, merge and resolve conflicts with branches">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS                    09-05-GITHUB.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+04 Sep 2017   d-P12.09.01  M. Gledhill    age created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main) -->           <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language) -->    <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/09-05-github/05-local-js/09-05-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles -->        <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css">
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/09-05-github/01-local-css/09-05-prettifylines.css">
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>GitHub&mdash;handling branches | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="09-04-github.html#js--090400"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="08-00-remotes.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="09-06-github.html#js--090600"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>9</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">9</span>GitHub</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 09-05&nbsp;&mdash;&nbsp;d-P12.09.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 9 GitHub
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-090000" href="09-00-github.html#js--090000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">9</span><span class="toc-lev1-text">GitHub</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-090100" href="09-01-github.html#js--090100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.1</span><span class="toc-lev2-text">GitHub&mdash;the basic pages</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090101" href="09-01-github.html#js--090101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.1.1</span><span class="toc-lev3-text">GitHub profile&mdash;newsfeed page</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090102" href="09-01-github.html#js--090102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.1.2</span><span class="toc-lev3-text">A repository home page</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090200" href="09-02-github.html#js--090200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.2</span><span class="toc-lev2-text">GitHub&mdash;finding and viewing files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090201" href="09-02-github.html#js--090201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.2.1</span><span class="toc-lev3-text">File view</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090202" href="09-02-github.html#js--090202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.2.2</span><span class="toc-lev3-text">Viewing the contents of a file</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090203" href="09-02-github.html#js--090203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.2.3</span><span class="toc-lev3-text">Viewing other types of files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090300" href="09-03-github.html#js--090300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.3</span><span class="toc-lev2-text">GitHub&mdash;file handling</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090301" href="09-03-github.html#js--090301">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.1</span><span class="toc-lev3-text">Creating new folders and files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090302" href="09-03-github.html#js--090302">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.2</span><span class="toc-lev3-text">Committing files</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090303" href="09-03-github.html#js--090303">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.3</span><span class="toc-lev3-text">Uploading a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+                        <li><a class="js--sc-090304" href="09-03-github.html#js--090304">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.4</span><span class="toc-lev3-text">Editing a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+                        <li><a class="js--sc-090305" href="09-03-github.html#js--090305">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.5</span><span class="toc-lev3-text">Renaming a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+                        <li><a class="js--sc-090306" href="09-03-github.html#js--090306">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.3.6</span><span class="toc-lev3-text">Deleting a file</span></div></a>
+                        </li>                         <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090400" href="09-04-github.html#js--090400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.4</span><span class="toc-lev2-text">GitHub&mdash;navigating commit points</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090401" href="09-04-github.html#js--090401">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.4.1</span><span class="toc-lev3-text">The commit history</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090402" href="09-04-github.html#js--090402">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.4.2</span><span class="toc-lev3-text">Recovering data from earlier commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090500" href="09-05-github.html#js--090500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.5</span><span class="toc-lev2-text">GitHub&mdash;handling branches</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090501" href="09-05-github.html#js--090501">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.1</span><span class="toc-lev3-text">Creating a new branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090502" href="09-05-github.html#js--090502">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.2</span><span class="toc-lev3-text">Creating a file on the new branc</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090503" href="09-05-github.html#js--090503">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.3</span><span class="toc-lev3-text">Merging branches with a <span class="git-cmd">pull request</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090504" href="09-05-github.html#js--090504">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.4</span><span class="toc-lev3-text">Examining previous <span class="git-cmd">pull requests</span></span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090505" href="09-05-github.html#js--090505">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.5</span><span class="toc-lev3-text"><span class="git-cmd">Pull request</span> merge with a conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090506" href="09-05-github.html#js--090506">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.5.6</span><span class="toc-lev3-text">Deleting a branch</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-090600" href="09-06-github.html#js--090600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">9.6</span><span class="toc-lev2-text">GitHub&mdash;tags and releases</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090601" href="09-06-github.html#js--090601">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.1</span><span class="toc-lev3-text">Tags and releases&mdash;the differences</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090602" href="09-06-github.html#js--090602">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.2</span><span class="toc-lev3-text">Viewing releases (and tags)</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090603" href="09-06-github.html#js--090603">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.3</span><span class="toc-lev3-text">Creating a release</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-090604" href="09-06-github.html#js--090604">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">9.6.4</span><span class="toc-lev3-text">Pulling releases back into Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 090500]
+     SECTION - 9.5 GITHUB - HANDLING BRANCHES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090500">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>9.5</h2></div>
+                 <div class="sub-title-text-box"><h2>GitHub&mdash;handling branches</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">GitHub provides facilities for creating, merging and deleting branches. It also has the capability of resolving conflicts that occur in the merging process.</p>
+
+                    <p class="hyp">Just to clarify a point, the merging process on GitHub is started by triggering a <span class="first-use">pull request</span>. You may have seen pull requests mentioned on the GitHub website (and in virtually every piece of documentation that goes with it); there is a button and status for it on the repository home page. </p>
+
+                    <p class="hyp">The pull request originates in the communal working environment and it can be interpreted as a <span class="first-use">request to pull modifications</span> into the repository. I cover it in terms of merging branches in this section (<a class="xref nohyp js--sc-090503 utx" href="#">&sect;&nbsp;9.5.3</a>) and I cover it as a communal coding activity in <a class="hlink nohyp" href="10-00-collaboration.html#js--000000">section&nbsp;10</a>. </p>
+
+                    <p class="hyp">Where people refer to a pull request, they are generally referring to a process of merging modification back into the repository.</p>
+
+                    <p class="hyp">First things:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090501]
+     SUBSECTION - 9.5.1 CREATING A NEW BRANCH
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090501">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.5.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating a new branch</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">By way of example, I will add a new legal page to the website <span class="code">(04-legal.html</span>) in much the same way I did with other pages in previous examples. I will do this by creating a new branch adding the page to the new branch and then merging it back into the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">The easiest way to create a new branch is from the repository home page. Open the <span class="code">lab-01-website</span> home page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-49">
+                            <a href="01-pages/09-05-github/02-images/fig-09-49.png" data-lightbox="fig-set" data-title="Figure 9.49 - GitHub&mdash;repository home page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-49.png" alt="Figure 9.49 - GitHub&mdash;repository home page">
+                            </a>
+                            <p>Figure 9.49 &emsp; GitHub&mdash;repository home page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the branch button to open the branch dropdown box:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-50">
+                            <a href="01-pages/09-05-github/02-images/fig-09-50.png" data-lightbox="fig-set" data-title="Figure 9.50 - GitHub&mdash;branch dropdown box unpopulated">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 396px" src="01-pages/09-05-github/02-images/fig-09-50.png" alt="Figure 9.50 - GitHub&mdash;branch dropdown box unpopulated">
+                            </a>
+                            <p>Figure 9.50 &emsp; GitHub&mdash;branch dropdown box unpopulated</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In the <span class="menu">find or create a branch</span> box start typing the name of the branch to be created, in this case it is <span class="code">d-04-legal</span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-51">
+                            <a href="01-pages/09-05-github/02-images/fig-09-51.png" data-lightbox="fig-set" data-title="Figure 9.51 - GitHub&mdash;branch dropdown box create branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 396px" src="01-pages/09-05-github/02-images/fig-09-51.png" alt="Figure 9.51 - GitHub&mdash;branch dropdown box create branch">
+                            </a>
+                            <p>Figure 9.51 &emsp; GitHub&mdash;branch dropdown box create branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If the branch already exists, GitHub will try to switch to it <span class="first-use">(hence the find)</span>, in our case the branch does not exist and GitHub is telling us it will create a new branch called <span class="git-cmd">d-04-legal</span> from the latest commit on the <span class="git-cmd">master</span> branch (the blue bit at the bottom, <a class="xref js--sc-f09-51" href="#">Figure&nbsp;9.51</a>). Hit <span class="menu">return</span> to create the branch; GitHub will open the branch page for <span class="git-cmd">d-04-legal</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-52">
+                            <a href="01-pages/09-05-github/02-images/fig-09-52.png" data-lightbox="fig-set" data-title="Figure 9.52 - GitHub&mdash;d-04-legal home page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-52.png" alt="Figure 9.52 - GitHub&mdash;d-04-legal home page">
+                            </a>
+                            <p>Figure 9.52 &emsp; GitHub&mdash;<span class="git-cmd">d-04-legal</span> home page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The branch button is now telling us we are on a new branch called <span class="git-cmd">d-04-legal</span>. The commit number has not changed (we are still pointing to the latest commit on the <span class="git-cmd">master</span> branch, see <a class="xref js--sc-f09-49" href="#">Figure&nbsp;9.49</a>).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>Although we are now on a new branch, the default branch (GitHub has a default branch) is still the master branch. This means that if your return to the repository home page, GitHub will transfer you back to the master branch (the default branch) and you will have to reselect the new branch if you want it.</li>
+                    </ul>                                       <!-- End of note -->
+
+                    <p class="hyp" style="padding-left: 3.2rem"><span class="first-use">It will catch you out (at least it does me) and you will find yourself on the wrong branch. It is possible to change the default branch, see <a class="xref nohyp js--sc-090506 utx" href="#">&sect;&nbsp;9.5.6</a>.</span></p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">That&rsquo;s it; we&rsquo;ve created a new branch and switched to it.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090502]
+     SUBSECTION - 9.5.2 CREATING A FILE ON THE NEW BRANCH
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090502">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.5.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating a file on the new branch</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">From the <span class="git-cmd">d-04-legal</span> branch page, click the <span class="menu">create new file</span> button.</p>
+
+                    <p class="hyp">Call the new file <span class="code">04-legal.html</span> and add the following code:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - STANDARD BLOCK WITH HEADER & CAPTION (HTML)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-header">04-legal.html</div>            <!-- Code file name -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+                            <pre class="prettyprint linenums:1 lang-html wrap" id="js--c09-02">&lt;html lang="en"&gt;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &lt;!-- Declare language --&gt;
+&nbsp; &nbsp; &lt;head&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &lt;!-- Start of head section --&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;meta charset="utf-8"&gt; &nbsp; &nbsp; &nbsp; &lt;!-- Use Unicode character set&nbsp; --&gt;
+
+&lt;link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css"&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;title&gt;PracticalSeries: Git Lab&nbsp;&mdash;&nbsp;legal&lt;/title&gt;
+&nbsp; &nbsp; &lt;/head&gt;
+
+&nbsp; &nbsp; &lt;body&gt;
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h1&gt;A Practical Series Website&lt;/h1&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;h3&gt; Legal Declaration &lt;/h3&gt;
+
+&nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;This page contains the legal information for the website.&lt;/p&gt;
+
+&nbsp; &nbsp; &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        </div>                                              <!-- End of code extract holder -->
+                        <table class="code-caption"> <!-- Caption & download  -->
+                            <tr class="no-border">
+                                <td style="width: 5.0%"></td>     <!-- left hand padding -->
+                                <td style="width: 90.0%">Code 9.2 &emsp; <span class="git-cmd">d-04-legal</span> branch&mdash;create new file: 04-legal.html</td>    <!-- Caption text  -->
+                                <td style="width: 5.0%">          <!-- download link -->
+                                </td>
+                            </tr>                                   <!-- TABLE - End of header   -->
+                        </table>                                    <!-- TABLE - End of table    -->
+                    </div>                                          <!-- End of code fragment -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And give it the commit message:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">D: Incremental Build&nbsp;-&nbsp;04-legal page</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left">04-legal.html added.</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It should all look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-53">
+                            <a href="01-pages/09-05-github/02-images/fig-09-53.png" data-lightbox="fig-set" data-title="Figure 9.53 - GitHub&mdash;add a page to the d-04-legal branch">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-53.png" alt="Figure 9.53 - GitHub&mdash;add a page to the d-04-legal branch">
+                            </a>
+                            <p>Figure 9.53 &emsp; GitHub&mdash;add a page to the <span class="git-cmd">d-04-legal</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click commit new file to add the file to the repository. This takes us back to the branch page <a class="xref js--sc-f09-54" href="#">Figure&nbsp;9.54</a>.</p>
+
+                    <p class="hyp">The new commit point is, in my case <span class="code">[9c7954b]</span>; the new file <span class="code">04-leagl.html</span> is also visible.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-54">
+                            <a href="01-pages/09-05-github/02-images/fig-09-54.png" data-lightbox="fig-set" data-title="Figure 9.54 - GitHub&mdash;d-04-legal branch page with new file">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-54.png" alt="Figure 9.54 - GitHub&mdash;d-04-legal branch page with new file">
+                            </a>
+                            <p>Figure 9.54 &emsp; GitHub&mdash;<span class="git-cmd">d-04-legal</span> branch page with new file</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The yellow bar informs us that the <span class="git-cmd">d-04-legal</span> branch has just been pushed to the repository&mdash;technically it hasn&rsquo;t been pushed, we did in GitHub directly in the remote repository</p>
+
+                    <p class="hyp">There is also a message just above the blue commit line; it says this <span class="first-use">&ldquo;branch is 1 commit ahead of the master&rdquo;</span>, this all makes sense.</p>
+
+                    <p class="hyp">Wherever you look there are also prompts for <span class="menu">pull requests</span>. Let&rsquo;s look at that next.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090503]
+     SUBSECTION - 9.5.3 MERGING BRANCHES WITH A PULL REQUEST
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090503">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.5.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Merging branches with a <br><span class="menu">pull request</span></h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">GitHub uses (by and large) public repositories&mdash;all the repositories we&rsquo;ve looked at so far have been public repositories. This means that anyone can see them and can copy them.</p>
+
+                    <p class="hyp">People can even copy them with the intention of developing them further (this process has the rather vulgar name of <span class="first-use">forking</span><sup>&dagger;1</sup>  and I discuss how it works in <a class="hlink nohyp utx" href="10-01-collaboration.html#js--100100">&sect;&nbsp;10.1</a>). Now, it is generally difficult to stop people doing this and GitHub (I think) actively encourages it (it is possible to block users, but this is intended only for abusive users and not just to stop people looking&mdash;it would be difficult to block every user of GitHub).</p>
+
+                    <p class="hyp">Clearly, though we don&rsquo;t want every Tom, Dick or Harry modifying our code&mdash;hence the pull request. This allows some other user to take your code, modify it in their own account, and, if they think it good enough, send you a pull request.</p>
+
+                    <p class="hyp">The pull request alerts you to the fact that someone has made a modification and they are <span class="first-use">requesting</span> that you <span class="first-use">pull</span> their modification in to the repository. Only the owner (or those users given write permission to the repository) can grant this pull request and merge the modification into the repository.</p>
+
+                    <p class="hyp">Now in our example here, I (the owner of the repository) made a change to a particular branch; there has been no forking of the repository, no one has copied it and there is no communal working&mdash;just me adding a file. So why, you may wonder, is it banging on about pull request?</p>
+
+                    <p class="hyp">The answer is it uses the same process no matter where the change originated (be it some other user who had copied, <span class="first-use">forked</span>, the repository or me, the owner of the repository, making a change). So we use a pull request to merge the files.</p>
+
+                    <p class="hyp">Let&rsquo;s do it.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I generally don&rsquo;t like the names that Git and GitHub use, I think them all coarse, crude and vulgar; but then I&rsquo;m English and we&rsquo;re taught good manners from an early age.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090503a">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Creating a pull request</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">From the branch page click either the <span class="menu">compare and pull request</span> button in the yellow bar or the <span class="menu">new pull request</span> button next to the branch button. They both do exactly the same:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-55">
+                            <a href="01-pages/09-05-github/02-images/fig-09-55.png" data-lightbox="fig-set" data-title="Figure 9.55 - GitHub&mdash;d-04-legal initiate a merge (pull request)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-55.png" alt="Figure 9.55 - GitHub&mdash;d-04-legal initiate a merge (pull request)">
+                            </a>
+                            <p>Figure 9.55 &emsp; GitHub&mdash;<span class="git-cmd">d-04-legal</span> initiate a merge (pull request)</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This takes us to the open pull request page <a class="xref js--sc-f09-56" href="#">Figure&nbsp;9.56</a> (I haven&rsquo;t shown all of the <span class="code">04-legal.html</span> file, the stuff in green&mdash;there was too much of it):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-56">
+                            <a href="01-pages/09-05-github/02-images/fig-09-56.png" data-lightbox="fig-set" data-title="Figure 9.56 - GitHub&mdash;open a pull request page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-56.png" alt="Figure 9.56 - GitHub&mdash;open a pull request page">
+                            </a>
+                            <p>Figure 9.56 &emsp; GitHub&mdash;open a pull request page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The important bit is at the top:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-57">
+                            <a href="01-pages/09-05-github/02-images/fig-09-57.png" data-lightbox="fig-set" data-title="Figure 9.57 - GitHub&mdash;pull request details">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-57.png" alt="Figure 9.57 - GitHub&mdash;pull request details">
+                            </a>
+                            <p>Figure 9.57 &emsp; GitHub&mdash;pull request details</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The base branch (<span class="git-cmd">master</span>) is the branch to which the changes will be merged (the receiving branch as it were), the compare branch (<span class="git-cmd">d-04-legal</span>) is the branch we are trying to merge from.</p>
+
+                    <p class="hyp">The bit following this, the <span class="git-cmd" style="color: #26A644">&#10004; Able to merge</span> message is important, it tells us that there are no conflicts between the two branches (the branches can merge without issue).</p>
+
+                    <p class="hyp">There is not really anything else to add, the bit underneath, next to the user logo allows a message to be entered, by default it uses the commit message that was entered when the change was committed&mdash;add whatever additional information you require (in a pull request from another user, this would be where they explain what the change is and why it would be useful).</p>
+
+                    <p class="hyp">I&rsquo;m just going to leave it with the default content. Click <span class="menu">create pull request</span>:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090503b">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Reviewing the pull request</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">After creating a pull request, we&rsquo;re taken to the pull request status page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-58">
+                            <a href="01-pages/09-05-github/02-images/fig-09-58.png" data-lightbox="fig-set" data-title="Figure 9.58 - GitHub&mdash;pull request status page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-58.png" alt="Figure 9.58 - GitHub&mdash;pull request status page">
+                            </a>
+                            <p>Figure 9.58 &emsp; GitHub&mdash;pull request status page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">At this point absolutely nothing has happened.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-cent">Pull requests </th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-cent"><p>Pull request are just that, a request absolutely nothing happens to the contents of the repository when a pull request is generated.</p></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">A pull request has been generated, but nothing in the repository has changed.</p>
+
+                    <p class="hyp">Making a pull request takes us to the pull request status page (<a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>).The first thing to note is at the top (highlighted), we are in the pull request tab (we haven&rsquo;t been here before). This is where all the open pull requests (wherever they were generated) are listed.</p>
+
+                    <p class="hyp">We just have one (hence the one in the tab), the one we generated above.</p>
+
+                    <p class="hyp">There are three things we can do with a pull request:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ol class="list-num">                       <!-- Start of numbered list -->
+                        <li><p class="hyp">Reject it (hit the <span class="menu">close pull request</span> button)</p></li>
+
+                        <li><p class="hyp">Ask a question (enter text in the box and hit the <span class="menu">comment</span> button)</p></li>
+
+                        <li><p class="hyp">Accept it (hit the <span class="menu">merge pull request</span> button)</p></li>
+
+                    </ol>                                       <!-- End of numbered list -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Looking at these in turn:</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090503c">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Rejecting a pull request </h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">To reject a pull request click the <span class="menu">close pull request</span> button, this is listed a point <span class="index">1</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>. Closing a pull request does not delete it, it will be listed under closed pull requests, but it will stop bothering you and will not require any further interaction.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>It is not possible to delete pull requests, they hang around as closed pull requests, they are not generally visible, but you can search for them.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">A note of caution: closing pull requests can upset some people, some people don&rsquo;t handle rejection well&mdash;best to let them down gently&mdash;as someone once said:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="first-use">&ldquo;never argue with strangers on the internet&rdquo;</span></p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090503d">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Starting a conversation</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Next: the conversation. If you notice, we are actually in a sub-tab called <span class="menu">conversation</span>, it&rsquo;s just under the green open image (below the D: Incremental Build line). </p>
+
+                    <p class="hyp">If you&rsquo;re not sure about the pull request you can ask questions or make a statement <span class="first-use">&ldquo;good idea, I&rsquo;ll implement later&rdquo;</span>&mdash;or in my case <span class="first-use">&ldquo;who are you? Stop bothering me. Go away&rdquo;</span>&mdash;type what you want in the box at the bottom and click the <span class="menu">comment</span> button (both labelled point <span class="index">2</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>) and the message will be added to the pull request listing.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP INLINE]
+     SECTION INLINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090503e">          <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
+                    <div class="sub-title-text-box"><h4>Accepting a pull request</h4></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The final option is to accept the changes. Click the <span class="menu">merge pull request</span> button point <span class="index">3</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>Only users who are able to commit changes to the repository are able to do this.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="menu">merge pull request</span> button has various options:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-59">
+                            <a href="01-pages/09-05-github/02-images/fig-09-59.png" data-lightbox="fig-set" data-title="Figure 9.59 - GitHub&mdash;pull request merge options">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 542px" src="01-pages/09-05-github/02-images/fig-09-59.png" alt="Figure 9.59 - GitHub&mdash;pull request merge options">
+                            </a>
+                            <p>Figure 9.59 &emsp; GitHub&mdash;pull request merge options</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We want the default option, create a merge commit. This is in keeping with my idea of the best practice for merging branches. Generally, the top option is the correct one (and it certainly won&rsquo;t do any harm).</p>
+
+                    <p class="hyp">Clicking <span class="menu">merge pull request</span> automatically generates a merge commit message (you can alter it if you want):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-60">
+                            <a href="01-pages/09-05-github/02-images/fig-09-60.png" data-lightbox="fig-set" data-title="Figure 9.60 - GitHub&mdash;pull request merge commit message">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-60.png" alt="Figure 9.60 - GitHub&mdash;pull request merge commit message">
+                            </a>
+                            <p>Figure 9.60 &emsp; GitHub&mdash;pull request merge commit message</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;m going with the default, click <span class="menu">confirm merge</span>.</p>
+
+                    <p class="hyp">This still leaves us on the pull request status page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-61">
+                            <a href="01-pages/09-05-github/02-images/fig-09-61.png" data-lightbox="fig-set" data-title="Figure 9.61 - GitHub&mdash;pull request status (post merge)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-61.png" alt="Figure 9.61 - GitHub&mdash;pull request status (post merge)">
+                            </a>
+                            <p>Figure 9.61 &emsp; GitHub&mdash;pull request status (post merge)</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We can now see the merged pull request in the pull request chain, it is telling us (next to the purple merge icon <sub><img style="height: 1rem" src="01-pages/09-05-github/02-images/fig-09-61a.png" alt="file icon"></sub>) that the new commit is <span class="code">[6907e46]</span>. At this stage the commit has been made and is in the repository. </p>
+
+                    <p class="hyp">However, GitHub (unlike Git and Brackets) has an undo button, the revert button will undo the change and take us back to the previous state (<a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>). With GitHub we get to change our mind.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090504]
+     SUBSECTION - 9.5.4 EXAMINING PREVIOUS PULL REQUESTS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090504">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.5.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Examining previous pull requests</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">We&rsquo;ve merged a pull request (merged the <span class="git-cmd">d-04-legal</span> branch on to the <span class="git-cmd">master</span> branch), open the repository home page to see the latest version:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-62">
+                            <a href="01-pages/09-05-github/02-images/fig-09-62.png" data-lightbox="fig-set" data-title="Figure 9.62 - GitHub&mdash;repository home page (post merge)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-62.png" alt="Figure 9.62 - GitHub&mdash;repository home page (post merge)">
+                            </a>
+                            <p>Figure 9.62 &emsp; GitHub&mdash;repository home page (post merge)</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="git-cmd">master</span> branch is now selected, the new <span class="code">04-legal.html</span> page is there and the latest commit is <span class="code">[6907e46]</span>. There are still two branches (<span class="menu">branches</span> tab), this is because we haven&rsquo;t deleted <span class="git-cmd">d-04-legal</span>. The <span class="menu">pull request</span> tab is also showing no requests.</p>
+
+                    <p class="hyp">Click the <span class="menu">pull request</span> tab to open the pull request page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-63">
+                            <a href="01-pages/09-05-github/02-images/fig-09-63.png" data-lightbox="fig-set" data-title="Figure 9.63 - GitHub&mdash;pull request page (post merge)">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-63.png" alt="Figure 9.63 - GitHub&mdash;pull request page (post merge)">
+                            </a>
+                            <p>Figure 9.63 &emsp; GitHub&mdash;pull request page (post merge)</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It is showing that there are no open commit request and one closed request, the one we just made.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-64">
+                            <a href="01-pages/09-05-github/02-images/fig-09-64.png" data-lightbox="fig-set" data-title="Figure 9.64 - GitHub&mdash;closed pull requests">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-64.png" alt="Figure 9.64 - GitHub&mdash;closed pull requests">
+                            </a>
+                            <p>Figure 9.64 &emsp; GitHub&mdash;closed pull requests</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If you click the pull request itself (where it says D: Incremental Build) it will show you the details of the pull request, this is the same as <a class="xref js--sc-f09-61" href="#">Figure&nbsp;9.61</a>. The <span class="menu">revert</span> option is still there if you want to undo the pull request.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090505]
+     SUBSECTION - 9.5.5 PULL REQUEST TO MERGE A BRANCH WITH A CONFLICT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090505">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.5.5</h3></div>
+                    <div class="sub-title-text-box"><h3>Pull request to merge a branch with a conflict</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The <span class="git-cmd">d-04-legal</span> branch still exists, go back to the repository home page (<a class="xref js--sc-f09-62" href="#">Figure&nbsp;9.62</a>), click the branch button and select <span class="menu">d-04-legal</span> from the drop down to switch to that branch.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-65">
+                            <a href="01-pages/09-05-github/02-images/fig-09-65.png" data-lightbox="fig-set" data-title="Figure 9.65 - GitHub&mdash;switch to d-04-legal branch">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 396px" src="01-pages/09-05-github/02-images/fig-09-65.png" alt="Figure 9.65 - GitHub&mdash;switch to d-04-legal branch">
+                            </a>
+                            <p>Figure 9.65 &emsp; GitHub&mdash;switch to <span class="git-cmd">d-04-legal</span> branch</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Open the <span class="code">11-resources</span> folder and then the <span class="code">01-css</span> folder and finally open the <span class="code">style.css file</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-66">
+                            <a href="01-pages/09-05-github/02-images/fig-09-66.png" data-lightbox="fig-set" data-title="Figure 9.66 - GitHub&mdash;style.css preview">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-66.png" alt="Figure 9.66 - GitHub&mdash;style.css preview">
+                            </a>
+                            <p>Figure 9.66 &emsp; GitHub&mdash;style.css preview</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the pencil symbol ( <sub><img style="height: 0.85rem" src="01-pages/09-05-github/02-images/fig-09-66a.png" alt="file icon"></sub> ) to edit the file and modify line 30 as follows</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint linenums:30 lang-css" id="js--c09-02a">h3 { font-size: 2.5rem; color: #404030; }</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                        <div class="code-caption"><span class="git-cmd">d-04-legal</span> style.css change</div>                    <!-- Code caption (empty)-->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It gives the <span class="code">h3</span> heading a grey colour:</p>
+
+                    <p class="hyp">The edited file looks like this, enter the commit message as shown:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-67">
+                            <a href="01-pages/09-05-github/02-images/fig-09-67.png" data-lightbox="fig-set" data-title="Figure 9.67 - GitHub&mdash;style.css edited">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-67.png" alt="Figure 9.67 - GitHub&mdash;style.css edited">
+                            </a>
+                            <p>Figure 9.67 &emsp; GitHub&mdash;style.css edited</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click <span class="menu">commit changes</span> and then go back to the <span class="git-cmd">d-04-legal</span> branch page. It will once again inform us that <span class="git-cmd">d-04-legal</span> is one commit ahead of <span class="git-cmd">master</span>:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-68">
+                            <a href="01-pages/09-05-github/02-images/fig-09-68.png" data-lightbox="fig-set" data-title="Figure 9.68 - GitHub&mdash;style.css edited on d-04-legal">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-68.png" alt="Figure 9.68 - GitHub&mdash;style.css edited on d-04-legal">
+                            </a>
+                            <p>Figure 9.68 &emsp; GitHub&mdash;style.css edited on <span class="git-cmd">d-04-legal</span></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The next thing is to modify the <span class="git-cmd">master</span> branch in just the same way to make a conflict (i.e. change the <span class="code">style.css</span> file).</p>
+
+                    <p class="hyp">Go back to the repository home page and make sure you are on the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">Drill down to the <span class="code">style.css</span> file open it and edit it (in just the same way we did above for the <span class="git-cmd">d-04-legal</span> branch above).</p>
+
+                    <p class="hyp">This time make line 30 read:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint linenums:30 lang-css" id="js--c09-02b">h3 { font-size: 2.5rem; color: #000000; }</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                        <div class="code-caption"><span class="git-cmd">master</span> style.css change</div>                    <!-- Code caption (empty)-->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="code">h3</span> element is completely black:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-69">
+                            <a href="01-pages/09-05-github/02-images/fig-09-69.png" data-lightbox="fig-set" data-title="Figure 9.69 - GitHub&mdash;style.css edited on master">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-69.png" alt="Figure 9.69 - GitHub&mdash;style.css edited on master">
+                            </a>
+                            <p>Figure 9.69 &emsp; GitHub&mdash;style.css edited on <span class="git-cmd">master</span></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Enter the commit message and <span class="menu">commit changes</span>.</p>
+
+                    <p class="hyp">Go back to the repository home page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-70">
+                            <a href="01-pages/09-05-github/02-images/fig-09-70.png" data-lightbox="fig-set" data-title="Figure 9.70 - GitHub&mdash;repository home page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-70.png" alt="Figure 9.70 - GitHub&mdash;repository home page">
+                            </a>
+                            <p>Figure 9.70 &emsp; GitHub&mdash;repository home page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now we&rsquo;ve change <span class="code">style.css</span> on both branches and they have conflicting changes.</p>
+
+                    <p class="hyp">Let&rsquo;s try to merge them together by creating a pull request. Click either the <span class="menu">compare and pull request</span> button or the <span class="menu">new pull request</span> button (they do the same thing). This time we get:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-71">
+                            <a href="01-pages/09-05-github/02-images/fig-09-71.png" data-lightbox="fig-set" data-title="Figure 9.71 - GitHub&mdash;open pull request with a conflict">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-71.png" alt="Figure 9.71 - GitHub&mdash;open pull request with a conflict">
+                            </a>
+                            <p>Figure 9.71 &emsp; GitHub&mdash;open pull request with a conflict</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="first-use">Not looking so good this time</span>. </p>
+
+                    <p class="hyp">The top bit is the same; we&rsquo;re merging from <span class="git-cmd">d-04-legal</span> to the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">It&rsquo;s the bit after that that is the problem <span class="git-cmd" style="color: #CC2532">&#10006; Can&rsquo;t automatically merge</span>. But it does go on to say that we can still create the pull request; it just means we have to sort it out later.</p>
+
+                    <p class="hyp">The bit at the bottom shows the conflict (in case it can be fixed and the pull request redone). In our case I want to leave it, I want the conflict situation. Click the <span class="menu">create pull request</span> button and let&rsquo;s see what happens:</p>
+
+                    <p class="hyp">Again we go to the pull request status page and this time we have:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-72">
+                            <a href="01-pages/09-05-github/02-images/fig-09-72.png" data-lightbox="fig-set" data-title="Figure 9.72 - GitHub&mdash;pull request with a conflict">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-72.png" alt="Figure 9.72 - GitHub&mdash;pull request with a conflict">
+                            </a>
+                            <p>Figure 9.72 &emsp; GitHub&mdash;pull request with a conflict</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="menu">merge pull request</span> button is greyed out, but now we have a <span class="menu">resolve conflict</span> button.</p>
+
+                    <p class="hyp">As before, we could if we wanted, just reject the pull request by clicking the <span class="menu">close pull request</span> button. We could also ask questions with the <span class="menu">comment</span> button (just like last time).</p>
+
+                    <p class="hyp">What we&rsquo;re really interested in is resolving the conflict, click the <span class="menu">resolve conflict</span> button&mdash;<span class="first-use">does it look familiar?</span></p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-73">
+                            <a href="01-pages/09-05-github/02-images/fig-09-73.png" data-lightbox="fig-set" data-title="Figure 9.73 - GitHub&mdash;merge with a conflict">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-73.png" alt="Figure 9.73 - GitHub&mdash;merge with a conflict">
+                            </a>
+                            <p>Figure 9.73 &emsp; GitHub&mdash;merge with a conflict</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It wants us to make the correction (just like <a class="hlink nohyp" href="06-07-example.html#js--060703">&sect;&nbsp;6.7.3</a> &amp; <a class="hlink nohyp" href="08-05-remotes.html#js--080500">&sect;&nbsp;8.5</a>). This time I&rsquo;m going to keep the first one (grey). Modify the file to make it look like this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-74">
+                            <a href="01-pages/09-05-github/02-images/fig-09-74.png" data-lightbox="fig-set" data-title="Figure 9.74 - GitHub&mdash;modified file to resolve conflict">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-74.png" alt="Figure 9.74 - GitHub&mdash;modified file to resolve conflict">
+                            </a>
+                            <p>Figure 9.74 &emsp; GitHub&mdash;modified file to resolve conflict</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the <span class="menu">mark as resolved</span> button.</p>
+
+                    <p class="hyp">Now we get:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-75">
+                            <a href="01-pages/09-05-github/02-images/fig-09-75.png" data-lightbox="fig-set" data-title="Figure 9.75 - GitHub&mdash;commit modified file">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-75.png" alt="Figure 9.75 - GitHub&mdash;commit modified file">
+                            </a>
+                            <p>Figure 9.75 &emsp; GitHub&mdash;commit modified file</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the commit changes button and it takes us back to the pull request status page but this time it looks like it did in <a class="xref nohyp js--sc-f09-58" href="#">&sect;&nbsp;9.5.3</a>, we can merge the changes:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-76">
+                            <a href="01-pages/09-05-github/02-images/fig-09-76.png" data-lightbox="fig-set" data-title="Figure 9.76 - GitHub&mdash;pull request status page after conflict resolution">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-76.png" alt="Figure 9.76 - GitHub&mdash;pull request status page after conflict resolution">
+                            </a>
+                            <p>Figure 9.76 &emsp; GitHub&mdash;pull request status page after conflict resolution</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">We do exactly the same as we did with the original merge, click <span class="menu">merge pull request</span> and in the message box, accept the default message by clicking <span class="menu">confirm merge</span>. </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-77">
+                            <a href="01-pages/09-05-github/02-images/fig-09-77.png" data-lightbox="fig-set" data-title="Figure 9.77 - GitHub&mdash;confirm merge after conflict resolution">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-77.png" alt="Figure 9.77 - GitHub&mdash;confirm merge after conflict resolution">
+                            </a>
+                            <p>Figure 9.77 &emsp; GitHub&mdash;confirm merge after conflict resolution</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">And that&rsquo;s it, it&rsquo;s committed. It will leave you on the pull request status page showing the closed pull request. All done.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 090506]
+     SUBSECTION - 9.5.6 DELETING A BRANCH
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--090506">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>9.5.6</h3></div>
+                    <div class="sub-title-text-box"><h3>Deleting a branch</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The final thing with branches. Deleting the branch</p>
+
+                    <p class="hyp">Go to the repository home screen and click the branches tab (highlighted):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-78">
+                            <a href="01-pages/09-05-github/02-images/fig-09-78.png" data-lightbox="fig-set" data-title="Figure 9.78 - GitHub&mdash;select the branches tab">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-78.png" alt="Figure 9.78 - GitHub&mdash;select the branches tab">
+                            </a>
+                            <p>Figure 9.78 &emsp; GitHub&mdash;select the branches tab</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It opens the branches page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f09-79">
+                            <a href="01-pages/09-05-github/02-images/fig-09-79.png" data-lightbox="fig-set" data-title="Figure 9.79 - GitHub&mdash;delete a branch from the branches tab">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/09-05-github/02-images/fig-09-79.png" alt="Figure 9.79 - GitHub&mdash;delete a branch from the branches tab">
+                            </a>
+                            <p>Figure 9.79 &emsp; GitHub&mdash;delete a branch from the branches tab</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">To delete the branch just click the rubbish bin, it will do it straight away (there is no &ldquo;are you sure box?&rdquo;). It does however give you the option to restore it afterwards.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>This is also where you can change the default branch, click the button.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="09-04-github.html#js--090400">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="09-06-github.html#js--090600">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

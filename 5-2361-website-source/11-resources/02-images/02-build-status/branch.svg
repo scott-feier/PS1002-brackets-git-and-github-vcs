@@ -14,7 +14,7 @@
    height="20"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.1 r15371"
    sodipodi:docname="branch.svg">
   <defs
      id="defs4">
@@ -2707,15 +2707,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.795552"
-     inkscape:cx="99.010788"
+     inkscape:cx="68.03876"
      inkscape:cy="13.037971"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      gridtolerance="10000"
      inkscape:window-width="2560"
-     inkscape:window-height="1377"
-     inkscape:window-x="1912"
+     inkscape:window-height="1378"
+     inkscape:window-x="2552"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      guidetolerance="10000"
@@ -2909,25 +2909,23 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#632523;fill-opacity:1;stroke:none;stroke-width:1.13777709px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="649.60675"
            y="92.389503"
-           id="text8328-7-8-5-5-7-6-2-0-7"
-           sodipodi:linespacing="0%"><tspan
+           id="text8328-7-8-5-5-7-6-2-0-7"><tspan
              style="font-size:12.79999065px;line-height:0"
              y="92.389503"
              x="649.60675"
              id="tspan6388"
-             sodipodi:role="line">d-08-remotes</tspan></text>
+             sodipodi:role="line">d-09-github</tspan></text>
         <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.13777709px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            x="649.60675"
            y="91.322838"
-           id="text8328-7-0-0-5-2-9-8-0"
-           sodipodi:linespacing="0%"><tspan
+           id="text8328-7-0-0-5-2-9-8-0"><tspan
              style="font-size:12.79999065px;line-height:0"
              y="91.322838"
              x="649.60675"
              id="tspan6386"
-             sodipodi:role="line">d-08-remotes</tspan></text>
+             sodipodi:role="line">d-09-github</tspan></text>
       </g>
     </g>
   </g>
