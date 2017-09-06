@@ -121,19 +121,19 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
            $('html, body').animate({scrollTop: $('#js--090302').offset().top -20}, 1000);
           });
 
-          $('.js--sc-090403').click(function () {
+          $('.js--sc-090303').click(function () {
            $('html, body').animate({scrollTop: $('#js--090303').offset().top -20}, 1000);
           });
 
-          $('.js--sc-090404').click(function () {
+          $('.js--sc-090304').click(function () {
            $('html, body').animate({scrollTop: $('#js--090304').offset().top -20}, 1000);
           });
 
-          $('.js--sc-090405').click(function () {
+          $('.js--sc-090305').click(function () {
            $('html, body').animate({scrollTop: $('#js--090305').offset().top -20}, 1000);
           });
 
-          $('.js--sc-090406').click(function () {
+          $('.js--sc-090306').click(function () {
            $('html, body').animate({scrollTop: $('#js--090306').offset().top -20}, 1000);
           });
 

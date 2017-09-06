@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+05 Sep 2017   t-P12.09.P13 M. Gledhill    Proofread and validated
+
 04 Sep 2017   d-P12.09.01  M. Gledhill    age created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 09-05&nbsp;&mdash;&nbsp;d-P12.09.01</p>
+<!--REVISION-->         <p>Rev: 09-05&nbsp;&mdash;&nbsp;t-P12.09.P13</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -174,7 +176,7 @@ Date          Issue        Author         Reason for Modification
                     TOC - 9 GitHub
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-090000" href="09-00-github.html#js--090000">  <!-- TOC link start -->
+                        <li><a class="js--sc-090000" href="09-00-github.html#js--000000">  <!-- TOC link start -->
                                <div class="toc-lev"><span class="toc-lev1-num">9</span><span class="toc-lev1-text">GitHub</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
@@ -325,7 +327,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Just to clarify a point, the merging process on GitHub is started by triggering a <span class="first-use">pull request</span>. You may have seen pull requests mentioned on the GitHub website (and in virtually every piece of documentation that goes with it); there is a button and status for it on the repository home page. </p>
 
-                    <p class="hyp">The pull request originates in the communal working environment and it can be interpreted as a <span class="first-use">request to pull modifications</span> into the repository. I cover it in terms of merging branches in this section (<a class="xref nohyp js--sc-090503 utx" href="#">&sect;&nbsp;9.5.3</a>) and I cover it as a communal coding activity in <a class="hlink nohyp" href="10-00-collaboration.html#js--000000">section&nbsp;10</a>. </p>
+                    <p class="hyp">The pull request originates in the communal working environment and it can be interpreted as a <span class="first-use">request to pull modifications</span> into the repository. I cover it in terms of merging branches in this section (<a class="xref nohyp js--sc-090503" href="#">&sect;&nbsp;9.5.3</a>) and I cover it as a communal coding activity in <a class="hlink nohyp" href="10-00-collaboration.html#js--000000">section&nbsp;10</a>. </p>
 
                     <p class="hyp">Where people refer to a pull request, they are generally referring to a process of merging modification back into the repository.</p>
 
@@ -435,10 +437,10 @@ Date          Issue        Author         Reason for Modification
       NOTE - HANGING INDENT
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="note">                           <!-- Start of note -->
-                        <li>Although we are now on a new branch, the default branch (GitHub has a default branch) is still the master branch. This means that if your return to the repository home page, GitHub will transfer you back to the master branch (the default branch) and you will have to reselect the new branch if you want it.</li>
+                        <li>Although we are now on a new branch, the default branch (GitHub has a default branch) is still the <span class="git-cmd">master</span> branch. This means that if your return to the repository home page, GitHub will transfer you back to the <span class="git-cmd">master</span> branch (the default branch) and you will have to reselect the new branch if you want it.</li>
                     </ul>                                       <!-- End of note -->
 
-                    <p class="hyp" style="padding-left: 3.2rem"><span class="first-use">It will catch you out (at least it does me) and you will find yourself on the wrong branch. It is possible to change the default branch, see <a class="xref nohyp js--sc-090506 utx" href="#">&sect;&nbsp;9.5.6</a>.</span></p>
+                    <p class="hyp" style="padding-left: 3.2rem"><span class="first-use">It will catch you out (at least it does me) and you will find yourself on the wrong branch. It is possible to change the default branch, see <a class="xref nohyp js--sc-090506" href="#">&sect;&nbsp;9.5.6</a>.</span></p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -551,7 +553,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Click commit new file to add the file to the repository. This takes us back to the branch page <a class="xref js--sc-f09-54" href="#">Figure&nbsp;9.54</a>.</p>
+                    <p class="hyp">Click <span class="menu">commit new file</span> to add the file to the repository. This takes us back to the branch page <a class="xref js--sc-f09-54" href="#">Figure&nbsp;9.54</a>.</p>
 
                     <p class="hyp">The new commit point is, in my case <span class="code">[9c7954b]</span>; the new file <span class="code">04-leagl.html</span> is also visible.</p>
 
@@ -618,7 +620,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The pull request alerts you to the fact that someone has made a modification and they are <span class="first-use">requesting</span> that you <span class="first-use">pull</span> their modification in to the repository. Only the owner (or those users given write permission to the repository) can grant this pull request and merge the modification into the repository.</p>
 
-                    <p class="hyp">Now in our example here, I (the owner of the repository) made a change to a particular branch; there has been no forking of the repository, no one has copied it and there is no communal working&mdash;just me adding a file. So why, you may wonder, is it banging on about pull request?</p>
+                    <p class="hyp">Now in our example here, I (the owner of the repository) made a change to a particular branch; there has been no forking of the repository, no one has copied it and there is no communal working&mdash;just me adding a file. So why, you may wonder, is it banging on about pull requests?</p>
 
                     <p class="hyp">The answer is it uses the same process no matter where the change originated (be it some other user who had copied, <span class="first-use">forked</span>, the repository or me, the owner of the repository, making a change). So we use a pull request to merge the files.</p>
 
@@ -664,7 +666,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Creating a pull request</h4></div>
+                    <div class="sub-title-text-box"><h4>Creating a <span class="menu">pull request</span></h4></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -678,7 +680,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">From the branch page click either the <span class="menu">compare and pull request</span> button in the yellow bar or the <span class="menu">new pull request</span> button next to the branch button. They both do exactly the same:</p>
+                    <p class="hyp">From the branch page click either the <span class="menu">compare and pull request</span> button in the yellow bar or the <span class="menu">new pull request</span> button next to the <span class="menu">branch</span> button. They both do exactly the same:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -753,7 +755,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Reviewing the pull request</h4></div>
+                    <div class="sub-title-text-box"><h4>Reviewing the <span class="menu">pull request</span></h4></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -842,7 +844,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Rejecting a pull request </h4></div>
+                    <div class="sub-title-text-box"><h4>Rejecting a <span class="menu">pull request</span></h4></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -856,7 +858,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">To reject a pull request click the <span class="menu">close pull request</span> button, this is listed a point <span class="index">1</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>. Closing a pull request does not delete it, it will be listed under closed pull requests, but it will stop bothering you and will not require any further interaction.</p>
+                    <p class="hyp">To reject a pull request click the <span class="menu">close pull request</span> button, this is listed a point <span class="index">1</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>. Closing a pull request does not delete it, it will be listed under closed pull requests, but it will stop it bothering you and it will not require any further interaction.</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       NOTE - HANGING INDENT
@@ -906,7 +908,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Next: the conversation. If you notice, we are actually in a sub-tab called <span class="menu">conversation</span>, it&rsquo;s just under the green open image (below the D: Incremental Build line). </p>
+                    <p class="hyp">Next: the conversation. If you notice, we are actually in a sub-tab called <span class="menu">conversation</span>, it&rsquo;s just under the green open image (<sub><img style="height: 0.9rem" src="01-pages/09-05-github/02-images/fig-09-58a.png" alt="open icon"></sub>). </p>
 
                     <p class="hyp">If you&rsquo;re not sure about the pull request you can ask questions or make a statement <span class="first-use">&ldquo;good idea, I&rsquo;ll implement later&rdquo;</span>&mdash;or in my case <span class="first-use">&ldquo;who are you? Stop bothering me. Go away&rdquo;</span>&mdash;type what you want in the box at the bottom and click the <span class="menu">comment</span> button (both labelled point <span class="index">2</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>) and the message will be added to the pull request listing.</p>
 
@@ -932,7 +934,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
                     <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Accepting a pull request</h4></div>
+                    <div class="sub-title-text-box"><h4>Accepting a <span class="menu">pull request</span></h4></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -952,7 +954,7 @@ Date          Issue        Author         Reason for Modification
       NOTE - HANGING INDENT
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="note">                           <!-- Start of note -->
-                        <li>Only users who are able to commit changes to the repository are able to do this.</li>
+                        <li>Only users who are able to commit changes to the repository can do this.</li>
                     </ul>                                       <!-- End of note -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -964,14 +966,14 @@ Date          Issue        Author         Reason for Modification
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f09-59">
                             <a href="01-pages/09-05-github/02-images/fig-09-59.png" data-lightbox="fig-set" data-title="Figure 9.59 - GitHub&mdash;pull request merge options">         <!-- LIGHTBOX LINK -->
-                                <img style="max-width: 542px" src="01-pages/09-05-github/02-images/fig-09-59.png" alt="Figure 9.59 - GitHub&mdash;pull request merge options">
+                                <img style="max-width: 400px" src="01-pages/09-05-github/02-images/fig-09-59.png" alt="Figure 9.59 - GitHub&mdash;pull request merge options">
                             </a>
                             <p>Figure 9.59 &emsp; GitHub&mdash;pull request merge options</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">We want the default option, create a merge commit. This is in keeping with my idea of the best practice for merging branches. Generally, the top option is the correct one (and it certainly won&rsquo;t do any harm).</p>
+                    <p class="hyp">We want the default option, <span class="menu">create a merge commit</span>. This is in keeping with my idea of the best practice for merging branches. Generally, the top option is the correct one (and it certainly won&rsquo;t do any harm).</p>
 
                     <p class="hyp">Clicking <span class="menu">merge pull request</span> automatically generates a merge commit message (you can alter it if you want):</p>
 
@@ -1007,7 +1009,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">We can now see the merged pull request in the pull request chain, it is telling us (next to the purple merge icon <sub><img style="height: 1rem" src="01-pages/09-05-github/02-images/fig-09-61a.png" alt="file icon"></sub>) that the new commit is <span class="code">[6907e46]</span>. At this stage the commit has been made and is in the repository. </p>
 
-                    <p class="hyp">However, GitHub (unlike Git and Brackets) has an undo button, the revert button will undo the change and take us back to the previous state (<a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>). With GitHub we get to change our mind.</p>
+                    <p class="hyp">However, GitHub (unlike Git and Brackets) has an undo button, the <span class="menu">revert</span> button will undo the change and take us back to the previous state (<a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>). With GitHub we get to change our mind.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -1031,7 +1033,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
                     <div class="sub-title-num-box"><h3>9.5.4</h3></div>
-                    <div class="sub-title-text-box"><h3>Examining previous pull requests</h3></div>
+                    <div class="sub-title-text-box"><h3>Examining previous <br><span class="menu">pull requests</span></h3></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -1045,7 +1047,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">We&rsquo;ve merged a pull request (merged the <span class="git-cmd">d-04-legal</span> branch on to the <span class="git-cmd">master</span> branch), open the repository home page to see the latest version:</p>
+                    <p class="hyp">We&rsquo;ve merged a branch by using a pull request (merged the <span class="git-cmd">d-04-legal</span> branch on to the <span class="git-cmd">master</span> branch), we can see this if we open the repository home page; it shows the latest version:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -1077,7 +1079,9 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">It is showing that there are no open commit request and one closed request, the one we just made.</p>
+                    <p class="hyp">It is showing that there are no open commit requests and one closed request, the one we just made.</p>
+
+                    <p class="hyp">Clicking the closed tab (highlighted) will show the current status of the closed pull requests:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -1116,7 +1120,7 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
                     <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
                     <div class="sub-title-num-box"><h3>9.5.5</h3></div>
-                    <div class="sub-title-text-box"><h3>Pull request to merge a branch with a conflict</h3></div>
+                    <div class="sub-title-text-box"><h3><span class="menu">Pull request</span> to merge a branch with a conflict</h3></div>
                 </div>                                          <!-- End of subtitle column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
             </div>                                              <!-- End of Subtitle row -->
@@ -1145,7 +1149,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Open the <span class="code">11-resources</span> folder and then the <span class="code">01-css</span> folder and finally open the <span class="code">style.css file</span>:</p>
+                    <p class="hyp">Open the <span class="code">11-resources</span> folder and then the <span class="code">01-css</span> folder and finally open the <span class="code">style.css</span> file:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -1160,7 +1164,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Click the pencil symbol ( <sub><img style="height: 0.85rem" src="01-pages/09-05-github/02-images/fig-09-66a.png" alt="file icon"></sub> ) to edit the file and modify line 30 as follows</p>
+                    <p class="hyp">Click the pencil symbol ( <sub><img style="height: 0.85rem" src="01-pages/09-05-github/02-images/fig-09-66a.png" alt="edit icon"></sub> ) to edit the file and modify line 30 as follows</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
@@ -1180,7 +1184,7 @@ Date          Issue        Author         Reason for Modification
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">It gives the <span class="code">h3</span> heading a grey colour:</p>
+                    <p class="hyp">It gives the <span class="code">h3</span> heading a grey colour.</p>
 
                     <p class="hyp">The edited file looks like this, enter the commit message as shown:</p>
 
@@ -1238,7 +1242,7 @@ Date          Issue        Author         Reason for Modification
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The <span class="code">h3</span> element is completely black:</p>
+                    <p class="hyp">The <span class="code">h3</span> element is completely black, it looks like this:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -1461,7 +1465,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">To delete the branch just click the rubbish bin, it will do it straight away (there is no &ldquo;are you sure box?&rdquo;). It does however give you the option to restore it afterwards.</p>
+                    <p class="hyp">To delete the branch just click the rubbish bin (highlighted), it will do it straight away (there is no &ldquo;are you sure?&rdquo; box). It does however give you the option to restore it afterwards.</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       NOTE - HANGING INDENT
