@@ -16,14 +16,14 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="GitHub and working with other people’s repositories">
+        <meta name="description" content="Using GitHub for collaborative working">
 
 <!-- ==========================================================================
 
 
 
 *******************************************************************************
-Title :          BRACKETS-GIT & GITHUB VCS             10-00-COLLABORATION.HTML
+Title :          BRACKETS-GIT & GITHUB VCS             10-01-COLLABORATION.HTML
 *******************************************************************************
 DETAILS
 
@@ -41,6 +41,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+07 Sep 201    d-P13.10.01  M. Gledhill    Page formally created (replacing
+                                          P02 place holder)
+
 10 Jun 2017   P02          M. Gledhill    Published
 
 10 Jun 2017   t-P01.01.04  M. Gledhill    Page created
@@ -67,7 +70,6 @@ Date          Issue        Author         Reason for Modification
         <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
-
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
         <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/10-00-collaboration/05-local-js/10-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
@@ -83,7 +85,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/10-00-collaboration/01-local-css/10-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/10-00-collaboration/01-local-css/10-00-prettifylines.css"> -->
 
 
 
@@ -104,7 +106,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>A blank page | PracticalSeries: Collaborative working</title>
+        <title>GitHub&mdash;Collaborative working | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -123,19 +125,19 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text utx">Prev. section</span></a>
+                        <a class="nav-wide" href="09-06-github.html#js--090600"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
                         <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
-                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text utx">Top</span></a>
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
                         <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
                         <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="90-00-appendices.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="90-00-appendices.html#js--000000"><span class="top-nav-text utx">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="10-01-collaboration.html#js--100100"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -149,7 +151,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -158,7 +160,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 10-00&nbsp;&mdash;&nbsp;P02</p>
+<!--REVISION-->         <p>Rev: 10-00&nbsp;&mdash;&nbsp;d-P13.10.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -174,28 +176,50 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
 
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    TOC - 98 Blank
+                    TOC - 10 Collaborative working
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-980000" href="98-00-blank.html#js--000000">  <!-- TOC link start -->
-                               <div class="toc-lev"><span class="toc-lev1-num utx">98</span><span class="toc-lev1-text">Blank page</span></div></a>
+                        <li><a class="js--sc-100000" href="10-00-collaborative.html#js--000000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">10</span><span class="toc-lev1-text">Collaborative working</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
 
                     <ul class="toc-list">                       <!-- Start of TOC in columns -->
-                        <li><a class="js--sc-980100" href="98-00-blank.html#js--980100">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num utx">98.1</span><span class="toc-lev2-text">Empty Section</span></div></a>
+                        <li><a class="js--sc-100100" href="10-01-collaborative.html#js--100100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">10.1</span><span class="toc-lev2-text">Forking</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-980101" href="98-00-blank.html#js--980101">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx">98.1.1</span><span class="toc-lev3-text">Empty subsection</span></div></a>
+                        <li><a class="js--sc-100101" href="10-01-collaborative.html#js--100101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.1</span><span class="toc-lev3-text">Forking (copying) a repository</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-980101a" href="98-00-blank.html#js--980101a"> <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx"></span><span class="toc-lev3-text">Empty inline section</span></div></a>
-                            <!-- <br class="top-pad">                 Apply padding to give symmetry to toc (must be before </li> -->
-                        </li>
-                        <li><a class="js--sc-980101b" href="98-00-blank.html#js--980101b">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx"></span><span class="toc-lev3-text">Additional section</span></div></a>
-                        </li>
+                        <li><a class="js--sc-100102" href="10-01-collaborative.html#js--100102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.2</span><span class="toc-lev3-text">Creating a <span class="menu">pull request</span> on a forked repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100103" href="10-01-collaborative.html#js--100103">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.3</span><span class="toc-lev3-text">Synchronising a forked repository</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-100200" href="10-02-collaborative.html#js--100200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">10.2</span><span class="toc-lev2-text">Issues and milestones</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100201" href="10-02-collaborative.html#js--100201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.1</span><span class="toc-lev3-text">Creating issue labels</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100202" href="10-02-collaborative.html#js--100202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.2</span><span class="toc-lev3-text">Creating milestones</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100203" href="10-02-collaborative.html#js--100203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.3</span><span class="toc-lev3-text">Creating an issue</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100204" href="10-02-collaborative.html#js--100204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.4</span><span class="toc-lev3-text">Closing an issue directly</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100205" href="10-02-collaborative.html#js--100205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.5</span><span class="toc-lev3-text">Closing an issue from a commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+
                     </ul>                                       <!-- End of TOC in columns -->
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -218,11 +242,11 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 980000]
+<!-- ************************************************************************** [WP 100000]
      CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
      ***********************************************************************-->
 
-        <section class="section-std" id="js--980000">           <!-- Start of section -->
+        <section class="section-std" id="js--100000">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
@@ -238,59 +262,51 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <h2>Side heading (h2 level)</h2>        <!-- Side bar content         -->
+                        <p class="hyp">GitHub and working with other people&rsquo;s repositories.</p>                                 <!-- Side bar content         -->
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">This</span> section is used as the start of a chapter, it has a thin line above and an optional side heading</p>
+                    <p class="hyp"><span class="all-caps">Github is designed</span> for collaborative working, a team of people can work on the same project at the same time and GitHub will manage everything, resolve conflicts and keep it all up to date&mdash;just like a good version control system should.</p>
 
-                    <p class="hyp">Chapters with only a thin line do not have a heading (the heading is set in the title section &mdash; usually level h2), a nominal h6 level (h6 headings do not display) is also given to satisfy HTML validation requirements (sections must contain a heading element).</p>
+                    <p class="hyp">Now mostly when people work together as a team, the team is established, people are given responsibility for things and the work gets done <span class="first-use">(and you make a neat gun<sup>&dagger;1</sup>)</span>. There is usually someone managing the team (let&rsquo;s call them a lead engineer) telling people what to do and assigning privileges and access to users of the project; and this is how it is meant to be. This is how we do things at work <span class="first-use">(we have cake too)</span>, and we do make neat guns.</p>
 
-                    <p class="hyp">If a side heading is used, this will have an h2 heading level</p>
+                    <p class="hyp">GitHub lets us do this too; GitHub allows different users to be given access to a repository, it also allows organisations to be set up for just this purpose &mdash;an organisation is effectively a repository (or several repositories) that is manage by a group of users.</p>
 
-                </div>                                          <!-- End of section text area   -->
+                    <p class="hyp">This is all good and sensible <span class="first-use">(&ldquo;right and proper&rdquo; as my old Dad would have said)</span> and just what you would expect. These collaborative repositories can be accessed by users as local repositories on their own machine (just as we did in <a class="hlink nohyp" href="08-00-remotes.html#js--000000">section&nbsp;8</a>) and it all works very well.</p>
 
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content  -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
+                    <p class="hyp">Where I have a problem is with the open source aspects of GitHub <span class="first-use">(here comes the Linux lynch mob)</span>, is that anyone can take a copy of your repository and work on it, it&rsquo;s called <span class="first-use">forking (I really, really hate these names)</span>. Not only can they work on it, they can then send it back to you (with a pull request, just like we used in <a class="hlink nohyp" href="09-05-github.html#js--090503">&sect;&nbsp;9.5.3</a>) and ask you to incorporate it back into your repository.</p>
 
+                    <p class="hyp">I know it is possible to have private repositories <span class="first-use">(and I have them)</span>, but I also have public repositories and I make these public because I think they might be useful for others. Now I don&rsquo;t mind people copying this work, to some extent that&rsquo;s what it&rsquo;s there for. I just think it would be polite to be asked first. It seems a bit rude taking a copy of someone&rsquo;s work without so much as a by your leave&mdash;what&rsquo;s worse is posting it back to them, telling them you&rsquo;ve fixed all their shortcomings and would they be good enough to incorporate your changes, and then complaining when you don&rsquo;t&mdash;<span class="first-use">bloody do-gooders</span>.</p>
 
-<!-- ************************************************************************** [WP 980100]
-     SECTION - TYPICAL SECTION (X.Y)
-     ***********************************************************************-->
+                    <p class="hyp">Now I know the younger generation with their Facebook and Twitter tend to live in each other&rsquo;s pockets and like to share things <span class="first-use">(in a way that I very much do not)</span>.</p>
 
-        <section class="section-std" id="js--980100">           <!-- Start of section -->
-            <!-- Subtitle row is not normally needed at the start of the first section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
-                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
-                 <div class="sub-title-num-box"><h2>98.1</h2></div>
-                 <div class="sub-title-text-box"><h2>Section</h2></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
+                    <p class="hyp">But I&rsquo;m a tired old Yorkshire man; I&rsquo;m a bit grumpy and not tainted with emotion. In my day, the only thing young people shared was herpes.</p>
 
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                <!--     <aside class="aside-left">                  Start of left side bar   -->
-                <!--         <p></p>                                 Side bar content         -->
-                <!--     </aside>                                    End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
+                    <p class="hyp">So while I&rsquo;m willing to share my software&mdash;people should remember I do it by and large for nothing, and I do it in my own time. I&rsquo;m open to criticism and for people to help, but I would like this to be polite criticism. I don&rsquo;t like being shouted at <span class="first-use">(Linux people I&rsquo;m talking about you here)</span> and there is a bit too much of it on GitHub and I think <span class="first-use">forking</span> is a symptom of this.</p>
 
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+                    <p class="hyp">Well there&rsquo;s my rant. </p>
 
-                    <p class="hyp">This is a typical section, it will be numbered X.Y.</p>
+                    <p class="hyp">I will explain forking, and I have no problem with it between repositories that you have access to; however, if you&rsquo;re copying a complete stranger&rsquo;s repository maybe you should ask first.</p>
 
-                    <p class="hyp">Sections have an h2 heading level.</p>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">Sorry&mdash;it sounded like <a class="hlink nohyp" href="https://www.youtube.com/watch?v=Y6ljFaKRTrI">portal</a>.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -301,122 +317,6 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of section content  -->
         </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP 980101]
-     SUBSECTION - TYPICAL SUBSECTION (X.Y.Z)
-     ***********************************************************************-->
-
-        <section class="section-std" id="js--980101">           <!-- Start of section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
-                    <div class="sub-title-num-box"><h3>98.1.1</h3></div>
-                    <div class="sub-title-text-box"><h3>Subsection</h3></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
-
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
-                <!--     <aside class="aside-left">                  Start of left side bar -->
-                <!--         <p></p>                                 Side bar content       -->
-                <!--     </aside>                                    End of left side bar   -->
-                </div>                                          <!-- End of left column     -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">This is a typical subsection, it will be numbered X.Y.Z.</p>
-
-                    <p class="hyp">Subsections have an h3 heading level.</p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP INLINE]
-     SECTION INLINE
-     ***********************************************************************-->
-
-        <section class="section-std" id="js--980101a">          <!-- Start of section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
-                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Inline section</h4></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
-
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                <!--     <aside class="aside-left">                  Start of left side bar   -->
-                <!--         <p></p>                                 Side bar content         -->
-                <!--     </aside>                                    End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">This is an inline section, it has no number but does appy emphasis to a distinct section of text</p>
-
-                    <p class="hyp">Inline sections have an h4 heading level.</p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content  -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP ADDITIONAL]
-     SECTION - ADDITIONAL ROW
-     ***********************************************************************-->
-
-        <div class="section-std" id="js--980101b">              <!-- Start of additional row -->
-            <div class="rg-row">                                <!-- Start of row content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-left">                  <!-- Start of left side bar   -->
-                        <p>Additional Sidebar</p>               <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp"><em>This is an additional section row</em> it follows any section and allows additional sidebars to be used and aligned with the top of the row text.</p>
-
-                    <p class="hyp">additional section rows are constructed with <span class="code">&lt;div&gt;</span> elements (rather than <span class="code">&lt;section&gt;</span> elements and consequently do not require a heading).</p>
-
-                    <p class="hyp">As many additional section rows can be added as are needed.</p>
-
-
-                    <p> <br class="toc-pad"></p>
-                    <p> <br class="toc-pad"></p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of row content  -->
-        </div>                                                  <!-- End of additional row -->
 <!-- ========================================================================== [WP END] -->
 
 
@@ -424,11 +324,13 @@ Date          Issue        Author         Reason for Modification
      SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
      ***********************************************************************-->
 
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
         <div class="section-std" id="js--999901">              <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="09-00-github.html#js--000000">Prev</a>
+                        <a class="xref" href="09-06-github.html#js--090600">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -438,7 +340,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="90-00-appendices.html#js--000000">Next</a>
+                        <a class="xref" href="10-01-collaboration.html#js--100100">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -475,51 +377,3 @@ Date          Issue        Author         Reason for Modification
 
     </body>
 </html>
-
-
-
-<!-- **************************************************************************
-     COMMENT & CONTENT STORAGE AREA
-     **************************************************************************
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-
-
-     =====================================================================  -->

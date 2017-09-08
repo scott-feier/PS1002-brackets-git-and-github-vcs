@@ -1,0 +1,804 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="GitHub understanding issues and milestones">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS             10-02-COLLABORATION.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+07 Sep 201    d-P13.10.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/10-02-collaboration/05-local-js/10-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/10-02-collaboration/01-local-css/10-02-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>GitHub&mdash;Issues and milestones  | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="10-01-collaboration.html#js--100100"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="90-00-appendices.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="90-00-appendices.html#js--000000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>10</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">10</span>Collaborative working</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 10-02&nbsp;&mdash;&nbsp;d-P13.10.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 10 Collaborative working
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-100000" href="10-00-collaborative.html#js--000000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">10</span><span class="toc-lev1-text">Collaborative working</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-100100" href="10-01-collaborative.html#js--100100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">10.1</span><span class="toc-lev2-text">Forking</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100101" href="10-01-collaborative.html#js--100101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.1</span><span class="toc-lev3-text">Forking (copying) a repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100102" href="10-01-collaborative.html#js--100102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.2</span><span class="toc-lev3-text">Creating a <span class="menu">pull request</span> on a forked repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100103" href="10-01-collaborative.html#js--100103">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.3</span><span class="toc-lev3-text">Synchronising a forked repository</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-100200" href="10-02-collaborative.html#js--100200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">10.2</span><span class="toc-lev2-text">Issues and milestones</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100201" href="10-02-collaborative.html#js--100201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.1</span><span class="toc-lev3-text">Creating issue labels</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100202" href="10-02-collaborative.html#js--100202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.2</span><span class="toc-lev3-text">Creating milestones</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100203" href="10-02-collaborative.html#js--100203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.3</span><span class="toc-lev3-text">Creating an issue</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100204" href="10-02-collaborative.html#js--100204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.4</span><span class="toc-lev3-text">Closing an issue directly</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100205" href="10-02-collaborative.html#js--100205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.5</span><span class="toc-lev3-text">Closing an issue from a commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 100200]
+     SECTION - 10.2 ISSUES AND MILESTONES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100200">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>10.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Issues and milestones </h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">GitHub has a rudimentary issue tracking mechanism built into it. It allows issues to be categorised with labels and assigned a completion date (milestone).</p>
+
+                    <p class="hyp">I will demonstrate the use of issues from the <span class="code">practicalseries-lab</span> profile using the <span class="code">lab-01-website repository</span>.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100201]
+     SUBSECTION - 10.2.1 CREATING ISSUE LABELS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100201">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.2.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating issue labels</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">From the <span class="code">lab-01-website</span> repository home page, click the <span class="menu">issues</span> tab:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-24">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-24.png" data-lightbox="fig-set" data-title="Figure 10.24 - The michaelgledhill newsfeed page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-24.png" alt="Figure 10.24 - Repository home page issues tab">
+                            </a>
+                            <p>Figure 10.24 &emsp; Repository home page issues tab</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This takes us to the open issues page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-25">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-25.png" data-lightbox="fig-set" data-title="Figure 10.25 - Open issues">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-25.png" alt="Figure 10.25 - Open issues">
+                            </a>
+                            <p>Figure 10.25 &emsp; Open issues</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">To create, edit and delete labels click the <span class="menu">labels</span> button (highlighted above):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-26">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-26.png" data-lightbox="fig-set" data-title="Figure 10.26 - Label edit page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-26.png" alt="Figure 10.26 - Label edit page">
+                            </a>
+                            <p>Figure 10.26 &emsp; Label edit page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Clicking the <span class="menu">delete</span> button on the right hand side will delete the associated label (there is a confirmation box). </p>
+
+                    <p class="hyp">The <span class="menu">edit</span> button allows the text and colour of the label to be changed.</p>
+
+                    <p class="hyp">The <span class="menu">new label</span> button creates a new label; use it to create a <span class="code">proofreading</span> label:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-27">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-27.png" data-lightbox="fig-set" data-title="Figure 10.27 - Create a label">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-27.png" alt="Figure 10.27 - Create a label">
+                            </a>
+                            <p>Figure 10.27 &emsp; Create a label</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Clicking the <span class="menu">delete</span> button on the right hand side will delete the associated label (there is a confirmation box).</p>
+
+                    <p class="hyp">Enter the required label name and click <span class="menu">create label</span> to add it to the list.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100202]
+     SUBSECTION - 10.2.2 CREATING MILESTONES
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100202">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.2.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating milestones</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Milestones just marks specific dates with an identifying name that can then be attached to an issue.</p>
+
+                    <p class="hyp">To create a milestone, click the <span class="menu">milestone</span> button next to the <span class="menu">label</span> button on either the issues page (<a class="xref js--sc-f10-25" href="#">Figure&nbsp;10.25</a>) or from the label page (<a class="xref js--sc-f10-26" href="#">Figure&nbsp;10.26</a>).</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-28">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-28.png" data-lightbox="fig-set" data-title="Figure 10.28 - Milestone page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-28.png" alt="Figure 10.28 - Milestone page">
+                            </a>
+                            <p>Figure 10.28 &emsp; Milestone page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Click the <span class="menu">new milestone</span> button to add a milestone:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-29">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-29.png" data-lightbox="fig-set" data-title="Figure 10.29 - Create milestone page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-29.png" alt="Figure 10.29 - Create milestone page">
+                            </a>
+                            <p>Figure 10.29 &emsp; Create milestone page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Add a title (<span class="code">Release 01</span> in this case)&mdash;<span class="first-use">note: milestone titles must be unique</span>, enter a description and give it a date from the calendar. Click <span class="menu">create milestone</span> to create it. This will show the new milestone on the milestone page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-30">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-30.png" data-lightbox="fig-set" data-title="Figure 10.30 - Populated milestone page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-30.png" alt="Figure 10.30 - Populated milestone page">
+                            </a>
+                            <p>Figure 10.30 &emsp; Populated milestone page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100203]
+     SUBSECTION - 10.2.3 CREATING AN ISSUE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100203">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.2.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating an issue</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Click the <span class="menu">issues</span> tab to open the issues page, <a class="xref js--sc-f10-25" href="#">Figure&nbsp;10.25</a>.</p>
+
+                    <p class="hyp">Click the <span class="menu">new issue</span> button to open the create issue page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-31">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-31.png" data-lightbox="fig-set" data-title="Figure 10.31 - Create issue page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-31.png" alt="Figure 10.31 - Create issue page">
+                            </a>
+                            <p>Figure 10.31 &emsp; Create issue page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is fairly straight forward, give the issue a title and add any comment you feel is required. I gave it the title <span class="code">README.md - add getting started section</span>.</p>
+
+                    <p class="hyp">To assign a user to the issue and to assign labels and milestones just click the relevant cogwheel (highlighted) and choose what you want from the dropdown list.</p>
+
+                    <p class="hyp">To create the issue, click the <span class="menu">submit new issue</span> button. This will take you back to the issue page (<a class="xref js--sc-f10-32" href="#">Figure&nbsp;10.32</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-32">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-32.png" data-lightbox="fig-set" data-title="Figure 10.32 - Open issues page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-32.png" alt="Figure 10.32 - Open issues page">
+                            </a>
+                            <p>Figure 10.32 &emsp; Open issues page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is just a record of what we did when we created the issue.</p>
+
+                    <p class="hyp">There is one thing of note here; the <span class="code">#number</span> at the top (highlighted), this is the issue number and it&rsquo;s already at 4&mdash;<span class="first-use">&ldquo;but why, this is the first issue?&rdquo;</span> you say.</p>
+
+                    <p class="hyp">The answer is: because pull requests are also part of the issue numbering mechanism and there have already been three of these (one for the simple branch merge, one from the branch merge with conflict and one for the forked repository pull request).</p>
+
+                    <p class="hyp">This number is useful; we can use it to close the issue from a commit.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100204]
+     SUBSECTION - 10.2.4 CLOSING AN ISSUE DIRECTLY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100204">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.2.4</h3></div>
+                    <div class="sub-title-text-box"><h3>Closing an issue directly</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Any issue can be closed from the issues page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-33">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-33.png" data-lightbox="fig-set" data-title="Figure 10.33 - Directly closing an issue">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-33.png" alt="Figure 10.33 - Directly closing an issue">
+                            </a>
+                            <p>Figure 10.33 &emsp; Directly closing an issue</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Just give a reason in the comment section and click the <span class="menu">close and comment</span> button. This will close the issue.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100205]
+     SUBSECTION - 10.2.5 CLOSING AN ISSUE FROM A COMMIT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100205">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.2.5</h3></div>
+                    <div class="sub-title-text-box"><h3>Closing an issue from a commit</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Let&rsquo;s assume we didn&rsquo;t close the comment in the previous section and it&rsquo;s still open; let&rsquo;s also say we want to make the modification suggested (add a getting started section).</p>
+
+                    <p class="hyp">Go back to the repository home page, open and edit the <span class="code">README.md</span> file and add the following:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-34">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-34.png" data-lightbox="fig-set" data-title="Figure 10.34 - Closing an issue from a commit">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-34.png" alt="Figure 10.34 - Closing an issue from a commit">
+                            </a>
+                            <p>Figure 10.34 &emsp; Closing an issue from a commit</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;ve added lines 17, 18 and 19 to the <span class="code">README.md</span> file.</p>
+
+                    <p class="hyp">I&rsquo;ve also added a commit message and an additional comment.</p>
+
+                    <p class="hyp">The thing to notice is that in the commit message I&rsquo;ve added the text <span class="code">closes #4</span>. This is an inline command and it tells GitHub to close the <span class="code">#4</span> issue, this was the issue we created in <a class="xref js--sc-f10-32" href="#">Figure&nbsp;10.32</a>, the number is at the top, highlighted.</p>
+
+                    <p class="hyp">Click <span class="menu">commit changes</span>.</p>
+
+                    <p class="hyp">Now go back to the issues page, the issue will now be closed so go to the <span class="menu">closed</span> issues tab and click the issue itself:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-35">
+                            <a href="01-pages/10-02-collaboration/02-images/fig-10-35.png" data-lightbox="fig-set" data-title="Figure 10.35 - The closed issue">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-02-collaboration/02-images/fig-10-35.png" alt="Figure 10.35 - The closed issue">
+                            </a>
+                            <p>Figure 10.35 &emsp; The closed issue</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The issue is closed, and the commit number <span class="code">[780b895]</span> that closed it is shown.</p>
+
+                    <p class="hyp">Note also, that the milestone has been completed, this is because the only issue associated with the milestone is complete (hence the milestone is too).</p>
+
+                    <p class="hyp">The inline command <span class="code">closes</span> is not the only command that can close an issue, the following all do the same:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a three column table; the table is 84% of the row width (this is
+      set as part of the .table-clean class) and this is the standard
+      arrangement for tables.
+
+      The table is designated .table-clean (this is a table that is simple and
+      clean in appearance).
+
+      The table has three columns, this is set by how many <th> cells are
+      specified in the header row, the number of cells in each subsequent
+      <td> row must match the number in the header row.
+
+      The relative widths of each column are determined by the width specified
+      in the <th> elements, these widths are a percentage of the table width.
+
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
+
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
+
+      By default each table row has a bottom border, this can be turned off
+      by giving the <tr> element the class .no-border
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t10-01">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 3em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 50%">
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                                    <li><p class="hyp"><span class="code">close</span></p></li>
+                                    <li><p class="hyp"><span class="code">closes</span></p></li>
+                                    <li><p class="hyp"><span class="code">closed</span></p></li>
+                                    <li><p class="hyp"><span class="code">fix</span></p></li>
+                                    <li><p class="hyp"><span class="code">fixes</span></p></li>
+                                </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                            </td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 50%">
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                                    <li><p class="hyp"><span class="code">fixed</span></p></li>
+                                    <li><p class="hyp"><span class="code">resolve</span></p></li>
+                                    <li><p class="hyp"><span class="code">resolves</span></p></li>
+                                    <li><p class="hyp"><span class="code">resolved</span></p></li>
+                                </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                            </td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="10-01-collaboration.html#js--100100">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="90-00-appendices.html#js--000000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

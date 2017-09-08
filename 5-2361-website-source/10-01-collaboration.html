@@ -1,0 +1,900 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="GitHub forking repositories, what it means and how to do it">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS             10-01-COLLABORATION.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+07 Sep 201    d-P13.10.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/10-01-collaboration/05-local-js/10-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/10-01-collaboration/01-local-css/10-01-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>GitHub&mdash;Forking | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="09-00-github.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="90-00-appendices.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="10-02-collaboration.html#js--100200"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>10</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">10</span>Collaborative working</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 10-01&nbsp;&mdash;&nbsp;d-P13.10.01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 10 Collaborative working
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-100000" href="10-00-collaborative.html#js--000000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">10</span><span class="toc-lev1-text">Collaborative working</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-100100" href="10-01-collaborative.html#js--100100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">10.1</span><span class="toc-lev2-text">Forking</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100101" href="10-01-collaborative.html#js--100101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.1</span><span class="toc-lev3-text">Forking (copying) a repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100102" href="10-01-collaborative.html#js--100102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.2</span><span class="toc-lev3-text">Creating a <span class="menu">pull request</span> on a forked repository</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100103" href="10-01-collaborative.html#js--100103">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.1.3</span><span class="toc-lev3-text">Synchronising a forked repository</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+
+                        <li><a class="js--sc-100200" href="10-02-collaborative.html#js--100200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">10.2</span><span class="toc-lev2-text">Issues and milestones</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100201" href="10-02-collaborative.html#js--100201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.1</span><span class="toc-lev3-text">Creating issue labels</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100202" href="10-02-collaborative.html#js--100202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.2</span><span class="toc-lev3-text">Creating milestones</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100203" href="10-02-collaborative.html#js--100203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.3</span><span class="toc-lev3-text">Creating an issue</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100204" href="10-02-collaborative.html#js--100204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.4</span><span class="toc-lev3-text">Closing an issue directly</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-100205" href="10-02-collaborative.html#js--100205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">10.2.5</span><span class="toc-lev3-text">Closing an issue from a commit</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+
+
+                    </ul>                                       <!-- End of TOC in columns -->
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 100100]
+     SECTION - 10.1 FORKING
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100100">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>10.1</h2></div>
+                 <div class="sub-title-text-box"><h2>Forking</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">I need two GitHub user accounts to demonstrate this, and fortunately I have, I have the <span class="code">practicalseries-lab</span> account and I also have a <span class="code">michaelgledhill</span> account.</p>
+
+                    <p class="hyp">I&rsquo;m going to logon to the <span class="code">michaelgledhill</span> account and copy the <span class="code">lab-01-website</span> repository into a new repository in that account; this is a process that is referred to as <span class="first-use">forking</span> in GitHub terminology.</p>
+
+                    <p class="hyp">This is the <span class="code">michaelgledhill</span> home page, you can tell, it&rsquo;s got my picture at the top:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-01">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-01.png" data-lightbox="fig-set" data-title="Figure 10.1 - The michaelgledhill newsfeed page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-01.png" alt="Figure 10.1 - The michaelgledhill newsfeed page">
+                            </a>
+                            <p>Figure 10.1 &emsp; The michaelgledhill newsfeed page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I can search for any repository in GitHub by typing all or part of its name into the <span class="menu">search github</span> box at the top.</p>
+
+                    <p class="hyp">If I type <span class="code">lab-01-website</span> I get this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-02">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-02.png" data-lightbox="fig-set" data-title="Figure 10.2 - Search for lab-01-website">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-02.png" alt="Figure 10.2 - Search for lab-01-website">
+                            </a>
+                            <p>Figure 10.2 &emsp; Search for lab-01-website</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If I click <span class="menu">practicalseries-lab/lab-01-website</span> link it takes me to the repository home page:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-03">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-03.png" data-lightbox="fig-set" data-title="Figure 10.3 - The lab-01-website website viewed from another user profile">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-03.png" alt="Figure 10.3 - The lab-01-website website viewed from another user profile">
+                            </a>
+                            <p>Figure 10.3 &emsp; The lab-01-website website viewed from another user profile</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Now this looks just the same as it did when we were logged in as <span class="code">practicalseries-lab</span>; the only difference can be seen at the top, it&rsquo;s got my picture instead of the practical series logo.</p>
+
+                    <p class="hyp">There is a difference if you try to modify a file, if I click the <span class="code">README.md</span> file and then try to edit it, I get the following message:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-04">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-04.png" data-lightbox="fig-set" data-title="Figure 10.4 - Editing a file in another users repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-04.png" alt="Figure 10.4 - Editing a file in another users repository">
+                            </a>
+                            <p>Figure 10.4 &emsp; Editing a file in another users repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It tells me &ldquo;I&rsquo;m trying to edit a file I don&rsquo;t have write access to&rdquo;. It also says it&rsquo;s &ldquo;created a <span class="first-use">fork</span> for this project&rdquo;. And indeed it has done so, this is one way of forking a repository&mdash;but this is not the usual way of doing it.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100101]
+     SUBSECTION - 10.1.1 FORKING (COPYING) A REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100101">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.1.1</h3></div>
+                    <div class="sub-title-text-box"><h3>Forking (copying) a repository</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Go back to the repository <span class="code">practicalseries-lab/lab-01-website</span> repository home page (<a class="xref js--sc-f10-03" href="#">Figure&nbsp;10.3</a>).</p>
+
+                    <p class="hyp">The easiest way to fork (create a copy of the project in different profile) is to just click the fork button at the top. If you hover the mouse over the button you get this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-05">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-05.png" data-lightbox="fig-set" data-title="Figure 10.5 - Fork a repository">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 687px" src="01-pages/10-01-collaboration/02-images/fig-10-05.png" alt="Figure 10.5 - Fork a repository">
+                            </a>
+                            <p>Figure 10.5 &emsp; Fork a repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It tells me it will make a copy of the repository in my account (the <span class="code">michaelgledhill</span> account).</p>
+
+                    <p class="hyp"></p>
+
+                    <p class="hyp">If I click the fork button, point <span class="index">1</span> in <a class="xref js--sc-f10-03" href="#">Figure&nbsp;10.3</a> I get this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-06">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-06.png" data-lightbox="fig-set" data-title="Figure 10.6 - Forking in progress">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-06.png" alt="Figure 10.6 - Forking in progress">
+                            </a>
+                            <p>Figure 10.6 &emsp; Forking in progress</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This screen hangs around for a few seconds<sup>&dagger;1</sup>.</p>
+
+                    <p class="hyp">It then takes me to the home page for the repository, but in the <span class="code">michaelgledhill</span> account (not <span class="code">practicalseries-lab</span>). I.e. it is the home page of the copy, not the original.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-07">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-07.png" data-lightbox="fig-set" data-title="Figure 10.7 - The forked repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-07.png" alt="Figure 10.7 - The forked repository">
+                            </a>
+                            <p>Figure 10.7 &emsp; The forked repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The clue to this being a copy is at the top, it says:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-07a">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-07a.png" data-lightbox="fig-set" data-title="Figure 10.7a - The forked repository">         <!-- LIGHTBOX LINK -->
+                                <img style="max-width: 501px" src="01-pages/10-01-collaboration/02-images/fig-10-07a.png" alt="Figure 10.7a - The forked repository">
+                            </a>
+                            <p></p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It is in the <span class="code">michaelgledhill</span> account, not the <span class="code">practicalseries-lab</span> account, indeed the next line tells me it&rsquo;s been forked from that account.</p>
+
+                    <p class="hyp">So there we are, I&rsquo;ve forked <span class="first-use">(copied)</span> a repository from one GitHub profile to another.</p>
+
+                    <p class="hyp">Let&rsquo;s have a quick look from the <span class="code">practicalseries-lab</span> side of things. If I sign in to the practicalseries-lab account and go to the lab-01-website repository home page I have this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-08">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-08.png" data-lightbox="fig-set" data-title="Figure 10.8 - The original repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-08.png" alt="Figure 10.8 - The original repository">
+                            </a>
+                            <p>Figure 10.8 &emsp; The original repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I can see that someone has forked the repository (the 1 highlighted).</p>
+
+                    <p class="hyp">I can even find out who, if I click the number next to the <span class="menu">fork</span> button, it takes me to a network diagram of the repository:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-09">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-09.png" data-lightbox="fig-set" data-title="Figure 10.9 - The original repository network">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-09.png" alt="Figure 10.9 - The original repository network">
+                            </a>
+                            <p>Figure 10.9 &emsp; The original repository network</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It shows a kind of network of the repository, where branches have been created and commits made&mdash;it&rsquo;s a poor man&rsquo;s version of the London Underground diagrams I used in the examples. It&rsquo;s not particularly useful.</p>
+
+                    <p class="hyp">Click the members tab (highlighted):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-10">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-10.png" data-lightbox="fig-set" data-title="Figure 10.10 - The original repository members">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-10.png" alt="Figure 10.10 - The original repository members">
+                            </a>
+                            <p>Figure 10.10 &emsp; The original repository members</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This shows who has made a fork of the repository, just me in this case. </p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">I think this is a false delay screen, it implies it&rsquo;s copying the repository and it takes a few seconds; when I tried to edit the file, it forked the repository instantly.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100102]
+     SUBSECTION - 10.1.2 CREATING A PULL REQUEST ON A FORKED REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100102">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.1.2</h3></div>
+                    <div class="sub-title-text-box"><h3>Creating a <span class="menu">pull request</span> on a forked repository</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Just look at that title, <span class="first-use">creating a pull request on a forked repository</span>&mdash;It&rsquo;s gibberish&mdash;it would mean absolutely nothing to a normal person.</p>
+
+                    <p class="hyp">Back to the forked repository in the <span class="code">michaelgledhill</span> profile, it looks like <a class="xref js--sc-f10-07" href="#">Figure&nbsp;10.7</a>.</p>
+
+                    <p class="hyp">This forked repository is for all intents and purposes just a repository in the <span class="code">michaelgledhill</span> profile, it could be cloned to a local repository (just like we did in <a class="hlink nohyp" href="05-03-brackets.html#js--050300">&sect;&nbsp;5.3</a>) and managed through Brackets. However, GitHub knows it was copied from some other repository. </p>
+
+                    <p class="hyp">If we modify our copy of the repository, we can send our changes back to the original in the form of a <span class="first-use">pull request</span> that the owner of the original repository can merge back into the original (or reject by closing the pull request). This is exactly the same process we went through with pull requests when merging branches.</p>
+
+                    <p class="hyp">I&rsquo;ll run through it, I&rsquo;m going to modify the <span class="code">README.md</span> file in the forked repository; I&rsquo;m just going to put a new line in at the top:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-11">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-11.png" data-lightbox="fig-set" data-title="Figure 10.11 - Modifying a forked repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-11.png" alt="Figure 10.11 - Modifying a forked repository">
+                            </a>
+                            <p>Figure 10.11 &emsp; Modifying a forked repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Add the commit message and click <span class="menu">commit changes</span>.</p>
+
+                    <p class="hyp">Go back to the forked repository home page (the change will be visible at the bottom):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-12">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-12.png" data-lightbox="fig-set" data-title="Figure 10.12 - Forked repository after the modification">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-12.png" alt="Figure 10.12 - Forked repository after the modification">
+                            </a>
+                            <p>Figure 10.12 &emsp; Forked repository after the modification</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I&rsquo;ve now modified my forked copy of the repository, I can send this change back to the original repository by creating a pull request (highlighted), this is the same process as merging two branches (<a class="hlink nohyp" href="09-05-github.html#js--090503">&sect;&nbsp;9.5.3</a>). Click the <span class="menu">new pull request</span> button:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-13">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-13.png" data-lightbox="fig-set" data-title="Figure 10.13 - Forked repository create a pull request">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-13.png" alt="Figure 10.13 - Forked repository create a pull request">
+                            </a>
+                            <p>Figure 10.13 &emsp; Forked repository create a pull request</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The important bit here is the section I&rsquo;ve highlighted; it shows that the pull request has a base (receiving) repository set to the original <span class="code">practicalseries-lab/lab-01-website</span> <span class="menu">master</span> branch; the other side is the forked repository. It also says the files can be merged without conflict.</p>
+
+                    <p class="hyp">I&rsquo;ll create the pull request by clicking the <span class="menu">create pull request</span> button.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-14">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-14.png" data-lightbox="fig-set" data-title="Figure 10.14 - Forked repository open the pull request">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-14.png" alt="Figure 10.14 - Forked repository open the pull request">
+                            </a>
+                            <p>Figure 10.14 &emsp; Forked repository open the pull request</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This time I&rsquo;ve added a comment in the box. I click the green button to create the pull request.</p>
+
+                    <p class="hyp">Now I get this:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-15">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-15.png" data-lightbox="fig-set" data-title="Figure 10.15 - Forked repository pull request">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-15.png" alt="Figure 10.15 - Forked repository pull request">
+                            </a>
+                            <p>Figure 10.15 &emsp; Forked repository pull request</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">There are a couple of things here, the first is that <em>I can&rsquo;t merge the pull request</em>, the line in the middle says <span class="first-use">&ldquo;only those with write access to the repository can merge pull requests&rdquo;</span> and I don&rsquo;t have write access to the original.</p>
+
+                    <p class="hyp">There are two things that I can do from here; I can close the pull request myself by clicking the <span class="menu">close pull request</span> button (highlighted). By closing it <span class="first-use">(if say, I&rsquo;d made a mistake)</span> I would stop the pull request bothering the owner of the original repository.</p>
+
+                    <p class="hyp">I can also send further comments if I want to.</p>
+
+                    <p class="hyp">Let&rsquo;s look at it from the <span class="code">practicalseries-lab</span> side (the owner of <span class="code">lab-01-website</span>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-16">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-16.png" data-lightbox="fig-set" data-title="Figure 10.16 - Viewing the pull request from the original repository">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-16.png" alt="Figure 10.16 - Viewing the pull request from the original repository">
+                            </a>
+                            <p>Figure 10.16 &emsp; Viewing the pull request from the original repository</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">I can see that there is 1 pull request. If I click the tab I can view all the pull requests:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-17">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-17.png" data-lightbox="fig-set" data-title="Figure 10.17 - The pull request list">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-17.png" alt="Figure 10.17 - The pull request list">
+                            </a>
+                            <p>Figure 10.17 &emsp; The pull request list</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Clicking on the pull request itself, opens the full details of the request:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-18">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-18.png" data-lightbox="fig-set" data-title="Figure 10.18 - The pull request page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-18.png" alt="Figure 10.18 - The pull request page">
+                            </a>
+                            <p>Figure 10.18 &emsp; The pull request page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This time I can merge the pull request (I&rsquo;m the owner of the repository), I can also just <span class="menu">close</span> the request or I can generate a <span class="menu">comment</span>.</p>
+
+                    <p class="hyp">This time I&rsquo;m going to close the request <span class="first-use">(not implement it)</span>, but I will do it with the message:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">No, I don&rsquo;t want to do this.</span></p>
+
+                    <p class="hyp">I&rsquo;ve added the message to the box and I close the request by clicking the <span class="menu">close and comment</span> button.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-19">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-19.png" data-lightbox="fig-set" data-title="Figure 10.19 - Closed pull request from the owner&rsquo;s side">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-19.png" alt="Figure 10.19 - Closed pull request from the owner&rsquo;s side">
+                            </a>
+                            <p>Figure 10.19 &emsp; Closed pull request from the owner&rsquo;s side</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">If I go back to the <span class="code">michaelgledhill</span> profile, I don&rsquo;t see anything that tells me what has happened, there are no messages and there is nothing in the pull request tab.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-20">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-20.png" data-lightbox="fig-set" data-title="Figure 10.20 - Closed pull on the forked repository home page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-20.png" alt="Figure 10.20 - Closed pull on the forked repository home page">
+                            </a>
+                            <p>Figure 10.20 &emsp; Closed pull on the forked repository home page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The <span class="menu">pull requests</span> tab only shows pull requests that are made to this repository (if say I added a branch and wanted to merge it back in).</p>
+
+                    <p class="hyp">To view pull requests that have been made by this user, click the <span class="menu">pull request</span> link in the black bar at the top (highlighted), it gives the following:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-21">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-21.png" data-lightbox="fig-set" data-title="Figure 10.21 - A user&rsquo;s created pull request page">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-21.png" alt="Figure 10.21 - A user&rsquo;s created pull request page">
+                            </a>
+                            <p>Figure 10.21 &emsp; A user&rsquo;s created pull request page</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This page by default shows all the open pull requests I&rsquo;ve created. It also tells me that I have <span class="menu">1 closed</span> request. If I click this I get a list of all the closed pull requests:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-22">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-22.png" data-lightbox="fig-set" data-title="Figure 10.22 - A list of closed pull requests">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-22.png" alt="Figure 10.22 - A list of closed pull requests">
+                            </a>
+                            <p>Figure 10.22 &emsp; A list of closed pull requests</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Finally, if I click the particular request I see the closed message:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f10-23">
+                            <a href="01-pages/10-01-collaboration/02-images/fig-10-23.png" data-lightbox="fig-set" data-title="Figure 10.23 - The specific closed pull requests">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/10-01-collaboration/02-images/fig-10-23.png" alt="Figure 10.23 - The specific closed pull requests">
+                            </a>
+                            <p>Figure 10.23 &emsp; The specific closed pull requests</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This is exactly the same page as <a class="xref js--sc-f10-19" href="#">Figure&nbsp;10.19</a>. It opens the pull request page from the <span class="code">practicalseries-lab</span> repository.</p>
+
+                    <p class="hyp">If instead of rejecting the pull request (I clicked <span class="menu">close and comment</span>, <a class="xref js--sc-f10-18" href="#">Figure&nbsp;10.18</a>), I wanted to merge the changes into my repository, I would click the <span class="menu">merge pull request</span> button (<a class="xref js--sc-f10-18" href="#">Figure&nbsp;10.18</a>) and this would merge the changes into the master branch of the <span class="code">practicalseries-lab/lab-01-website</span> repository and this would be exactly the same process I covered in <a class="hlink nohyp" href="09-05-github.html#js--090503">section&nbsp;9.5.3</a> (if there were no conflicts) or <a class="hlink nohyp" href="09-05-github.html#js--090505">section&nbsp;9.5.5</a> (if there were conflicts).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 100103]
+     SUBSECTION - 10.1.3 CREATING A PULL REQUEST ON A FORKED REPOSITORY
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--100103">           <!-- Start of section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
+                    <div class="sub-title-num-box"><h3>10.1.3</h3></div>
+                    <div class="sub-title-text-box"><h3>Synchronising a forked repository (the limitations)</h3></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
+                <!--     <aside class="aside-left">                  Start of left side bar -->
+                <!--         <p></p>                                 Side bar content       -->
+                <!--     </aside>                                    End of left side bar   -->
+                </div>                                          <!-- End of left column     -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Ok, this is going to be easy.</p>
+
+                    <p class="hyp">The question is:</p>
+
+                    <p class="hyp" style="text-align: center;"><em>How can I keep my forked repository in synch with the original?</em></p>
+
+                    <p class="hyp">And the answer is:</p>
+
+                    <p class="hyp" style="text-align: center;"><em>You can&rsquo;t&mdash;not from GitHub</em></p>
+
+                    <p class="hyp">So that&rsquo;s that.</p>
+
+                    <p class="hyp">You should be able to, it&rsquo;s a bit like keeping a local copy of repository in synch with a remote repository, and you should be able to do the equivalent of a pull to get the latest changes in to the forked copy.</p>
+
+                    <p class="hyp">But you can&rsquo;t GitHub just doesn&rsquo;t have the facility.</p>
+
+                    <p class="hyp">There is a way around it by using a local repository as an intermediary, but It&rsquo;s convoluted and confusing and I don&rsquo;t cover it here.</p>
+
+                    <p class="hyp">Since I&rsquo;m not a great fan of forking in the first place; I can&rsquo;t get too worked up over this&mdash;it does seem to be a deficiency with GitHub though.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="10-00-collaboration.html#js--000000">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="10-02-collaboration.html#js--100200">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>
