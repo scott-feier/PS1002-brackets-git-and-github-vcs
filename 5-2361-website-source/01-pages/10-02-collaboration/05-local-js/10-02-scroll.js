@@ -129,8 +129,8 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
            $('html, body').animate({scrollTop: $('#js--100204').offset().top -20}, 1000);
           });
 
-          $('.js--sc-100204').click(function () {
-           $('html, body').animate({scrollTop: $('#js--100204').offset().top -20}, 1000);
+          $('.js--sc-100205').click(function () {
+           $('html, body').animate({scrollTop: $('#js--100205').offset().top -20}, 1000);
           });
 
 
