@@ -16,7 +16,7 @@ PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
     <head>                                                                      <!-- Start of head section -->
         <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
-        <meta name="description" content="An explanation of other aspects of Git and GitHub">
+        <meta name="description" content="various references and explanations of other aspects of Git and GitHub">
 
 <!-- ==========================================================================
 
@@ -41,6 +41,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+08 Sep 2017   d-P14.90.01  M. Gledhill    Page formally created (replacing
+                                          P02 place holder)
+
 10 Jun 2017   P02          M. Gledhill    Published
 
 10 Jun 2017   t-P01.01.04  M. Gledhill    Page created
@@ -67,7 +70,6 @@ Date          Issue        Author         Reason for Modification
         <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
-
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
         <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/90-00-appendices/05-local-js/90-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
@@ -80,10 +82,10 @@ Date          Issue        Author         Reason for Modification
         <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
         <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
         <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
-        <!-- Lightbox styles            <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">  -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
-       <!-- Code frag highlights        <link rel="stylesheet" type="text/css" href="01-pages/90-00-appendices/01-local-css/90-00-prettifylines.css"> -->
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/90-00-appendices/05-local-js/90-00-prettifylines.css"> -->
 
 
 
@@ -104,7 +106,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      TITLE
      ***********************************************************************-->
-        <title>A blank page | PracticalSeries: Appendices</title>
+        <title>Appendices | PracticalSeries: Brackets-Git and GitHub</title>
     </head>
 
 
@@ -123,19 +125,19 @@ Date          Issue        Author         Reason for Modification
                 <div class="top-nav">                           <!-- Start of top navigation row -->
                     <div class="rg-row">                        <!-- Start of navigation button row -->
                         <!-- Button 01 - Previous Section -->
-                        <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-icon">l</span><span class="top-nav-text utx">Prev. section</span></a>
+                        <a class="nav-wide" href="10-02-collaboration.html#js--100200"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
                         <!-- Button 02 - Previous Chapter -->
                         <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
                         <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
                         <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
-                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text utx">Top</span></a>
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
                         <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
                         <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
                         <!-- Button 05 - Next Chapter -->
                         <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
                         <!-- Button 06 - Next section -->
-                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-text utx">Next section</span><span class="top-nav-icon">r</span></a>
+                        <a class="nav-wide" href="90a-00-appendices.html#js--90a0000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
                     </div>                                      <!-- End of navigation button row -->
                 </div>                                          <!-- End of top navigation row -->
             </nav>                                              <!-- End of top navigation bar -->
@@ -149,16 +151,16 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg">                 <!-- Build status -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
-                    <div class="title-num-box"><p>&nbsp;</p></div>
-                    <div class="title-text-box"><h1><span class="title-small-num">&nbsp;</span>Appendices</h1></div>
+                    <div class="title-num-box"><p></p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num"></span>Appendices</h1></div>
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 90-00&nbsp;&mdash;&nbsp;P02</p>
+<!--REVISION-->         <p>Rev: 90-00&nbsp;&mdash;&nbsp;d-T14-90-01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -174,31 +176,150 @@ Date          Issue        Author         Reason for Modification
                 <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
 
                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    TOC - 98 Blank
+                    TOC - 90 Appendices
                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
-                        <li><a class="js--sc-980000" href="98-00-blank.html#js--000000">  <!-- TOC link start -->
-                               <div class="toc-lev"><span class="toc-lev1-num utx">98</span><span class="toc-lev1-text">Blank page</span></div></a>
+                        <li><a class="js--sc-100000" href="90-00-appendices.html#js--000000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num"></span><span class="toc-lev1-text">Appendices</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of full width TOC (level 1) -->
 
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90a0000" href="90a-00-appendices.html#js--90a0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">A</span><span class="toc-lev1-text">Installing Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
                     <ul class="toc-list">                       <!-- Start of TOC in columns -->
-                        <li><a class="js--sc-980100" href="98-00-blank.html#js--980100">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num utx">98.1</span><span class="toc-lev2-text">Empty Section</span></div></a>
+                        <li><a class="js--sc-90a0100" href="90a-00-appendices.html#js--90a0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">A.1</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-980101" href="98-00-blank.html#js--980101">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx">98.1.1</span><span class="toc-lev3-text">Empty subsection</span></div></a>
+                        <li><a class="js--sc-90a0101" href="90a-00-appendices.html#js--90a0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">A.1.1</span><span class="toc-lev3-text">Installing Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
-                        <li><a class="js--sc-980101a" href="98-00-blank.html#js--980101a"> <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx"></span><span class="toc-lev3-text">Empty inline section</span></div></a>
-                            <!-- <br class="top-pad">                 Apply padding to give symmetry to toc (must be before </li> -->
-                        </li>
-                        <li><a class="js--sc-980101b" href="98-00-blank.html#js--980101b">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num utx"></span><span class="toc-lev3-text">Additional section</span></div></a>
-                        </li>
+                        <li><a class="js--sc-90a0200" href="90a-00-appendices.html#js--90a0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">A.2</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of TOC in columns -->
-               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90b0000" href="90b-00-appendices.html#js--90b0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">B</span><span class="toc-lev1-text">A revision numbering mechanism</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90b0100" href="90b-00-appendices.html#js--90b0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.1</span><span class="toc-lev2-text">Workflow arrangements</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0200" href="90b-00-appendices.html#js--90b0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.2</span><span class="toc-lev2-text">Master branch revisions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0300" href="90b-00-appendices.html#js--90b0300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.3</span><span class="toc-lev2-text">Development revisions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0400" href="90b-00-appendices.html#js--90b0400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.4</span><span class="toc-lev2-text">Parallel development </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0500" href="90b-00-appendices.html#js--90b0500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.5</span><span class="toc-lev2-text">Nested development</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0600" href="90b-00-appendices.html#js--90b0600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.6</span><span class="toc-lev2-text">A note on numbering</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0700" href="90b-00-appendices.html#js--90b0700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.7</span><span class="toc-lev2-text">A note on commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90c0000" href="90c-00-appendices.html#js--90c0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">C</span><span class="toc-lev1-text">Markdown</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90c0100" href="90c-00-appendices.html#js--90c0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">C.1</span><span class="toc-lev2-text">General markdown syntax</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0101" href="90c-00-appendices.html#js--90c0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.1</span><span class="toc-lev3-text">Headings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0102" href="90c-00-appendices.html#js--90c0102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.2</span><span class="toc-lev3-text">Block quotes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0103" href="90c-00-appendices.html#js--90c0103">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.3</span><span class="toc-lev3-text">Emphasis</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0104" href="90c-00-appendices.html#js--90c0104">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.4</span><span class="toc-lev3-text">Ordered lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0105" href="90c-00-appendices.html#js--90c0105">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.5</span><span class="toc-lev3-text">Unordered lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0106" href="90c-00-appendices.html#js--90c0106">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.6</span><span class="toc-lev3-text">Combined lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0107" href="90c-00-appendices.html#js--90c0107">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.7</span><span class="toc-lev3-text">Images &amp; links</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0200" href="90c-00-appendices.html#js--90c0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">C.2</span><span class="toc-lev2-text">Git flavoured syntax</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0201" href="90c-00-appendices.html#js--90c0201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.1</span><span class="toc-lev3-text">Code fragment</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0202" href="90c-00-appendices.html#js--90c0202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.2</span><span class="toc-lev3-text">Task lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0203" href="90c-00-appendices.html#js--90c0203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.3</span><span class="toc-lev3-text">Tables</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0204" href="90c-00-appendices.html#js--90c0204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.4</span><span class="toc-lev3-text">Special GitHub references </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0205" href="90c-00-appendices.html#js--90c0205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.5</span><span class="toc-lev3-text">Escape characters</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90d0000" href="90d-00-appendices.html#js--90d0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">D</span><span class="toc-lev1-text">Git and the Command Line</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90d0100" href="90d-00-appendices.html#js--90d0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">D.1</span><span class="toc-lev2-text">Git command line summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90d0200" href="90d-00-appendices.html#js--90d0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">D.2</span><span class="toc-lev2-text">Git Bash summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90e0000" href="90e-00-appendices.html#js--90e0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">E</span><span class="toc-lev1-text">Git&mdash;Advanced topics</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90e0100" href="90e-00-appendices.html#js--90e0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">E.1</span><span class="toc-lev2-text">Rebase</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90e0101" href="90e-00-appendices.html#js--90e0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">E.1.1</span><span class="toc-lev3-text">Rebase&mdash;the rules</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90e0102" href="90e-00-appendices.html#js--90e0102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">E.1.2</span><span class="toc-lev3-text">Understanding rebase</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                 </div>                                          <!-- End of TOC column (centre column) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
             </div>                                              <!-- End of TOC section -->
@@ -218,11 +339,11 @@ Date          Issue        Author         Reason for Modification
 
 
 
-<!-- ************************************************************************** [WP 980000]
+<!-- ************************************************************************** [WP 100000]
      CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
      ***********************************************************************-->
 
-        <section class="section-std" id="js--980000">           <!-- Start of section -->
+        <section class="section-std" id="js--900000">           <!-- Start of section -->
             <!-- Subtitle row is not normally needed at the start of the first section -->
             <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
                 <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
@@ -238,139 +359,84 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row">                                <!-- Start of section content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-head">                  <!-- Start of left side bar   -->
-                        <h2>Side heading (h2 level)</h2>        <!-- Side bar content         -->
+                        <p class="hyp"></p>                                 <!-- Side bar content         -->
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp"><span class="all-caps">This</span> section is used as the start of a chapter, it has a thin line above and an optional side heading</p>
+                    <p class="hyp">The appendices are a collection of useful information that doesn&rsquo;t fit directly in the main body of the text; there are five of them and they broadly cover:</p>
 
-                    <p class="hyp">Chapters with only a thin line do not have a heading (the heading is set in the title section &mdash; usually level h2), a nominal h6 level (h6 headings do not display) is also given to satisfy HTML validation requirements (sections must contain a heading element).</p>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      This is a three column table; the table is 84% of the row width (this is
+      set as part of the .table-clean class) and this is the standard
+      arrangement for tables.
 
-                    <p class="hyp">If a side heading is used, this will have an h2 heading level</p>
+      The table is designated .table-clean (this is a table that is simple and
+      clean in appearance).
 
-                </div>                                          <!-- End of section text area   -->
+      The table has three columns, this is set by how many <th> cells are
+      specified in the header row, the number of cells in each subsequent
+      <td> row must match the number in the header row.
 
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content  -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
+      The relative widths of each column are determined by the width specified
+      in the <th> elements, these widths are a percentage of the table width.
 
+      An additional column is added to the start of each row, this is of zero
+      width and makes no contribution to the table contents (it is of class .
+      leading), it can however hold a <div> element that is used to give a
+      minimum height to the row (this is done with an inline style specifying
+      the min-height of the div).
 
-<!-- ************************************************************************** [WP 980100]
-     SECTION - TYPICAL SECTION (X.Y)
-     ***********************************************************************-->
+      Each cell can be centred, left or right justified by applying the classes
+            .table-cent
+            .table-left
+            .table-right
 
-        <section class="section-std" id="js--980100">           <!-- Start of section -->
-            <!-- Subtitle row is not normally needed at the start of the first section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
-                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
-                 <div class="sub-title-num-box"><h2>98.1</h2></div>
-                 <div class="sub-title-text-box"><h2>Section</h2></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
+      By default each table row has a bottom border, this can be turned off
+      by giving the <tr> element the class .no-border
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-cent" style="width: 30%">Appendix</th>      <!-- set column 01 widhth here -->
+                            <th class="table-cent" style="width: 70%">Purpose</th>    <!-- set column 03 widhth here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">A</td>
+                            <td class="table-left">Downloading Brackets and some useful extensions</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">B</td>
+                            <td class="table-left">A best practice guide for version numbering</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">C</td>
+                            <td class="table-left">A guide to markdown syntax (general) and Git Flavoured markdown</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">D</td>
+                            <td class="table-left">Git command line command summary</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 3em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">E</td>
+                            <td class="table-left">Advanced topics:<br>&emsp;&emsp;1. Understanding <span class="git-cmd">Rebase</span></td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="2" class="table-caption"></td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                <!--     <aside class="aside-left">                  Start of left side bar   -->
-                <!--         <p></p>                                 Side bar content         -->
-                <!--     </aside>                                    End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">This is a typical section, it will be numbered X.Y.</p>
-
-                    <p class="hyp">Sections have an h2 heading level.</p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content  -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP 980101]
-     SUBSECTION - TYPICAL SUBSECTION (X.Y.Z)
-     ***********************************************************************-->
-
-        <section class="section-std" id="js--980101">           <!-- Start of section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
-                    <div class="sub-title-num-box"><h3>98.1.1</h3></div>
-                    <div class="sub-title-text-box"><h3>Subsection</h3></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
-
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column   -->
-                <!--     <aside class="aside-left">                  Start of left side bar -->
-                <!--         <p></p>                                 Side bar content       -->
-                <!--     </aside>                                    End of left side bar   -->
-                </div>                                          <!-- End of left column     -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">This is a typical subsection, it will be numbered X.Y.Z.</p>
-
-                    <p class="hyp">Subsections have an h3 heading level.</p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of section content -->
-        </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP INLINE]
-     SECTION INLINE
-     ***********************************************************************-->
-
-        <section class="section-std" id="js--980101a">          <!-- Start of section -->
-            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
-                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
-                    <!-- <div class="sub-title-overline"></div>      OVERLINE IF NEEDED -->
-                    <!-- <div class="sub-title-num-box"><h4></h4></div> -->
-                    <div class="sub-title-text-box"><h4>Inline section</h4></div>
-                </div>                                          <!-- End of subtitle column (centre column) -->
-                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
-            </div>                                              <!-- End of Subtitle row -->
-
-            <div class="rg-row">                                <!-- Start of section content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                <!--     <aside class="aside-left">                  Start of left side bar   -->
-                <!--         <p></p>                                 Side bar content         -->
-                <!--     </aside>                                    End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp">This is an inline section, it has no number but does appy emphasis to a distinct section of text</p>
-
-                    <p class="hyp">Inline sections have an h4 heading level.</p>
+                    <p class="hyp">Currently there is only one entry in the advanced topics section and that is a discussion of how to use the Git <span class="git-cmd">Rebase</span> function. I will add further topics to this section as I think of them.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -381,42 +447,6 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of section content  -->
         </section>                                              <!-- End of section -->
-<!-- ========================================================================== [WP END] -->
-
-
-<!-- ************************************************************************** [WP ADDITIONAL]
-     SECTION - ADDITIONAL ROW
-     ***********************************************************************-->
-
-        <div class="section-std" id="js--980101b">              <!-- Start of additional row -->
-            <div class="rg-row">                                <!-- Start of row content -->
-                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-left">                  <!-- Start of left side bar   -->
-                        <p>Additional Sidebar</p>               <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
-                </div>                                          <!-- End of left column       -->
-
-                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
-
-                    <p class="hyp"><em>This is an additional section row</em> it follows any section and allows additional sidebars to be used and aligned with the top of the row text.</p>
-
-                    <p class="hyp">additional section rows are constructed with <span class="code">&lt;div&gt;</span> elements (rather than <span class="code">&lt;section&gt;</span> elements and consequently do not require a heading).</p>
-
-                    <p class="hyp">As many additional section rows can be added as are needed.</p>
-
-
-                    <p> <br class="toc-pad"></p>
-                    <p> <br class="toc-pad"></p>
-
-                </div>                                          <!-- End of section text area   -->
-
-                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                <!--     <aside class="aside-right">                 Start of right side bar -->
-                <!--         <p></p>                                 Side bar content        -->
-                <!--     </aside>                                    End of right side bar   -->
-                </div>                                          <!-- End of right column     -->
-            </div>                                              <!-- End of row content  -->
-        </div>                                                  <!-- End of additional row -->
 <!-- ========================================================================== [WP END] -->
 
 
@@ -424,11 +454,13 @@ Date          Issue        Author         Reason for Modification
      SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
      ***********************************************************************-->
 
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
         <div class="section-std" id="js--999901">              <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
                     <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
-                        <a class="xref" href="10-00-collaboration.html#js--000000">Prev</a>
+                        <a class="xref" href="10-02-collaboration.html#js--100200">Prev</a>
                     </aside>                                    <!-- End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
@@ -438,7 +470,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
-                        <a class="xref" href="80-00-finally.html#js--000000">Next</a>
+                        <a class="xref" href="90a-00-appendices.html#js--90a0000">Next</a>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
@@ -471,55 +503,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      JAVASCRIPT (POST PAGE LOAD)
      ***********************************************************************-->
-        <!-- Lightbox                   <script type="text/javascript" src="21-global/05-js/lightbox.js"></script> -->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
 
     </body>
 </html>
-
-
-
-<!-- **************************************************************************
-     COMMENT & CONTENT STORAGE AREA
-     **************************************************************************
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-                    <p class="hyp"></p>
-
-
-
-     =====================================================================  -->

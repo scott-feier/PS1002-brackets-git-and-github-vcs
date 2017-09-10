@@ -1,0 +1,999 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="A revision numbering strategy for a website development project">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS               90b-00-APPENDICES.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+08 Sep 2017   d-P14.90.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/90b-00-appendices/05-local-js/90b-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/90b-00-appendices/05-local-js/90b-00-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>A revision numbering mechanism | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="90a-00-appendices.html#js--90a0000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="90c-00-appendices.html#js--90c0000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>B</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">B</span>A revision numbering mechanism</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 90b-00&nbsp;&mdash;&nbsp;d-T14-90-01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 90 Appendices
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-900000" href="90-00-appendices.html#js--900000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num"></span><span class="toc-lev1-text">Appendices</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90a0000" href="90a-00-appendices.html#js--90a0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">A</span><span class="toc-lev1-text">Installing Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90a0100" href="90a-00-appendices.html#js--90a0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">A.1</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90a0101" href="90a-00-appendices.html#js--90a0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">A.1.1</span><span class="toc-lev3-text">Installing Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90a0200" href="90a-00-appendices.html#js--90a0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">A.2</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90b0000" href="90b-00-appendices.html#js--90b0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">B</span><span class="toc-lev1-text">A revision numbering mechanism</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90b0100" href="90b-00-appendices.html#js--90b0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.1</span><span class="toc-lev2-text">Workflow arrangements</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0200" href="90b-00-appendices.html#js--90b0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.2</span><span class="toc-lev2-text">Master branch revisions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0300" href="90b-00-appendices.html#js--90b0300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.3</span><span class="toc-lev2-text">Development revisions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0400" href="90b-00-appendices.html#js--90b0400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.4</span><span class="toc-lev2-text">Parallel development </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0500" href="90b-00-appendices.html#js--90b0500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.5</span><span class="toc-lev2-text">Nested development</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0600" href="90b-00-appendices.html#js--90b0600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.6</span><span class="toc-lev2-text">A note on numbering</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0700" href="90b-00-appendices.html#js--90b0700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.7</span><span class="toc-lev2-text">A note on commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90c0000" href="90c-00-appendices.html#js--90c0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">C</span><span class="toc-lev1-text">Markdown</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90c0100" href="90c-00-appendices.html#js--90c0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">C.1</span><span class="toc-lev2-text">General markdown syntax</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0101" href="90c-00-appendices.html#js--90c0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.1</span><span class="toc-lev3-text">Headings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0102" href="90c-00-appendices.html#js--90c0102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.2</span><span class="toc-lev3-text">Block quotes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0103" href="90c-00-appendices.html#js--90c0103">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.3</span><span class="toc-lev3-text">Emphasis</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0104" href="90c-00-appendices.html#js--90c0104">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.4</span><span class="toc-lev3-text">Ordered lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0105" href="90c-00-appendices.html#js--90c0105">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.5</span><span class="toc-lev3-text">Unordered lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0106" href="90c-00-appendices.html#js--90c0106">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.6</span><span class="toc-lev3-text">Combined lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0107" href="90c-00-appendices.html#js--90c0107">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.7</span><span class="toc-lev3-text">Images &amp; links</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0200" href="90c-00-appendices.html#js--90c0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">C.2</span><span class="toc-lev2-text">Git flavoured syntax</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0201" href="90c-00-appendices.html#js--90c0201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.1</span><span class="toc-lev3-text">Code fragment</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0202" href="90c-00-appendices.html#js--90c0202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.2</span><span class="toc-lev3-text">Task lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0203" href="90c-00-appendices.html#js--90c0203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.3</span><span class="toc-lev3-text">Tables</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0204" href="90c-00-appendices.html#js--90c0204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.4</span><span class="toc-lev3-text">Special GitHub references </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0205" href="90c-00-appendices.html#js--90c0205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.5</span><span class="toc-lev3-text">Escape characters</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90d0000" href="90d-00-appendices.html#js--90d0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">D</span><span class="toc-lev1-text">Git and the Command Line</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90d0100" href="90d-00-appendices.html#js--90d0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">D.1</span><span class="toc-lev2-text">Git command line summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90d0200" href="90d-00-appendices.html#js--90d0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">D.2</span><span class="toc-lev2-text">Git Bash summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90e0000" href="90e-00-appendices.html#js--90e0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">E</span><span class="toc-lev1-text">Git&mdash;Advanced topics</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90e0100" href="90e-00-appendices.html#js--90e0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">E.1</span><span class="toc-lev2-text">Rebase</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90e0101" href="90e-00-appendices.html#js--90e0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">E.1.1</span><span class="toc-lev3-text">Rebase&mdash;the rules</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90e0102" href="90e-00-appendices.html#js--90e0102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">E.1.2</span><span class="toc-lev3-text">Understanding rebase</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 90b0000]
+     CHAPTER - LEAD IN SECTION (NO NUMBERED HEADING)
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0000">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-thinline"></div>      <!-- Thin overline (after TOC) -->
+                    <div class="sub-title-num-box"><h6>Placeholder</h6></div>   <!-- Heading 6 is a placehoder heading needed in sections without a heading to satisfy html validation -->
+                <!--     <div class="sub-title-num-box"><h2>X</h2></div>        Optional numbered heading
+                         <div class="sub-title-text-box"><h2>Text</h2></div> -->
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-head">                  <!-- Start of left side bar   -->
+                        <p class="hyp"></p>                                 <!-- Side bar content         -->
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp"><span class="sans"><span class="all-caps">This section</span> describes a revision numbering strategy for a website development project under the Git and GitHub version control systems.</span></p>
+                    <p class="hyp sans">Git and GitHub use commit numbers derived from the checksum of files being added to the repository. These appear at best to be seemingly random seven digit hexadecimal numbers. They do not represent a meaningful number that is useful for team members trying to identify a revision path.</p>
+
+                    <p class="hyp sans">Git and GitHub allow any commit point to have an associated tag, this is entirely at the discretion of the user and <span class="first-use">(other than the requirement of being unique)</span> can be anything at all.</p>
+
+                    <p class="hyp sans">This allows each commit point to be tagged with a more meaningful (semantic) version number. Something that makes sense to humans.</p>
+
+                    <p class="hyp sans">The following is a proposed mechanism for just such a workflow and tagging arrangement.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0100]
+     SECTION - B.1 WORKFLOW ARRANGEMENTS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0100">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.1</h2></div>
+                 <div class="sub-title-text-box"><h2>Workflow arrangements</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The workflow consists of a single main branch, the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">The <span class="git-cmd">master</span> branch (after some initial development work to establish it) will only contain either finished publishable work or a completed and released website.</p>
+
+                    <p class="hyp">Publishable work is a section of the website that is complete in itself&mdash;it does not indicate that the whole website is finished, just that the section in question is complete, tested and deployable.</p>
+
+                    <p class="hyp">A website release indicates that the whole website is finished. Release <span class="code">R01</span> will be active when the entire website and all its pages is published for the first time.</p>
+
+                    <p class="hyp">Development work can take place at any time and will always take place on a separate branch. Development branches always spur from some published or released point on the master branch.</p>
+
+                    <p class="hyp">A development branch must have a very restricted scope. E.g. a single section of the website (or just a page). </p>
+
+                    <p class="hyp">Generally, a development branch will contain all the things associated with that section: <span class="code">html</span>, <span class="code">js</span> and <span class="code">css</span> files as well as associated images and data.</p>
+
+                    <p class="hyp">When the development is complete and tested, it will be merged back to the master branch, the merge point will be published or released commit (<a class="xref js--sc-f90b-01" href="#">Figure&nbsp;B.1</a>):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f90b-01">
+                            <a href="01-pages/90b-00-appendices/02-images/fig-90b-01.png" data-lightbox="fig-set" data-title="Figure B.1 - master branch workflow">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/90b-00-appendices/02-images/fig-90b-01.png" alt="Figure B.1 - master branch workflow">
+                            </a>
+                            <p>Figure B.1 &emsp; <span class="git-cmd">master</span> branch workflow</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0200]
+     SECTION - B.2 MASTER BRANCH REVISIONS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0200">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Master branch revisions</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">The project progresses through various different states along the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">Each state is given a letter that represents the condition of a particular commit point.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - CLEAN TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-clean" id="js--t90b-01">                 <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="leading"></th>                                   <!-- Leading row (sets min-height) -->
+                            <th class="table-cent" style="width: 15.0%">State</th>      <!-- set column 01 width here -->
+                            <th class="table-cent" style="width: 15%">Example</th>       <!-- set column 02 width here -->
+                            <th class="table-cent" style="width: 20%">Meaning</th>    <!-- set column 03 width here -->
+                            <th class="table-cent" style="width: 50.0%"></th>    <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 5.5em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">D</td>
+                            <td class="table-cent">D02</td>
+                            <td class="table-cent">Published (partial)</td>
+                            <td class="table-left">The site is entirely under development and no part of it has been published</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 5.5em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">P</td>
+                            <td class="table-cent">P04</td>
+                            <td class="table-cent">Published (partial)</td>
+                            <td class="table-left">Partial publication&mdash;certain pages of the website are finished and have been published</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="leading"><div style="min-height: 5.5em"></div></td><!-- Leading row (sets min-height) -->
+                            <td class="table-cent">R</td>
+                            <td class="table-cent">R01</td>
+                            <td class="table-cent">Released</td>
+                            <td class="table-left">Released&mdash;all pages are complete and the whole site is finished</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                        <tr class="no-border">                  <!-- TABLE - Start of caption row -->
+                            <td class="leading"></td>                                   <!-- Leading row (sets min-height) -->
+                            <td colspan="4" class="table-caption">Table B.1 &emsp; Major revision point</td>
+                        </tr>                                   <!-- TABLE - End of caption row   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="git-cmd">Master</span> branch states have the following format:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">SNN</span></p>
+
+                    <p class="hyp">Where <span class="code">S</span> is the state letter (<a class="xref js--sc-t90b-01" href="#">Table&nbsp;B.1</a>):</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp"><span class="code">D</span>&emsp;&mdash;&emsp;Development</p></li>
+
+                        <li><p class="hyp"><span class="code">P</span>&emsp;&mdash;&emsp;Published (partial)</p></li>
+
+                        <li><p class="hyp"><span class="code">R</span>&emsp;&mdash;&emsp;Released</p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp"><span class="code">NN</span> is a number; this starts at 01 for each particular state and is incremented by one for each subsequent issue. </p>
+
+                    <p class="hyp">E.g. <span class="code">D01 &rarr; D02 &rarr; D03 &rarr; P01 &rarr; P02 &rarr; P03 &rarr; R01 &rarr; R02</span> &amp;c.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0300]
+     SECTION - B.3 MASTER BRANCH REVISIONS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0300">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.3</h2></div>
+                 <div class="sub-title-text-box"><h2>Development branch revisions</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Development can take place along the <span class="git-cmd">master</span> branch until some suitable (publishable) point is reached. </p>
+
+                    <p class="hyp">At this point the site has been published, the site might not be complete (with the Practical Series Web Development site I tended to write a section, test it and then publish that section), but no further development work can take place on the <span class="git-cmd">master</span> branch.</p>
+
+                    <p class="hyp">This leads to the website being developed and published in stages; however, any code on the <span class="git-cmd">master</span> branch at a published or released commit point must be finished, fully tested, working and deployable.</p>
+
+                    <p class="hyp">Development work always takes place on a separate <span class="git-cmd">development</span> branch. Each <span class="git-cmd">development</span> branch is taken from the latest published or released version of the software on the <span class="git-cmd">master</span> branch. The name given to a <span class="git-cmd">development</span> branch is:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">d-XX-name</span></p>
+
+                    <p class="hyp">Where <span class="code">d-</span> indicates the branch is for development (all my branches are development branches and always start <span class="code">d-</span>).</p>
+
+                    <p class="hyp"><span class="code">XX</span> refers to the number of the web page or section being developed. For example, the PS Web Development is split into sections and each section is given a two digit number. It starts like this:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp"><span class="code">00-index and common files&mdash;css/fonts &amp;c.</span></p></li>
+
+                        <li><p class="hyp"><span class="code">01-introduction</span></p></li>
+
+                        <li><p class="hyp"><span class="code">02-fairfax</span></p></li>
+
+                        <li><p class="hyp"><span class="code">03-grid</span></p></li>
+
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">In <a class="xref js--sc-f90b-01" href="#">Figure&nbsp;B.1</a> the first development branch is called <span class="code">d-99-typicals</span>. This is a page that contains an example of all the possible sections, headings, tables, images and advanced functions such as code fragments, formulae and lightbox imagery.</p>
+
+                    <p class="hyp">It is a good starting point for any other page that may be required and it makes sense to develop this page first.</p>
+
+                    <p class="hyp">All the development work takes place on the <span class="git-cmd">development</span> branch. There will be multiple commits made on this branch; these will mostly be incremental builds (an incremental build is just a point at which the work was committed, the work wasn&rsquo;t finished; I may just have committed the code at that point because it was the end of the day).</p>
+
+                    <p class="hyp">Each development commit on a <span class="git-cmd">development</span> branch is tagged, and the tag has the format:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">d-SNN.XX.YY</span></p>
+
+                    <p class="hyp">Where <span class="code">SNN</span> is the state of the commit point on the <span class="git-cmd">master</span> branch when the <span class="git-cmd">development</span> branch was created (i.e. the parent commit point to which the branch is linked).</p>
+
+                    <p class="hyp"><span class="code">XX</span> refers to the number of the web page or section being developed (this is the same as the <span class="code">XX</span> in the branch name, see above).</p>
+
+                    <p class="hyp"><span class="code">YY</span> is a number starting at <span class="code">01</span> and is incremented by one for each commit along the branch.</p>
+
+                    <p class="hyp">Once the code has been developed, it progresses to a test stage; this takes place along the same branch. The commit tag changes however, it now becomes:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">t-SNN.XX.YY</span></p>
+
+                    <p class="hyp">It is now preceded by a <span class="code">t-</span> instead of a <span class="code">d-</span>. The number <span class="code">YY</span> continues at the next number following the last development commit when the test stage starts. This allows tested code to drop back into development. The following sequence illustrates this:</p>
+
+                    <p class="hyp" style="text-align: center; font-size: 0.7rem"><span class="code">d-P01.02.01 &rarr; <span style="font-family: trip-t3-b">t-P01.02.03</span> &rarr; d-P01.02.04 &rarr; <span style="font-family: trip-t3-b">t-P01.02.05</span> &rarr; s-P01.02.P02</span></p>
+
+                    <p class="hyp">Finally, at the end of testing, the code is finished and is ready to be merged back into the <span class="git-cmd">master</span> branch. At this point, a new commit point is made on the branch. This is referred to a <span class="first-use">Staged</span> commit. It again has a tag and this time the tag format is:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">s-SNN.XX.SNN<sub>+k</sub></span></p>
+
+                    <p class="hyp">The <span class="code">s-</span> indicates a staged commit. <span class="code">SNN.XX</span> is exactly the same as each other commit on the branch.</p>
+
+                    <p class="hyp">SNN<sub>+k</sub> indicates the new merge commit point on the master branch that will be created when the development branch is merged onto the master branch. I.e. the point at which the branch re-joins the <span class="git-cmd">master</span>.</p>
+
+                    <p class="hyp">Normally, this will just be a the <span class="code">SNN</span> value plus one (it may be more if other branches are involved, it will always be the next publication or release commit number on the <span class="git-cmd">master</span> branch, see <a class="xref nohyp js--sc-90b0400" href="#">&sect;&nbsp;B.4</a>).</p>
+
+                    <p class="hyp">In <a class="xref js--sc-f90b-02" href="#">Figure&nbsp;B.2</a>, the development branch <span class="git-cmd">d-99-typiclas</span> split from the <span class="git-cmd">master</span> branch at commit point <span class="code">P01</span> (<span class="code">SNN</span> is <span class="code">P01</span>). After the development process, the code is ready to merge back onto the <span class="git-cmd">master</span> branch. The next publication commit point on the <span class="git-cmd">master</span> branch will be <span class="code">P02</span> (<span class="code">NN</span> goes up by 1). So the last staged commit on the development branch will be <span class="code">s-P01.99.<span style="font-family: trip-t3-b">P02</span></span>.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f90b-02">
+                            <a href="01-pages/90b-00-appendices/02-images/fig-90b-01.png" data-lightbox="fig-set" data-title="Figure B.2 - development branch workflow">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/90b-00-appendices/02-images/fig-90b-01.png" alt="Figure B.2 - development branch workflow">
+                            </a>
+                            <p>Figure B.2 &emsp; <span class="git-cmd">development</span> branch workflow</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The final commit on the development branch, the staged commit (<span class="code">s-P01.99.P02</span> in this case) is done to allow the software versions of each file to be changed to match the forthcoming <span class="git-cmd">master</span> branch commit (<span class="code">P02</span> in this case). The code itself shouldn&rsquo;t change, just its revision status.</p>
+
+                    <p class="hyp">There is only ever one staged commit on a development branch.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0400]
+     SECTION - B.4 PARALLEL DEVELOPMENT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0400">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.4</h2></div>
+                 <div class="sub-title-text-box"><h2>Parallel development</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">It is perfectly possible to have two simultaneous development branches:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f90b-03">
+                            <a href="01-pages/90b-00-appendices/02-images/fig-90b-03.png" data-lightbox="fig-set" data-title="Figure B.3 - Parallel development branches">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/90b-00-appendices/02-images/fig-90b-03.png" alt="Figure B.3 - Parallel development branches">
+                            </a>
+                            <p>Figure B.3 &emsp; Parallel development branches</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>With parallel branches, it does not matter what order the branches are made and what order they collapse, here <span class="git-cmd">d-01</span> is created first, but <span class="git-cmd">d-02</span> is merged back into the <span class="git-cmd">master</span> before it.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">This type of arrangement can appear slightly confusing when all the branches are merged back onto the master branch, it looks like this (I&rsquo;ve coloured the tags with the appropriate branch colour):</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f90b-04">
+                            <a href="01-pages/90b-00-appendices/02-images/fig-90b-04.png" data-lightbox="fig-set" data-title="Figure B.4 - Merged parallel development branches">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/90b-00-appendices/02-images/fig-90b-04.png" alt="Figure B.4 - Merged parallel development branches">
+                            </a>
+                            <p>Figure B.4 &emsp; Merged parallel development branches</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">It makes sense if you think about it; commits are listed in order of the time they were applied.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0500]
+     SECTION - B.5 NESTED DEVELOPMENT
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0500">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.5</h2></div>
+                 <div class="sub-title-text-box"><h2>Nested development</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">It is possible to have a development branch from another development branch (referred to as nesting). Nested branches always merge back onto their parent branch:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <figure class="fig-row">                    <!-- START OF FIGURE -->
+                        <div class="fig-col fig1-1" id="js--f90b-05">
+                            <a href="01-pages/90b-00-appendices/02-images/fig-90b-05.png" data-lightbox="fig-set" data-title="Figure B.5 - Nested development branches">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/90b-00-appendices/02-images/fig-90b-05.png" alt="Figure B.5 - Nested development branches">
+                            </a>
+                            <p>Figure B.5 &emsp; Nested development branches</p>     <!-- Figure caption -->
+                        </div>
+                    </figure>                                   <!-- END OF FIGURE -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">The second development branch is called <span class="code">da-&lt;as parent branch&gt;</span>. The third would be called <span class="code">db-&lt;as parent branch&gt;</span>, <span class="code">da</span>, <span class="code">db</span>, <span class="code">dc</span> &amp;c.</p>
+
+                    <p class="hyp">Each commit on the nested branch has the format:</p>
+
+                    <p class="hyp" style="text-align: center;"><span class="code">d/t/sL-SNN.XX.ZZ</span></p>
+
+                    <p class="hyp">Where <span class="code">L</span> is the branch identifier (<span class="code">a</span>, <span class="code">b</span>, <span class="code">c</span>, &amp;c).</p>
+
+                    <p class="hyp"><span class="code">SNN-XX</span> is identical to the parent branch (<span class="git-cmd">master</span> branch commit and web page or section number).</p>
+
+                    <p class="hyp"><span class="code">ZZ</span> is a number starting at <span class="code">01</span> and is incremented by one for each commit along the nested branch.</p>
+
+                    <p class="hyp">Nested branches can have test revisions (<span class="code">ta</span>, <span class="code">tb</span>, <span class="code">tc</span>, &amp;c.) and a staged commit (<span class="code">sa</span>, <span class="code">sb</span>, <span class="code">sc</span> &amp;c.).</p>
+
+                    <p class="hyp">The staged commit reflects the merged commit number on the parent branch. There is only one staged commit per nested branch.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0600]
+     SECTION - B.6 A NOTE ON NUMBERING
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0600">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.6</h2></div>
+                 <div class="sub-title-text-box"><h2>A note on numbering</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">All the numbering I&rsquo;ve shown in this section has been two digits <span class="code">d-P01.03.05</span>. This clearly limits any revision, page or section number to a maximum value of 99.</p>
+
+                    <p class="hyp">This needn&rsquo;t be the case; it is perfectly possible to use three digit numbers <span class="code">d-P001.003.005</span>, indeed this could be selectively adapted <span class="code">d-P01.0103.005</span>, you can do whatever you like.</p>
+
+                    <p class="hyp">I think the two digit version is enough for me. If I&rsquo;ve got more than 99 commits on a development branch I&rsquo;m probably doing it wrong.</p>
+
+                    <p class="hyp">I can see the advantage in having a four digit middle number <span class="code">d-P01.0103.05</span>, it would allow me to resolve to individual web pages; however, I nearly always develop a full section at a time. I write it in Word and then encode it in HTML.</p>
+
+                    <p class="hyp">I suggest you start with the two digit version and see how you get on.</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90b0700]
+     SECTION - B.7 A NOTE ON COMMITS
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90b0700">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>B.7</h2></div>
+                 <div class="sub-title-text-box"><h2>A note on commits</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+                    <p class="hyp">Commit messages should have a short (less than 50 characters first line). In Brackets, where extended commits are used, always leave a blank line after the first line (this ensures the first line is treated as a title).</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      UNNUMBERED LIST
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="list-no-num">                    <!-- Start of unnumbered list -->
+                        <li><p class="hyp"><span class="code">D</span>&emsp;&mdash;&emsp;Development</p></li>
+
+                        <li><p class="hyp"><span class="code">P</span>&emsp;&mdash;&emsp;Published (partial)</p></li>
+
+                        <li><p class="hyp"><span class="code">R</span>&emsp;&mdash;&emsp;Released</p></li>
+                    </ul>                                       <!-- End of unnumbered list   -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                    <p class="hyp">Generally keep the remaining lines short (less than 75 characters).</p>
+
+                    <p class="hyp">Within the commit message list every file that was altered in the commit (list them separately on each line).</p>
+
+                    <p class="hyp">When closing issues with commits (see <a class="hlink nohyp" href="10-02-collaboration.html#js--100205">&sect;&nbsp;10.2.5</a>) provide a separate line within the commit message indicating which issue was closed and why (don&rsquo;t put all the close command in the title line); e.g.:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - INCIDENTAL TABLE (EN PASSANT)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                        <table class="table-incid"> <!-- TABLE - Start of table  -->
+                        <tr>                                    <!-- TABLE - Start of header -->
+                            <th class="table-left"><p class="sans">P: Published&nbsp;&mdash;&nbsp;Minor corrections</p></th>                            <!-- set column 01 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                        <tr>                                    <!-- TABLE - Start of row 01 -->
+                            <td class="table-left"><span class="code">index.html &nbsp;modified&nbsp;-&nbsp;closes #4<br>
+styel.css &nbsp;&nbsp;modified&nbsp;-&nbsp;closes #5 and closes #6<br>
+                                01-intro &nbsp;&nbsp;&nbsp;modified&nbsp;-&nbsp;closes #8</span>
+</td>
+                        </tr>                                   <!-- TABLE - End of row 01   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="90a-00-appendices.html#js--90a0000">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="90c-00-appendices.html#js--90c0000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

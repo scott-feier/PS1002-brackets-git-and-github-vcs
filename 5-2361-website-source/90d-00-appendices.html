@@ -1,0 +1,1117 @@
+<!DOCTYPE html>                                                                 <!-- HTML 5 file -->
+
+<!-- PRACTICALSERIES (c) 2017
+
+*******************************************************************************
+
+PRACTICALSERIES: Practical Series of Publications by Michael Gledhill
+                 Published in the United Kingdom
+
+                 Email: mg@practicalseries.com
+                 Web:   www.practicalseries.com
+
+******************************************************************************* -->
+
+<html lang="en">                                                                <!-- Declare language -->
+    <head>                                                                      <!-- Start of head section -->
+        <meta charset="utf-8">                                                  <!-- Use unicode character set (must be within first 1024 char of file) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Make page follow browser width and reset zoom -->
+        <meta name="description" content="A summary of Git and the Command Line instructions">
+
+<!-- ==========================================================================
+
+
+
+*******************************************************************************
+Title :          BRACKETS-GIT & GITHUB VCS               90d-00-APPENDICES.HTML
+*******************************************************************************
+DETAILS
+
+The Practical Series publication - Understanding Git & GitHub with Brackets
+
+The purpose of this website is to explain how the Git and GitHub version
+control system (VCS) works; specifically how these two applications can be
+made to work from within the development environment of the Brackets text
+editor.
+
+*******************************************************************************
+MODIFICATION HISTORY:
+
+This is a complete summary of all software modifications.
+
+Date          Issue        Author         Reason for Modification
+*******************************************************************************
+09 Sep 2017   d-P14.90.01  M. Gledhill    Page created
+*************************************************************************** -->
+
+
+<!-- **************************************************************************
+     FAVICON
+     ***********************************************************************-->
+        <!-- favicons all platforms --> <link rel="apple-touch-icon" sizes="180x180" href="11-resources/02-images/01-favicons/apple-touch-icon.png">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-32x32.png" sizes="32x32">
+                                        <link rel="icon" type="image/png" href="11-resources/02-images/01-favicons/favicon-16x16.png" sizes="16x16">
+                                        <link rel="manifest" href="11-resources/02-images/01-favicons/manifest.json">
+                                        <link rel="mask-icon" href="11-resources/02-images/01-favicons/safari-pinned-tab.svg">
+                                        <meta name="theme-color" content="#ffffff">
+
+
+<!-- **************************************************************************
+     HEAD SCRIPT AREA
+     ***********************************************************************-->
+        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/90d-00-appendices/05-local-js/90d-00-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+
+
+
+
+<!-- **************************************************************************
+     HEAD CSS LOAD
+     ***********************************************************************-->
+        <!-- Load fonts -->             <link rel="stylesheet" type="text/css" href="21-global/03-fonts/ps-fonts.css">
+        <!-- Normalise -->              <link rel="stylesheet" type="text/css" href="21-global/01-css/normalise.css">
+        <!-- Prettify styles            <link rel="stylesheet" type="text/css" href="11-resources/01-css/prettify.css"> -->
+        <!-- Lightbox styles -->        <link rel="stylesheet" type="text/css" href="21-global/01-css/lightbox.css">
+        <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
+        <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
+        <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/90d-00-appendices/05-local-js/90d-00-prettifylines.css"> -->
+
+
+
+<!--  **************************************************************************
+      GOOGLE ANALYTICS
+      ***********************************************************************-->
+                                        <script>
+                                          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                                          ga('create', 'UA-87335633-1', 'auto');
+                                          ga('send', 'pageview');
+                                        </script>
+
+
+<!-- **************************************************************************
+     TITLE
+     ***********************************************************************-->
+        <title>Git and the Command Line | PracticalSeries: Brackets-Git and GitHub</title>
+    </head>
+
+
+    <body onload="prettyPrint()">                               <!-- Start google-code-prettify plugin -->
+<!-- ************************************************************************** [WP 000000]
+     HEADER (COVER & TABLE OF CONTENTS)
+     ***********************************************************************-->
+
+        <header id="js--000000">
+
+<!-- ************************************************************************** [WP 000001]
+     TOP NAVIGATION (ABOVE CONTENTS LIST)
+     ***********************************************************************-->
+
+            <nav>                                               <!-- Start of top navigation bar -->
+                <div class="top-nav">                           <!-- Start of top navigation row -->
+                    <div class="rg-row">                        <!-- Start of navigation button row -->
+                        <!-- Button 01 - Previous Section -->
+                        <a class="nav-wide" href="90c-00-appendices.html#js--90c0000"><span class="top-nav-icon">l</span><span class="top-nav-text">Prev. section</span></a>
+                        <!-- Button 02 - Previous Chapter -->
+                        <a class="nav-wide" href="10-00-collaboration.html#js--000000"><span class="top-nav-icon">u</span><span class="top-nav-text">Prev. chapter</span></a>
+                        <!-- Button 03a - Home wide (hidden when fixed nav activates) -->
+                        <a class="nav-wide nav-home" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 03b - Top narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow js--sc-000000" href="#"><span class="top-nav-icon">t</span><span class="top-nav-text">Top</span></a>
+                        <!-- Button 04 - Home narrow (hidden until fixed nav activates) -->
+                        <a class="nav-narrow" href="index.html#js--000000"><span class="top-nav-text">Home</span><span class="top-nav-icon">h</span></a>
+                        <!-- Button 05 - Next Chapter -->
+                        <a class="nav-wide" href="80-00-finally.html#js--000000"><span class="top-nav-text">Next chapter</span><span class="top-nav-icon">d</span></a>
+                        <!-- Button 06 - Next section -->
+                        <a class="nav-wide" href="90e-00-appendices.html#js--90e0000"><span class="top-nav-text">Next section</span><span class="top-nav-icon">r</span></a>
+                    </div>                                      <!-- End of navigation button row -->
+                </div>                                          <!-- End of top navigation row -->
+            </nav>                                              <!-- End of top navigation bar -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000003]
+     TITLE BAR (Section number and text)
+     ***********************************************************************-->
+
+            <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
+                <div class="rg-col rg-span1-5">
+                    <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
+                        <img src="11-resources/02-images/02-build-status/branch.svg" alt="Build info">                 <!-- Build status -->
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>           <!-- End of Left column -->
+                <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
+                    <div class="title-num-box"><p>D</p></div>
+                    <div class="title-text-box"><h1><span class="title-small-num">D</span>Git and the Command Line</h1></div>
+                </div>                                          <!-- End of title (centre column) -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-right-rev">              <!-- Start of right side bar -->
+<!--REVISION-->         <p>Rev: 90d-00&nbsp;&mdash;&nbsp;d-T14-90-01</p>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of title row (section number & heading) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 000004]
+     TABLE OF CONTENTS
+     ***********************************************************************-->
+
+            <div class="rg-row">                                <!-- Start of TOC section -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for TOC) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of TOC column (centre column) -->
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    TOC - 90 Appendices
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-900000" href="90-00-appendices.html#js--900000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num"></span><span class="toc-lev1-text">Appendices</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90a0000" href="90a-00-appendices.html#js--90a0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">A</span><span class="toc-lev1-text">Installing Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90a0100" href="90a-00-appendices.html#js--90a0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">A.1</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90a0101" href="90a-00-appendices.html#js--90a0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">A.1.1</span><span class="toc-lev3-text">Installing Brackets</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90a0200" href="90a-00-appendices.html#js--90a0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">A.2</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90b0000" href="90b-00-appendices.html#js--90b0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">B</span><span class="toc-lev1-text">A revision numbering mechanism</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90b0100" href="90b-00-appendices.html#js--90b0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.1</span><span class="toc-lev2-text">Workflow arrangements</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0200" href="90b-00-appendices.html#js--90b0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.2</span><span class="toc-lev2-text">Master branch revisions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0300" href="90b-00-appendices.html#js--90b0300">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.3</span><span class="toc-lev2-text">Development revisions</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0400" href="90b-00-appendices.html#js--90b0400">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.4</span><span class="toc-lev2-text">Parallel development </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0500" href="90b-00-appendices.html#js--90b0500">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.5</span><span class="toc-lev2-text">Nested development</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0600" href="90b-00-appendices.html#js--90b0600">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.6</span><span class="toc-lev2-text">A note on numbering</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90b0700" href="90b-00-appendices.html#js--90b0700">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">B.7</span><span class="toc-lev2-text">A note on commits</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90c0000" href="90c-00-appendices.html#js--90c0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">C</span><span class="toc-lev1-text">Markdown</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90c0100" href="90c-00-appendices.html#js--90c0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">C.1</span><span class="toc-lev2-text">General markdown syntax</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0101" href="90c-00-appendices.html#js--90c0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.1</span><span class="toc-lev3-text">Headings</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0102" href="90c-00-appendices.html#js--90c0102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.2</span><span class="toc-lev3-text">Block quotes</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0103" href="90c-00-appendices.html#js--90c0103">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.3</span><span class="toc-lev3-text">Emphasis</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0104" href="90c-00-appendices.html#js--90c0104">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.4</span><span class="toc-lev3-text">Ordered lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0105" href="90c-00-appendices.html#js--90c0105">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.5</span><span class="toc-lev3-text">Unordered lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0106" href="90c-00-appendices.html#js--90c0106">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.6</span><span class="toc-lev3-text">Combined lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0107" href="90c-00-appendices.html#js--90c0107">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.1.7</span><span class="toc-lev3-text">Images &amp; links</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0200" href="90c-00-appendices.html#js--90c0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">C.2</span><span class="toc-lev2-text">Git flavoured syntax</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0201" href="90c-00-appendices.html#js--90c0201">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.1</span><span class="toc-lev3-text">Code fragment</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0202" href="90c-00-appendices.html#js--90c0202">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.2</span><span class="toc-lev3-text">Task lists</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0203" href="90c-00-appendices.html#js--90c0203">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.3</span><span class="toc-lev3-text">Tables</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0204" href="90c-00-appendices.html#js--90c0204">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.4</span><span class="toc-lev3-text">Special GitHub references </span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90c0205" href="90c-00-appendices.html#js--90c0205">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.5</span><span class="toc-lev3-text">Escape characters</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90d0000" href="90d-00-appendices.html#js--90d0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">D</span><span class="toc-lev1-text">Git and the Command Line</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90d0100" href="90d-00-appendices.html#js--90d0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">D.1</span><span class="toc-lev2-text">Git command line summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90d0200" href="90d-00-appendices.html#js--90d0200">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">D.2</span><span class="toc-lev2-text">Git Bash summary</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+                    <ul class="toc-line">                       <!-- Start of full width TOC (level 1) -->
+                        <li><a class="js--sc-90e0000" href="90e-00-appendices.html#js--90e0000">  <!-- TOC link start -->
+                               <div class="toc-lev"><span class="toc-lev1-num">E</span><span class="toc-lev1-text">Git&mdash;Advanced topics</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of full width TOC (level 1) -->
+                    <ul class="toc-list">                       <!-- Start of TOC in columns -->
+                        <li><a class="js--sc-90e0100" href="90e-00-appendices.html#js--90e0100">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev2-num">E.1</span><span class="toc-lev2-text">Rebase</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90e0101" href="90e-00-appendices.html#js--90e0101">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">E.1.1</span><span class="toc-lev3-text">Rebase&mdash;the rules</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-90e0102" href="90e-00-appendices.html#js--90e0102">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">E.1.2</span><span class="toc-lev3-text">Understanding rebase</span></div></a>
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                        </li>                                   <!-- TOC link end   -->
+                    </ul>                                       <!-- End of TOC in columns -->
+
+
+               <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                </div>                                          <!-- End of TOC column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for TOC) -->
+            </div>                                              <!-- End of TOC section -->
+<!-- ========================================================================== [WP END] -->
+
+
+        </header>                                               <!-- End of header -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP fixed-nav]
+     FIXED NAVIGATION BAR CHANGEOVER POINT
+     ***********************************************************************-->
+        <div class="js--fixed-nav"></div>                       <!-- Determines fixed navigation point -->
+<!-- ========================================================================== [WP END] -->
+
+
+
+<!-- ************************************************************************** [WP 90d0100]
+     SECTION - D.1 GIT AND THE COMMAND LINE
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90d0100">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>D.1</h2></div>
+                 <div class="sub-title-text-box"><h2>Git and the Command Line</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - DENSE TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-dense" style="width: 100%" id="js--t90d-01">
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-cent, git-head" style="width: 49%">CREATE A REPOSITORY</td>
+                            <td class="table-left" style="width: 2%">&nbsp;</td>
+                            <td class="table-left, git-head" style="width: 49%">GIT ADD AND COMMIT</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git init</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git add .</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Create a new local repository</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Add all current changes to the staging area</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git clone git@github.com:&lt;repo-name&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git add &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Clone an existing repository from GitHub</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Add all current changes in a file to the staging area</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-head">Status and history</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git commit</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git status</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Commit all staged changes</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Show the status of a repository</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git commit &ndash;m "commit message"</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git diff</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Commit all staged changes with a message</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Show changes in tracked files</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git commit -a</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git log</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Stage and commit all changes (will prompt for a message)</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Show all commits, starting with newest in verbose form</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git commit &ndash;am "commit message"</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git log --oneline</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Stage and commit all changes with a message</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Show all commits&mdash;one commit per line</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-head">BRANCHES</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git log --oneline --graph</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git branch -av</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Show all commits &mdash;one commit per line with branch graph</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">List all branches</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git log &ndash;p &lt;file&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git branch &lt;new-branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Show changes for a specific file</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Create a new branch based on the current head</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git blame &lt;file&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git checkout &lt;branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Who change what and when in a specific file</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Switch to a different branch</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-head">TAGS</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git branch -d &lt;branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git tag --list</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Delete a branch</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">List all tags</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git checkout --track &lt;remote/branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git tag &lt;tag-name&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Create a new tracking branch based on a remote branch</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Tag the current commit point with a lightweight tag</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-head">MERGE</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git tag &ndash;a &lt;tag-name&gt; </td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git merge &lt;branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Tag the current commit point with an annotated tag</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Merge &lt;branch&gt; in to the current branch</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git tag &ndash;d &lt;tag-name&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git mergetool</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Delete a tag</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Start the configured merge tool</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git tag &lt;tag-name&gt; &lt;commit-hash&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-head">UPDATE AND PUBLISH</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Tag a specific commit hash</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git remote add &lt;connection-name&gt; </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Add new remote repository, named &lt;connection-name&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-head">Reset and checkout</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset --hard HEAD</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git remote -v</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Discard all local changes in your working directory</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">List all configured remotes</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset --hard &lt;commit&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git remote show &lt;remote&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Reset to a specific commit point (discards working changes)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Show specific information about a remote</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset --mixed &lt;commit&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git fetch &lt;remote&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Reset to a specific commit point (preserving unstaged changes)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Download all changes from &lt;remote&gt;,but don&lsquo;t </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset --soft &lt;commit&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git pull</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Reset to a specific commit point (preserving uncommitted changes)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Download changes and directly merge into current branch</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset &lt;tag-name&gt; --hard</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git pull &lt;remote&gt; &lt;branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Reset to a specific tag (discards working changes)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Download changes from specific repository and  branch, directly </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset &lt;tag-name&gt; --mixed</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git push</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Reset to a specific tag (preserving unstaged changes)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Publish local changes on current branch to the current remote</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ git reset &lt;tag-name&gt; --soft</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git push &lt;remote&gt; &lt;branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Reset to a specific tag (preserving uncommitted changes)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Publish local changes to specific repository and  branch</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-table">$ checkout –b &lt;newbranch&gt; </td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-table">$ git branch -dr &lt;remote/branch&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Create a new branch based on a previous commit point</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Delete a branch on the remote</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                    </table>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 90d0200]
+     SECTION - D.2 Git Bash instruction summary
+     ***********************************************************************-->
+
+        <section class="section-std" id="js--90d0200">           <!-- Start of section -->
+            <!-- Subtitle row is not normally needed at the start of the first section -->
+            <div class="rg-row sub-title-row">                  <!-- Start of subtitle row (section number & heading) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Left column (not used for subtitle) -->
+                <div class="rg-col rg-span3-5">                 <!-- Start of subtitle column (centre column) -->
+                    <div class="sub-title-overline"></div>      <!-- OVERLINE IF NEEDED -->
+                    <!-- <div class="sub-title-thinline"></div>      Thin overline (after TOC) -->
+                 <div class="sub-title-num-box"><h2>D.2</h2></div>
+                 <div class="sub-title-text-box"><h2>Git Bash instruction summary</h2></div>
+                </div>                                          <!-- End of subtitle column (centre column) -->
+                <div class="rg-col rg-span1-5"></div>           <!-- Right column (not used for subtitle) -->
+            </div>                                              <!-- End of Subtitle row -->
+
+            <div class="rg-row">                                <!-- Start of section content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                <!--     <aside class="aside-left">                  Start of left side bar   -->
+                <!--         <p></p>                                 Side bar content         -->
+                <!--     </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - DENSE TABLE WITH BOTTOM BORDERS
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-dense" style="width: 100%" id="js--t90d-02">
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-cent, git-head" style="width: 49%">DIRECTORIES AND TERMINAL</td>
+                            <td class="table-left" style="width: 2%">&nbsp;</td>
+                            <td class="table-left, git-head" style="width: 49%">FILES</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ clear</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ rm &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Clears the terminal window</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Delete &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ pwd</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ rm -f &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Clone an existing repository from GitHub</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Add all current changes in a file to the staging area</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ cd &lt;directory&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ mv &lt;file-old&gt; &lt;file-new&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Change directory to &lt;directory&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Rename &lt;file-old&gt; to &lt;file-new&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ cd ..</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ mv &lt;file&gt; &lt;directory&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Change to parent directory</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Move &lt;file&gt; to &lt;directory&gt; (will overwrite an existing file)</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ rm -r &lt;directory&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ cp &lt;file&gt; &lt;directory&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Delete &lt;directory&gt;, use &ndash;rf to force delete </td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Copy &lt;file&gt; to &lt;directory&gt; (will overwrite an existing file)</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ ls</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ cp -r &lt;directory1&gt; &lt;directory2&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">List directory contents (ls can be replaced with dir)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Copy &lt;directory1&gt; and its contents to &lt;directory2&gt; (will overwrite)</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ ls -la</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ touch &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">List detailed directory contents, including hidden files (same as dir)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Copy &lt;directory1&gt; and its contents to &lt;directory2&gt; (will overwrite)</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ mkdir &lt;directory&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left git-head">OUTPUT</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Create new &lt;directory&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ cat &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Output the contents of &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left git-head">SEARCH</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ find &lt;dir&gt; -name "&lt;file&gt;"</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ less &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Find all files named &lt;file&gt; inside &lt;dir&gt; (wildcards *, ? can be used)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Output the contents of &lt;file&gt; with pagination</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ grep "&lt;text&gt;" &lt;file&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ head &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Output all occurrences of &lt;text&gt; inside &lt;file&gt; (add -i for case-insensitivity)</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Output the first 10 lines of &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left bash-table">$ grep -rl "&lt;text&gt;" &lt;dir&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left bash-table">$ &lt;cmd&gt; &gt; &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left">Search for all files containing &lt;text&gt; inside &lt;dir&gt;</td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left">Direct the output of &lt;cmd&gt; into &lt;file&gt;<br>use &gt;&gt; instead to append the output of &lt;cmd&gt; to &lt;file&gt;</td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="leading"></td>
+                            <td class="table-left"></td>
+                            <td class="table-left">&nbsp;</td>
+                            <td class="table-left"></td>
+                        </tr>
+                    </table>
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                <!--     <aside class="aside-right">                 Start of right side bar -->
+                <!--         <p></p>                                 Side bar content        -->
+                <!--     </aside>                                    End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of section content  -->
+        </section>                                              <!-- End of section -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION - LAST SECTION BEFORE FOOTER (WITH NAVIGATION)
+     ***********************************************************************-->
+
+        <p> <br class="toc-pad"></p>
+        <p> <br class="toc-pad"></p>
+        <div class="section-std" id="js--999901">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <aside class="aside-nav">                   <!-- Start of left side bar navigation  -->
+                        <a class="xref" href="90c-00-appendices.html#js--90c0000">Prev</a>
+                    </aside>                                    <!-- End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 aside-nav">    <!-- Start of end image area -->
+                    <img src="11-resources/01-css/01-css-images/end-mark.svg" alt="End flourish image">
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                    <aside class="aside-nav">                 <!-- Start of right side bar navigation -->
+                        <a class="xref" href="90e-00-appendices.html#js--90e0000">Next</a>
+                    </aside>                                    <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999901]
+     SECTION LAST - LAST SECTION BEFORE FOOTER (APPLIES BOTTOM BORDER)
+     ***********************************************************************-->
+        <!-- <div class="section-last"></div>                        last section before footer (bottom border) -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP 999999]
+     FOOTER
+     ***********************************************************************-->
+        <footer class="footer">                                 <!-- Start of footer -->
+            <ul class="footer-nav">                             <!-- Start of footer navigation -->
+                <li><a class="js--sc-000000" href="#"><span class="top-nav-icon" style="color:#5b7daf">t</span>Top</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800100">Contact MG</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800200">Acknowledgments</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
+                <li><a href="80-00-finally.html#js--800400">Legal</a></li>
+            </ul>                                               <!-- End of footer navigation -->
+        </footer>                                               <!-- End of footer -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- **************************************************************************
+     JAVASCRIPT (POST PAGE LOAD)
+     ***********************************************************************-->
+        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+
+    </body>
+</html>

@@ -1545,6 +1545,25 @@ tr.no-border th {                           /* no-bottom border */
     text-align: left;
 }
 
+.git-table {
+    background-color: #8AC8D7;
+    font-family: "trip-t4-r";
+    color: #000}
+
+.bash-table {
+    background-color: #8AD7C8;
+    font-family: "trip-t4-r";
+    color: #000}
+
+.git-head {
+    font-family: "conc-t4-r";
+    -webkit-font-feature-settings: "ss02";
+    font-feature-settings: "ss02";
+    text-transform: uppercase;
+    letter-spacing: 0.086em;
+    color: #fff;
+    background-color: #b2b2b2;
+}
 
 /* ****************************************************************************
    TABLES - CLEAN FORMAT TABLE

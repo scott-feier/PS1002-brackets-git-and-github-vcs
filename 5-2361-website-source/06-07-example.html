@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+10 Sep 2017   d-P14.90.01  M. Gledhill    Links tested and UTX class removed
+
 19 Aug 2017   P10          M. Gledhill    Published
 
 19 Aug 2017   t-P09.06.P20 M. Gledhill    Section 6 TOC updated & proofread
@@ -159,7 +161,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 06-07&nbsp;&mdash;&nbsp;P10</p>
+<!--REVISION-->         <p>Rev: 06-07&nbsp;&mdash;&nbsp;d-P14.90.01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -323,7 +325,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">I&rsquo;m going to demonstrate merging branches in exactly the same way I did theoretically in <a class="hlink nohyp" href="02-04-concept.html#js--020400">section&nbsp;2.4</a>.</p>
 
-                    <p class="hyp">I&rsquo;ll start by adding another page to the <span class="code">lab-01-website</span>. The <span class="git-cmd">master</span> branch still has the latest version of the deployable code (although <span class="git-cmd">d-01-intro</span> is more advanced than the <span class="git-cmd">master branch</span>, it is under development&mdash;new branches should always be based on the latest deployable code, see <a class="hlink nohyp utx" href="90b-00-appendix.html#js--000000">appendix&nbsp;b</a>).</p>
+                    <p class="hyp">I&rsquo;ll start by adding another page to the <span class="code">lab-01-website</span>. The <span class="git-cmd">master</span> branch still has the latest version of the deployable code (although <span class="git-cmd">d-01-intro</span> is more advanced than the <span class="git-cmd">master branch</span>, it is under development&mdash;new branches should always be based on the latest deployable code, see <a class="hlink nohyp" href="90b-00-appendices.html#js--90b0000">appendix&nbsp;b</a>).</p>
 
                     <p class="hyp">I&rsquo;m going to add a new <span class="code">02-about.htm</span> page and I&rsquo;m going to do so by creating a new branch from the <span class="code">[25c1410]</span> commit point on the <span class="git-cmd">master</span> branch. Switch back to the <span class="git-cmd">master</span> branch, create a new branch <span class="git-cmd">d-02-about</span> and switch to this new branch.</p>
 
@@ -530,7 +532,7 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">My commit point is <span class="code">[f5aeb76]</span>. Tag the commit with the label <span class="code">s-P01.01.P02</span>. This will be the last commit on this branch <span class="first-use">(hence the tag, see</span> <a class="hlink nohyp utx" href="90b-00-appendix.html#js--000000">appendix&nbsp;b</a>).</p>
+                    <p class="hyp">My commit point is <span class="code">[f5aeb76]</span>. Tag the commit with the label <span class="code">s-P01.01.P02</span>. This will be the last commit on this branch <span class="first-use">(hence the tag, see</span> <a class="hlink nohyp" href="90b-00-appendices.html#js--90b0000">appendix&nbsp;b</a>).</p>
 
                     <p class="hyp">We are now at this point:</p>
 
@@ -705,11 +707,11 @@ h3 { font-size: 2.5rem; color: #4F81BD;}
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The <span class="menu">PR</span> button next to the message puts in an automatic <span class="first-use">pull request</span> message. Pull request is a GitHub thing, I haven&rsquo;t covered this yet (see <a class="hlink nohyp utx" href="10-01-collaboration.html#js--100102">&sect;&nbsp;10.1.2</a>). For the minute don&rsquo;t push the button&mdash;<span class="first-use">you will just have to delete the text it puts in the box if you do</span>.</p>
+                    <p class="hyp">The <span class="menu">PR</span> button next to the message puts in an automatic <span class="first-use">pull request</span> message. Pull request is a GitHub thing, I haven&rsquo;t covered this yet (see <a class="hlink nohyp" href="10-01-collaboration.html#js--100102">&sect;&nbsp;10.1.2</a>). For the minute don&rsquo;t push the button&mdash;<span class="first-use">you will just have to delete the text it puts in the box if you do</span>.</p>
 
                     <p class="hyp">The next two tick boxes:</p>
 
-                    <p class="hyp"><span class="menu">rebase</span>&mdash;rebase allows us to effectively re-write history. I don&rsquo;t like rebase and I recommend you don&rsquo;t use it. I explain it as a topic and why I don&rsquo;t like it in <a class="hlink nohyp utx" href="90e-01-appendix.html#js--000100">appendix&nbsp;e1</a>. <em>Leave this box unticked</em>.</p>
+                    <p class="hyp"><span class="menu">rebase</span>&mdash;rebase allows us to effectively re-write history. I don&rsquo;t like rebase and I recommend you don&rsquo;t use it. I explain it as a topic and why I don&rsquo;t like it in <a class="hlink nohyp" href="90e-00-appendices.html#js--90e0100">appendix&nbsp;e.1</a>. <em>Leave this box unticked</em>.</p>
 
                     <p class="hyp">Tick the final box <span class="menu">create a merge commit even when the merge resolves as a fast-forward</span>. A fast-forward merge is basically a merge with no conflicts. I still want a commit point after the merge, even if there were no problems. <em>Tick this box</em>. That&rsquo;s it, click <span class="menu">ok</span>. This will generate a merge result dialogue box:</p>
 
