@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+10 Sep 2017   t-P14.90.P15 M. Gledhill    Proofread and validated
+
 08 Sep 2017   d-P14.90.01  M. Gledhill    Page created
 *************************************************************************** -->
 
@@ -155,7 +157,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 90b-00&nbsp;&mdash;&nbsp;d-T14-90-01</p>
+<!--REVISION-->         <p>Rev: 90b-00&nbsp;&mdash;&nbsp;t-P14.90.P15</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -192,7 +194,7 @@ Date          Issue        Author         Reason for Modification
                             <div class="toc-lev"><span class="toc-lev3-num">A.1.1</span><span class="toc-lev3-text">Installing Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-90a0200" href="90a-00-appendices.html#js--90a0200">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev2-num">A.2</span><span class="toc-lev2-text">The Brackets text editor</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev2-num">A.2</span><span class="toc-lev2-text">Adding extensions to Brackets</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                     </ul>                                       <!-- End of TOC in columns -->
 
@@ -260,7 +262,7 @@ Date          Issue        Author         Reason for Modification
                             <div class="toc-lev"><span class="toc-lev2-num">C.2</span><span class="toc-lev2-text">Git flavoured syntax</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-90c0201" href="90c-00-appendices.html#js--90c0201">  <!-- TOC link start -->
-                            <div class="toc-lev"><span class="toc-lev3-num">C.2.1</span><span class="toc-lev3-text">Code fragment</span></div></a>
+                            <div class="toc-lev"><span class="toc-lev3-num">C.2.1</span><span class="toc-lev3-text">Code fragments</span></div></a>
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-90c0202" href="90c-00-appendices.html#js--90c0202">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">C.2.2</span><span class="toc-lev3-text">Task lists</span></div></a>
@@ -421,7 +423,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Generally, a development branch will contain all the things associated with that section: <span class="code">html</span>, <span class="code">js</span> and <span class="code">css</span> files as well as associated images and data.</p>
 
-                    <p class="hyp">When the development is complete and tested, it will be merged back to the master branch, the merge point will be published or released commit (<a class="xref js--sc-f90b-01" href="#">Figure&nbsp;B.1</a>):</p>
+                    <p class="hyp">When the development is complete and tested, it will be merged back to the master branch, the merge point will be a published or released commit (<a class="xref js--sc-f90b-01" href="#">Figure&nbsp;B.1</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -493,7 +495,7 @@ Date          Issue        Author         Reason for Modification
                             <td class="leading"><div style="min-height: 5.5em"></div></td><!-- Leading row (sets min-height) -->
                             <td class="table-cent">D</td>
                             <td class="table-cent">D02</td>
-                            <td class="table-cent">Published (partial)</td>
+                            <td class="table-cent">Development</td>
                             <td class="table-left">The site is entirely under development and no part of it has been published</td>
                         </tr>                                   <!-- TABLE - End of row 01   -->
                         <tr>                                    <!-- TABLE - Start of row 01 -->
@@ -628,7 +630,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">It is now preceded by a <span class="code">t-</span> instead of a <span class="code">d-</span>. The number <span class="code">YY</span> continues at the next number following the last development commit when the test stage starts. This allows tested code to drop back into development. The following sequence illustrates this:</p>
 
-                    <p class="hyp" style="text-align: center; font-size: 0.7rem"><span class="code">d-P01.02.01 &rarr; <span style="font-family: trip-t3-b">t-P01.02.03</span> &rarr; d-P01.02.04 &rarr; <span style="font-family: trip-t3-b">t-P01.02.05</span> &rarr; s-P01.02.P02</span></p>
+                    <p class="hyp" style="text-align: center; font-size: 0.7rem"><span class="code">d-P01.02.01 &rarr; <span style="font-family: trip-t3-b">t-P01.02.02</span> &rarr; d-P01.02.03 &rarr; <span style="font-family: trip-t3-b">t-P01.02.04</span> &rarr; s-P01.02.P02</span></p>
 
                     <p class="hyp">Finally, at the end of testing, the code is finished and is ready to be merged back into the <span class="git-cmd">master</span> branch. At this point, a new commit point is made on the branch. This is referred to a <span class="first-use">Staged</span> commit. It again has a tag and this time the tag format is:</p>
 
@@ -658,6 +660,16 @@ Date          Issue        Author         Reason for Modification
                     <p class="hyp">The final commit on the development branch, the staged commit (<span class="code">s-P01.99.P02</span> in this case) is done to allow the software versions of each file to be changed to match the forthcoming <span class="git-cmd">master</span> branch commit (<span class="code">P02</span> in this case). The code itself shouldn&rsquo;t change, just its revision status.</p>
 
                     <p class="hyp">There is only ever one staged commit on a development branch.</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>For smaller development branches, it is not necessary to have the staged commit; it can be done with the test commit. In this case, the test commit would have the form <span class="code">t-SNN.XX.SNN<sub>+k</sub></span>&mdash;this is exaclty the same structure as a staged commit tag, but prefixed <span class="code">t-</span> instead of <span class="code">s-</span>.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -846,7 +858,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">All the numbering I&rsquo;ve shown in this section has been two digits <span class="code">d-P01.03.05</span>. This clearly limits any revision, page or section number to a maximum value of 99.</p>
 
-                    <p class="hyp">This needn&rsquo;t be the case; it is perfectly possible to use three digit numbers <span class="code">d-P001.003.005</span>, indeed this could be selectively adapted <span class="code">d-P01.0103.005</span>, you can do whatever you like.</p>
+                    <p class="hyp">This needn&rsquo;t be the case; it is perfectly possible to use three digit numbers <span class="code">d-P001.003.005</span>, indeed this could be selectively adapted: <span class="code">d-P01.0103.005</span>, you can do whatever you like.</p>
 
                     <p class="hyp">I think the two digit version is enough for me. If I&rsquo;ve got more than 99 commits on a development branch I&rsquo;m probably doing it wrong.</p>
 

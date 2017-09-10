@@ -84,6 +84,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+10 Sep 2017   t-P14.90.P15 M. Gledhill    Classes .git-head, .git-table and
+                                          -git-bash added (colours tables)
+
 08 Aug 2017   P07          M. Gledhill    Published
 
 08 Aug 2017   d-P05.02.01  M. Gledhill    .table-git-sb display block removed
@@ -113,7 +116,7 @@ Date          Issue        Author         Reason for Modification
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
 
 ---------------------------------------------------------------------------- */
-.aside-right-rev:after { content: "style.css\00a0\2014\00a0 \P07"; }      /* CSS REVISION NUMBER */
+.aside-right-rev:after { content: "style.css\00a0\2014\00a0 \t-P14.90.P15"; }      /* CSS REVISION NUMBER */
 
 
 
