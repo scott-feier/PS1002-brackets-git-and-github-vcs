@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
+
 11 Sep 2017   P15          M. Gledhill    Published
 
 10 Sep 2017   t-P14.90.P15 M. Gledhill    Proofread and validated
@@ -159,7 +161,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 90b-00&nbsp;&mdash;&nbsp;P15</p>
+<!--REVISION-->         <p>Rev: 90b-00&nbsp;&mdash;&nbsp;d-P15-00-01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -591,7 +593,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp" style="text-align: center;"><span class="code">d-XX-name</span></p>
 
-                    <p class="hyp">Where <span class="code">d-</span> indicates the branch is for development (all my branches are development branches and always start <span class="code">d-</span>).</p>
+                    <p class="hyp">Where <span class="code">d-</span> indicates the branch is for development (all my branches are development branches and always start with <span class="code">d-</span>).</p>
 
                     <p class="hyp"><span class="code">XX</span> refers to the number of the web page or section being developed. For example, the PS Web Development is split into sections and each section is given a two digit number. It starts like this:</p>
 
@@ -634,13 +636,13 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp" style="text-align: center; font-size: 0.7rem"><span class="code">d-P01.02.01 &rarr; <span style="font-family: trip-t3-b">t-P01.02.02</span> &rarr; d-P01.02.03 &rarr; <span style="font-family: trip-t3-b">t-P01.02.04</span> &rarr; s-P01.02.P02</span></p>
 
-                    <p class="hyp">Finally, at the end of testing, the code is finished and is ready to be merged back into the <span class="git-cmd">master</span> branch. At this point, a new commit point is made on the branch. This is referred to a <span class="first-use">Staged</span> commit. It again has a tag and this time the tag format is:</p>
+                    <p class="hyp">Finally, at the end of testing, the code is finished and is ready to be merged back into the <span class="git-cmd">master</span> branch. At this point, a new commit point is made on the branch. This is referred to as a <span class="first-use">Staged</span> commit. It again has a tag and this time the tag format is:</p>
 
                     <p class="hyp" style="text-align: center;"><span class="code">s-SNN.XX.SNN<sub>+k</sub></span></p>
 
                     <p class="hyp">The <span class="code">s-</span> indicates a staged commit. <span class="code">SNN.XX</span> is exactly the same as each other commit on the branch.</p>
 
-                    <p class="hyp">SNN<sub>+k</sub> indicates the new merge commit point on the master branch that will be created when the development branch is merged onto the master branch. I.e. the point at which the branch re-joins the <span class="git-cmd">master</span>.</p>
+                    <p class="hyp"><span class="code">SNN<sub>+k</sub></span> indicates the new merge commit point on the master branch that will be created when the development branch is merged onto the master branch. I.e. the point at which the branch re-joins the <span class="git-cmd">master</span>.</p>
 
                     <p class="hyp">Normally, this will just be a the <span class="code">SNN</span> value plus one (it may be more if other branches are involved, it will always be the next publication or release commit number on the <span class="git-cmd">master</span> branch, see <a class="xref nohyp js--sc-90b0400" href="#">&sect;&nbsp;B.4</a>).</p>
 
@@ -730,7 +732,7 @@ Date          Issue        Author         Reason for Modification
       NOTE - HANGING INDENT
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <ul class="note">                           <!-- Start of note -->
-                        <li>With parallel branches, it does not matter what order the branches are made and what order they collapse, here <span class="git-cmd">d-01</span> is created first, but <span class="git-cmd">d-02</span> is merged back into the <span class="git-cmd">master</span> before it.</li>
+                        <li>With parallel branches, it does not matter what order the branches are made or what order they collapse, here <span class="git-cmd">d-01</span> is created first, but <span class="git-cmd">d-02</span> is merged back into the <span class="git-cmd">master</span> before it.</li>
                     </ul>                                       <!-- End of note -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
@@ -906,7 +908,9 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Commit messages should have a short (less than 50 characters first line). In Brackets, where extended commits are used, always leave a blank line after the first line (this ensures the first line is treated as a title).</p>
+                    <p class="hyp">Commit messages should have a short (less than 50 characters) first line. In Brackets, where extended commits are used, always leave a blank line after the first line (this ensures the first line is treated as a title).</p>
+
+                    <p class="hyp">Always include the status of the commit in the title:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       UNNUMBERED LIST

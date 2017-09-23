@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
+
 11 Sep 2017   P15          M. Gledhill    Published
 
 10 Sep 2017   d-P14.90.01  M. Gledhill    Links tested and UTX class removed
@@ -167,7 +169,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 08-03&nbsp;&mdash;&nbsp;P15</p>
+<!--REVISION-->         <p>Rev: 08-03&nbsp;&mdash;&nbsp;d-P15-00-01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -560,7 +562,9 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Go back to the main repository screen (click the <span class="code">/lab-01-website</span> at the top of the page under the black bar with the Octocat icon). </p>
 
-                    <p class="hyp">Looking at the branches tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-21a.png" alt="branch icon"></sub> it says there is 1 branch, this is the <span class="git-cmd">master</span> branch. The local repository has two branches, but the remote repository only has one. <span class="first-use">Why?</span></p>
+                    <p class="hyp">Looking at the branches tab <sub><img style="height: 1rem" src="01-pages/08-03-remotes/02-images/fig-08-21a.png" alt="branch icon"></sub> it says there is <span class="code">1</span> branch, this is the <span class="git-cmd">master</span> branch. The local repository has two branches, but the remote repository only has one. <span class="first-use">Why?</span></p>
+
+                    <p class="hyp">The answer is that when we do a push from Brackets (or indeed from the Git command line) it only pushes a single branch—if no specific branch is given, it pushes the currently active branch. In our case this was the <span class="git-cmd">master</span> branch; and that is why there is only one branch in the remote repository, we haven’t pushed the second branch yet.</p>
 
                     <p class="hyp">Click the branch tab, it just shows just the single <span class="git-cmd">master</span> branch.</p>
 

@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
+
 11 Sep 2017   P15          M. Gledhill    Published
 
 10 Sep 2017   d-P14.90.01  M. Gledhill    Links tested and UTX class removed
@@ -163,7 +165,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 06-02&nbsp;&mdash;&nbsp;P15</p>
+<!--REVISION-->         <p>Rev: 06-02&nbsp;&mdash;&nbsp;d-P15-00-01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -673,7 +675,9 @@ Desktop.ini
 
                     <p class="hyp">Now I know that this is a local repository and isn&rsquo;t on GitHub; but I&rsquo;m still going to create a <span class="code">README.md</span> file. I think they&rsquo;re a good idea and we will be putting this project into a remote GitHub repository in a subsequent section (<a class="hlink nohyp" href="08-00-remotes.html#js--080000">section&nbsp;8</a>).</p>
 
-                    <p class="hyp">The <span class="code">README.md</span> file is a markdown file <span class="first-use">(ironically this is actually a version of a mark-up language)</span> hence the <span class="code">.md</span> extension. It is widely used for README files. It allows the text in the file to be formatted by using simple character combinations:</p>
+                    <p class="hyp">So what is a <span class="code">README.md</span> file? Well it&rsquo;s a file that describes what the project is and how to use it.</p>
+
+                    <p class="hyp">The <span class="code">README.md</span> file is a Markdown file <span class="first-use">(ironically this is actually a version of a mark-up language)</span> hence the <span class="code">.md</span> extension. It is widely used for README files. It allows the text in the file to be formatted by using simple character combinations:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS
@@ -762,9 +766,9 @@ Desktop.ini
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">GitHub uses a slightly more advanced version of markdown, this is called <span class="first-use">Git Flavoured Markdown</span> and allows images, code fragments and some directly encoded HTML.</p>
+                    <p class="hyp">GitHub uses a slightly more advanced version of Markdown, this is called <span class="first-use">Git Flavoured Markdown</span> and allows images, code fragments and some directly encoded HTML.</p>
 
-                    <p class="hyp"><a class="hlink nohyp" href="90c-00-appendices.html#js--000000">appendix&nbsp;c</a> gives a summary and some examples of both markdown and Git flavoured markdown.</p>
+                    <p class="hyp"><a class="hlink nohyp" href="90c-00-appendices.html#js--000000">appendix&nbsp;c</a> gives a summary and some examples of both Markdown and Git Flavoured Markdown.</p>
 
                     <p class="hyp">The <span class="code">README.md</span> should contain certain specific things:</p>
 
@@ -779,7 +783,7 @@ Desktop.ini
 
                         <li><p class="hyp">An Introduction (what the project is for)</p></li>
 
-                        <li><p class="hyp">A Table of Content (TOC)</p></li>
+                        <li><p class="hyp">A Table of Contents (TOC)</p></li>
 
                         <li><p class="hyp">Instructions for use</p></li>
 
@@ -858,7 +862,7 @@ This is simply a demonstration repository, the contents are free to use by anyon
 
                     <p class="hyp">Again when you save the file, Git will detect it and it will appear in the Git pane marked as <span class="git-cmd">untracked</span>.</p>
 
-                    <p class="hyp">If you have the markdown preview activated <sub><img style="height: 0.85rem" src="01-pages/06-02-example/02-images/fig-06-15g.png" alt="terminal icon"></sub>, the <span class="code">README.md</span> will be displayed as it will appear on GitHub at the bottom of the screen (<a class="xref js--sc-f06-16" href="#">Figure&nbsp;6.16</a>):</p>
+                    <p class="hyp">If you have the Markdown Preview activated <sub><img style="height: 0.85rem" src="01-pages/06-02-example/02-images/fig-06-15g.png" alt="terminal icon"></sub>, the <span class="code">README.md</span> will be displayed as it will appear on GitHub at the bottom of the screen (<a class="xref js--sc-f06-16" href="#">Figure&nbsp;6.16</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -975,7 +979,7 @@ This is simply a demonstration repository, the contents are free to use by anyon
                     </div>                                          <!-- End of code fragment -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Save the file and again confirm that it is recognised by Brackets&mdash;is in the Git pane and is marked as <span class="git-cmd">untracked</span> (<a class="xref js--sc-f06-18" href="#">Figure&nbsp;6.18</a>):</p>
+                    <p class="hyp">Save the file and again confirm that it is recognised by Brackets, that it is in the Git pane and is marked as <span class="git-cmd">untracked</span> (<a class="xref js--sc-f06-18" href="#">Figure&nbsp;6.18</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -1093,7 +1097,7 @@ p {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                     </div>                                          <!-- End of code fragment -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Save the file and again confirm that it is recognised by Git. Git should now have six <span class="git-cmd">untracked</span> files <a class="xref js--sc-t06-02" href="#">Table&nbsp;6.2</a> and <a class="xref js--sc-f06-19" href="#">Figure&nbsp;6.19</a>; all files are displayed in the Brackets file tree:</p>
+                    <p class="hyp">Save the file and again confirm that it is recognised by Git. Git should now have six <span class="git-cmd">untracked</span> files (<a class="xref js--sc-t06-02" href="#">Table&nbsp;6.2</a> and <a class="xref js--sc-f06-19" href="#">Figure&nbsp;6.19</a>}; all files are displayed in the Brackets file tree:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       TABLE - CLEAN TABLE WITH BOTTOM BORDERS

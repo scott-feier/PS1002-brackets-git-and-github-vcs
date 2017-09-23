@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
+
 11 Sep 2017   P15          M. Gledhill    Published
 
 10 Sep 2017   d-P14.90.01  M. Gledhill    Links tested and UTX class removed
@@ -176,7 +178,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;P15</p>
+<!--REVISION-->         <p>Rev: 02-05&nbsp;&mdash;&nbsp;d-P15-00-01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -443,7 +445,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The easiest type of <span class="git-cmd">reset</span> to understand is the <span class="first-use">hard</span> reset; it resets a project back to an earlier commit and replaces all the files in the working directory with the files that were present at the time of the specified commit.</p>
 
-                    <p class="hyp">To explain this let&rsquo;s consider a simple project with just one file (<span class="code">test.txt</span>). I will go through modifying the file and creating commits in a step-by-step way do demonstrate exactly what happens with a reset.</p>
+                    <p class="hyp">To explain this let&rsquo;s consider a simple project with just one file (<span class="code">test.txt</span>). I will go through modifying the file and creating commits in a step-by-step way to demonstrate exactly what happens with a reset.</p>
 
                     <p class="hyp">Let&rsquo;s assume we have a new project and we&rsquo;ve just created a new file called <span class="code">test.txt</span>. This file is present in the working area only, we haven&rsquo;t added or committed the file yet (step 1). Next add the file to the staging area (step 2) and then commit it to the local repository (step 3):</p>
 
@@ -631,7 +633,7 @@ Date          Issue        Author         Reason for Modification
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">I&rsquo;ve show the modified and staged file version in red.</p>
+                    <p class="hyp">I&rsquo;ve shown the modified and staged file version in red.</p>
 
                     <p class="hyp">Now let&rsquo;s look at what a reset does.</p>
 
@@ -2151,6 +2153,10 @@ Date          Issue        Author         Reason for Modification
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                     <p class="hyp">It leaves the working file <span class="code">test.txt</span> exactly as it was at version V04 in both the working and staged area. It means we could commit the V04 modification to a new commit based on the V02 commit <span class="code">[5493a7c]</span> we&rsquo;ve just reset to if we wanted to.</p>
+
+                    <p class="hyp">The <span class="code">test.txt</span> file will be flagged as modified and staged.</p>
+
+                    <p class="hyp first-use">Again, I don&rsquo;t see a use for it. </p>
 
                 </div>                                          <!-- End of section text area   -->
 

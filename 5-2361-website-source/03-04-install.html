@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
+
 06 Aug 2017   P05          M. Gledhill    Published
 
 05 Aug 2017   t-P04.04.P05  M. Gledhill   Title change and validated
@@ -69,8 +71,8 @@ Date          Issue        Author         Reason for Modification
      ***********************************************************************-->
         <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
-        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
-        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Prettify (main)  -->       <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script>
+        <!-- Prettify (Language)  -->   <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script>
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
@@ -163,7 +165,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 03-04&nbsp;&mdash;&nbsp;P05</p>
+<!--REVISION-->         <p>Rev: 03-04&nbsp;&mdash;&nbsp;d-P15-00-01</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -470,7 +472,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Ok, you&rsquo;ll like this; it&rsquo;s a trip down memory lane. To make Notepad++ the default text editor for Git Bash we have to adjust the <span class="first-use">Windows Environment Variable</span>. I think the last time I had to do this was when I was using WordPerfect 5.1 and Lotus 123. It was 1989, I was 23, MS-DOS was the operating system of choice, Margret Thatcher was prime minister and my children hadn&rsquo;t been born&mdash;<span class="first-use">happy times</span>.</p>
 
-                    <p class="hyp">Environment Variables (<span class="first-use">can&rsquo;t believe I&rsquo;m talking about this&mdash;it&rsquo;s like talking about my Grandmother&rsquo;s mangle or outside lavatories</span>), they still exist in Windows, though most programmes just set them up as part of the installation process or use the registry instead. In Windows, Environment variables describe the computer environment within which programmes run; they define common names (the name of the computer for example) and default file extensions. </p>
+                    <p class="hyp">Environment Variables (<span class="first-use">can&rsquo;t believe I&rsquo;m talking about this&mdash;it&rsquo;s like talking about my Grandmother&rsquo;s mangle or outside lavatories</span>), they still exist in Windows, though most programmes just set them up as part of the installation process or use the registry instead. In Windows, Environment Variables describe the computer environment within which programmes run; they define common names (the name of the computer for example) and default file extensions. </p>
 
                     <p class="hyp">The best known Environment Variable is <span class="all-caps">PATH</span>, this contains a list of directory paths. If a user types a command without specifying the path, the operating system will search the current directory and then each of the paths listed in the <span class="all-caps">PATH</span> environment variable trying to find it. Git Bash relies on the <span class="all-caps">PATH</span> environment variable to find any programme we wish to execute&mdash;<span class="first-use">of course it does, that&rsquo;s what programmes did in the eighties</span>.</p>
 
@@ -638,7 +640,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Click <span class="menu">new</span> and past the link in the empty line at the bottom (<a class="xref js--sc-f03-35" href="#">Figure&nbsp;3.35</a>).</p>
+                    <p class="hyp">Click <span class="menu">new</span> and paste the link in the empty line at the bottom (<a class="xref js--sc-f03-35" href="#">Figure&nbsp;3.35</a>).</p>
 
                     <p class="hyp">Again, repeatedly click <span class="menu">ok</span>, close the System Properties window and we&rsquo;re done.</p>
 
@@ -836,7 +838,7 @@ Date          Issue        Author         Reason for Modification
                     </table>                                    <!-- TABLE - End of table    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">You can cut and past the commands from the above list. In Git Bash use:</p>
+                    <p class="hyp">You can cut and paste the commands from the above list. In Git Bash use:</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       UNNUMBERED LIST
@@ -1026,21 +1028,6 @@ Date          Issue        Author         Reason for Modification
                         <tr class="no-border">                                    <!-- TABLE - Start of header -->
                             <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
                             <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
-                            <td class="table-left" style="width: 95%">git config --global merge.tool p4merge</td>       <!-- set column 02 width here -->
-                        </tr>                                   <!-- TABLE - End of header   -->
-                    </table>                                    <!-- TABLE - End of table    -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Again to see the changes have been made, edit the global configuration file:</p>
-
-
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      TABLE - GIT COMMAND LINE
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <table class="table-git">                 <!-- TABLE - Start of table  -->
-                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
-                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
-                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
                             <td class="table-left" style="width: 95%">notepad++</td>       <!-- set column 02 width here -->
                         </tr>                                   <!-- TABLE - End of header   -->
                     </table>                                    <!-- TABLE - End of table    -->
@@ -1065,6 +1052,52 @@ Date          Issue        Author         Reason for Modification
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
                     <p class="hyp">This will open or create the <span class="code">.bash_profile</span> file in Notepad++ (it will be empty). </p>
+
+
+                     <p class="hyp">Add the following line:</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     CODE FRAGMENT DISPLAY - SINGLE LINE (SIMPLE DISPLAY)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Single line fragments must not be preceded by a carriage return; i.e.
+     code fragment placed directly between the <pre>CODEFRAGMENT</pre> without
+     line breaks.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <div class="code-extract">                              <!-- Start of code fragment -->
+                        <div class="code-area">                             <!-- Start of code extract holder -->
+
+                            <pre class="prettyprint linenums:1 lang-css" id="js--c03-01a">alias npp='notepad++ -multiInst -nosession'</pre>
+
+                        </div>                                              <!-- End of code extract holder -->
+                        <div class="code-caption"></div>                    <!-- Code caption (empty)-->
+                    </div>                                                  <!-- End of code fragment -->
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                     <p class="hyp">Save the file, close and restart Git Bash.</p>
+
+                     <p class="hyp">Now type:</p>
+
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      TABLE - GIT COMMAND LINE
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-git">                 <!-- TABLE - Start of table  -->
+                        <tr class="no-border">                                    <!-- TABLE - Start of header -->
+                            <td class="leading"><div style="min-height: 1em"></div></td>                                   <!-- Leading row (sets min-height) -->
+                            <td class="table-left" style="width: 5%">$</td>      <!-- set column 01 width here -->
+                            <td class="table-left" style="width: 95%">npp</td>       <!-- set column 02 width here -->
+                        </tr>                                   <!-- TABLE - End of header   -->
+                    </table>                                    <!-- TABLE - End of table    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+                     <p class="hyp">This will now open Notepad++.</p>
+
+                    <p class="hyp">The alias works by assigning a name (<span class="code">npp</span> in this case) to a command and its argu-ments.</p>
+
+
+
+
+
 
                 </div>                                          <!-- End of section text area   -->
 
