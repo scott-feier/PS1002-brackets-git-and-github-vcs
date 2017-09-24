@@ -46,6 +46,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+23 Sep 2017   R01          M. Gledhill    First formal release
+
 19 Aug 2017   P10          M. Gledhill    Published
 
 18 Aug 2017   d-P09.06.02  M. Gledhill    Page created
@@ -60,10 +62,3 @@ Date          Issue        Author         Reason for Modification
 
 /* ************************************************************************* */
 
-/* ****************************************************************************
-   CODE FRAGMENT c06-xx - FORMATTING
-   ************************************************************************* */
-#js--c06-xx .pln { color: #4271ae;}                                      /* overlay style colours for CSS fragment */
-#js--c06-xx .lit { color: #718c00;}
-
-/* ************************************************************************* */
