@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+31 Jul 2018   d-R01-00-02  M. Gledhill    Proof reading & social media
+
 23 Sep 2017   R01          M. Gledhill    First formal release
 
 21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
@@ -89,6 +91,7 @@ Date          Issue        Author         Reason for Modification
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
         <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/09-04-github/01-local-css/09-04-prettifylines.css"> -->
+        <!-- Ionicons -->               <link rel="stylesheet" type="text/css" href="21-global/01-css/ionicons.min.css">
 
 
 
@@ -154,7 +157,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-d-R01-00-02.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -163,7 +166,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 09-04&nbsp;&mdash;&nbsp;R01</p>
+<!--REVISION-->         <p>Rev: 09-04&nbsp;&mdash;&nbsp;d-R01.00.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -346,7 +349,7 @@ Date          Issue        Author         Reason for Modification
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">Ok, the current commit is shown in the blue bar point <span class="index">1</span>, this is the home page so the commit number shown is the most recent commit in the whole project. The first line of the commit message and who made the commit is also shown, point <span class="index">2</span>. If you click the three dots <sub><img style="height: 1rem" src="01-pages/09-04-github/02-images/fig-09-33a.png" alt="file icon"></sub> next to the commit message it will display the whole commit message:</p>
+                    <p class="hyp">Ok, the current commit is shown in the blue bar point <span class="index">1</span>, this is the home page so the commit number shown is the most recent commit for the whole of the selected branch. The first line of the commit message and who made the commit is also shown, point <span class="index">2</span>. If you click the three dots <sub><img style="height: 1rem" src="01-pages/09-04-github/02-images/fig-09-33a.png" alt="file icon"></sub> next to the commit message it will display the whole commit message:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -380,7 +383,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">We&rsquo;ve used this before, the URL in the middle is what we used to link Brackets to GitHub (<a class="hlink nohyp" href="05-03-brackets.html#js--050300">&sect;&nbsp;5.3</a>), the bits we haven&rsquo;t looked at are the two buttons at the bottom <span class="menu">open in desktop</span> and <span class="menu">download zip</span>. The first <span class="menu">open in desktop</span> opens the project in the desktop version of GitHub, this is the same desktop application I discuss in <a class="hlink nohyp" href="09-02-github.html#js--090202d">&sect;&nbsp;9.2.2</a>, we&rsquo;re not using the application and we won&rsquo;t be pushing that button.</p>
 
-                    <p class="hyp">The <span class="menu">download zip</span> is very useful. If you click it, it will download a zip file of the entire project as it was at the time of the commit. This includes the full folder structure with all the files stored in their correct positions within the structure. The downloaded file is called <span class="code">&lt;repository name&gt;-master.zip</span>; in my case <span class="code">lab-01-website-master.zip</span>. If I unzip the file I get this:</p>
+                    <p class="hyp">The <span class="menu">download zip</span> is very useful. If you click it, it will download a zip file of the entire project as it was at the time of the commit. This includes the full folder structure with all the files stored in their correct positions within that structure. The downloaded file is called <span class="code">&lt;repository name&gt;-master.zip</span>; in my case <span class="code">lab-01-website-master.zip</span>. If I unzip the file I get this:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -469,7 +472,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">The first button, the clipboard ( <sub><img style="height: 1rem" src="01-pages/09-04-github/02-images/fig-09-38a.png" alt="hash icon"></sub> ) copies the full 40 digit commit <span class="first-use">(hash)</span> number to the clipboard. </p>
 
-                    <p class="hyp">The second button (with the seven digit commit number in it) takes you to an information page for that commit (this is similar to the commit information page in Brackets, <a class="hlink nohyp" href="06-03-example.html#js--060303">&sect;&nbsp;6.3.3</a>. It looks like this:</p>
+                    <p class="hyp">The second button (with the seven digit commit number in it) takes you to an information page for that commit (this is similar to the commit information page in Brackets, <a class="hlink nohyp" href="06-03-example.html#js--060303">&sect;&nbsp;6.3.3</a>). It looks like this:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
@@ -806,6 +809,11 @@ Date          Issue        Author         Reason for Modification
                 <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
                 <li><a href="80-00-finally.html#js--800400">Legal</a></li>
             </ul>                                               <!-- End of footer navigation -->
+
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/practicalseries"><i id="js--fbicon" class="ion-social-facebook-outline"></i></a></li>
+                <li><a href="https://twitter.com/practicalseries"><i id="js--twicon" class="ion-social-twitter-outline"></i></a></li>
+            </ul>
         </footer>                                               <!-- End of footer -->
 <!-- ========================================================================== [WP END] -->
 

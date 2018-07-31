@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+31 Jul 2018   d-R01-00-02  M. Gledhill    Proof reading & social media
+
 23 Sep 2017   R01          M. Gledhill    First formal release
 
 21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
@@ -90,6 +92,7 @@ Date          Issue        Author         Reason for Modification
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
         <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/06-01-example/01-local-css/06-01-prettifylines.css"> -->
+        <!-- Ionicons -->               <link rel="stylesheet" type="text/css" href="21-global/01-css/ionicons.min.css">
 
 
 
@@ -155,7 +158,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-d-R01-00-02.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -164,7 +167,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 06-01&nbsp;&mdash;&nbsp;R01</p>
+<!--REVISION-->         <p>Rev: 06-01&nbsp;&mdash;&nbsp;d-R01.00.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -233,6 +236,8 @@ Date          Issue        Author         Reason for Modification
                         <li><a class="js--sc-060305" href="06-03-example.html#js--060305">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">6.3.5</span><span class="toc-lev3-text">The current workflow</span></div></a>
                             <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
+                            <br class="toc-pad">                <!-- Apply padding to give symmetry to toc -->
                         </li>                                   <!-- TOC link end   -->
 
                         <li><a class="js--sc-060400" href="06-04-example.html#js--060400">  <!-- TOC link start -->
@@ -276,6 +281,9 @@ Date          Issue        Author         Reason for Modification
                         </li>                                   <!-- TOC link end   -->
                         <li><a class="js--sc-060703" href="06-07-example.html#js--060703">  <!-- TOC link start -->
                             <div class="toc-lev"><span class="toc-lev3-num">6.7.3</span><span class="toc-lev3-text">Merging a branch with a Conflict</span></div></a>
+                        </li>                                   <!-- TOC link end   -->
+                        <li><a class="js--sc-060704" href="06-07-example.html#js--060704">  <!-- TOC link start -->
+                            <div class="toc-lev"><span class="toc-lev3-num">6.7.4</span><span class="toc-lev3-text">Merging multiple conflicts in multiple files</span></div></a>
                         </li>                                   <!-- TOC link end   -->
 
                     </ul>                                       <!-- End of TOC in columns -->
@@ -346,7 +354,7 @@ Date          Issue        Author         Reason for Modification
                     </table>                                    <!-- TABLE - End of footnote    -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">On my machine I keep all my Git repositories under a single directory, that directory is on my D: drive and is called <span class="code">2500 Git Projects</span>. Like this:</p>
+                    <p class="hyp">On my machine <span class="first-use">(as I&rsquo;ve said before)</span> I keep all my Git repositories under a single directory, that directory is on my D: drive and is called <span class="code">2500 Git Projects</span>. Like this:</p>
 
                     <p class="hyp" style="text-align: center;"><span class="code">D:\2500 Git Projects</span></p>
 
@@ -420,7 +428,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">Click the <span class="menu">init</span> button and this will initialise the repository. It will do two things: it will create the <span class="code">.git</span> folder inside the <span class="code">lab-01-website</span> making this a Git repository. It also creates a <span class="code">.gitignore</span> file.</p>
 
-                    <p class="hyp">The <span class="code">.git</span> folder can be seen by navigating to <span class="code">lab-01-website</span>:</p>
+                    <p class="hyp">The <span class="code">.git</span> folder can be seen by navigating to <span class="code">lab-01-website</span> (hidden folders must be set to be visible in Windows Explorer):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH

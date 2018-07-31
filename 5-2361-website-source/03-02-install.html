@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+29 Jul 2018   d-R01-00-02  M. Gledhill    Proof reading & social media
+
 23 Sep 2017   R01          M. Gledhill    First formal release
 
 21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
@@ -80,7 +82,7 @@ Date          Issue        Author         Reason for Modification
         <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
         <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
         <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/03-01-install/05-local-js/03-01-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/03-02-install/05-local-js/03-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -95,6 +97,7 @@ Date          Issue        Author         Reason for Modification
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
         <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/03-01-install/01-local-css/03-01-prettifylines.css"> -->
+        <!-- Ionicons -->               <link rel="stylesheet" type="text/css" href="21-global/01-css/ionicons.min.css">
 
 
 
@@ -160,7 +163,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-d-R01-00-02.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -169,7 +172,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 03-02&nbsp;&mdash;&nbsp;R01</p>
+<!--REVISION-->         <p>Rev: 03-02&nbsp;&mdash;&nbsp;d-R01.00.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -324,44 +327,55 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">I’m a big fan of Brackets; I use it for all my web development stuff. I wax lyrical about it <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/01-04-tools.html#js--010401">here</a>. The only problem is that it doesn’t play nicely with the Git Bash command line; specifically it won’t create a new file from the command line which is a bit of a problem for Git<sup>&dagger;1</sup>. My next favourite is <a class="hlink nohyp" href="https://atom.io/">atom</a> but this also has problems with Git, It’s difficult to set up as the default editor: under Windows, Git won’t wait for Atom to close before continuing; again this is a problem for what we want to do.</p>
 
-                    <p class="hyp">So I used my third favourite <a class="hlink nohyp" href="https://notepad-plus-plus.org/">notepad++</a>. I will still use Brackets for all the web development and I will also use it to manage Git and GitHub repositories. I will just use Notepad++ when creating or editing files directly from the Git Bash command line (that thing you can see in <a class="xref js--sc-f03-09" href="03-01-install.html#js--f03-09">Figure&nbsp;3.9</a>)&mdash;hopefully this won&rsquo;t be too often, the whole point is to manage everything through Brackets and not have to bother with the command line stuff. Unfortunately, we need to use the command line stuff to get everything set up (that&rsquo;s what we&rsquo;re doing now).</p>
+                    <p class="hyp">So I used my third favourite <a class="hlink nohyp" href="https://notepad-plus-plus.org/">notepad++</a>. I will still use Brackets for all the web development and I will also use it to manage Git and GitHub repositories. I will just use Notepad++ when creating or editing files directly from the Git Bash command line (that thing you can see in <a class="xref js--sc-f03-10" href="03-01-install.html#js--f03-10">Figure&nbsp;3.10</a>)&mdash;hopefully this won&rsquo;t be too often, the whole point is to manage everything through Brackets and not have to bother with the command line stuff. Unfortunately, we need to use the command line stuff to get everything set up (that&rsquo;s what we&rsquo;re doing now).</p>
 
-                    <p class="hyp">I recommend you install both Brackets and Notepad++; I&rsquo;ve already covered the Brackets installation on a previous posting: <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-01-starting.html#js--040101">getting and installing brackets</a>. I look at installing Notepad++ below:</p>
+                    <p class="hyp">I recommend you install both Brackets and Notepad++; I&rsquo;ve already covered the Brackets installation on a previous posting: <a class="hlink nohyp" href="http://practicalseries.com/1001-webdevelopment/04-01-starting.html#js--040101">getting and installing brackets</a> (I cover the main points in <a class="hlink nohyp" href="90a-00-appendices.html#js--90a0000">appendix A</a>). I look at installing Notepad++ below:</p>
 
-                    <p class="hyp">Notepad++ is available from the download page of the <a class="hlink nohyp" href="https://notepad-plus-plus.org/download/v7.4.2.html">notepad-plus-plus.org</a> website. I&rsquo;m currently using version 7.4.2 (32 bit) for Windows. It is very easy to get, just click the big green download button on the download page (see <a class="xref js--sc-f03-10" href="#">Figure&nbsp;3.10</a>).</p>
+                    <p class="hyp">Notepad++ is available from the download page of the <a class="hlink nohyp" href="https://notepad-plus-plus.org">notepad-plus-plus.org</a> website. I&rsquo;m currently using version 7.5.7 (32 bit) for Windows. It is very easy to get, just click <span class="menu">download</span> on the main page and then the big green <span class="menu">download</span> button on the download page (see <a class="xref js--sc-f03-11" href="#">Figure&nbsp;3.11</a>).</p>
 
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      NOTE - HANGING INDENT
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Notes are added to the text in the form of unordered lists given the
+      class .note, this effectively creates a list with the bullet point set
+      to be the word Note: with appropriate indentation
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <ul class="note">                           <!-- Start of note -->
+                        <li>It&rsquo;s hard to keep up with the current version, there is a new release every couple of months&nbsp;&mdash;&nbsp;it never looks any different though, not sure what all the changes are?&nbsp;&mdash;&nbsp;I recommend you just use the latest.</li>
+                    </ul>                                       <!-- End of note -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f03-10">
-                            <a href="01-pages/03-02-install/02-images/fig-03-10.png" data-lightbox="fig-set" data-title="Figure 3.10 - Notepad++ text editor download">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-10.png" alt="Figure 3.10 - Notepad++ text editor download">
+                        <div class="fig-col fig1-1" id="js--f03-11">
+                            <a href="01-pages/03-02-install/02-images/fig-03-11.png" data-lightbox="fig-set" data-title="Figure 3.11 - Notepad++ text editor download">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-11.png" alt="Figure 3.11 - Notepad++ text editor download">
                             </a>
-                            <p>Figure 3.10 &emsp; Notepad++ text editor download</p>     <!-- Figure caption -->
+                            <p>Figure 3.11 &emsp; Notepad++ text editor download</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">This will download the <span class="code">npp.7.4.2.installer.exe</span> file (at least it will if you are on a Windows system).</p>
+                    <p class="hyp">This will download the <span class="code">npp.7.5.7.installer.exe</span> file (at least it will if you are on a Windows system).</p>
 
-                    <p class="hyp">Run the file, there are a couple of install screens. On the first (<a class="xref js--sc-f03-11" href="#">Figure&nbsp;3.11</a>):</p>
+                    <p class="hyp">Run the file, there are a couple of install screens. On the first (<a class="xref js--sc-f03-12" href="#">Figure&nbsp;3.12</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                     <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-2" id="js--f03-11">
-                            <a href="01-pages/03-02-install/02-images/fig-03-11.png" data-lightbox="fig-set" data-title="Figure 3.11 - Notepad++ install components">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-11.png" alt="Figure 3.11 - Notepad++ install components">
-                            </a>
-                            <p>Figure 3.11 &emsp; Notepad++ install components</p>  <!-- Figure caption -->
-                        </div>
                         <div class="fig-col fig1-2" id="js--f03-12">
-                            <a href="01-pages/03-02-install/02-images/fig-03-12.png" data-lightbox="fig-set" data-title="Figure 3.12 - Notepad++ final options">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-12.png" alt="Figure 3.12 - Notepad++ final options">
+                            <a href="01-pages/03-02-install/02-images/fig-03-12.png" data-lightbox="fig-set" data-title="Figure 3.12 - Notepad++ install components">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-12.png" alt="Figure 3.12 - Notepad++ install components">
                             </a>
-                            <p>Figure 3.12 &emsp; Notepad++ final options</p><!-- Figure caption -->
+                            <p>Figure 3.12 &emsp; Notepad++ install components</p>  <!-- Figure caption -->
+                        </div>
+                        <div class="fig-col fig1-2" id="js--f03-13">
+                            <a href="01-pages/03-02-install/02-images/fig-03-13.png" data-lightbox="fig-set" data-title="Figure 3.13 - Notepad++ final options">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-13.png" alt="Figure 3.13 - Notepad++ final options">
+                            </a>
+                            <p>Figure 3.13 &emsp; Notepad++ final options</p><!-- Figure caption -->
                         </div>
 
                     </figure>                                   <!-- END OF FIGURE -->
@@ -369,19 +383,19 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">I unchecked the <span class="menu">auto-updater</span> option, this is just my preference, Notepad++ can be a bit bothersome with updates, it pesters all the time and it annoys me so I&rsquo;ve disabled the option <span class="first-use">(I&rsquo;m a big boy now, I can choose when to update without being told)</span>.</p>
 
-                    <p class="hyp">Finally, on the next and last option screen (<a class="xref js--sc-f03-12" href="#">Figure&nbsp;3.12</a>), I&rsquo;ve selected the <span class="menu">create shortcut on desktop</span> option <span class="first-use">(again, this comes in handy later on)</span>.</p>
+                    <p class="hyp">Finally, on the next and last option screen (<a class="xref js--sc-f03-13" href="#">Figure&nbsp;3.13</a>), I&rsquo;ve selected the <span class="menu">create shortcut on desktop</span> option <span class="first-use">(again, this comes in handy later on)</span>.</p>
 
-                    <p class="hyp">Click <span class="menu">install</span> and let it open afterwards. It looks like this <a class="xref js--sc-f03-13" href="#">Figure&nbsp;3.13</a>:</p>
+                    <p class="hyp">Click <span class="menu">install</span> and let it open afterwards. It looks like this <a class="xref js--sc-f03-14" href="#">Figure&nbsp;3.14</a>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f03-13">
-                            <a href="01-pages/03-02-install/02-images/fig-03-13.png" data-lightbox="fig-set" data-title="Figure 3.13 - Notepad++">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-13.png" alt="Figure 3.13 - Notepad++">
+                        <div class="fig-col fig1-1" id="js--f03-14">
+                            <a href="01-pages/03-02-install/02-images/fig-03-14.png" data-lightbox="fig-set" data-title="Figure 3.14 - Notepad++">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-14.png" alt="Figure 3.14 - Notepad++">
                             </a>
-                            <p>Figure 3.13 &emsp; Notepad++</p>     <!-- Figure caption -->
+                            <p>Figure 3.14 &emsp; Notepad++</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -396,11 +410,11 @@ Date          Issue        Author         Reason for Modification
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f03-14">
-                            <a href="01-pages/03-02-install/02-images/fig-03-14.png" data-lightbox="fig-set" data-title="Figure 3.14 - Notepad++ text editor download">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-14.png" alt="Figure 3.14 - Notepad++ text editor download">
+                        <div class="fig-col fig1-1" id="js--f03-15">
+                            <a href="01-pages/03-02-install/02-images/fig-03-15.png" data-lightbox="fig-set" data-title="Figure 3.15 - Notepad++ Obsidian theme">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-15.png" alt="Figure 3.15 - Notepad++ Obsidian theme">
                             </a>
-                            <p>Figure 3.14 &emsp; Notepad++ text editor download</p>     <!-- Figure caption -->
+                            <p>Figure 3.15 &emsp; Notepad++ Obsidian theme</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -462,104 +476,59 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">The next thing is a tool that highlights difference between two different versions of the same file. This is usually required if two people have made changes to the same part of file. The merge aspect allows the differences to be reconciled and merged back into a single file.</p>
+                    <p class="hyp">This section is entirely optional; we don&rsquo;t need a difference and merge tool for Bracket-Git (we&rsquo;ll use Brackets directly). I&rsquo;ve included it only for completeness; it finishes the Git installation properly (the command line stuff) and provides a much better tool for comparing the differences between files and allowing these files to be merged together in a sensible way if a conflict exists.</p>
 
-                    <p class="hyp">Generally, I don’t like the idea of two people working on the same file at the same time, but it can happen and this is how Git deals with it. So we need a merge tool.</p>
+                    <p class="hyp">Install it if you want&nbsp;&mdash;&nbsp;it won&rsquo;t make any difference <span class="first-use">(ha!)</span> to what we do, and I won&rsquo;t be using it. If you are tempted by the command line interface though, it will make life much easier.</p>
 
-                    <p class="hyp">The one I use is P4Merge, this is a free package made by <a class="hlink nohyp" href="https://www.perforce.com/">perforce</a> and was recommended to me&mdash;I find it works well and is easy to use; that said, I haven&rsquo;t tried any others <span class="first-use">(there&rsquo;s a lot of them out there)</span>.</p>
+                    <p class="hyp">The difference and merge tool highlights differences between two versions of the same file. This is usually required if two people have made changes to the same part of the same file. The merge aspect allows the differences to be reconciled and merged back into a single file.</p>
 
-                    <p class="hyp">There are a few hoops to jump through to get it. Start with the <a class="hlink nohyp" href="https://www.perforce.com/">perforce</a> website (<a class="xref js--sc-f03-15" href="#">Figure&nbsp;3.15</a>):</p>
+                    <p class="hyp">Generally, I don&rsquo;t like the idea of two people working on the same file at the same time, but it can happen and this is how Git deals with it. So it needs a merge tool.</p>
 
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f03-15">
-                            <a href="01-pages/03-02-install/02-images/fig-03-15.jpg" data-lightbox="fig-set" data-title="Figure 3.15 - Perforce home page">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-15.jpg" alt="Figure 3.15 - Perforce home page">
-                            </a>
-                            <p>Figure 3.15 &emsp; Perforce home page</p>     <!-- Figure caption -->
-                        </div>
-                    </figure>                                   <!-- END OF FIGURE -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <p class="hyp">The one I use is <a class="hlink nohyp" href="https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge">p4merge</a>, this is a free package made by <a class="hlink nohyp" href="https://www.perforce.com/">perforce</a> and was recommended to me&mdash;I find it works well and is easy to use; that said, I haven&rsquo;t tried any others <span class="first-use">(there&rsquo;s a lot of them out there)</span>.</p>
 
-                    <p class="hyp">Click the products button (highlighted) and on the Products page select <span class="menu">helix core apps</span> (<a class="xref js--sc-f03-16" href="#">Figure&nbsp;3.16</a>):</p>
+                    <p class="hyp">Perforce provide various management and technological development tools <span class="first-use">(at least I think they do&nbsp;&mdash;&nbsp;their website is full of those phrases that I read, and although I understand every word, I don&rsquo;t actually know what they are saying. It&rsquo;s some sort of managementeese language, understandable by managers but not by engineers&nbsp;&mdash;&nbsp;I shouldn&rsquo;t be too rude, they are allowing people to use their stuff for free)</span>. Their website changes frequently and it can be difficult to find the download page. The easiest way is to do a <a class="hlink nohyp" href="https://www.google.co.uk/search?source=hp&ei=NBNTW8_AIbPAlAayp6joBQ&q=p4merge+download&oq=p4merge+download&gs_l=psy-ab.3..0l3j0i22i30k1l7.1718.6597.0.6978.16.14.0.2.2.0.116.1201.13j1.14.0....0...1c.1.64.psy-ab..0.16.1205...0i131k1.0.AOeY2iOF6OQ">google</a> search for:</p>
 
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      NOTE - HANGING INDENT
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <ul class="note">                           <!-- Start of note -->
-                        <li>This website changes a lot, if it looks different to this, just search for <span class="menu">p4merge</span> (magnifying glass at the top), you’re looking for <span class="menu">helix merge and diff tools (p4merge)</span>, this gives you something like <a class="xref js--sc-f03-18" href="#">Figure&nbsp;3.18</a>.</li>
-                    </ul>                                       <!-- End of note -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <p class="hyp" style="text-align: center;"><span class="code">P4merge download</span></p>
+
+                    <p class="hyp">This gave me the following results (<a class="xref js--sc-f03-16" href="#">Figure&nbsp;3.16</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f03-16">
-                            <a href="01-pages/03-02-install/02-images/fig-03-16.jpg" data-lightbox="fig-set" data-title="Figure 3.16 - Perforce products&mdash;select Helix Core Apps">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-16.jpg" alt="Figure 3.16 - Perforce products&mdash;select Helix Core Apps">
+                            <a href="01-pages/03-02-install/02-images/fig-03-16.png" data-lightbox="fig-set" data-title="Figure 3.16 - Search for P4Merge download">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-16.png" alt="Figure 3.16 - Search for P4Merge download">
                             </a>
-                            <p>Figure 3.16 &emsp; Perforce products&mdash;select Helix Core Apps</p>     <!-- Figure caption -->
+                            <p>Figure 3.16 &emsp; Search for P4Merge download</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">This gives the core apps page (<a class="xref js--sc-f03-17" href="#">Figure&nbsp;3.17</a>), click <span class="menu">merge and diff tool</span> (highlighted):</p>
+                    <p class="hyp">It&rsquo;s the second one down and links to the <a class="hlink nohyp" href="https://www.perforce.com/downloads/visual-merge-tool">download&nbsp;page</a>. It will look something like <a class="xref js--sc-f03-17" href="#">Figure&nbsp;3.17</a>:</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f03-17">
-                            <a href="01-pages/03-02-install/02-images/fig-03-17.jpg" data-lightbox="fig-set" data-title="Figure 3.17 - Perforce products&mdash;select P4Merge tool">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-17.jpg" alt="Figure 3.17 - Perforce products&mdash;select P4Merge tool">
+                            <a href="01-pages/03-02-install/02-images/fig-03-17.png" data-lightbox="fig-set" data-title="Figure 3.17 - Perforce products&mdash;P4Merge download">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-17.png" alt="Figure 3.17 - Perforce products&mdash;P4Merge download">
                             </a>
-                            <p>Figure 3.17 &emsp; Perforce products&mdash;select P4Merge tool</p>     <!-- Figure caption -->
+                            <p>Figure 3.17 &emsp; Perforce products&mdash;P4Merge download</p>     <!-- Figure caption -->
                         </div>
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">This gives the download page (<a class="xref js--sc-f03-18" href="#">Figure&nbsp;3.18</a>), click the <span class="menu">download</span> button (highlighted):</p>
+                    <p class="hyp">Select the family and platform (in my case <span class="menu">windows</span> and <span class="menu">windows x64</span>) and click download. This gives the registration page (<a class="xref js--sc-f03-18" href="#">Figure&nbsp;3.18</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - SINGLE FIGURE FULL PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                    <!-- START OF FIGURE -->
                         <div class="fig-col fig1-1" id="js--f03-18">
-                            <a href="01-pages/03-02-install/02-images/fig-03-18.jpg" data-lightbox="fig-set" data-title="Figure 3.18 - Perforce products&mdash;select P4Merge tool">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-18.jpg" alt="Figure 3.18 - Perforce products&mdash;select P4Merge tool">
-                            </a>
-                            <p>Figure 3.18 &emsp; Perforce products&mdash;select P4Merge tool</p>     <!-- Figure caption -->
-                        </div>
-                    </figure>                                   <!-- END OF FIGURE -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">This is the bit we&rsquo;re after, the Visual Merge Tool (<a class="xref js--sc-f03-19" href="#">Figure&nbsp;3.19</a>):</p>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f03-19">
-                            <a href="01-pages/03-02-install/02-images/fig-03-19.jpg" data-lightbox="fig-set" data-title="Figure 3.19 - Perforce products&mdash;Helix Visual Merge Tool">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-19.jpg" alt="Figure 3.19 - Perforce products&mdash;Helix Visual Merge Tool">
-                            </a>
-                            <p>Figure 3.19 &emsp; Perforce products&mdash;Helix Visual Merge Tool</p>     <!-- Figure caption -->
-                        </div>
-                    </figure>                                   <!-- END OF FIGURE -->
-<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-                    <p class="hyp">Select the family and platform (in my case <span class="menu">windows</span> and <span class="menu">windows x64</span>) and click download. This gives the registration page (<a class="xref js--sc-f03-20" href="#">Figure&nbsp;3.20</a>):</p>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     FIGURE - SINGLE FIGURE FULL PAGE WIDTH
-     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                    <figure class="fig-row">                    <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-1" id="js--f03-20">
-                            <a href="01-pages/03-02-install/02-images/fig-03-20.jpg" data-lightbox="fig-set" data-title="Figure 3.20 - Perforce products&mdash;Registration">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-20.jpg" alt="Figure 3.20 - Perforce products&mdash;Registration">
+                            <a href="01-pages/03-02-install/02-images/fig-03-18.png" data-lightbox="fig-set" data-title="Figure 3.18 - Perforce products&mdash;Registration">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-18.png" alt="Figure 3.18 - Perforce products&mdash;Registration">
                             </a>
                             <p>Figure 3.20 &emsp; Perforce products&mdash;Registration</p>     <!-- Figure caption -->
                         </div>
@@ -568,33 +537,33 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">You don&rsquo;t have to register, click <span class="menu">skip registration</span>. Finally, the download starts <span class="first-use">(got there in the end)</span>.</p>
 
-                    <p class="hyp">This will download the P4Merge installation file, in my case: <span class="code">p4inst64.exe</span>.</p>
+                    <p class="nohyp">This will download the P4Merge installation file, in my case: <span class="code">p4inst64.exe</span>.</p>
 
-                    <p class="hyp">Run the file, this gives the Select Features dialogue (<a class="xref js--sc-f03-21" href="#">Figure&nbsp;3.21</a>):</p>
+                    <p class="hyp">Run the file, It may or may not install the redistributable version of C++ (depends if it is already installed), after which it opens a Helix Core splash screen, the following screen gives the Select Applications dialogue(<a class="xref js--sc-f03-19" href="#">Figure&nbsp;3.19</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                     <figure class="fig-row">                     <!-- START OF FIGURE -->
-                        <div class="fig-col fig1-2" id="js--f03-21">
-                            <a href="01-pages/03-02-install/02-images/fig-03-21.png" data-lightbox="fig-set" data-title="Figure 3.21 - P4Merge&mdash;Installation features">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-21.png" alt="Figure 3.21 - P4Merge&mdash;Installation features">
+                        <div class="fig-col fig1-2" id="js--f03-19">
+                            <a href="01-pages/03-02-install/02-images/fig-03-19.png" data-lightbox="fig-set" data-title="Figure 3.19 - P4Merge&mdash;Installation features">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-19.png" alt="Figure 3.19 - P4Merge&mdash;Installation features">
                             </a>
-                            <p>Figure 3.21 &emsp; P4Merge&mdash;Installation features</p>  <!-- Figure caption -->
+                            <p>Figure 3.19 &emsp; P4Merge&mdash;Installation features</p>  <!-- Figure caption -->
                         </div>
-                        <div class="fig-col fig1-2" id="js--f03-22">
-                            <a href="01-pages/03-02-install/02-images/fig-03-22.png" data-lightbox="fig-set" data-title="Figure 3.22 - P4Merge&mdash;Required features">         <!-- LIGHTBOX LINK -->
-                                <img src="01-pages/03-02-install/02-images/fig-03-22.png" alt="Figure 3.22 - P4Merge&mdash;Required features">
+                        <div class="fig-col fig1-2" id="js--f03-20">
+                            <a href="01-pages/03-02-install/02-images/fig-03-20.png" data-lightbox="fig-set" data-title="Figure 3.20 - P4Merge&mdash;Required features">         <!-- LIGHTBOX LINK -->
+                                <img src="01-pages/03-02-install/02-images/fig-03-20.png" alt="Figure 3.20 - P4Merge&mdash;Required features">
                             </a>
-                            <p>Figure 3.22 &emsp; P4Merge&mdash;Required features</p><!-- Figure caption -->
+                            <p>Figure 3.20 &emsp; P4Merge&mdash;Required features</p><!-- Figure caption -->
                         </div>
 
                     </figure>                                   <!-- END OF FIGURE -->
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-                    <p class="hyp">The only thing we need is the <span class="menu">visual merge tool (p4merge)</span>, deselect everything else (<a class="xref js--sc-f03-22" href="#">Figure&nbsp;3.22</a>):</p>
+                    <p class="hyp">The only thing we need is the <span class="menu">visual merge tool (p4merge)</span>, deselect everything else (<a class="xref js--sc-f03-20" href="#">Figure&nbsp;3.20</a>):</p>
 
-                    <p class="hyp">Click <span class="menu">next</span> and then <span class="menu">start</span> to install the programme, there are no more option screens.</p>
+                    <p class="hyp">Click <span class="menu">next</span> and then <span class="menu">install</span> to install the programme, there are no more option screens.</p>
 
                 </div>                                          <!-- End of section text area   -->
 
@@ -654,6 +623,11 @@ Date          Issue        Author         Reason for Modification
                 <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
                 <li><a href="80-00-finally.html#js--800400">Legal</a></li>
             </ul>                                               <!-- End of footer navigation -->
+
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/practicalseries"><i id="js--fbicon" class="ion-social-facebook-outline"></i></a></li>
+                <li><a href="https://twitter.com/practicalseries"><i id="js--twicon" class="ion-social-twitter-outline"></i></a></li>
+            </ul>
         </footer>                                               <!-- End of footer -->
 <!-- ========================================================================== [WP END] -->
 

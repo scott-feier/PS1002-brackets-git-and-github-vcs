@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+31 Jul 2018   d-R01-00-02  M. Gledhill    Proof reading & social media
+
 23 Sep 2017   R01          M. Gledhill    First formal release
 
 21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
@@ -93,6 +95,7 @@ Date          Issue        Author         Reason for Modification
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
         <!-- Code frag highlights -->   <link rel="stylesheet" type="text/css" href="01-pages/09-05-github/01-local-css/09-05-prettifylines.css">
+        <!-- Ionicons -->               <link rel="stylesheet" type="text/css" href="21-global/01-css/ionicons.min.css">
 
 
 
@@ -158,7 +161,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-d-R01-00-02.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -167,7 +170,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 09-05&nbsp;&mdash;&nbsp;R01</p>
+<!--REVISION-->         <p>Rev: 09-05&nbsp;&mdash;&nbsp;d-R01.00.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -379,7 +382,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">By way of example, I will add a new legal page to the website <span class="code">(04-legal.html</span>) in much the same way I did with other pages in previous examples. I will do this by creating a new branch adding the page to the new branch and then merging it back into the <span class="git-cmd">master</span> branch.</p>
+                    <p class="hyp">By way of example, I will add a new <span class="first-use">legal</span> page to the website <span class="code">(04-legal.html</span>) in much the same way I did with other pages in previous examples. I will do this by creating a new branch adding the page to the new branch and then merging it back into the <span class="git-cmd">master</span> branch.</p>
 
                     <p class="hyp">The easiest way to create a new branch is from the repository home page. Open the <span class="code">lab-01-website</span> home page:</p>
 
@@ -626,7 +629,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">People can even copy them with the intention of developing them further (this process has the rather vulgar name of <span class="first-use">forking</span><sup>&dagger;1</sup>  and I discuss how it works in <a class="hlink nohyp" href="10-01-collaboration.html#js--100100">&sect;&nbsp;10.1</a>). Now, it is generally difficult to stop people doing this and GitHub (I think) actively encourages it (it is possible to block users, but this is intended only for abusive users and not just to stop people looking&mdash;it would be difficult to block every user of GitHub).</p>
 
-                    <p class="hyp">Clearly, though we don&rsquo;t want every Tom, Dick or Harry modifying our code&mdash;hence the pull request. This allows some other user to take your code, modify it in their own account, and, if they think it&rsquo;s good enough, send you a pull request.</p>
+                    <p class="hyp">Clearly, though we don&rsquo;t want every Tom, Dick or Harry modifying our code&mdash;hence the pull request. This allows some other user to take your code, modify it in their own account, and, if they think it&rsquo;s good enough, send you a pull request with their changes.</p>
 
                     <p class="hyp">The pull request alerts you to the fact that someone has made a modification and they are <span class="first-use">requesting</span> that you <span class="first-use">pull</span> their modification in to the repository. Only the owner (or those users given write permission to the repository) can grant this pull request and merge the modification into the repository.</p>
 
@@ -868,7 +871,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">To reject a pull request click the <span class="menu">close pull request</span> button, this is listed a point <span class="index">1</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>. Closing a pull request does not delete it, it will be listed under closed pull requests, but it will stop it bothering you and it will not require any further interaction.</p>
+                    <p class="hyp">To reject a pull request click the <span class="menu">close pull request</span> button, this is listed as point <span class="index">1</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>. Closing a pull request does not delete it, it will be listed under closed pull requests, but it will stop it bothering you and it will not require any further interaction.</p>
 
 <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       NOTE - HANGING INDENT
@@ -918,7 +921,7 @@ Date          Issue        Author         Reason for Modification
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
-                    <p class="hyp">Next: the conversation. If you notice, we are actually in a sub-tab called <span class="menu">conversation</span>, it&rsquo;s just under the green open image (<sub><img style="height: 0.9rem" src="01-pages/09-05-github/02-images/fig-09-58a.png" alt="open icon"></sub>). </p>
+                    <p class="hyp">Next, the conversation. If you notice, we are actually in a sub-tab called <span class="menu">conversation</span>, it&rsquo;s just under the green open image (<sub><img style="height: 0.9rem" src="01-pages/09-05-github/02-images/fig-09-58a.png" alt="open icon"></sub>). </p>
 
                     <p class="hyp">If you&rsquo;re not sure about the pull request you can ask questions or make a statement <span class="first-use">&ldquo;good idea, I&rsquo;ll implement later&rdquo;</span>&mdash;or in my case <span class="first-use">&ldquo;who are you? Stop bothering me. Go away&rdquo;</span>&mdash;type what you want in the box at the bottom and click the <span class="menu">comment</span> button (both labelled point <span class="index">2</span> in <a class="xref js--sc-f09-58" href="#">Figure&nbsp;9.58</a>) and the message will be added to the pull request listing.</p>
 
@@ -1543,6 +1546,11 @@ Date          Issue        Author         Reason for Modification
                 <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
                 <li><a href="80-00-finally.html#js--800400">Legal</a></li>
             </ul>                                               <!-- End of footer navigation -->
+
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/practicalseries"><i id="js--fbicon" class="ion-social-facebook-outline"></i></a></li>
+                <li><a href="https://twitter.com/practicalseries"><i id="js--twicon" class="ion-social-twitter-outline"></i></a></li>
+            </ul>
         </footer>                                               <!-- End of footer -->
 <!-- ========================================================================== [WP END] -->
 

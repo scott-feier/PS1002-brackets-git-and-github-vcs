@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+31 Jul 2018   d-R01-00-02  M. Gledhill    Proof reading & social media
+
 23 Sep 2017   R01          M. Gledhill    First formal release
 
 21 Sep 2017   d-P15-00-01  M. Gledhill    Proofreading corrections
@@ -89,6 +91,7 @@ Date          Issue        Author         Reason for Modification
         <!-- PS grid system -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/grid.css">
         <!-- PS main styles -->         <link rel="stylesheet" type="text/css" href="11-resources/01-css/style.css">
         <!-- Code frag highlights       <link rel="stylesheet" type="text/css" href="01-pages/07-01-regression/01-local-css/07-01-prettifylines.css"> -->
+        <!-- Ionicons -->               <link rel="stylesheet" type="text/css" href="21-global/01-css/ionicons.min.css">
 
 
 
@@ -154,7 +157,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="11-resources/02-images/02-build-status/build-badge.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-d-R01-00-02.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -163,7 +166,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 07-01&nbsp;&mdash;&nbsp;R01</p>
+<!--REVISION-->         <p>Rev: 07-01&nbsp;&mdash;&nbsp;d-R01.00.02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -339,7 +342,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">One other thing I&rsquo;ve done here is change how the time and date of commits are displayed, in the previous section they were shown as relative dates (i.e. <span class="first-use">commit made 3 hours ago</span>). I&rsquo;m going to change this and use absolute times and dates for clarity <span class="first-use">(if I use the relative ones, it keeps changing to mark the lapse of time)</span>.</p>
 
-                    <p class="hyp">I&rsquo;m going to use the standard <a class="hlink nohyp" href="https://en.wikipedia.org/wiki/ISO_8601">iso&nbsp;8601</a> date format <span class="first-use">(this is what engineers always use)</span>.</p>
+                    <p class="hyp">I&rsquo;m going to use the standard <a class="hlink nohyp" href="https://en.wikipedia.org/wiki/ISO_8601">iso&nbsp;8601</a> date format <span class="first-use">(this is what engineers always use<sup>&dagger;1</sup>)</span>.</p>
 
                     <p class="hyp" style="text-align: center;"><span class="code">YYYY-MM-DD&emsp;&emsp;HH:mm:ss</span></p>
 
@@ -362,6 +365,23 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="hyp">You can see the format I&rsquo;ve used (the uppercase <span class="code">HH</span> for hours shows it as a two digit 24 hour clock value).</p>
 
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TABLE - FOOTNOTE
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                    <table class="table-fnote" id="js--fn01">   <!-- TABLE - Start of footnote  -->
+                        <tr>                                    <!-- TABLE - footnote header line -->
+                            <th class="table-cent fnote-top" style="width: 10%"></th>      <!-- set column 01 width here -->
+                            <th class="table-left fnote-top" style="width: 10%"></th>      <!-- set column 02 width here -->
+                            <th class="table-left fnote-top" style="width: 20%"></th>      <!-- set column 03 width here -->
+                            <th class="table-left" style="width: 60%"></th>                <!-- set column 03 width here -->
+                        </tr>                                   <!-- TABLE - End of footnote header line  -->
+                        <tr>                                    <!-- TABLE - Start of footnote row 01 -->
+                            <td class="table-left"><em>&dagger;1</em></td>
+                            <td class="table-left"></td>
+                            <td colspan="2" class="table-left">Except in pharmaceutical environments, here we use the format DD Mmm YYYY (e.g. 12 Feb 2018), we write the first three letters of the month name. It avoids misunderstandings between the American format (02/12/18) and the English format (12/02/18). For some reason, the Yanks and the Brits transpose the day and month values in the shorthand notation. Both the <a class="hlink nohyp" href="https://www.fda.gov/">fda</a> and the British <a class="hlink nohyp" href="https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency">mhra</a> specify the DD Mmm YYYY format.</td>
+                        </tr>                                   <!-- TABLE - End of footnote row 01   -->
+                    </table>                                    <!-- TABLE - End of footnote    -->
+<!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
@@ -420,6 +440,11 @@ Date          Issue        Author         Reason for Modification
                 <li><a href="80-00-finally.html#js--800300">Colophon</a><span class="footer-spacer">&#x25C7;</span></li>
                 <li><a href="80-00-finally.html#js--800400">Legal</a></li>
             </ul>                                               <!-- End of footer navigation -->
+
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/practicalseries"><i id="js--fbicon" class="ion-social-facebook-outline"></i></a></li>
+                <li><a href="https://twitter.com/practicalseries"><i id="js--twicon" class="ion-social-twitter-outline"></i></a></li>
+            </ul>
         </footer>                                               <!-- End of footer -->
 <!-- ========================================================================== [WP END] -->
 

@@ -47,6 +47,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+31 Jul 2018   d-R01-00-02  M. Gledhill    Figure numbers changed
+
 23 Sep 2017   R01          M. Gledhill    First formal release
 
 26 Jul 2017   P04          M. Gledhill    Published
@@ -70,7 +72,7 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
    **************************************************************************** */
 
     $('.aside-right-rev').append (
-        "<p>scroll.js&nbsp;&mdash;&nbsp;R01</p>" /* LOCAL JS REVISION NUMBER */
+        "<p>scroll.js&nbsp;&mdash;&nbsp;d-R01.00.02</p>" /* LOCAL JS REVISION NUMBER */
     );
 
 
@@ -163,6 +165,14 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
           });
    ------------------------------------------------------------------------- */
 
+          $('.js--sc-f03-25').click(function () {
+           $('html, body').animate({scrollTop: $('#js--f03-25').offset().top -80}, 1000);
+          });
+
+          $('.js--sc-f03-26').click(function () {
+           $('html, body').animate({scrollTop: $('#js--f03-26').offset().top -80}, 1000);
+          });
+
           $('.js--sc-f03-27').click(function () {
            $('html, body').animate({scrollTop: $('#js--f03-27').offset().top -80}, 1000);
           });
@@ -205,14 +215,6 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
 
           $('.js--sc-f03-37').click(function () {
            $('html, body').animate({scrollTop: $('#js--f03-37').offset().top -80}, 1000);
-          });
-
-          $('.js--sc-f03-38').click(function () {
-           $('html, body').animate({scrollTop: $('#js--f03-38').offset().top -80}, 1000);
-          });
-
-          $('.js--sc-f03-39').click(function () {
-           $('html, body').animate({scrollTop: $('#js--f03-39').offset().top -80}, 1000);
           });
 
 
