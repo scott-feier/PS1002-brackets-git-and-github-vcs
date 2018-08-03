@@ -41,6 +41,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+02 Aug 2018   t-R01-00-R02 M. Gledhill    Validation (text/javascript removed)
+
 29 Jul 2018   d-R01-00-02  M. Gledhill    Proof reading & social media
 
 23 Sep 2017   R01          M. Gledhill    First formal release
@@ -75,14 +77,14 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      HEAD SCRIPT AREA
      ***********************************************************************-->
-        <!-- jQuery Library -->         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <!-- Waypoints (fixed nav) -->  <script type="text/javascript" src="21-global/05-js/jquery.waypoints.min.js" defer></script>
-        <!-- Prettify (main)            <script type="text/javascript" src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
-        <!-- Prettify (Language)        <script type="text/javascript" src="21-global/05-js/lang-css.js" defer></script> -->
-        <!-- Hyphenator -->             <script type="text/javascript" src="21-global/05-js/hyphenator.js"></script>
-        <!-- MathJax                    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
-        <!-- PS main script -->         <script type="text/javascript" src="11-resources/05-js/script.js" defer></script>
-        <!-- PS local scroll script --> <script type="text/javascript" src="01-pages/03-02-install/05-local-js/03-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
+        <!-- jQuery Library -->         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Waypoints (fixed nav) -->  <script src="21-global/05-js/jquery.waypoints.min.js" defer></script>
+        <!-- Prettify (main)            <script src="21-global/05-js/run_prettify.js?autoload=true&amp;lang=css" defer></script> -->
+        <!-- Prettify (Language)        <script src="21-global/05-js/lang-css.js" defer></script> -->
+        <!-- Hyphenator -->             <script src="21-global/05-js/hyphenator.js"></script>
+        <!-- MathJax                    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script> -->
+        <!-- PS main script -->         <script src="11-resources/05-js/script.js" defer></script>
+        <!-- PS local scroll script --> <script src="01-pages/03-02-install/05-local-js/03-02-scroll.js" defer></script> <!-- ***** CHANGE TO CORRECT FOLDER ***** -->
 
 
 
@@ -163,7 +165,7 @@ Date          Issue        Author         Reason for Modification
             <div class="rg-row title-row">                      <!-- Start of title row (section number & heading) -->
                 <div class="rg-col rg-span1-5">
                     <aside class="aside-left aside-left-rev" style="margin-top: 0.1rem;">            <!-- Start of left side bar -->
-                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-d-R01-00-02.svg" alt="Build info">                 <!-- Build status -->
+                        <img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-R02.svg" alt="Build info">                 <!-- Build status -->
                     </aside>                                    <!-- End of right side bar   -->
                 </div>           <!-- End of Left column -->
                 <div class="rg-col rg-span3-5 title-centre">    <!-- Start of title (centre column) -->
@@ -172,7 +174,7 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of title (centre column) -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
                     <aside class="aside-right-rev">              <!-- Start of right side bar -->
-<!--REVISION-->         <p>Rev: 03-02&nbsp;&mdash;&nbsp;d-R01.00.02</p>
+<!--REVISION-->         <p>Rev: 03-02&nbsp;&mdash;&nbsp;R02</p>
                     </aside>                                    <!-- End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of title row (section number & heading) -->
@@ -539,7 +541,7 @@ Date          Issue        Author         Reason for Modification
 
                     <p class="nohyp">This will download the P4Merge installation file, in my case: <span class="code">p4inst64.exe</span>.</p>
 
-                    <p class="hyp">Run the file, It may or may not install the redistributable version of C++ (depends if it is already installed), after which it opens a Helix Core splash screen, the following screen gives the Select Applications dialogue(<a class="xref js--sc-f03-19" href="#">Figure&nbsp;3.19</a>):</p>
+                    <p class="hyp">Run the file, It may or may not install the redistributable version of C++ (depends if it is already installed), after which it opens a Helix Core splash screen, the following screen gives the Select Applications dialogue (<a class="xref js--sc-f03-19" href="#">Figure&nbsp;3.19</a>):</p>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      FIGURE - DOUBLE FIGURE HALF PAGE WIDTH
@@ -635,7 +637,7 @@ Date          Issue        Author         Reason for Modification
 <!-- **************************************************************************
      JAVASCRIPT (POST PAGE LOAD)
      ***********************************************************************-->
-        <!-- Lightbox -->               <script type="text/javascript" src="21-global/05-js/lightbox.js"></script>
+        <!-- Lightbox -->               <script src="21-global/05-js/lightbox.js"></script>
 
     </body>
 </html>

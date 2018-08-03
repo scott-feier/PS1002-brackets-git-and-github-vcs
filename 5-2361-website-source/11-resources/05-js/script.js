@@ -51,6 +51,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+02 Aug 2018   R02          M. Gledhill    Second formal release
+
 24 Jul 2018   d-R01.00.01  M. Gledhill    Social media icons manipulation added
 
 23 Sep 2017   R01          M. Gledhill    First formal release

@@ -49,6 +49,8 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 -------------------------------------------------------------------------------
+02 Aug 2018   R02          M. Gledhill    Second formal release
+
 04 Jun 2017   P01          M. Gledhill    First published
 
 27 May 2017   D00          M. Gledhill    Development - based on PS1001 P10
@@ -70,7 +72,7 @@ $(document).ready(function() {                  /* START OF PAGE READY FUNCTION 
    **************************************************************************** */
 
     $('.aside-right-rev').append (
-        "<p>scroll.js&nbsp;&mdash;&nbsp;P01</p>" /* LOCAL JS REVISION NUMBER */
+        "<p>scroll.js&nbsp;&mdash;&nbsp;R02</p>" /* LOCAL JS REVISION NUMBER */
     );
 
 
