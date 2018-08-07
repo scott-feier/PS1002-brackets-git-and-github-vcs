@@ -2,7 +2,7 @@
 
 The current version of this file is:
 
-<img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-P09.svg">
+<img src="http://practicalseries.com/1000-home/11-resources/02-images/02-build-status/1002-vcs/bs-R02.svg">
 
 
 # Repository basic information

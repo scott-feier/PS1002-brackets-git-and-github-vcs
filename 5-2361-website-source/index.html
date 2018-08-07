@@ -41,6 +41,9 @@ This is a complete summary of all software modifications.
 
 Date          Issue        Author         Reason for Modification
 *******************************************************************************
+07 Aug 2018   R02.02       M. Gledhill    Google Analytics set to anonymise IP
+                                          addresses across the site.
+
 05 Aug 2018   R02.01       M. Gledhill    Site updated to HTTPS
                                           Privacy policy added
 
@@ -154,6 +157,7 @@ Date          Issue        Author         Reason for Modification
                                           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
                                           ga('create', 'UA-87335633-1', 'auto');
+                                          ga('set', 'anonymizeIp', true);           // anonymise ip address
                                           ga('send', 'pageview');
                                         </script>
 
@@ -1341,14 +1345,38 @@ Date          Issue        Author         Reason for Modification
         <div class="section-std" id="js--990101b">              <!-- Start of additional row -->
             <div class="rg-row">                                <!-- Start of row content -->
                 <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
-                    <aside class="aside-left">                  <!-- Start of left side bar   -->
-                        <p class="nohyp">The exact numbers are a bit difficult to establish; and since I don&rsquo;t work for <a class="hlink nohyp" href="https://www.gchq.gov.uk">gchq</a>, it means I have to rely on <a class="hlink" href="https://marketingplatform.google.com/about/analytics/">google analytics</a> and the data made available to me by my web hosting service. </p>               <!-- Side bar content         -->
-                    </aside>                                    <!-- End of left side bar     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
                 </div>                                          <!-- End of left column       -->
 
                 <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
                     <p class="hyp">That makes the conversion rate about one in 800 readers. I&rsquo;ve only included those people who actually spent time on the website and returned multiple times (i.e. not people who arrive at the website and immediately leave). I realise that this is open to interpretation; I&rsquo;ve no idea why people look at the website, but I figure if you keep coming back and spend fifteen minutes or so looking at stuff, then you are using the website as some sort of reference&nbsp;&mdash;&nbsp;a bit like using a book (and sometimes you have to pay for a book).</p>
+
+                </div>                                          <!-- End of section text area   -->
+
+                <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
+                     <aside class="aside-right">                <!-- Start of right side bar -->
+                        <p class="nohyp">The exact numbers are a bit difficult to establish; and since I don&rsquo;t work for <a class="hlink nohyp" href="https://www.gchq.gov.uk">gchq</a>, it means I have to rely on <a class="hlink" href="https://marketingplatform.google.com/about/analytics/">google analytics</a> and the data made available to me by my web hosting service. </p>               <!-- Side bar content         -->
+                     </aside>                                   <!-- End of right side bar   -->
+                </div>                                          <!-- End of right column     -->
+            </div>                                              <!-- End of row content  -->
+        </div>                                                  <!-- End of additional row -->
+<!-- ========================================================================== [WP END] -->
+
+
+<!-- ************************************************************************** [WP ADDITIONAL]
+     SECTION - ADDITIONAL ROW
+     ***********************************************************************-->
+
+        <div class="section-std" id="js--990101c">              <!-- Start of additional row -->
+            <div class="rg-row">                                <!-- Start of row content -->
+                <div class="rg-col rg-span1-5">                 <!-- Start of left column     -->
+                    <!-- <aside class="aside-left">                  Start of left side bar   -->
+                    <!-- </aside>                                    End of left side bar     -->
+                </div>                                          <!-- End of left column       -->
+
+                <div class="rg-col rg-span3-5 section-text">    <!-- Start of section text area -->
 
                     <p class="hyp">I&rsquo;m going to stick with this arrangement; let&rsquo;s call it an honour system, <br><em>dig deep and spend that two quid will you.</em></p>
 
@@ -1358,8 +1386,8 @@ Date          Issue        Author         Reason for Modification
                 </div>                                          <!-- End of section text area   -->
 
                 <div class="rg-col rg-span1-5">                 <!-- Start of right column   -->
-                     <aside class="aside-right">                <!-- Start of right side bar -->
-                     </aside>                                   <!-- End of right side bar   -->
+                     <!-- <aside class="aside-right">                Start of right side bar -->
+                     <!-- </aside>                                   End of right side bar   -->
                 </div>                                          <!-- End of right column     -->
             </div>                                              <!-- End of row content  -->
         </div>                                                  <!-- End of additional row -->
